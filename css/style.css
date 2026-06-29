@@ -30,7 +30,7 @@ body {
     line-height: 1.8;
     min-height: 100vh;
     font-size: 18px;
-    padding-top: 60px !important; /* Уменьшили отступ сверху, чтобы фото было ближе к меню */
+    padding-top: 60px !important;
 }
 
 .container {
@@ -121,7 +121,7 @@ h1 span,
 /* ===== ГЕРОЙ (ОБЛОЖКА) ===== */
 .hero {
     text-align: center;
-    padding: 25px 0 50px; /* СИЛЬНО уменьшили верхний отступ, чтобы фото было прямо под меню */
+    padding: 25px 0 50px;
 }
 
 .hero-avatar {
@@ -130,11 +130,10 @@ h1 span,
     border-radius: 24px;
     background: var(--bg);
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
-    margin-bottom: 16px; /* Чуть меньше воздуха между фото и именем */
+    margin-bottom: 16px;
 }
 
 .hero-avatar img {
-    /* ФОТО ОСТАЛОСЬ КРУПНЫМ */
     width: 420px; 
     height: 420px;
     object-fit: cover;
