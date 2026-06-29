@@ -1,35 +1,116 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Обо мне | Галина Чернякова</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Галина Чернякова | О себе</title>
+    <meta name="description" content="История и творческий путь фотографа Галины Черняковой." />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo"><a href="index.html">ГАЛИНА ЧЕРНЯКОВА</a></div>
-        <nav>
-            <a href="portfolio.html">Портфолио</a>
-            <a href="awards.html">Достижения</a>
-            <a href="about.html">Обо мне</a>
-            <a href="contact.html">Контакты</a>
-        </nav>
+
+    <div class="stars-container" id="starsContainer"></div>
+
+    <header>
+        <div class="header-inner">
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html" class="active">О себе</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
     </header>
 
-    <section class="section container">
-        <h2>Обо мне</h2>
-        <div class="about-content">
-            <p>Меня зовут Галина Чернякова. Я родилась на берегу Ладоги, в городе Сортавала. Сейчас живу и творю в пригороде Санкт-Петербурга — Сертолово.</p>
-            <p>Мой путь в фотографии начался в сортавальском фотоклубе <strong>«6х9»</strong>, а продолжается в петербургской <strong>«Творческой фотомастерской»</strong>. Мне одинаково близки концептуальный минимализм, тонкая макросъемка цветов и капель, строгие черно-белые пейзажи и эмоциональный репортаж.</p>
-            <p>Фотография для меня — это не просто щелчок затвора. Это возможность рассмотреть то, мимо чего мы проходим каждый день, остановить мгновение и поделиться этим взглядом с миром.</p>
-        </div>
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="index.html" class="btn btn-outline">← На главную</a>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-avatar">
+                <img src="images/photo.jpg" alt="Галина Чернякова" />
+            </div>
+            <h1>Моя <span>история</span></h1>
+            <p class="hero-lead">От Сортавалы до Петербурга — через объектив</p>
+            <div class="hero-quote">✨ «Рассмотреть то, мимо чего мы проходим каждый день» ✨</div>
         </div>
     </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">О себе</div>
+            <div class="section-subtitle">«Фотография — это способ остановить мгновение»</div>
+            <div class="section-text">
+                <p>Я родилась в городе Сортавала, на берегу Ладожского озера. Этот край навсегда остался в моем сердце и часто появляется в моих кадрах.</p>
+                <p style="margin-top: 20px;">Сейчас я живу в Сертолово (пригород Санкт-Петербурга) и активно участвую в культурной жизни города.</p>
+                <p style="margin-top: 20px;">Мой путь начался в фотоклубе <span class="accent-text">«6х9»</span>. Именно там я научилась видеть детали. Сегодня я состою в петербургской <span class="accent-text">«Творческой фотомастерской»</span>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Мой путь</div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">Сортавала</div>
+                    <div class="timeline-text">Родилась и начала свой творческий путь в фотоклубе «6х9».</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">Сертолово / СПб</div>
+                    <div class="timeline-text">Переезд в Ленинградскую область, членство в «Творческой фотомастерской».</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-text">Участие в премии 35AWARDS, победы в международных конкурсах.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="timeline-text">Проведение персональной выставки «Крупным планом» в Сортавале.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-text">Проведение совместной выставки «Две линзы, один сюжет» в Санкт-Петербурге.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Жанры</div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="emoji">🌸</div>
+                    <h3>Макромир</h3>
+                    <p>Цветы, капли, текстуры. Умение видеть невидимое глазу.</p>
+                </div>
+                <div class="card">
+                    <div class="emoji">🌫️</div>
+                    <h3>Концептуальный минимализм</h3>
+                    <p>Черно-белые образы, игра теней и глубокий смысл.</p>
+                </div>
+                <div class="card">
+                    <div class="emoji">🏞️</div>
+                    <h3>Пейзаж и репортаж</h3>
+                    <p>Ладога, природа, спорт. Жизнь без постановки.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="hero-quote">«Умение смотреть — это искусство».</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Каждый кадр начинается с внимания ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
