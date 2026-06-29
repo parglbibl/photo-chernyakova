@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    /* Светлая и строгая палитра */
     --bg: #ffffff;
     --panel: #f8f8f8;
     --panel2: #f0f0f0;
@@ -13,7 +12,6 @@
     --card-bg: rgba(0, 0, 0, 0.02);
 }
 
-/* ===== ПОЛНЫЙ СБРОС ===== */
 * {
     margin: 0;
     padding: 0;
@@ -32,7 +30,7 @@ body {
     line-height: 1.8;
     min-height: 100vh;
     font-size: 18px;
-    padding-top: 44px !important;
+    padding-top: 60px !important; /* Уменьшили отступ сверху, чтобы фото было ближе к меню */
 }
 
 .container {
@@ -50,7 +48,7 @@ header {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
-    height: 44px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -69,7 +67,7 @@ header {
 
 .nav {
     display: flex;
-    gap: 24px;
+    gap: 32px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -123,21 +121,23 @@ h1 span,
 /* ===== ГЕРОЙ (ОБЛОЖКА) ===== */
 .hero {
     text-align: center;
-    padding: 40px 0 60px;
+    padding: 25px 0 50px; /* СИЛЬНО уменьшили верхний отступ, чтобы фото было прямо под меню */
 }
 
 .hero-avatar {
     display: inline-block;
-    padding: 6px;
+    padding: 8px;
     border-radius: 24px;
     background: var(--bg);
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
-    margin-bottom: 8px;
+    margin-bottom: 16px; /* Чуть меньше воздуха между фото и именем */
 }
 
 .hero-avatar img {
-    width: 280px;
-    height: auto;
+    /* ФОТО ОСТАЛОСЬ КРУПНЫМ */
+    width: 420px; 
+    height: 420px;
+    object-fit: cover;
     border-radius: 16px;
     display: block;
     background: var(--panel);
@@ -156,7 +156,7 @@ h1 {
     color: var(--muted);
     font-size: 20px;
     max-width: 600px;
-    margin: 0 auto 20px;
+    margin: 0 auto 24px;
     font-weight: 400;
     letter-spacing: 0.3px;
 }
@@ -172,6 +172,7 @@ h1 {
     font-style: italic;
     max-width: 100%;
     word-break: break-word;
+    margin-top: 6px;
 }
 
 /* ===== СТАТИСТИКА ===== */
@@ -179,7 +180,7 @@ h1 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 20px;
-    margin-top: 44px;
+    margin-top: 40px;
 }
 
 .stat-card {
@@ -675,10 +676,11 @@ footer p {
 
 /* ===== АДАПТИВ ===== */
 @media (max-width: 760px) {
-    header { height: 38px !important; }
-    body { padding-top: 38px !important; }
+    header { height: 54px !important; }
+    body { padding-top: 54px !important; }
     .nav { gap: 14px; }
     .nav a { font-size: 13px; padding: 2px 0; }
+    
     .section { padding: 50px 0; }
     body { font-size: 16px; }
     .grid-2 { grid-template-columns: 1fr; }
@@ -687,20 +689,22 @@ footer p {
     .contacts { gap: 12px; }
     .contacts a { padding: 12px 22px; font-size: 16px; }
     .gallery { grid-template-columns: 1fr 1fr; }
-    .hero-avatar img { width: 220px; }
+    
+    .hero-avatar img { width: 320px; height: 320px; }
     .section-text { font-size: 17px; }
     .card p, .project-card p { font-size: 16px; }
 }
 
 @media (max-width: 480px) {
-    header { height: 34px !important; }
-    body { padding-top: 34px !important; }
+    header { height: 48px !important; }
+    body { padding-top: 48px !important; }
     .nav { gap: 10px; }
     .nav a { font-size: 11px; padding: 2px 0; }
     .stats { grid-template-columns: 1fr; }
     .gallery { grid-template-columns: 1fr 1fr; gap: 12px; }
     .gallery-item { aspect-ratio: 1 / 1; }
-    .hero-avatar img { width: 180px; }
+    
+    .hero-avatar img { width: 260px; height: 260px; }
     .hero-quote { font-size: 16px; padding: 10px 16px; }
     .section-title { font-size: 28px; }
     .section-subtitle { font-size: 17px; }
