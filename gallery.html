@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Галина Чернякова · Галерея</title>
+    <meta name="description" content="Фотографии Галины Черняковой: макро, пейзажи, концептуальные работы." />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <div class="stars-container" id="starsContainer"></div>
+
+    <header>
+        <div class="container header-inner">
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                <li><a href="gallery.html" class="active">Галерея</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-avatar">
+                <img src="images/photo.jpg" alt="Галина Чернякова" />
+            </div>
+            <h1>Галерея <span>мгновений</span></h1>
+            <p class="hero-lead">Макромир, концепт, пейзаж и черно-белая классика</p>
+            <div class="hero-quote">✨ «Рассмотреть то, мимо чего мы проходим каждый день» ✨</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Мои работы</div>
+            <div class="section-subtitle">Нажмите на любую фотографию, чтобы рассмотреть в деталях</div>
+            <div class="gallery" id="photoGallery"></div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="hero-quote">«Зорко одно лишь сердце. Самого главного глазами не увидишь».</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Каждое фото — это застывшая эмоция ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+    (function() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initGallery);
+        } else {
+            initGallery();
+        }
+
+        function initGallery() {
+            var gallery = document.getElementById('photoGallery');
+            if (!gallery) return;
+
+            // Здесь мы создаем 12 заглушек. 
+            // Когда у Галины будут готовы фото, 
+            // ты просто назовешь их photo1.jpg, photo2.jpg ... photo12.jpg 
+            // и поменяешь ссылки внизу.
+            var totalImages = 12;
+            var html = '';
+            for (var i = 1; i <= totalImages; i++) {
+                // Временно используем заглушки.
+                // Потом измени эту строчку на: src="images/gallery/photo' + i + '.jpg"
+                var src = 'https://via.placeholder.com/600x600/111827/d8b45a?text=Работа+' + i;
+                var caption = 'Фоторабота ' + i;
+                html += '<div class="gallery-item" data-caption="' + caption + '" data-src="' + src + '">';
+                html += '<img src="' + src + '" alt="' + caption + '" loading="lazy" />';
+                html += '<div class="overlay">' + caption + '</div>';
+                html += '</div>';
+            }
+            gallery.innerHTML = html;
+
+            // ===== ДАЛЬШЕ ИДЁТ ВЕСЬ КОД ЛАЙТБОКСА ИЗ ТВОЕГО САЙТА =====
+            var items = document.querySelectorAll('.gallery-item');
+            if (items.length === 0) return;
+
+            var overlay = document.querySelector('.lightbox-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'lightbox-overlay';
+                overlay.innerHTML = `
+                    <div class="lightbox-content">
+                        <span class="close-btn">&times;</span>
+                        <div class="lightbox-image-wrapper">
+                            <img src="" alt="Увеличенное фото" />
+                        </div>
+                        <div class="caption"></div>
+                        <div class="lightbox-nav">
+                            <button class="nav-btn prev-btn">‹</button>
+                            <span class="counter">1 / 12</span>
+                            <button class="nav-btn next-btn">›</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+            }
+
+            var lightboxImg = overlay.querySelector('img');
+            var captionEl = overlay.querySelector('.caption');
+            var closeBtn = overlay.querySelector('.close-btn');
+            var prevBtn = overlay.querySelector('.prev-btn');
+            var nextBtn = overlay.querySelector('.next-btn');
+            var counter = overlay.querySelector('.counter');
+
+            var imageItems = [];
+            items.forEach(function(item) {
+                var img = item.querySelector('img');
+                if (img && img.src) {
+                    imageItems.push({
+                        src: img.src,
+                        caption: item.getAttribute('data-caption') || 'Фотография'
+                    });
+                }
+            });
+
+            var currentIndex = 0;
+            var currentScale = 1;
+            var minScale = 1;
+            var maxScale = 5;
+
+            function openLightbox(index) {
+                if (imageItems.length === 0) return;
+                if (index < 0) index = imageItems.length - 1;
+                if (index >= imageItems.length) index = 0;
+                currentIndex = index;
+                
+                var item = imageItems[currentIndex];
+                lightboxImg.src = item.src;
+                captionEl.textContent = item.caption;
+                counter.textContent = (currentIndex + 1) + ' / ' + imageItems.length;
+                
+                currentScale = 1;
+                lightboxImg.style.transform = 'scale(1)';
+                lightboxImg.style.cursor = 'zoom-in';
+                
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            items.forEach(function(item) {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var img = this.querySelector('img');
+                    if (img && img.src) {
+                        for (var j = 0; j < imageItems.length; j++) {
+                            if (imageItems[j].src === img.src) {
+                                openLightbox(j);
+                                break;
+                            }
+                        }
+                    }
+                });
+            });
+
+            prevBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openLightbox(currentIndex - 1);
+            });
+
+            nextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openLightbox(currentIndex + 1);
+            });
+
+            closeBtn.addEventListener('click', closeLightbox);
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeLightbox();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (!overlay.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') openLightbox(currentIndex - 1);
+                if (e.key === 'ArrowRight') openLightbox(currentIndex + 1);
+            });
+
+            lightboxImg.addEventListener('wheel', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var delta = e.deltaY > 0 ? -0.1
