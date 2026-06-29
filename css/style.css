@@ -38,7 +38,7 @@ body {
     margin: 0 auto;
 }
 
-/* ===== ШАПКА (ГОРИЗОНТАЛЬНОЕ МЕНЮ) ===== */
+/* ===== ШАПКА ===== */
 header {
     position: fixed;
     top: 0 !important;
