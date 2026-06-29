@@ -199,4 +199,72 @@
             lightboxImg.addEventListener('wheel', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                var delta = e.deltaY > 0 ? -0.1
+                var delta = e.deltaY > 0 ? -0.1 : 0.1;
+                currentScale = Math.min(maxScale, Math.max(minScale, currentScale + delta));
+                this.style.transform = 'scale(' + currentScale + ')';
+                this.style.cursor = currentScale > 1 ? 'zoom-out' : 'zoom-in';
+            }, { passive: false });
+
+            lightboxImg.addEventListener('dblclick', function() {
+                currentScale = 1;
+                this.style.transform = 'scale(1)';
+                this.style.cursor = 'zoom-in';
+            });
+
+            var touchStartX = 0;
+            var lastTouchDistance = 0;
+            var touchStartScale = 1;
+
+            overlay.addEventListener('touchstart', function(e) {
+                var target = e.target;
+                if (target === overlay || target === lightboxImg || target.closest('.lightbox-image-wrapper')) {
+                    if (e.touches.length === 1) {
+                        touchStartX = e.touches[0].clientX;
+                    }
+                    if (e.touches.length === 2) {
+                        var t1 = e.touches[0];
+                        var t2 = e.touches[1];
+                        lastTouchDistance = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+                        touchStartScale = currentScale;
+                    }
+                }
+            }, { passive: true });
+
+            overlay.addEventListener('touchmove', function(e) {
+                if (e.touches.length === 2) {
+                    e.preventDefault();
+                    var t1 = e.touches[0];
+                    var t2 = e.touches[1];
+                    var distance = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+                    if (lastTouchDistance > 0) {
+                        var scaleChange = distance / lastTouchDistance;
+                        currentScale = Math.min(maxScale, Math.max(minScale, touchStartScale * scaleChange));
+                        lightboxImg.style.transform = 'scale(' + currentScale + ')';
+                    }
+                }
+            }, { passive: false });
+
+            overlay.addEventListener('touchend', function(e) {
+                if (currentScale > 1) {
+                    touchStartX = 0;
+                    return;
+                }
+                if (touchStartX === 0) return;
+                
+                var touchEndX = e.changedTouches[0].clientX;
+                var diffX = touchStartX - touchEndX;
+                
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        openLightbox(currentIndex + 1);
+                    } else {
+                        openLightbox(currentIndex - 1);
+                    }
+                }
+                touchStartX = 0;
+            }, { passive: true });
+        }
+    })();
+    </script>
+</body>
+</html>
