@@ -1,54 +1,93 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Контакты | Галина Чернякова</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Галина Чернякова | Контакты</title>
+    <meta name="description" content="Контакты фотографа Галины Черняковой. Связь по вопросам съёмок и проектов." />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo"><a href="index.html">ГАЛИНА ЧЕРНЯКОВА</a></div>
-        <nav>
-            <a href="portfolio.html">Портфолио</a>
-            <a href="awards.html">Достижения</a>
-            <a href="about.html">Обо мне</a>
-            <a href="contact.html">Контакты</a>
-        </nav>
+
+    <div class="stars-container" id="starsContainer"></div>
+
+    <header>
+        <div class="container header-inner">
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="contacts.html" class="active">Контакты</a></li>
+            </ul>
+        </div>
     </header>
 
-    <section class="section container">
-        <h2>Контакты</h2>
-        <div class="contact-content" style="text-align: center; max-width: 600px; margin: 0 auto;">
-            <p style="margin-bottom: 40px;">Готова к сотрудничеству, творческим проектам, съемкам и обсуждению идей. Буду рада новым знакомствам!</p>
-            
-            <!-- ========================================== -->
-            <!-- ЗДЕСЬ ТЫ ПОМЕНЯЕШЬ ДАННЫЕ НА РЕАЛЬНЫЕ       -->
-            <!-- ========================================== -->
-            <div style="margin-bottom: 30px;">
-                <p style="margin-bottom: 5px; font-weight: 400; color: #444;">Электронная почта</p>
-                <p><a href="mailto:galina.chernyakova@example.com" style="color: #000; text-decoration: underline; font-size: 1.2rem;">galina.chernyakova@example.com</a></p>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-avatar">
+                <img src="images/photo.jpg" alt="Галина Чернякова" />
             </div>
-
-            <div style="margin-bottom: 50px;">
-                <p style="margin-bottom: 5px; font-weight: 400; color: #444;">Телефон / WhatsApp</p>
-                <p><a href="tel:+79991234567" style="color: #000; text-decoration: underline; font-size: 1.2rem;">+7 (999) 123-45-67</a></p>
-            </div>
-            <!-- ========================================== -->
-
-            <div class="socials" style="margin-top: 30px;">
-                <a href="#">ВКонтакте</a>
-                <a href="#">Telegram</a>
-                <a href="#">Instagram</a>
-            </div>
-        </div>
-        
-        <div style="text-align: center; margin-top: 60px;">
-            <a href="index.html" class="btn btn-outline">← На главную</a>
+            <h1>Будем <span>на связи</span></h1>
+            <p class="hero-lead">Открыта для идей, проектов и интересных съёмок</p>
+            <div class="hero-quote">✨ «Увидеть красоту в привычных вещах» ✨</div>
         </div>
     </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Контакты</div>
+            <div class="section-subtitle">Если у вас есть идея, предложение о сотрудничестве или просто желание пообщаться — буду рада вашему сообщению.</div>
+            <div class="contacts">
+                <a href="mailto:galina.chernyakova@example.com">📧 Электронная почта</a>
+                <a href="tel:+79991234567">📞 Телефон</a>
+                <a href="https://vk.com" target="_blank">💬 ВКонтакте</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Направления</div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="emoji">🌸</div>
+                    <h3>Макро и детали</h3>
+                    <p>Съемка цветов, текстур, капель. Мир, который не видно невооружённым глазом.</p>
+                </div>
+                <div class="card">
+                    <div class="emoji">🖤</div>
+                    <h3>Концепт и ЧБ</h3>
+                    <p>Игра света и тени, философские образы, минимализм.</p>
+                </div>
+                <div class="card">
+                    <div class="emoji">🏞️</div>
+                    <h3>Пейзаж и репортаж</h3>
+                    <p>Природа Карелии и Ленинградской области. Спортивные события.</p>
+                </div>
+                <div class="card">
+                    <div class="emoji">🖼️</div>
+                    <h3>Выставочные проекты</h3>
+                    <p>Организация и участие в совместных и персональных фотовыставках.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="hero-quote">«Самое главное — это то, что невозможно увидеть глазами».</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Спасибо, что заглянули в объектив ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
