@@ -38,7 +38,7 @@ body {
     margin: 0 auto;
 }
 
-/* ===== ШАПКА ===== */
+/* ===== ШАПКА (ГОРИЗОНТАЛЬНОЕ МЕНЮ) ===== */
 header {
     position: fixed;
     top: 0 !important;
@@ -118,7 +118,7 @@ h1 span,
     color: var(--accent);
 }
 
-/* ===== ГЕРОЙ (ОБЛОЖКА) ===== */
+/* ===== ГЕРОЙ ===== */
 .hero {
     text-align: center;
     padding: 25px 0 50px;
