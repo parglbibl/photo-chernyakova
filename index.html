@@ -1,33 +1,150 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Галина Чернякова | Фотограф</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Галина Чернякова — фотограф из Сортавалы и Санкт-Петербурга. Макро, концепт, пейзаж, выставки." />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo"><a href="index.html">ГАЛИНА ЧЕРНЯКОВА</a></div>
-        <nav>
-            <a href="portfolio.html">Портфолио</a>
-            <a href="awards.html">Достижения</a>
-            <a href="about.html">Обо мне</a>
-            <a href="contact.html">Контакты</a>
-        </nav>
+
+    <div class="stars-container" id="starsContainer"></div>
+
+    <header>
+        <div class="header-inner">
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>Галина Чернякова</h1>
-            <p class="subtitle">Фотограф. Сортавала — Санкт-Петербург</p>
-            <div class="hero-links">
-                <a href="portfolio.html" class="btn">Смотреть работы</a>
+        <div class="container">
+            <div class="hero-avatar">
+                <img src="images/photo.jpg" alt="Галина Чернякова" />
+            </div>
+            <h1>Галина <span>Чернякова</span></h1>
+            <p class="hero-lead">Фотограф • Сортавала — Санкт-Петербург • Макро и концепт</p>
+            <div class="hero-quote">✨ «Рассмотреть то, мимо чего мы проходим каждый день» ✨</div>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">лет в фотографии</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">Top 5%</div>
+                    <div class="stat-label">35AWARDS (Макромир цветов)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3</div>
+                    <div class="stat-label">международные призовые места</div>
+                </div>
             </div>
         </div>
     </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="card" style="text-align: center; max-width: 760px; margin: 0 auto;">
+                <div class="emoji">📷</div>
+                <h3 style="font-size: 24px; margin-bottom: 8px;">Выставка «Крупным планом»</h3>
+                <p style="color: var(--muted); font-size: 16px; line-height: 1.7;">
+                    Персональная фотовыставка, организованная в Сортавальской центральной библиотеке. Вдохновение и искусство в деталях.
+                    <br><br>
+                    <span class="accent-text">Позже прошла выставка «Две линзы, один сюжет» в Библиотеках Выборгского района СПб.</span>
+                </p>
+                <a href="projects.html" class="btn" style="margin-top: 16px;">Подробнее</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">О себе</div>
+            <div class="section-subtitle">«Фотография — это остановленное мгновение»</div>
+            <div class="section-text">
+                <p>Родилась на берегу Ладоги, в городе Сортавала. Сейчас живу и творю в пригороде Санкт-Петербурга — Сертолово.</p>
+                <p style="margin-top: 20px;">Мой путь начался в сортавальском фотоклубе <span class="accent-text">«6х9»</span>, а продолжается в петербургской <span class="accent-text">«Творческой фотомастерской»</span>.</p>
+                <p style="margin-top: 20px;">Мне близки концептуальный минимализм, тонкая макросъемка цветов и капель, строгие черно-белые пейзажи и эмоциональный репортаж.</p>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="about.html" class="btn">Подробнее обо мне</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Достижения</div>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="emoji">🏆</div>
+                    <h3>35AWARDS</h3>
+                    <p>Участница 10-й премии. Топ 5% в номинации «Макромир цветов».</p>
+                </div>
+                <div class="card">
+                    <div class="emoji">🥉</div>
+                    <h3>Призёр конкурсов</h3>
+                    <p>III место в «Мире макрофотографии» и III место в «Осень в объективе».</p>
+                </div>
+                <div class="card">
+                    <div class="emoji">🖼️</div>
+                    <h3>Организатор выставок</h3>
+                    <p>Персональные выставки в Сортавале и Санкт-Петербурге.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Проекты</div>
+            <div class="grid-2">
+                <div class="project-card">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <div class="emoji">🖼️</div>
+                        <h3 style="margin: 0;">Крупным планом</h3>
+                    </div>
+                    <p>Персональная выставка в Сортавальской библиотеке, объединившая макро и концептуальную фотографию.</p>
+                    <div class="badge">📍 Сортавала</div>
+                </div>
+                <div class="project-card">
+                    <h3>Две линзы, один сюжет</h3>
+                    <p>Проект с коллегой, показавший красоту города через призму двух взглядов. Прошёл в библиотеках Выборгского района.</p>
+                    <div class="badge">📍 Санкт-Петербург</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 35px;">
+                <a href="projects.html" class="btn">Все проекты</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Контакты</div>
+            <div class="section-subtitle">Открыта для проектов и новых знакомств</div>
+            <div class="contacts">
+                <a href="mailto:galina.chernyakova@example.com">📧 Почта</a>
+                <a href="tel:+79991234567">📞 Телефон</a>
+                <a href="https://vk.com" target="_blank">💬 ВКонтакте</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Поймать мгновение и подарить его миру ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
 </body>
 </html>
