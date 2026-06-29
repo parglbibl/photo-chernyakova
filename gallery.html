@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Галина Чернякова · Галерея</title>
     <meta name="description" content="Фотографии Галины Черняковой: макро, пейзажи, концептуальные работы." />
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
     <div class="stars-container" id="starsContainer"></div>
 
     <header>
-        <div class="container header-inner">
+        <div class="header-inner">
             <ul class="nav" id="mainNav">
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="about.html">О себе</a></li>
@@ -56,7 +56,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="main.js"></script>
     <script>
     (function() {
         if (document.readyState === 'loading') {
@@ -69,16 +69,10 @@
             var gallery = document.getElementById('photoGallery');
             if (!gallery) return;
 
-            // Здесь мы создаем 12 заглушек. 
-            // Когда у Галины будут готовы фото, 
-            // ты просто назовешь их photo1.jpg, photo2.jpg ... photo12.jpg 
-            // и поменяешь ссылки внизу.
             var totalImages = 12;
             var html = '';
             for (var i = 1; i <= totalImages; i++) {
-                // Временно используем заглушки.
-                // Потом измени эту строчку на: src="images/gallery/photo' + i + '.jpg"
-                var src = 'https://via.placeholder.com/600x600/111827/d8b45a?text=Работа+' + i;
+                var src = 'https://via.placeholder.com/600x600/f8f8f8/000000?text=Работа+' + i;
                 var caption = 'Фоторабота ' + i;
                 html += '<div class="gallery-item" data-caption="' + caption + '" data-src="' + src + '">';
                 html += '<img src="' + src + '" alt="' + caption + '" loading="lazy" />';
@@ -87,7 +81,6 @@
             }
             gallery.innerHTML = html;
 
-            // ===== ДАЛЬШЕ ИДЁТ ВЕСЬ КОД ЛАЙТБОКСА ИЗ ТВОЕГО САЙТА =====
             var items = document.querySelectorAll('.gallery-item');
             if (items.length === 0) return;
 
