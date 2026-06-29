@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Галина Чернякова | Проекты</title>
+    <meta name="description" content="Выставочные проекты и творческие инициативы Галины Черняковой." />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <div class="stars-container" id="starsContainer"></div>
+
+    <header>
+        <div class="header-inner">
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="projects.html" class="active">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-avatar">
+                <img src="images/photo.jpg" alt="Галина Чернякова" />
+            </div>
+            <h1>Мои <span>проекты</span></h1>
+            <p class="hero-lead">От идеи до экспозиции — путь каждой фотографии</p>
+            <div class="hero-quote">✨ «Творчество — это способ дышать» ✨</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Крупным планом</div>
+            <div class="section-subtitle">Персональная фотовыставка в Сортавальской центральной библиотеке.</div>
+            <div class="project-card">
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 0.8rem; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 100px; height: 130px; border-radius: 12px; overflow: hidden; background: rgba(255,255,255,0.04); cursor: pointer;" onclick="window.location.href='gallery.html'">
+                        <img src="images/gallery/krupnym-planom/krupny-plan-1.jpg" alt="Фотовыставка Крупным планом" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                    </div>
+                </div>
+                <h3>Крупным планом</h3>
+                <p>Проект, посвящённый макромиру и концептуальной фотографии. Зрители увидели привычные вещи в новом свете, через призму деталей.</p>
+                <p style="margin-top: 12px;">Выставка включала авторскую экскурсию и творческую встречу, где фотографии становились поводом для разговора.</p>
+                <div class="badge">📍 Сортавала</div>
+                <div class="badge">📸 Персональная выставка</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Две линзы, один сюжет</div>
+            <div class="project-card">
+                <h3>Совместный выставочный проект</h3>
+                <p>Проект, рождённый в сотрудничестве с коллегой-фотографом. Цель — показать один и тот же город через разные взгляды.</p>
+                <p style="margin-top: 12px;">Более 30 работ были представлены в пространствах библиотек Выборгского района Санкт-Петербурга.</p>
+                <div class="badge">📍 Санкт-Петербург</div>
+                <div class="badge">🤝 Совместный проект</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Творческая фотомастерская</div>
+            <div class="project-card">
+                <h3>Клуб и творческая среда</h3>
+                <p>Активное участие в жизни Санкт-Петербургского фотоклуба «Творческая фотомастерская». Обмен опытом, совместные выезды на съёмки и выставки.</p>
+                <div class="badge">🎨 Творческое сообщество</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="hero-quote">«Искусство — это разговор со зрителем через образы».</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Искусство начинается с желания посмотреть по-новому ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
