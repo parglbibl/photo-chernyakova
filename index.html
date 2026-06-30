@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/style.css" />
     
     <style>
-        /* =============== ОБЩИЕ НАСТРОЙКИ ДЛЯ ГЛАВНОЙ =============== */
+        /* =============== ОБЩИЕ НАСТРОЙКИ =============== */
         .hero {
             padding-top: 50px;
             padding-bottom: 30px;
@@ -36,7 +36,7 @@
             max-width: 1200px;
         }
 
-        /* =============== ВЕРХНИЙ БЛОК: 2 КОЛОНКИ (ФОТО + ТЕКСТ) =============== */
+        /* =============== 2 КОЛОНКИ (ФОТО + ТЕКСТ) =============== */
         .hero-top {
             display: flex;
             align-items: flex-start;
@@ -45,8 +45,6 @@
             width: 100%;
             max-width: 1000px;
         }
-
-        /* Левая колонка: Фото */
         .hero-left {
             flex: 0 0 35%;
             max-width: 35%;
@@ -66,8 +64,6 @@
             object-fit: contain;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
         }
-
-        /* Правая колонка: Текст */
         .hero-right {
             flex: 0 0 60%;
             max-width: 60%;
@@ -75,9 +71,10 @@
             padding-top: 5px;
         }
         .hero-right h1 {
-            font-size: 3rem;
+            font-size: 4rem; /* СДЕЛАЛИ ИМЯ КРУПНЕЕ */
             margin: 0 0 8px 0;
             white-space: normal;
+            font-weight: 700;
         }
         .hero-right .hero-lead {
             font-size: 1.1rem;
@@ -98,7 +95,7 @@
             margin: 0;
         }
 
-        /* =============== СРЕДНИЙ БЛОК: 4 ФОТО ПО ЦЕНТРУ =============== */
+        /* =============== 4 ФОТО ПО ЦЕНТРУ =============== */
         .home-gallery-wrap {
             display: flex;
             justify-content: center;
@@ -132,7 +129,7 @@
             pointer-events: none;
         }
 
-        /* =============== НИЖНИЙ БЛОК: СТАТИСТИКА ПО ЦЕНТРУ =============== */
+        /* =============== СТАТИСТИКА =============== */
         .stats-wrap {
             display: flex;
             justify-content: center;
@@ -191,7 +188,7 @@
                 padding-top: 0;
             }
             .hero-right h1 {
-                font-size: 1.8rem;
+                font-size: 2rem; /* УВЕЛИЧИЛИ НА ТЕЛЕФОНЕ */
                 margin-bottom: 4px;
             }
             .hero-right .hero-lead {
@@ -205,7 +202,7 @@
                 white-space: normal;
             }
             .home-photo {
-                width: 150px; /* УВЕЛИЧИЛИ ФОТО НА ТЕЛЕФОНЕ */
+                width: 150px;
                 height: 150px;
             }
             .home-gallery {
@@ -233,10 +230,10 @@
                 max-width: 70%;
             }
             .hero-right h1 {
-                font-size: 1.4rem;
+                font-size: 1.6rem; /* Чуть меньше на маленьких телефонах, но всё ещё крупно */
             }
             .home-photo {
-                width: 120px; /* УВЕЛИЧИЛИ НА МАЛЕНЬКИХ ТЕЛЕФОНАХ */
+                width: 120px;
                 height: 120px;
             }
             .home-gallery {
@@ -257,7 +254,7 @@
                 max-width: 70%;
             }
             .hero-right h1 {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
             }
             .hero-right .hero-lead {
                 font-size: 0.75rem;
@@ -307,7 +304,7 @@
 
                 <!-- Правая колонка: Текст -->
                 <div class="hero-right">
-                    <h1>Галина Чернякова</h1>
+                    <h1 style="white-space: nowrap;">Галина Чернякова</h1>
                     <p class="hero-lead">Фотограф • Сортавала — Санкт-Петербург • Макро и концепт</p>
                     <div class="hero-quote">✨ «Рассмотреть то, мимо чего мы проходим каждый день» ✨</div>
                 </div>
@@ -431,8 +428,8 @@
             <div class="section-title">Контакты</div>
             <div class="section-subtitle">Открыта для проектов и новых знакомств</div>
             <div class="contacts">
-                <a href="mailto:galina.chernyakova@example.com">📧 Почта</a>
-                <a href="tel:+79991234567">📞 Телефон</a>
+                <a href="mailto:galyagolowanowa2015@yandex.ru">📧 Почта</a>
+                <a href="tel:+79217803810">📞 Телефон</a>
                 <a href="https://vk.com" target="_blank">💬 ВКонтакте</a>
             </div>
         </div>
