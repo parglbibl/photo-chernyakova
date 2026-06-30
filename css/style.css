@@ -147,7 +147,7 @@ h1 span,
 /* ====== СПЕЦИАЛЬНО ДЛЯ БОЛЬШИХ ЭКРАНОВ (КОМПЬЮТЕРОВ) ====== */
 @media (min-width: 1025px) {
     .hero-avatar img {
-        max-height: 50vh; /* УМЕНЬШИЛИ ДО 50 */
+        max-height: 50vh;
     }
 }
 
@@ -684,6 +684,7 @@ footer p {
     .gallery { grid-template-columns: 1fr 1fr; }
     
     .hero-avatar img { max-height: 60vh; }
+    .hero-avatar { margin-bottom: 16px; }
     .section-text { font-size: 17px; }
     .card p, .project-card p { font-size: 16px; }
 }
