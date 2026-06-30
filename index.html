@@ -92,8 +92,10 @@
             pointer-events: none;
         }
 
-        /* Адаптив для планшетов и телефонов */
-        @media (max-width: 950px) {
+        /* ================================================== */
+        /* АДАПТИВ: ДВЕ КОЛОНКИ ДО 800px (вкл. большие телефоны) */
+        /* ================================================== */
+        @media (max-width: 800px) {
             .hero .container {
                 flex-direction: column;
                 text-align: center;
@@ -127,9 +129,9 @@
                 max-width: 100%;
             }
         }
-        @media (max-width: 760px) {
-            .home-photo { width: 110px; height: 110px; }
-            .home-gallery { gap: 12px; }
+        @media (max-width: 600px) {
+            .home-photo { width: 95px; height: 95px; }
+            .home-gallery { gap: 10px; }
         }
         @media (max-width: 480px) {
             .home-photo { width: 85px; height: 85px; }
