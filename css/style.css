@@ -67,9 +67,9 @@ header {
 
 .nav {
     display: flex;
-    flex-wrap: wrap; /* РАЗРЕШАЕМ ПЕРЕНОС НА ДВЕ СТРОКИ */
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 25px 30px; /* Огромные отступы между словами */
+    gap: 25px 30px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -85,7 +85,7 @@ header {
     color: var(--muted);
     text-decoration: none;
     font-weight: 600;
-    font-size: 19px; /* СДЕЛАЛИ ШРИФТ ЕЩЁ КРУПНЕЕ */
+    font-size: 19px;
     transition: 0.3s;
     position: relative;
     padding: 6px 0;
@@ -136,12 +136,16 @@ h1 span,
 }
 
 .hero-avatar img {
-    width: 420px; 
-    height: 420px;
-    object-fit: cover;
+    /* Убираем жёсткий квадрат и обрезку. Фото будет показываться целиком */
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 80vh; /* Если фото очень высокое, оно не займёт весь экран */
+    object-fit: contain;
     border-radius: 16px;
     display: block;
-    background: var(--panel);
+    margin: 0 auto;
+    background: var(--bg);
 }
 
 h1 {
@@ -691,7 +695,7 @@ footer p {
     .contacts a { padding: 12px 22px; font-size: 16px; }
     .gallery { grid-template-columns: 1fr 1fr; }
     
-    .hero-avatar img { width: 320px; height: 320px; }
+    .hero-avatar img { max-height: 60vh; } /* На телефоне фото не будет слишком длинным */
     .section-text { font-size: 17px; }
     .card p, .project-card p { font-size: 16px; }
 }
@@ -705,7 +709,7 @@ footer p {
     .gallery { grid-template-columns: 1fr 1fr; gap: 12px; }
     .gallery-item { aspect-ratio: 1 / 1; }
     
-    .hero-avatar img { width: 260px; height: 260px; }
+    .hero-avatar img { max-height: 50vh; }
     .hero-quote { font-size: 16px; padding: 10px 16px; }
     .section-title { font-size: 28px; }
     .section-subtitle { font-size: 17px; }
