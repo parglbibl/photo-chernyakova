@@ -24,7 +24,7 @@
     <style>
         /* =============== ОБЩИЕ НАСТРОЙКИ ДЛЯ ГЛАВНОЙ =============== */
         .hero {
-            padding-top: 50px; /* Отступ от меню */
+            padding-top: 50px;
             padding-bottom: 30px;
         }
         
@@ -168,24 +168,24 @@
             margin-top: 4px;
         }
 
-        /* =============== АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (ДВЕ КОЛОНКИ) =============== */
+        /* =============== АДАПТИВ ДЛЯ ТЕЛЕФОНОВ =============== */
         @media (max-width: 900px) {
             .hero {
                 padding-top: 60px;
             }
             .hero-top {
                 display: flex;
-                flex-direction: row; /* Принудительно рядом */
+                flex-direction: row;
                 align-items: flex-start;
                 gap: 15px;
             }
             .hero-left {
-                flex: 0 0 30%; /* Жёстко 30% */
+                flex: 0 0 30%;
                 max-width: 30%;
                 justify-content: flex-start;
             }
             .hero-right {
-                flex: 0 0 65%; /* Жёстко 65% */
+                flex: 0 0 65%;
                 max-width: 65%;
                 text-align: left;
                 padding-top: 0;
@@ -205,8 +205,8 @@
                 white-space: normal;
             }
             .home-photo {
-                width: 100px;
-                height: 100px;
+                width: 150px; /* УВЕЛИЧИЛИ ФОТО НА ТЕЛЕФОНЕ */
+                height: 150px;
             }
             .home-gallery {
                 gap: 10px;
@@ -236,8 +236,8 @@
                 font-size: 1.4rem;
             }
             .home-photo {
-                width: 80px;
-                height: 80px;
+                width: 120px; /* УВЕЛИЧИЛИ НА МАЛЕНЬКИХ ТЕЛЕФОНАХ */
+                height: 120px;
             }
             .home-gallery {
                 gap: 8px;
@@ -263,8 +263,8 @@
                 font-size: 0.75rem;
             }
             .home-photo {
-                width: 65px;
-                height: 65px;
+                width: 100px;
+                height: 100px;
             }
             .home-gallery {
                 gap: 6px;
@@ -447,7 +447,7 @@
 
     <script src="js/main.js"></script>
 
-    <!-- ЛАЙТБОКС ДЛЯ 4 ФОТО -->
+    <!-- ЛАЙТБОКС -->
     <script>
     (function() {
         if (document.readyState === 'loading') {
