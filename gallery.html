@@ -70,7 +70,7 @@
             var totalImages = 12;
             var html = '';
             for (var i = 1; i <= totalImages; i++) {
-                var src = 'https://via.placeholder.com/600x600/f8f8f8/000000?text=Работа+' + i;
+                var src = 'https://via.placeholder.com/600x600/FDFBF7/8B6B54?text=Работа+' + i;
                 var caption = 'Фоторабота ' + i;
                 html += '<div class="gallery-item" data-caption="' + caption + '" data-src="' + src + '">';
                 html += '<img src="' + src + '" alt="' + caption + '" loading="lazy" />';
@@ -215,47 +215,3 @@
                     if (e.touches.length === 2) {
                         var t1 = e.touches[0];
                         var t2 = e.touches[1];
-                        lastTouchDistance = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
-                        touchStartScale = currentScale;
-                    }
-                }
-            }, { passive: true });
-
-            overlay.addEventListener('touchmove', function(e) {
-                if (e.touches.length === 2) {
-                    e.preventDefault();
-                    var t1 = e.touches[0];
-                    var t2 = e.touches[1];
-                    var distance = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
-                    if (lastTouchDistance > 0) {
-                        var scaleChange = distance / lastTouchDistance;
-                        currentScale = Math.min(maxScale, Math.max(minScale, touchStartScale * scaleChange));
-                        lightboxImg.style.transform = 'scale(' + currentScale + ')';
-                    }
-                }
-            }, { passive: false });
-
-            overlay.addEventListener('touchend', function(e) {
-                if (currentScale > 1) {
-                    touchStartX = 0;
-                    return;
-                }
-                if (touchStartX === 0) return;
-                
-                var touchEndX = e.changedTouches[0].clientX;
-                var diffX = touchStartX - touchEndX;
-                
-                if (Math.abs(diffX) > 50) {
-                    if (diffX > 0) {
-                        openLightbox(currentIndex + 1);
-                    } else {
-                        openLightbox(currentIndex - 1);
-                    }
-                }
-                touchStartX = 0;
-            }, { passive: true });
-        }
-    })();
-    </script>
-</body>
-</html>
