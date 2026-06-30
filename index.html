@@ -90,21 +90,21 @@
             pointer-events: none;
         }
 
-        /* =============== НАСТРОЙКИ ДЛЯ МОБИЛЬНЫХ (чтобы влезло в 2 колонки) =============== */
+        /* =============== НАСТРОЙКИ ДЛЯ МОБИЛЬНЫХ (компактно, 2 колонки) =============== */
         @media (max-width: 899px) {
             .hero-left {
-                flex: 0 0 200px; /* Фото становится компактнее */
+                flex: 0 0 200px; 
                 max-width: 45%;
             }
             .hero-right {
                 flex: 1;
                 max-width: 55%;
                 padding-top: 0;
-                font-size: 0.9rem; /* Текст становится мельче */
+                font-size: 0.9rem; 
             }
             .hero-right h1 {
-                font-size: 1.6rem; /* Имя становится компактнее */
-                white-space: normal; /* Разрешаем перенос, если нужно */
+                font-size: 1.6rem; 
+                white-space: normal;
             }
             .hero-right .hero-lead {
                 font-size: 0.8rem;
@@ -112,9 +112,10 @@
             }
             .hero-right .hero-quote {
                 font-size: 0.8rem;
-                padding: 6px 14px;
+                padding: 8px 12px;
                 margin-bottom: 8px;
-                white-space: normal;
+                white-space: normal; /* Разрешаем перенос текста */
+                max-width: 100%;
             }
             .home-photo {
                 width: 70px;
@@ -140,7 +141,7 @@
             }
         }
 
-        /* Очень маленькие экраны (чтобы ничего не сломалось) */
+        /* =============== ОЧЕНЬ МАЛЕНЬКИЕ ЭКРАНЫ =============== */
         @media (max-width: 550px) {
             .hero-left {
                 flex: 0 0 140px;
