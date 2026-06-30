@@ -26,14 +26,14 @@
         .home-gallery {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
             flex-wrap: wrap;
-            margin-top: 35px;
-            margin-bottom: 25px;
+            margin-top: 45px;
+            margin-bottom: 35px;
         }
         .home-photo {
-            width: 160px;
-            height: 160px;
+            width: 230px;
+            height: 230px;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--line);
@@ -42,8 +42,8 @@
             cursor: pointer;
         }
         .home-photo:hover {
-            transform: scale(1.06);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
         .home-photo img {
             width: 100%;
@@ -54,12 +54,12 @@
             pointer-events: none;
         }
         @media (max-width: 760px) {
-            .home-photo { width: 120px; height: 120px; }
-            .home-gallery { gap: 15px; }
+            .home-photo { width: 140px; height: 140px; }
+            .home-gallery { gap: 15px; margin-top: 30px; }
         }
         @media (max-width: 480px) {
-            .home-photo { width: 95px; height: 95px; }
-            .home-gallery { gap: 12px; }
+            .home-photo { width: 110px; height: 110px; }
+            .home-gallery { gap: 10px; margin-top: 20px; }
         }
     </style>
 </head>
@@ -89,10 +89,10 @@
 
             <!-- ===== КЛИКАБЕЛЬНАЯ ГАЛЕРЕЯ НА ГЛАВНОЙ ===== -->
             <div class="home-gallery">
-                <div class="home-photo" data-src="images/gallery/5.png"><img src="images/gallery/5.png" alt="Мир в капле"></div>
-                <div class="home-photo" data-src="images/gallery/17.png"><img src="images/gallery/17.png" alt="Оранжевая сфера"></div>
-                <div class="home-photo" data-src="images/gallery/1.png"><img src="images/gallery/1.png" alt="Алые капли"></div>
-                <div class="home-photo" data-src="images/gallery/4.png"><img src="images/gallery/4.png" alt="Одинокий лепесток"></div>
+                <div class="home-photo" data-src="images/gallery/5.png" data-caption="Мир в капле"><img src="images/gallery/5.png" alt="Мир в капле"></div>
+                <div class="home-photo" data-src="images/gallery/17.png" data-caption="Оранжевая сфера"><img src="images/gallery/17.png" alt="Оранжевая сфера"></div>
+                <div class="home-photo" data-src="images/gallery/1.png" data-caption="Алые капли"><img src="images/gallery/1.png" alt="Алые капли"></div>
+                <div class="home-photo" data-src="images/gallery/4.png" data-caption="Одинокий лепесток"><img src="images/gallery/4.png" alt="Одинокий лепесток"></div>
             </div>
             
             <div class="stats">
@@ -256,10 +256,11 @@
             var imageItems = [];
             items.forEach(function(item) {
                 var src = item.getAttribute('data-src');
+                var caption = item.getAttribute('data-caption') || 'Фотография';
                 if (src) {
                     imageItems.push({
                         src: src,
-                        caption: item.querySelector('img') ? item.querySelector('img').getAttribute('alt') : 'Фотография'
+                        caption: caption
                     });
                 }
             });
