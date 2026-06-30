@@ -1,21 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    /* ============ ОСНОВНЫЕ ЦВЕТА ============ */
-    --bg: #F6F2EB;           /* Глубокий пыльный песок - основа сайта */
-    --panel: #FDFBF7;        /* Светло-кремовый для плашек и карточек */
-    --panel2: #EDE8E0;       /* Для легких границ и теней */
-    
-    /* ============ ТЕКСТ ============ */
-    --text: #26221E;         /* Теплый угольный для заголовков */
-    --muted: #6D6359;        /* Приглушенный кофе с молоком для описаний */
-    
-    /* ============ АКЦЕНТЫ ============ */
-    --accent: #A8613D;       /* Благородная терракота / медь (для кнопок и полос) */
-    --accent-glow: rgba(168, 97, 61, 0.12); /* Свечение для теней */
-    
-    /* ============ ЛИНИИ ============ */
-    --line: rgba(38, 34, 30, 0.06); /* Тонкие деликатные линии */
+    --bg: #F3EEE9;
+    --panel: #FFFFFF;
+    --panel2: #E8E3DC;
+    --text: #1C1A18;
+    --muted: #6F6862;
+    --accent: #BD4B2D; /* Глубокий терракотово-медный */
+    --accent-glow: rgba(189, 75, 45, 0.15);
+    --line: rgba(28, 26, 24, 0.07);
 }
 
 * {
@@ -28,6 +21,10 @@ html, body {
     margin: 0 !important;
     padding: 0 !important;
     background-color: var(--bg);
+    background-image: 
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.2) 0%, transparent 15%),
+        repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0, 0, 0, 0.015) 2px, rgba(0, 0, 0, 0.015) 3px);
 }
 
 body {
@@ -54,7 +51,7 @@ header {
     left: 0 !important;
     width: 100% !important;
     z-index: 100 !important;
-    background: rgba(253, 251, 247, 0.92);
+    background: rgba(243, 238, 233, 0.94);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
     height: 80px;
@@ -216,7 +213,7 @@ h1 {
 .stat-number {
     font-size: 42px;
     font-weight: 800;
-    color: var(--text);
+    color: var(--accent);
     letter-spacing: -1px;
 }
 
@@ -277,11 +274,12 @@ h1 {
     border-radius: 20px;
     padding: 32px 28px;
     transition: 0.3s;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 .card .emoji {
@@ -323,11 +321,12 @@ h1 {
     border-radius: 20px;
     padding: 32px 28px;
     transition: 0.3s;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .project-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
 .project-card h3 {
@@ -482,7 +481,7 @@ h1 {
     left: 0;
     right: 0;
     padding: 14px;
-    background: linear-gradient(transparent, rgba(253, 251, 247, 0.9));
+    background: linear-gradient(transparent, rgba(243, 238, 233, 0.9));
     color: var(--text);
     font-weight: 500;
     font-size: 15px;
@@ -503,7 +502,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(253, 251, 247, 0.96);
+    background: rgba(243, 238, 233, 0.96);
     z-index: 9999;
     justify-content: center;
     align-items: center;
@@ -557,7 +556,7 @@ h1 {
     font-weight: 500;
     opacity: 0.9;
     padding: 8px 20px;
-    background: rgba(253, 251, 247, 0.5);
+    background: rgba(243, 238, 233, 0.5);
     border-radius: 8px;
     max-width: 90%;
     backdrop-filter: blur(4px);
@@ -644,7 +643,7 @@ h1 {
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 30px var(--accent-glow);
-    background: #785a46;
+    background: #a44329;
 }
 
 .btn-outline {
@@ -678,19 +677,12 @@ footer p {
     opacity: 0.6;
 }
 
-/* ========= АДАПТИВ ДЛЯ ПЛАНШЕТОВ И ТЕЛЕФОНОВ ========= */
-
 @media (max-width: 760px) {
-    /* Шапка и отступы */
     header { height: auto !important; min-height: 72px; padding: 10px 0; }
     body { padding-top: 72px !important; }
     body:not(.page-home) { padding-top: 40px !important; }
-
-    /* Меню - крупнее на планшетах */
     .nav { gap: 14px 26px; }
     .nav a { font-size: 20px; padding: 5px 0; }
-    
-    /* Остальные блоки */
     .section { padding: 50px 0; }
     body { font-size: 16px; }
     .grid-2 { grid-template-columns: 1fr; }
@@ -699,7 +691,6 @@ footer p {
     .contacts { gap: 12px; }
     .contacts a { padding: 12px 22px; font-size: 16px; }
     .gallery { grid-template-columns: 1fr 1fr; }
-    
     .hero-avatar img { max-height: 60vh; }
     .hero-avatar { margin-bottom: 16px; }
     .section-text { font-size: 17px; }
@@ -707,20 +698,14 @@ footer p {
 }
 
 @media (max-width: 480px) {
-    /* Шапка и отступы */
     header { height: auto !important; min-height: 64px; padding: 8px 0; }
     body { padding-top: 64px !important; }
     body:not(.page-home) { padding-top: 40px !important; }
-
-    /* Меню - ещё крупнее для пальцев */
     .nav { gap: 10px 20px; }
     .nav a { font-size: 19px; padding: 5px 0; }
-
-    /* Остальные блоки */
     .stats { grid-template-columns: 1fr; }
     .gallery { grid-template-columns: 1fr 1fr; gap: 12px; }
     .gallery-item { aspect-ratio: 1 / 1; }
-    
     .hero-avatar img { max-height: 50vh; }
     .hero-quote { font-size: 16px; padding: 10px 16px; }
     .section-title { font-size: 28px; }
