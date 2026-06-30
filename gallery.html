@@ -9,7 +9,7 @@
     <meta name="keywords" content="галерея фотографа, макрофотография, капли росы, макромир цветов, концептуальный минимализм, пейзажи Санкт-Петербурга, Галина Чернякова фото" />
     
     <meta property="og:title" content="Галерея — Галина Чернякова | Фотограф" />
-    <meta property="og:description" content="Макро, концепт, природа, черно-белая классика. Фотоработы Галины Черняковой." />
+    <meta property="og:description" content="Макро, концепт, природа, черно-белая классика. 18 фоторабот Галины Черняковой." />
     <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
     <meta property="og:url" content="https://photo-chernyakova.ru/gallery.html" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -39,7 +39,7 @@
         </div>
     </section>
 
-    <section class="section" style="padding-top: 25px; padding-bottom: 25px;">
+    <section class="section fade-up" style="padding-top: 25px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">Мои работы</div>
             <div class="section-subtitle">Нажмите на любую фотографию, чтобы рассмотреть в деталях</div>
@@ -172,6 +172,26 @@
     </footer>
 
     <script src="js/main.js"></script>
+
+    <!-- Анимация появления блоков при скролле -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.section, .gallery').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
+            });
+        });
+    </script>
 
     <!-- СКРИПТ ЛАЙТБОКСА ДЛЯ ГАЛЕРЕИ -->
     <script>
