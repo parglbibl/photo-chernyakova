@@ -683,12 +683,22 @@ footer p {
     transform: translateY(0);
 }
 
-/* Небольшая задержка для красоты */
 .card:nth-child(2) { transition-delay: 0.1s; }
 .card:nth-child(3) { transition-delay: 0.2s; }
 .card:nth-child(4) { transition-delay: 0.3s; }
 .card:nth-child(5) { transition-delay: 0.4s; }
 .card:nth-child(6) { transition-delay: 0.5s; }
+
+/* ============= ЗАЩИТА ВЫДЕЛЕНИЯ НА ТЕЛЕФОНАХ ============= */
+img {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.gallery-item img, .home-photo img, .hero-avatar img {
+    pointer-events: auto;
+}
 
 /* ============= АДАПТИВ ============= */
 @media (max-width: 760px) {
