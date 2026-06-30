@@ -40,15 +40,16 @@
         </div>
     </section>
 
-    <section class="section fade-up" style="padding-top: 25px; padding-bottom: 20px;">
+    <section class="section fade-up" style="padding-top: 25px; padding-bottom: 30px;">
         <div class="container">
             <div class="section-title">Последние новости</div>
             <div class="section-subtitle">События, проекты и важные моменты</div>
             
-            <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px;">
+            <!-- Обертка для карточек с ограничением ширины -->
+            <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
                 
                 <!-- НОВОСТЬ 1: Три новых конкурса -->
-                <div class="card fade-up">
+                <div class="card fade-up" style="width: 100%;">
                     <div class="emoji">📋</div>
                     <h3>Поданы заявки на 3 новых конкурса</h3>
                     <p style="margin-top: 6px; color: var(--muted); font-size: 14px;">1 июля 2026</p>
@@ -60,16 +61,16 @@
                     </ul>
                 </div>
 
-                <!-- НОВОСТЬ 2: Победа в конкурсе Свет и цвет -->
-                <div class="card fade-up">
+                <!-- НОВОСТЬ 2: Победа в конкурсе ФотоПризер.ру -->
+                <div class="card fade-up" style="width: 100%;">
                     <div class="emoji">🏆</div>
-                    <h3>Победа в конкурсе «Свет и цвет»</h3>
+                    <h3>Победа в конкурсе «ФотоПризер.ру»</h3>
                     <p style="margin-top: 6px; color: var(--muted); font-size: 14px;">30 июня 2026</p>
-                    <p>Работа «Головоломка» успешно прошла конкурсный отбор и получила статус «Принято».</p>
+                    <p>Работа «Головоломка» успешно прошла конкурсный отбор и получила статус «Принято» на сайте ФотоПризер.ру.</p>
                 </div>
 
                 <!-- НОВОСТЬ 3: Запущена страница «Макромир» -->
-                <div class="card fade-up">
+                <div class="card fade-up" style="width: 100%;">
                     <div class="emoji">📸</div>
                     <h3>Запущена страница «Макромир»</h3>
                     <p style="margin-top: 6px; color: var(--muted); font-size: 14px;">29 июня 2026</p>
@@ -77,7 +78,7 @@
                 </div>
 
                 <!-- НОВОСТЬ 4: Выставка «Две линзы, один сюжет» -->
-                <div class="card fade-up">
+                <div class="card fade-up" style="width: 100%;">
                     <div class="emoji">🖼️</div>
                     <h3>Выставка «Две линзы, один сюжет»</h3>
                     <p style="margin-top: 6px; color: var(--muted); font-size: 14px;">2025</p>
@@ -85,7 +86,7 @@
                 </div>
 
                 <!-- НОВОСТЬ 5: Персональная выставка «Крупным планом» -->
-                <div class="card fade-up">
+                <div class="card fade-up" style="width: 100%;">
                     <div class="emoji">🎉</div>
                     <h3>Персональная выставка «Крупным планом»</h3>
                     <p style="margin-top: 6px; color: var(--muted); font-size: 14px;">2026</p>
