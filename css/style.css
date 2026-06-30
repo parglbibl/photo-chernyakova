@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --bg: #ffffff;
-    --panel: #f8f8f8;
-    --panel2: #f0f0f0;
-    --text: #1a1a1a;
-    --muted: #555555;
-    --accent: #000000;
-    --accent-glow: rgba(0, 0, 0, 0.05);
-    --line: rgba(0, 0, 0, 0.08);
+    --bg: #FDFBF7;           /* Мягкий тёплый кремовый для фона */
+    --panel: #F8F5F0;        /* Чуть темнее для блоков */
+    --panel2: #F2EEE8;       /* Для границ */
+    --text: #2C2C2C;         /* Глубокий графитовый для текста */
+    --muted: #77736C;        /* Приглушённый для цитат */
+    --accent: #8B6B54;       /* Глубокий тёплый кофе с молоком (акцент) */
+    --accent-glow: rgba(139, 107, 84, 0.08);
+    --line: rgba(0, 0, 0, 0.06);
     --card-bg: rgba(0, 0, 0, 0.02);
 }
 
@@ -45,7 +45,7 @@ header {
     left: 0 !important;
     width: 100% !important;
     z-index: 100 !important;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(253, 251, 247, 0.92);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
     height: 70px; 
@@ -136,11 +136,10 @@ h1 span,
 }
 
 .hero-avatar img {
-    /* Убираем жёсткий квадрат и обрезку. Фото будет показываться целиком */
     width: auto;
     max-width: 100%;
     height: auto;
-    max-height: 80vh; /* Если фото очень высокое, оно не займёт весь экран */
+    max-height: 80vh;
     object-fit: contain;
     border-radius: 16px;
     display: block;
@@ -262,7 +261,7 @@ h1 {
 
 /* ===== КАРТОЧКИ ===== */
 .card {
-    background: var(--bg);
+    background: var(--panel);
     border: 1px solid var(--line);
     border-radius: 20px;
     padding: 32px 28px;
@@ -272,7 +271,6 @@ h1 {
 .card:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-    border-color: #ccc;
 }
 
 .card .emoji {
@@ -311,7 +309,7 @@ h1 {
 
 /* ===== ПРОЕКТЫ ===== */
 .project-card {
-    background: var(--bg);
+    background: var(--panel);
     border: 1px solid var(--line);
     border-radius: 20px;
     padding: 32px 28px;
@@ -321,7 +319,6 @@ h1 {
 .project-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
-    border-color: #ccc;
 }
 
 .project-card h3 {
@@ -344,7 +341,7 @@ h1 {
     font-size: 13px;
     font-weight: 600;
     background: var(--panel);
-    color: var(--text);
+    color: var(--accent);
     border: 1px solid var(--line);
     margin-right: 6px;
     margin-top: 10px;
@@ -373,7 +370,7 @@ h1 {
 
 .contacts a:hover {
     background: var(--panel);
-    border-color: var(--text);
+    border-color: var(--accent);
     transform: translateY(-2px);
 }
 
@@ -398,7 +395,7 @@ h1 {
 }
 
 .achievement-list li:hover {
-    border-color: #bbb;
+    border-color: var(--accent);
 }
 
 .achievement-list li strong {
@@ -426,7 +423,7 @@ h1 {
     min-width: 80px;
     font-weight: 700;
     font-size: 20px;
-    color: var(--text);
+    color: var(--accent);
 }
 
 .timeline-text {
@@ -462,7 +459,7 @@ h1 {
     height: 100%;
     object-fit: cover;
     display: block;
-    background: #f8f8f8;
+    background: var(--bg);
     transition: transform 0.3s ease;
 }
 
@@ -471,7 +468,7 @@ h1 {
 }
 
 .gallery-item:hover {
-    border-color: #999;
+    border-color: var(--accent);
 }
 
 .gallery-item .overlay {
@@ -480,7 +477,7 @@ h1 {
     left: 0;
     right: 0;
     padding: 14px;
-    background: linear-gradient(transparent, rgba(255, 255, 255, 0.9));
+    background: linear-gradient(transparent, rgba(253, 251, 247, 0.9));
     color: var(--text);
     font-weight: 500;
     font-size: 15px;
@@ -502,7 +499,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.88);
+    background: rgba(253, 251, 247, 0.96);
     z-index: 9999;
     justify-content: center;
     align-items: center;
@@ -551,12 +548,12 @@ h1 {
 .lightbox-content .caption {
     margin-top: 8px;
     text-align: center;
-    color: #fff;
+    color: var(--text);
     font-size: 18px;
     font-weight: 500;
     opacity: 0.9;
     padding: 8px 20px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(253, 251, 247, 0.5);
     border-radius: 8px;
     max-width: 90%;
     backdrop-filter: blur(4px);
@@ -567,7 +564,7 @@ h1 {
     top: 10px;
     right: 20px;
     font-size: 3rem;
-    color: #fff;
+    color: var(--text);
     cursor: pointer;
     opacity: 0.7;
     transition: 0.2s;
@@ -586,16 +583,16 @@ h1 {
     align-items: center;
     gap: 20px;
     margin-top: 12px;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.04);
     padding: 8px 20px;
     border-radius: 30px;
     backdrop-filter: blur(4px);
 }
 
 .nav-btn {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: #fff;
+    background: rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text);
     width: 44px;
     height: 44px;
     border-radius: 50%;
@@ -609,7 +606,7 @@ h1 {
 }
 
 .nav-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.12);
     transform: scale(1.1);
 }
 
@@ -618,7 +615,7 @@ h1 {
 }
 
 .counter {
-    color: #fff;
+    color: var(--text);
     font-size: 16px;
     font-weight: 500;
     opacity: 0.8;
@@ -631,7 +628,7 @@ h1 {
     display: inline-block;
     padding: 14px 32px;
     border-radius: 40px;
-    background: var(--text);
+    background: var(--accent);
     color: #fff;
     font-weight: 700;
     font-size: 17px;
@@ -643,19 +640,19 @@ h1 {
 
 .btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    background: #333;
+    box-shadow: 0 8px 30px var(--accent-glow);
+    background: #785a46;
 }
 
 .btn-outline {
     background: transparent;
-    color: var(--text);
+    color: var(--accent);
     border: 1px solid var(--line);
 }
 
 .btn-outline:hover {
     background: var(--panel);
-    border-color: var(--text);
+    border-color: var(--accent);
     box-shadow: none;
 }
 
@@ -695,7 +692,7 @@ footer p {
     .contacts a { padding: 12px 22px; font-size: 16px; }
     .gallery { grid-template-columns: 1fr 1fr; }
     
-    .hero-avatar img { max-height: 60vh; } /* На телефоне фото не будет слишком длинным */
+    .hero-avatar img { max-height: 60vh; }
     .section-text { font-size: 17px; }
     .card p, .project-card p { font-size: 16px; }
 }
