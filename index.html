@@ -117,6 +117,7 @@
             cursor: pointer;
             flex-shrink: 0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
         .home-photo:hover {
             transform: scale(1.05);
@@ -128,6 +129,26 @@
             object-fit: cover;
             display: block;
             pointer-events: none;
+        }
+        
+        /* Полупрозрачная подпись на фото */
+        .home-photo .caption-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 8px;
+            background: linear-gradient(transparent, rgba(253, 251, 247, 0.85));
+            color: var(--text);
+            font-size: 13px;
+            font-weight: 500;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        .home-photo:hover .caption-overlay {
+            opacity: 1;
         }
 
         /* =============== СТАТИСТИКА =============== */
@@ -322,10 +343,22 @@
             <!-- ========================================= -->
             <div class="home-gallery-wrap">
                 <div class="home-gallery">
-                    <div class="home-photo" data-src="images/gallery/5.png" data-caption="Мир в капле"><img src="images/gallery/5.png" alt="Мир в капле"></div>
-                    <div class="home-photo" data-src="images/gallery/17.png" data-caption="Головоломка"><img src="images/gallery/17.png" alt="Головоломка"></div>
-                    <div class="home-photo" data-src="images/gallery/1.png" data-caption="Алые капли"><img src="images/gallery/1.png" alt="Алые капли"></div>
-                    <div class="home-photo" data-src="images/gallery/4.png" data-caption="Одинокий лепесток"><img src="images/gallery/4.png" alt="Одинокий лепесток"></div>
+                    <div class="home-photo" data-src="images/gallery/5.png" data-caption="Мир в капле">
+                        <img src="images/gallery/5.png" alt="Мир в капле">
+                        <div class="caption-overlay">Мир в капле</div>
+                    </div>
+                    <div class="home-photo" data-src="images/gallery/17.png" data-caption="Головоломка">
+                        <img src="images/gallery/17.png" alt="Головоломка">
+                        <div class="caption-overlay">Головоломка</div>
+                    </div>
+                    <div class="home-photo" data-src="images/gallery/1.png" data-caption="Алые капли">
+                        <img src="images/gallery/1.png" alt="Алые капли">
+                        <div class="caption-overlay">Алые капли</div>
+                    </div>
+                    <div class="home-photo" data-src="images/gallery/4.png" data-caption="Одинокий лепесток">
+                        <img src="images/gallery/4.png" alt="Одинокий лепесток">
+                        <div class="caption-overlay">Одинокий лепесток</div>
+                    </div>
                 </div>
             </div>
 
