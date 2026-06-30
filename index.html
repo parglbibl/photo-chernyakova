@@ -22,10 +22,10 @@
     <link rel="stylesheet" href="css/style.css" />
     
     <style>
-        /* =============== УНИВЕРСАЛЬНЫЙ ДВУХКОЛОНОЧНЫЙ ГЕРОЙ =============== */
+        /* =============== ГИБКИЙ ДВУХКОЛОНОЧНЫЙ ГЕРОЙ =============== */
         .hero .container {
             display: flex;
-            flex-wrap: wrap; /* Разрешаем перенос, но не заставляем его */
+            flex-wrap: wrap;
             align-items: flex-start;
             justify-content: center;
             gap: 30px;
@@ -34,27 +34,25 @@
             flex: 1 1 280px;
             display: flex;
             justify-content: flex-end;
-            max-width: 50%;
         }
         .hero-right {
             flex: 1 1 320px;
             text-align: left;
-            padding-top: 10px;
-            max-width: 50%;
+            padding-top: 5px;
         }
         .hero-right h1 {
             margin-top: 0;
         }
         .hero-right .hero-lead {
-            margin: 0 0 24px 0;
+            margin: 0 0 16px 0;
         }
         .hero-right .hero-quote {
-            margin: 0 0 24px 0;
+            margin: 0 0 16px 0;
             display: inline-block;
         }
         .hero-right .stats {
             justify-content: flex-start;
-            margin-top: 30px;
+            margin-top: 20px;
         }
         .hero-avatar {
             margin-bottom: 0;
@@ -64,13 +62,13 @@
         .home-gallery {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
-            margin-top: 10px;
-            margin-bottom: 10px;
+            gap: 12px;
+            margin-top: 8px;
+            margin-bottom: 8px;
         }
         .home-photo {
-            width: 130px;
-            height: 130px;
+            width: 110px;
+            height: 110px;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--line);
@@ -92,14 +90,78 @@
             pointer-events: none;
         }
 
-        /* =============== АДАПТИВ (только для размера картинок) =============== */
-        @media (max-width: 600px) {
-            .home-photo { width: 95px; height: 95px; }
-            .home-gallery { gap: 10px; }
+        /* =============== НАСТРОЙКИ ДЛЯ МОБИЛЬНЫХ (чтобы влезло в 2 колонки) =============== */
+        @media (max-width: 899px) {
+            .hero-left {
+                flex: 0 0 200px; /* Фото становится компактнее */
+                max-width: 45%;
+            }
+            .hero-right {
+                flex: 1;
+                max-width: 55%;
+                padding-top: 0;
+                font-size: 0.9rem; /* Текст становится мельче */
+            }
+            .hero-right h1 {
+                font-size: 1.6rem; /* Имя становится компактнее */
+                white-space: normal; /* Разрешаем перенос, если нужно */
+            }
+            .hero-right .hero-lead {
+                font-size: 0.8rem;
+                margin-bottom: 8px;
+            }
+            .hero-right .hero-quote {
+                font-size: 0.8rem;
+                padding: 6px 14px;
+                margin-bottom: 8px;
+                white-space: normal;
+            }
+            .home-photo {
+                width: 70px;
+                height: 70px;
+            }
+            .home-gallery {
+                gap: 8px;
+                margin-top: 4px;
+                margin-bottom: 4px;
+            }
+            .stats {
+                gap: 10px;
+                margin-top: 10px;
+            }
+            .stat-card {
+                padding: 12px 8px;
+            }
+            .stat-number {
+                font-size: 1.4rem;
+            }
+            .stat-label {
+                font-size: 0.7rem;
+            }
         }
-        @media (max-width: 450px) {
-            .home-photo { width: 80px; height: 80px; }
-            .home-gallery { gap: 8px; }
+
+        /* Очень маленькие экраны (чтобы ничего не сломалось) */
+        @media (max-width: 550px) {
+            .hero-left {
+                flex: 0 0 140px;
+                max-width: 40%;
+            }
+            .hero-right {
+                font-size: 0.8rem;
+            }
+            .hero-right h1 {
+                font-size: 1.2rem;
+            }
+            .home-photo {
+                width: 55px;
+                height: 55px;
+            }
+            .home-gallery {
+                gap: 5px;
+            }
+            .stat-number {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
