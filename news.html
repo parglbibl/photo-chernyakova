@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Новости — Галина Чернякова | Фотограф</title>
+    <meta name="description" content="Новости и события фотографа Галины Черняковой. Участие в конкурсах, выставки, новые работы." />
+    <meta name="keywords" content="новости фотографа, события, выставки, Галина Чернякова, макрофотография, конкурсы" />
+    
+    <meta property="og:title" content="Новости — Галина Чернякова | Фотограф" />
+    <meta property="og:description" content="События, конкурсы и новые проекты в мире макрофотографии." />
+    <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
+    <meta property="og:url" content="https://photo-chernyakova.ru/news.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="news.html" class="active">Новости</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero" style="padding-top: 60px; padding-bottom: 10px;">
+        <div class="container">
+            <h1>Новости и <span>события</span></h1>
+            <p class="hero-lead">Что происходит в мире макрофотографии Галины</p>
+            <div class="hero-quote">✨ «Каждое мгновение — это новая история» ✨</div>
+        </div>
+    </section>
+
+    <section class="section fade-up" style="padding-top: 25px; padding-bottom: 20px;">
+        <div class="container">
+            <div class="section-title">Последние новости</div>
+            <div class="section-subtitle">События, проекты и важные моменты</div>
+            
+            <div class="grid-2" style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px;">
+                
+                <!-- НОВОСТЬ 1: Три новых конкурса -->
+                <div class="card fade-up">
+                    <div class="emoji">📋</div>
+                    <h3>Поданы заявки на 3 новых конкурса</h3>
+                    <p style="margin-top: 6px; color: var(--muted); font-size: 14px;">1 июля 2026</p>
+                    <p>Галина подала заявки на участие сразу в трёх фотоконкурсах:</p>
+                    <ul style="margin-top: 10px; padding-left: 20px; color: var(--muted); font-size: 15px; line-height: 1.8;">
+                        <li>📸 <strong>PhotoCasa</strong> — «Лето в кадре»</li>
+                        <li>🌿 <strong>Нижегородская природа</strong> — региональный конкурс природной фотографии</li>
+                        <li>🔬 <strong>СТИХИЯ НАУКИ-2026</strong> — научно-популярный фотоконкурс</li>
+                    </ul>
+                </div>
+
+                <!-- НОВОСТЬ 2: Победа в конкурсе Свет и цвет -->
+                <div class="card fade-up">
+                    <div class="emoji">🏆</div>
+                    <h3>Победа в конкурсе «Свет и цвет»</h3>
+                    <p style="margin-top: 6px; color: var(--muted); font-size: 14px;">30 июня 2026</p>
+                    <p>Работа «Головоломка» успешно прошла конкурсный отбор и получила статус «Принято».</p>
+                </div>
+
+                <!-- НОВОСТЬ 3: Запущена страница «Макромир» -->
+                <div class="card fade-up">
+                    <div class="emoji">📸</div>
+                    <h3>Запущена страница «Макромир»</h3>
+                    <p style="margin-top: 6px; color: var(--muted); font-size: 14px;">29 июня 2026</p>
+                    <p>На сайте появилась авторская подборка из 14 макро-работ, объединённых любовью к деталям.</p>
+                </div>
+
+                <!-- НОВОСТЬ 4: Выставка «Две линзы, один сюжет» -->
+                <div class="card fade-up">
+                    <div class="emoji">🖼️</div>
+                    <h3>Выставка «Две линзы, один сюжет»</h3>
+                    <p style="margin-top: 6px; color: var(--muted); font-size: 14px;">2025</p>
+                    <p>Совместная фотовыставка с коллегой в Библиотеках Выборгского района. Более 30 работ.</p>
+                </div>
+
+                <!-- НОВОСТЬ 5: Персональная выставка «Крупным планом» -->
+                <div class="card fade-up">
+                    <div class="emoji">🎉</div>
+                    <h3>Персональная выставка «Крупным планом»</h3>
+                    <p style="margin-top: 6px; color: var(--muted); font-size: 14px;">2026</p>
+                    <p>Персональная выставка в Сортавальской центральной библиотеке. Вдохновение в деталях.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Новости, как и фотографии, создаются с душой ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            document.querySelectorAll('.section, .card').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
