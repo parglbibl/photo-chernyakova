@@ -21,19 +21,56 @@
 
     <link rel="stylesheet" href="css/style.css" />
     
-    <!-- Стили для блока на главной -->
     <style>
+        /* Стили для двухколоночного героя */
+        .hero .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .hero-left {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .hero-right {
+            flex: 1.2;
+            min-width: 350px;
+            text-align: left;
+            padding: 20px 0;
+        }
+        .hero-right h1 {
+            margin-top: 0;
+        }
+        .hero-right .hero-lead {
+            margin: 0 auto 24px 0;
+        }
+        .hero-right .hero-quote {
+            margin-left: 0;
+        }
+        .hero-right .stats {
+            justify-content: flex-start;
+            margin-top: 30px;
+        }
+        .hero-right .home-gallery {
+            justify-content: flex-start;
+            margin-top: 20px;
+        }
+        .hero-avatar {
+            margin-bottom: 0;
+        }
         .home-gallery {
             display: flex;
-            justify-content: center;
-            gap: 25px;
+            gap: 15px;
             flex-wrap: wrap;
-            margin-top: 45px;
-            margin-bottom: 35px;
+            margin-top: 20px;
         }
         .home-photo {
-            width: 230px;
-            height: 230px;
+            width: 140px;
+            height: 140px;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--line);
@@ -53,13 +90,44 @@
             background: var(--bg);
             pointer-events: none;
         }
+
+        /* Адаптив для планшетов и телефонов */
+        @media (max-width: 950px) {
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-left {
+                justify-content: center;
+                width: 100%;
+            }
+            .hero-right {
+                text-align: center;
+                width: 100%;
+                padding: 0;
+            }
+            .hero-right .hero-lead,
+            .hero-right .hero-quote,
+            .hero-right .stats,
+            .hero-right .home-gallery {
+                justify-content: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-right h1 {
+                margin-top: 16px;
+            }
+            .hero-avatar {
+                margin-bottom: 16px;
+            }
+        }
         @media (max-width: 760px) {
-            .home-photo { width: 140px; height: 140px; }
-            .home-gallery { gap: 15px; margin-top: 30px; }
+            .home-photo { width: 110px; height: 110px; }
+            .home-gallery { gap: 12px; }
         }
         @media (max-width: 480px) {
-            .home-photo { width: 110px; height: 110px; }
-            .home-gallery { gap: 10px; margin-top: 20px; }
+            .home-photo { width: 90px; height: 90px; }
+            .home-gallery { gap: 10px; }
         }
     </style>
 </head>
@@ -80,33 +148,41 @@
 
     <section class="hero">
         <div class="container">
-            <div class="hero-avatar">
-                <img src="images/photo.jpg" alt="Галина Чернякова" />
+            <!-- ЛЕВАЯ КОЛОНКА: ФОТО -->
+            <div class="hero-left">
+                <div class="hero-avatar">
+                    <img src="images/photo.jpg" alt="Галина Чернякова" />
+                </div>
             </div>
-            <h1>Галина <span>Чернякова</span></h1>
-            <p class="hero-lead">Фотограф • Сортавала — Санкт-Петербург • Макро и концепт</p>
-            <div class="hero-quote">✨ «Рассмотреть то, мимо чего мы проходим каждый день» ✨</div>
 
-            <!-- ===== КЛИКАБЕЛЬНАЯ ГАЛЕРЕЯ НА ГЛАВНОЙ ===== -->
-            <div class="home-gallery">
-                <div class="home-photo" data-src="images/gallery/5.png" data-caption="Мир в капле"><img src="images/gallery/5.png" alt="Мир в капле"></div>
-                <div class="home-photo" data-src="images/gallery/17.png" data-caption="Оранжевая сфера"><img src="images/gallery/17.png" alt="Оранжевая сфера"></div>
-                <div class="home-photo" data-src="images/gallery/1.png" data-caption="Алые капли"><img src="images/gallery/1.png" alt="Алые капли"></div>
-                <div class="home-photo" data-src="images/gallery/4.png" data-caption="Одинокий лепесток"><img src="images/gallery/4.png" alt="Одинокий лепесток"></div>
-            </div>
-            
-            <div class="stats">
-                <div class="stat-card">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">лет в фотографии</div>
+            <!-- ПРАВАЯ КОЛОНКА: ТЕКСТ И КОНТЕНТ -->
+            <div class="hero-right">
+                <h1>Галина <span>Чернякова</span></h1>
+                <p class="hero-lead">Фотограф • Сортавала — Санкт-Петербург • Макро и концепт</p>
+                <div class="hero-quote">✨ «Рассмотреть то, мимо чего мы проходим каждый день» ✨</div>
+
+                <!-- 4 ЛУЧШИХ РАБОТЫ -->
+                <div class="home-gallery">
+                    <div class="home-photo" data-src="images/gallery/5.png" data-caption="Мир в капле"><img src="images/gallery/5.png" alt="Мир в капле"></div>
+                    <div class="home-photo" data-src="images/gallery/17.png" data-caption="Оранжевая сфера"><img src="images/gallery/17.png" alt="Оранжевая сфера"></div>
+                    <div class="home-photo" data-src="images/gallery/1.png" data-caption="Алые капли"><img src="images/gallery/1.png" alt="Алые капли"></div>
+                    <div class="home-photo" data-src="images/gallery/4.png" data-caption="Одинокий лепесток"><img src="images/gallery/4.png" alt="Одинокий лепесток"></div>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">Top 5%</div>
-                    <div class="stat-label">35AWARDS (Макромир цветов)</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">3</div>
-                    <div class="stat-label">международные призовые места</div>
+
+                <!-- СТАТИСТИКА -->
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">лет в фотографии</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">Top 5%</div>
+                        <div class="stat-label">35AWARDS (Макромир цветов)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">международные призовые места</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -210,9 +286,7 @@
 
     <script src="js/main.js"></script>
 
-    <!-- ========================================== -->
-    <!-- СКРИПТ ЛАЙТБОКСА ДЛЯ 4 ФОТО НА ГЛАВНОЙ -->
-    <!-- ========================================== -->
+    <!-- ЛАЙТБОКС -->
     <script>
     (function() {
         if (document.readyState === 'loading') {
