@@ -136,12 +136,19 @@ h1 span,
     width: auto;
     max-width: 100%;
     height: auto;
-    max-height: 80vh;
+    max-height: 80vh; /* Оставляем для телефонов и планшетов */
     object-fit: contain;
     border-radius: 16px;
     display: block;
     margin: 0 auto;
     background: var(--bg);
+}
+
+/* ====== СПЕЦИАЛЬНО ДЛЯ БОЛЬШИХ ЭКРАНОВ (КОМПЬЮТЕРОВ) ====== */
+@media (min-width: 1025px) {
+    .hero-avatar img {
+        max-height: 65vh; /* Ограничиваем высоту на компе до 65% экрана */
+    }
 }
 
 h1 {
