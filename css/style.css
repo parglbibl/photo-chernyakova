@@ -1,722 +1,488 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-
-:root {
-    --bg: #F3EEE9;
-    --panel: #FFFFFF;
-    --panel2: #E8E3DC;
-    --text: #1C1A18;
-    --muted: #6F6862;
-    --accent: #BD4B2D; /* Глубокий терракотово-медный */
-    --accent-glow: rgba(189, 75, 45, 0.15);
-    --line: rgba(28, 26, 24, 0.07);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    background-color: var(--bg);
-    background-image: 
-        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.3) 0%, transparent 20%),
-        radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.2) 0%, transparent 15%),
-        repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(0, 0, 0, 0.015) 2px, rgba(0, 0, 0, 0.015) 3px);
-}
-
-body {
-    font-family: 'Inter', Arial, sans-serif;
-    color: var(--text);
-    line-height: 1.8;
-    min-height: 100vh;
-    font-size: 18px;
-    padding-top: 80px !important;
-}
-
-body:not(.page-home) {
-    padding-top: 40px !important;
-}
-
-.container {
-    width: min(1400px, 94%);
-    margin: 0 auto;
-}
-
-header {
-    position: fixed;
-    top: 0 !important;
-    left: 0 !important;
-    width: 100% !important;
-    z-index: 100 !important;
-    background: rgba(243, 238, 233, 0.94);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-.header-inner {
-    width: 100%;
-    max-width: 1400px;
-    padding: 0 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.nav {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 35px 40px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.nav li {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-.nav a {
-    color: var(--muted);
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 22px;
-    transition: 0.3s;
-    position: relative;
-    padding: 6px 0;
-    margin: 0;
-    display: inline-block;
-    line-height: 1.2;
-}
-
-.nav a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--accent);
-    transition: 0.3s;
-}
-
-.nav a:hover::after,
-.nav .active::after {
-    width: 100%;
-}
-
-.nav a:hover,
-.nav .active {
-    color: var(--accent);
-}
-
-h1 span,
-.accent {
-    color: var(--accent);
-}
-
-.hero {
-    text-align: center;
-    padding: 25px 0 50px;
-}
-
-.hero-avatar {
-    display: inline-block;
-    padding: 8px;
-    border-radius: 24px;
-    background: var(--bg);
-    box-shadow: 0 0 40px rgba(0, 0, 0, 0.03);
-    margin-bottom: 16px;
-}
-
-.hero-avatar img {
-    width: auto;
-    max-width: 100%;
-    height: auto;
-    max-height: 80vh;
-    object-fit: contain;
-    border-radius: 16px;
-    display: block;
-    margin: 0 auto;
-    background: var(--bg);
-}
-
-@media (min-width: 1025px) {
-    .hero-avatar img {
-        max-height: 50vh;
-    }
-}
-
-h1 {
-    font-size: clamp(42px, 6vw, 72px);
-    line-height: 1.05;
-    margin: 16px 0 12px;
-    letter-spacing: -0.5px;
-    font-weight: 700;
-    color: var(--text);
-}
-
-.hero-lead {
-    color: var(--muted);
-    font-size: 20px;
-    max-width: 600px;
-    margin: 0 auto 24px;
-    font-weight: 400;
-    letter-spacing: 0.3px;
-}
-
-.hero-quote {
-    display: inline-block;
-    padding: 14px 28px;
-    border-radius: 40px;
-    background: var(--panel);
-    border: 1px solid var(--line);
-    font-size: 18px;
-    color: var(--muted);
-    font-style: italic;
-    max-width: 100%;
-    word-break: break-word;
-    margin-top: 6px;
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 20px;
-    margin-top: 40px;
-}
-
-.stat-card {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 28px 20px;
-    transition: 0.3s;
-}
-
-.stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-}
-
-.stat-number {
-    font-size: 42px;
-    font-weight: 800;
-    color: var(--accent);
-    letter-spacing: -1px;
-}
-
-.stat-label {
-    color: var(--text);
-    font-size: 16px;
-    font-weight: 500;
-    margin-top: 2px;
-    opacity: 0.9;
-}
-
-.stat-desc {
-    color: var(--muted);
-    font-size: 14px;
-    opacity: 0.6;
-    margin-top: 2px;
-}
-
-.section {
-    padding: 70px 0;
-}
-
-.section-title {
-    text-align: center;
-    font-size: clamp(32px, 4vw, 46px);
-    font-weight: 700;
-    margin-bottom: 8px;
-    letter-spacing: -1px;
-    color: var(--text);
-}
-
-.section-subtitle {
-    text-align: center;
-    color: var(--muted);
-    font-size: 19px;
-    max-width: 640px;
-    margin: 0 auto 40px;
-    opacity: 0.8;
-    font-style: italic;
-}
-
-.section-text {
-    color: var(--muted);
-    font-size: 19px;
-    max-width: 760px;
-    margin: 0 auto;
-    line-height: 1.9;
-}
-
-.section-text .accent-text {
-    color: var(--text);
-    font-weight: 500;
-}
-
-.card {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    padding: 32px 28px;
-    transition: 0.3s;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-}
-
-.card .emoji {
-    font-size: 36px;
-    display: block;
-    margin-bottom: 12px;
-}
-
-.card h3 {
-    font-size: 22px;
-    margin: 0 0 8px;
-    font-weight: 600;
-    color: var(--text);
-}
-
-.card p {
-    color: var(--muted);
-    font-size: 17px;
-    line-height: 1.7;
-    margin: 0;
-    opacity: 0.9;
-}
-
-.grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-}
-
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-}
-
-.project-card {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    padding: 32px 28px;
-    transition: 0.3s;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-}
-
-.project-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-}
-
-.project-card h3 {
-    font-size: 22px;
-    margin: 0 0 8px;
-    color: var(--text);
-}
-
-.project-card p {
-    color: var(--muted);
-    font-size: 17px;
-    line-height: 1.8;
-    opacity: 0.9;
-}
-
-.badge {
-    display: inline-block;
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-size: 13px;
-    font-weight: 600;
-    background: var(--panel);
-    color: var(--accent);
-    border: 1px solid var(--line);
-    margin-right: 6px;
-    margin-top: 10px;
-}
-
-.contacts {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-top: 16px;
-}
-
-.contacts a {
-    color: var(--text);
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 14px 32px;
-    border: 1px solid var(--line);
-    border-radius: 40px;
-    transition: 0.3s;
-    background: var(--bg);
-}
-
-.contacts a:hover {
-    background: var(--panel);
-    border-color: var(--accent);
-    transform: translateY(-2px);
-}
-
-.achievement-list {
-    max-width: 760px;
-    margin: 0 auto;
-    padding: 0;
-    list-style: none;
-}
-
-.achievement-list li {
-    padding: 16px 22px;
-    margin-bottom: 10px;
-    border-radius: 12px;
-    background: var(--panel);
-    border: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 17px;
-    line-height: 1.7;
-    transition: 0.3s;
-}
-
-.achievement-list li:hover {
-    border-color: var(--accent);
-}
-
-.achievement-list li strong {
-    color: var(--text);
-}
-
-.timeline {
-    max-width: 760px;
-    margin: 0 auto;
-}
-
-.timeline-item {
-    display: flex;
-    gap: 30px;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--line);
-}
-
-.timeline-item:last-child {
-    border-bottom: none;
-}
-
-.timeline-year {
-    min-width: 80px;
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--accent);
-}
-
-.timeline-text {
-    color: var(--muted);
-    font-size: 17px;
-    opacity: 0.9;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.gallery-item {
-    position: relative;
-    border-radius: 16px;
-    overflow: hidden;
-    background: var(--panel);
-    border: 1px solid var(--line);
-    cursor: pointer;
-    transition: 0.3s;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    background: var(--bg);
-    transition: transform 0.3s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.03);
-}
-
-.gallery-item:hover {
-    border-color: var(--accent);
-}
-
-.gallery-item .overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 14px;
-    background: linear-gradient(transparent, rgba(243, 238, 233, 0.9));
-    color: var(--text);
-    font-weight: 500;
-    font-size: 15px;
-    text-align: center;
-    opacity: 0;
-    transition: 0.3s;
-    pointer-events: none;
-}
-
-.gallery-item:hover .overlay {
-    opacity: 1;
-}
-
-.lightbox-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(243, 238, 233, 0.96);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    backdrop-filter: blur(4px);
-}
-
-.lightbox-overlay.active {
-    display: flex;
-}
-
-.lightbox-content {
-    position: relative;
-    max-width: 98vw;
-    max-height: 98vh;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.lightbox-image-wrapper {
-    width: 100%;
-    height: calc(100% - 80px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-}
-
-.lightbox-content img {
-    max-width: 100%;
-    max-height: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: 8px;
-    transition: transform 0.1s ease;
-    user-select: none;
-    cursor: zoom-in;
-}
-
-.lightbox-content .caption {
-    margin-top: 8px;
-    text-align: center;
-    color: var(--text);
-    font-size: 18px;
-    font-weight: 500;
-    opacity: 0.9;
-    padding: 8px 20px;
-    background: rgba(243, 238, 233, 0.5);
-    border-radius: 8px;
-    max-width: 90%;
-    backdrop-filter: blur(4px);
-}
-
-.close-btn {
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    font-size: 3rem;
-    color: var(--text);
-    cursor: pointer;
-    opacity: 0.7;
-    transition: 0.2s;
-    z-index: 10;
-    line-height: 1;
-    font-weight: 300;
-}
-
-.close-btn:hover {
-    opacity: 1;
-    transform: scale(1.1);
-}
-
-.lightbox-nav {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    margin-top: 12px;
-    background: rgba(0, 0, 0, 0.04);
-    padding: 8px 20px;
-    border-radius: 30px;
-    backdrop-filter: blur(4px);
-}
-
-.nav-btn {
-    background: rgba(0, 0, 0, 0.06);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    color: var(--text);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    font-size: 26px;
-    cursor: pointer;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 1;
-}
-
-.nav-btn:hover {
-    background: rgba(0, 0, 0, 0.12);
-    transform: scale(1.1);
-}
-
-.nav-btn:active {
-    transform: scale(0.9);
-}
-
-.counter {
-    color: var(--text);
-    font-size: 16px;
-    font-weight: 500;
-    opacity: 0.8;
-    min-width: 60px;
-    text-align: center;
-}
-
-.btn {
-    display: inline-block;
-    padding: 14px 32px;
-    border-radius: 40px;
-    background: var(--accent);
-    color: #fff;
-    font-weight: 700;
-    font-size: 17px;
-    text-decoration: none;
-    border: none;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px var(--accent-glow);
-    background: #a44329;
-}
-
-.btn-outline {
-    background: transparent;
-    color: var(--accent);
-    border: 1px solid var(--line);
-}
-
-.btn-outline:hover {
-    background: var(--panel);
-    border-color: var(--accent);
-    box-shadow: none;
-}
-
-footer {
-    padding: 36px 0;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    text-align: center;
-}
-
-footer .stardust {
-    font-size: 17px;
-    font-style: italic;
-    opacity: 0.5;
-    margin-bottom: 8px;
-}
-
-footer p {
-    font-size: 16px;
-    opacity: 0.6;
-}
-
-@media (max-width: 760px) {
-    header { height: auto !important; min-height: 72px; padding: 10px 0; }
-    body { padding-top: 72px !important; }
-    body:not(.page-home) { padding-top: 40px !important; }
-    .nav { gap: 14px 26px; }
-    .nav a { font-size: 20px; padding: 5px 0; }
-    .section { padding: 50px 0; }
-    body { font-size: 16px; }
-    .grid-2 { grid-template-columns: 1fr; }
-    .stats { grid-template-columns: 1fr 1fr; gap: 14px; }
-    .timeline-item { flex-direction: column; gap: 4px; }
-    .contacts { gap: 12px; }
-    .contacts a { padding: 12px 22px; font-size: 16px; }
-    .gallery { grid-template-columns: 1fr 1fr; }
-    .hero-avatar img { max-height: 60vh; }
-    .hero-avatar { margin-bottom: 16px; }
-    .section-text { font-size: 17px; }
-    .card p, .project-card p { font-size: 16px; }
-}
-
-@media (max-width: 480px) {
-    header { height: auto !important; min-height: 64px; padding: 8px 0; }
-    body { padding-top: 64px !important; }
-    body:not(.page-home) { padding-top: 40px !important; }
-    .nav { gap: 10px 20px; }
-    .nav a { font-size: 19px; padding: 5px 0; }
-    .stats { grid-template-columns: 1fr; }
-    .gallery { grid-template-columns: 1fr 1fr; gap: 12px; }
-    .gallery-item { aspect-ratio: 1 / 1; }
-    .hero-avatar img { max-height: 50vh; }
-    .hero-quote { font-size: 16px; padding: 10px 16px; }
-    .section-title { font-size: 28px; }
-    .section-subtitle { font-size: 17px; }
-    .hero-lead { font-size: 17px; }
-    h1 { font-size: 34px; }
-    .lightbox-content img { max-height: 75vh; max-width: 98%; }
-    .close-btn { top: 5px; right: 10px; font-size: 2.4rem; }
-    .lightbox-nav { gap: 12px; padding: 6px 14px; }
-    .nav-btn { width: 38px; height: 38px; font-size: 22px; }
-    .counter { font-size: 14px; min-width: 50px; }
-    .lightbox-content .caption { font-size: 15px; padding: 6px 14px; margin-top: 4px; }
-    .contacts a { font-size: 15px; padding: 10px 18px; }
-}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Галина Чернякова | Фотограф, Сортавала — Санкт-Петербург</title>
+    <meta name="description" content="Портфолио и достижения фотографа Галины Черняковой. Макро, концепт, черно-белые пейзажи, петербургская «Творческая фотомастерская». Выставки и награды." />
+    <meta name="keywords" content="фотограф галина чернякова, сортавала фотограф, санкт-петербург фотограф, макрофотография, выставка крупным планом, 35 awards, творческая фотомастерская" />
+    
+    <link rel="canonical" href="https://photo-chernyakova.ru/" />
+    <link rel="icon" href="images/photo.jpg" type="image/jpeg" />
+
+    <meta property="og:title" content="Галина Чернякова | Фотограф" />
+    <meta property="og:description" content="Портфолио и достижения фотографа Галины Черняковой. Макро, концепт, пейзажи, выставки." />
+    <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
+    <meta property="og:url" content="https://photo-chernyakova.ru/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <style>
+        /* Стили для двухколоночного героя */
+        .hero .container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .hero-left {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .hero-right {
+            flex: 1.2;
+            min-width: 350px;
+            text-align: left;
+            padding-top: 10px;
+        }
+        .hero-right h1 {
+            margin-top: 0;
+        }
+        .hero-right .hero-lead {
+            margin: 0 0 24px 0;
+        }
+        .hero-right .hero-quote {
+            margin: 0 0 24px 0;
+            display: inline-block;
+        }
+        .hero-right .stats {
+            justify-content: flex-start;
+            margin-top: 30px;
+        }
+        .hero-avatar {
+            margin-bottom: 0;
+        }
+
+        /* Сетка для 4 фото на главной */
+        .home-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .home-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--line);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: var(--panel);
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .home-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        .home-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            background: var(--bg);
+            pointer-events: none;
+        }
+
+        /* ================================================== */
+        /* АДАПТИВ: ДВЕ КОЛОНКИ ДО 800px (вкл. большие телефоны) */
+        /* ================================================== */
+        @media (max-width: 800px) {
+            .hero .container {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            .hero-left {
+                justify-content: center;
+                width: 100%;
+            }
+            .hero-right {
+                text-align: center;
+                width: 100%;
+                padding: 0;
+            }
+            .hero-right .hero-lead,
+            .hero-right .hero-quote,
+            .hero-right .stats,
+            .hero-right .home-gallery {
+                justify-content: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-right h1 {
+                margin-top: 16px;
+            }
+            .hero-avatar {
+                margin-bottom: 16px;
+            }
+            .home-gallery {
+                justify-content: center;
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 600px) {
+            .home-photo { width: 95px; height: 95px; }
+            .home-gallery { gap: 10px; }
+        }
+        @media (max-width: 480px) {
+            .home-photo { width: 85px; height: 85px; }
+            .home-gallery { gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <!-- ЛЕВАЯ КОЛОНКА: ФОТО -->
+            <div class="hero-left">
+                <div class="hero-avatar">
+                    <img src="images/photo.jpg" alt="Галина Чернякова" />
+                </div>
+            </div>
+
+            <!-- ПРАВАЯ КОЛОНКА: ТЕКСТ И КОНТЕНТ -->
+            <div class="hero-right">
+                <h1 style="white-space: nowrap;">Галина Чернякова</h1>
+                <p class="hero-lead">Фотограф • Сортавала — Санкт-Петербург • Макро и концепт</p>
+                
+                <div class="hero-quote" style="white-space: nowrap;">✨ «Рассмотреть то, мимо чего мы проходим каждый день» ✨</div>
+
+                <!-- 4 ЛУЧШИХ РАБОТЫ -->
+                <div class="home-gallery">
+                    <div class="home-photo" data-src="images/gallery/5.png" data-caption="Мир в капле"><img src="images/gallery/5.png" alt="Мир в капле"></div>
+                    <div class="home-photo" data-src="images/gallery/17.png" data-caption="Оранжевая сфера"><img src="images/gallery/17.png" alt="Оранжевая сфера"></div>
+                    <div class="home-photo" data-src="images/gallery/1.png" data-caption="Алые капли"><img src="images/gallery/1.png" alt="Алые капли"></div>
+                    <div class="home-photo" data-src="images/gallery/4.png" data-caption="Одинокий лепесток"><img src="images/gallery/4.png" alt="Одинокий лепесток"></div>
+                </div>
+
+                <!-- СТАТИСТИКА -->
+                <div class="stats">
+                    <div class="stat-card">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">лет в фотографии</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">Top 5%</div>
+                        <div class="stat-label">35AWARDS (Макромир цветов)</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">международные призовые места</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="card" style="text-align: center; max-width: 760px; margin: 0 auto;">
+                <div class="emoji">📷</div>
+                <h3 style="font-size: 24px; margin-bottom: 8px;">Выставка «Крупным планом»</h3>
+                <p style="color: var(--muted); font-size: 16px; line-height: 1.7;">
+                    Персональная фотовыставка, организованная в Сортавальской центральной библиотеке. Вдохновение и искусство в деталях.
+                    <br><br>
+                    <span class="accent-text">Позже прошла выставка «Две линзы, один сюжет» в Библиотеках Выборгского района СПб.</span>
+                </p>
+                <a href="projects.html" class="btn" style="margin-top: 16px;">Подробнее</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">О себе</div>
+            <div class="section-subtitle">«Фотография — это остановленное мгновение»</div>
+            <div class="section-text">
+                <p>Родилась на берегу Ладоги, в городе Сортавала. Сейчас живу и творю в пригороде Санкт-Петербурга — Сертолово.</p>
+                <p style="margin-top: 20px;">Мой путь начался в сортавальском фотоклубе <span class="accent-text">«6х9»</span>, а продолжается в петербургской <span class="accent-text">«Творческой фотомастерской»</span>.</p>
+                <p style="margin-top: 20px;">Мне близки концептуальный минимализм, тонкая макросъемка цветов и капель, строгие черно-белые пейзажи и эмоциональный репортаж.</p>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="about.html" class="btn">Подробнее обо мне</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Достижения</div>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="emoji">🏆</div>
+                    <h3>35AWARDS</h3>
+                    <p>Участница 10-й премии. Топ 5% в номинации «Макромир цветов».</p>
+                </div>
+                <div class="card">
+                    <div class="emoji">🥉</div>
+                    <h3>Призёр конкурсов</h3>
+                    <p>III место в «Мире макрофотографии» и III место в «Осень в объективе».</p>
+                </div>
+                <div class="card">
+                    <div class="emoji">🖼️</div>
+                    <h3>Организатор выставок</h3>
+                    <p>Персональные выставки в Сортавале и Санкт-Петербурге.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Проекты</div>
+            <div class="grid-2">
+                <div class="project-card">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                        <div class="emoji">🖼️</div>
+                        <h3 style="margin: 0;">Крупным планом</h3>
+                    </div>
+                    <p>Персональная выставка в Сортавальской библиотеке, объединившая макро и концептуальную фотографию.</p>
+                    <div class="badge">📍 Сортавала</div>
+                </div>
+                <div class="project-card">
+                    <h3>Две линзы, один сюжет</h3>
+                    <p>Проект с коллегой, показавший красоту города через призму двух взглядов. Прошёл в библиотеках Выборгского района.</p>
+                    <div class="badge">📍 Санкт-Петербург</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 35px;">
+                <a href="projects.html" class="btn">Все проекты</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-title">Контакты</div>
+            <div class="section-subtitle">Открыта для проектов и новых знакомств</div>
+            <div class="contacts">
+                <a href="mailto:galina.chernyakova@example.com">📧 Почта</a>
+                <a href="tel:+79991234567">📞 Телефон</a>
+                <a href="https://vk.com" target="_blank">💬 ВКонтакте</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Поймать мгновение и подарить его миру ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <!-- ЛАЙТБОКС -->
+    <script>
+    (function() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHomeLightbox);
+        } else {
+            initHomeLightbox();
+        }
+
+        function initHomeLightbox() {
+            var items = document.querySelectorAll('.home-photo');
+            if (items.length === 0) return;
+
+            var overlay = document.querySelector('.home-lightbox-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'home-lightbox-overlay lightbox-overlay';
+                overlay.innerHTML = `
+                    <div class="lightbox-content">
+                        <span class="close-btn">&times;</span>
+                        <div class="lightbox-image-wrapper">
+                            <img src="" alt="Увеличенное фото" />
+                        </div>
+                        <div class="caption"></div>
+                        <div class="lightbox-nav">
+                            <button class="nav-btn prev-btn">‹</button>
+                            <span class="counter">1 / 4</span>
+                            <button class="nav-btn next-btn">›</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+            }
+
+            var lightboxImg = overlay.querySelector('img');
+            var captionEl = overlay.querySelector('.caption');
+            var closeBtn = overlay.querySelector('.close-btn');
+            var prevBtn = overlay.querySelector('.prev-btn');
+            var nextBtn = overlay.querySelector('.next-btn');
+            var counter = overlay.querySelector('.counter');
+
+            var imageItems = [];
+            items.forEach(function(item) {
+                var src = item.getAttribute('data-src');
+                var caption = item.getAttribute('data-caption') || 'Фотография';
+                if (src) {
+                    imageItems.push({
+                        src: src,
+                        caption: caption
+                    });
+                }
+            });
+
+            var currentIndex = 0;
+            var currentScale = 1;
+            var minScale = 1;
+            var maxScale = 5;
+
+            function openLightbox(index) {
+                if (imageItems.length === 0) return;
+                if (index < 0) index = imageItems.length - 1;
+                if (index >= imageItems.length) index = 0;
+                currentIndex = index;
+                
+                var item = imageItems[currentIndex];
+                lightboxImg.src = item.src;
+                captionEl.textContent = item.caption;
+                counter.textContent = (currentIndex + 1) + ' / ' + imageItems.length;
+                
+                currentScale = 1;
+                lightboxImg.style.transform = 'scale(1)';
+                lightboxImg.style.cursor = 'zoom-in';
+                
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            items.forEach(function(item) {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var src = this.getAttribute('data-src');
+                    if (src) {
+                        for (var j = 0; j < imageItems.length; j++) {
+                            if (imageItems[j].src === src) {
+                                openLightbox(j);
+                                break;
+                            }
+                        }
+                    }
+                });
+            });
+
+            prevBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openLightbox(currentIndex - 1);
+            });
+
+            nextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openLightbox(currentIndex + 1);
+            });
+
+            closeBtn.addEventListener('click', closeLightbox);
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeLightbox();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (!overlay.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') openLightbox(currentIndex - 1);
+                if (e.key === 'ArrowRight') openLightbox(currentIndex + 1);
+            });
+
+            lightboxImg.addEventListener('wheel', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var delta = e.deltaY > 0 ? -0.1 : 0.1;
+                currentScale = Math.min(maxScale, Math.max(minScale, currentScale + delta));
+                this.style.transform = 'scale(' + currentScale + ')';
+                this.style.cursor = currentScale > 1 ? 'zoom-out' : 'zoom-in';
+            }, { passive: false });
+
+            lightboxImg.addEventListener('dblclick', function() {
+                currentScale = 1;
+                this.style.transform = 'scale(1)';
+                this.style.cursor = 'zoom-in';
+            });
+
+            var touchStartX = 0;
+            var lastTouchDistance = 0;
+            var touchStartScale = 1;
+
+            overlay.addEventListener('touchstart', function(e) {
+                var target = e.target;
+                if (target === overlay || target === lightboxImg || target.closest('.lightbox-image-wrapper')) {
+                    if (e.touches.length === 1) {
+                        touchStartX = e.touches[0].clientX;
+                    }
+                    if (e.touches.length === 2) {
+                        var t1 = e.touches[0];
+                        var t2 = e.touches[1];
+                        lastTouchDistance = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+                        touchStartScale = currentScale;
+                    }
+                }
+            }, { passive: true });
+
+            overlay.addEventListener('touchmove', function(e) {
+                if (e.touches.length === 2) {
+                    e.preventDefault();
+                    var t1 = e.touches[0];
+                    var t2 = e.touches[1];
+                    var distance = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+                    if (lastTouchDistance > 0) {
+                        var scaleChange = distance / lastTouchDistance;
+                        currentScale = Math.min(maxScale, Math.max(minScale, touchStartScale * scaleChange));
+                        lightboxImg.style.transform = 'scale(' + currentScale + ')';
+                    }
+                }
+            }, { passive: false });
+
+            overlay.addEventListener('touchend', function(e) {
+                if (currentScale > 1) {
+                    touchStartX = 0;
+                    return;
+                }
+                if (touchStartX === 0) return;
+                
+                var touchEndX = e.changedTouches[0].clientX;
+                var diffX = touchStartX - touchEndX;
+                
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        openLightbox(currentIndex + 1);
+                    } else {
+                        openLightbox(currentIndex - 1);
+                    }
+                }
+                touchStartX = 0;
+            }, { passive: true });
+        }
+    })();
+    </script>
+</body>
+</html>
