@@ -124,4 +124,61 @@
                 </div>
                 <div class="card">
                     <div class="emoji">📸</div>
-                    <h3>«Круп
+                    <h3>«Крупным планом»</h3>
+                    <p><strong>2026</strong><br>Персональная фотовыставка в Сортавальской центральной библиотеке.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция "Ещё немного обо мне" -->
+    <section class="section fade-up" style="padding-top: 20px; padding-bottom: 25px;">
+        <div class="container">
+            <div class="section-title">Ещё немного обо мне</div>
+            <div class="section-subtitle">Мой след в фотографии</div>
+            <div class="card" style="max-width: 760px; margin: 0 auto;">
+                <p style="text-align: center; font-size: 17px; line-height: 1.8;">
+                    Участник и победитель таких конкурсов как: 
+                    <span class="accent-text">35AWARDS</span>, 
+                    фотоконкурсы от <span class="accent-text">Анны Масловой</span>, 
+                    конкурсы от сайта <span class="accent-text">Фотопризер.ру</span>, 
+                    <span class="accent-text">«Свет и цвет»</span>, 
+                    <span class="accent-text">«Самая красивая страна»</span>.
+                    <br><br>
+                    Активный участник фотоклуба <span class="accent-text">«Творческая фотомастерская»</span>.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Каждый кадр начинается с внимания ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <!-- Анимация появления блоков при скролле -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.section, .project-card, .card, .stat-card').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
