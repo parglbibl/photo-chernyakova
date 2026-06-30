@@ -25,7 +25,7 @@
         /* Стили для двухколоночного героя */
         .hero .container {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 40px;
@@ -40,43 +40,44 @@
             flex: 1.2;
             min-width: 350px;
             text-align: left;
-            padding: 20px 0;
+            padding-top: 10px;
         }
         .hero-right h1 {
             margin-top: 0;
         }
         .hero-right .hero-lead {
-            margin: 0 auto 24px 0;
+            margin: 0 0 24px 0;
         }
         .hero-right .hero-quote {
-            margin-left: 0;
+            margin: 0 0 24px 0;
+            display: inline-block;
         }
         .hero-right .stats {
             justify-content: flex-start;
             margin-top: 30px;
         }
-        .hero-right .home-gallery {
-            justify-content: flex-start;
-            margin-top: 20px;
-        }
         .hero-avatar {
             margin-bottom: 0;
         }
+
+        /* Сетка для 4 фото на главной */
         .home-gallery {
             display: flex;
-            gap: 15px;
             flex-wrap: wrap;
-            margin-top: 20px;
+            gap: 16px;
+            margin-top: 10px;
+            margin-bottom: 10px;
         }
         .home-photo {
-            width: 140px;
-            height: 140px;
+            width: 130px;
+            height: 130px;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--line);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             background: var(--panel);
             cursor: pointer;
+            flex-shrink: 0;
         }
         .home-photo:hover {
             transform: scale(1.05);
@@ -96,6 +97,7 @@
             .hero .container {
                 flex-direction: column;
                 text-align: center;
+                align-items: center;
             }
             .hero-left {
                 justify-content: center;
@@ -120,13 +122,17 @@
             .hero-avatar {
                 margin-bottom: 16px;
             }
+            .home-gallery {
+                justify-content: center;
+                max-width: 100%;
+            }
         }
         @media (max-width: 760px) {
             .home-photo { width: 110px; height: 110px; }
             .home-gallery { gap: 12px; }
         }
         @media (max-width: 480px) {
-            .home-photo { width: 90px; height: 90px; }
+            .home-photo { width: 85px; height: 85px; }
             .home-gallery { gap: 10px; }
         }
     </style>
@@ -157,8 +163,9 @@
 
             <!-- ПРАВАЯ КОЛОНКА: ТЕКСТ И КОНТЕНТ -->
             <div class="hero-right">
-                <h1>Галина <span>Чернякова</span></h1>
+                <h1>Галина Чернякова</h1>
                 <p class="hero-lead">Фотограф • Сортавала — Санкт-Петербург • Макро и концепт</p>
+                
                 <div class="hero-quote">✨ «Рассмотреть то, мимо чего мы проходим каждый день» ✨</div>
 
                 <!-- 4 ЛУЧШИХ РАБОТЫ -->
