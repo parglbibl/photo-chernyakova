@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
     <title>Достижения — Галина Чернякова | Награды и победы в фотоконкурсах</title>
-    <meta name="description" content="Достижения фотографа Галины Черняковой: 35AWARDS, призовые места, конкурсы, сертификаты и выставочные проекты." />
-    <meta name="keywords" content="35AWARDS, Галина Чернякова награды, фотоконкурс Самая красивая страна, Фотопризер, победы фотографа" />
+    <meta name="description" content="Достижения фотографа Галины Черняковой: 35AWARDS, призовые места Фотопризер.ру, конкурс Самая красивая страна, сертификаты Photoshop и выставочные проекты." />
+    <meta name="keywords" content="35AWARDS, Галина Чернякова награды, фотоконкурс Самая красивая страна, Фотопризер, победы фотографа, сертификат Photoshop" />
     
     <meta property="og:title" content="Достижения — Галина Чернякова | Фотограф" />
-    <meta property="og:description" content="Награды, дипломы, победы в конкурсах и выставочные проекты." />
+    <meta property="og:description" content="Международные и российские награды, дипломы, победы в конкурсах и выставочные проекты." />
     <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
     <meta property="og:url" content="https://photo-chernyakova.ru/achievements.html" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -26,6 +26,7 @@
                 <li><a href="projects.html">Проекты</a></li>
                 <li><a href="achievements.html" class="active">Достижения</a></li>
                 <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="news.html">Новости</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
             </ul>
         </div>
@@ -39,6 +40,7 @@
         </div>
     </section>
 
+    <!-- Секция "Награды и премии" -->
     <section class="section fade-up" style="padding-top: 25px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Награды и премии</div>
@@ -54,6 +56,7 @@
         </div>
     </section>
 
+    <!-- Секция "В цифрах" -->
     <section class="section fade-up" style="padding-top: 20px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">В цифрах</div>
@@ -86,6 +89,7 @@
 
     <script src="js/main.js"></script>
 
+    <!-- Анимация появления блоков при скролле -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var observer = new IntersectionObserver(function(entries) {
@@ -97,6 +101,7 @@
             }, {
                 threshold: 0.1
             });
+
             document.querySelectorAll('.section, .project-card, .card, .stat-card').forEach(function(el) {
                 el.classList.add('fade-up');
                 observer.observe(el);
