@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
         ecommerce:"dataLayer"
     });
 
-    // ===== ЗАЩИТА ФОТОГРАФИЙ ОТ ВОРОВСТВА (ПК И ТЕЛЕФОН) =====
+    // ===== ЗАЩИТА ФОТОГРАФИЙ ОТ ВОРОВСТВА =====
     document.addEventListener('contextmenu', function(e) {
         if (e.target.closest('.gallery-item img') || e.target.closest('.home-photo img') || e.target.closest('.hero-avatar img')) {
             e.preventDefault();
@@ -136,4 +136,15 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
+
+    // ===== РЕГИСТРАЦИЯ SERVICE WORKER (ДЛЯ РАБОТЫ ОФЛАЙН И БЫСТРОЙ ЗАГРУЗКИ) =====
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js')
+            .then(function(registration) {
+                console.log('Service Worker зарегистрирован с областью:', registration.scope);
+            })
+            .catch(function(error) {
+                console.log('Ошибка регистрации Service Worker:', error);
+            });
+    }
 });
