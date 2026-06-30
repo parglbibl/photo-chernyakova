@@ -1,0 +1,21 @@
+{
+    "name": "Галина Чернякова | Фотограф",
+    "short_name": "Галина Чернякова",
+    "description": "Портфолио фотографа Галины Черняковой. Макро, концепт, пейзажи, выставки и награды.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#FDFBF7",
+    "theme_color": "#8B6B54",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
