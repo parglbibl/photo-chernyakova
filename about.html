@@ -40,7 +40,7 @@
     </section>
 
     <!-- БЛОК "Выставка Крупным планом" -->
-    <section class="section" style="padding-top: 25px; padding-bottom: 15px;">
+    <section class="section fade-up" style="padding-top: 25px; padding-bottom: 15px;">
         <div class="container">
             <div class="card" style="text-align: center; max-width: 760px; margin: 0 auto;">
                 <div class="emoji">📷</div>
@@ -56,7 +56,7 @@
     </section>
 
     <!-- Секция "О себе" -->
-    <section class="section" style="padding-top: 15px; padding-bottom: 20px;">
+    <section class="section fade-up" style="padding-top: 15px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">О себе</div>
             <div class="section-subtitle">«Фотография — это остановленное мгновение»</div>
@@ -67,7 +67,7 @@
     </section>
 
     <!-- Секция "Образование" -->
-    <section class="section" style="padding-top: 20px; padding-bottom: 20px;">
+    <section class="section fade-up" style="padding-top: 20px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Образование</div>
             <div class="section-subtitle">Знания и опыт, которые формируют взгляд</div>
@@ -87,7 +87,7 @@
     </section>
 
     <!-- Секция "Личные качества" -->
-    <section class="section" style="padding-top: 20px; padding-bottom: 20px;">
+    <section class="section fade-up" style="padding-top: 20px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Личные качества</div>
             <div class="section-subtitle">Три принципа, которые я ценю в работе и в жизни</div>
@@ -112,7 +112,7 @@
     </section>
 
     <!-- Секция "Опыт и проекты" -->
-    <section class="section" style="padding-top: 20px; padding-bottom: 20px;">
+    <section class="section fade-up" style="padding-top: 20px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Опыт и проекты</div>
             <div class="section-subtitle">От первых кадров до персональных выставок</div>
@@ -132,7 +132,7 @@
     </section>
 
     <!-- Секция "Ещё немного обо мне" -->
-    <section class="section" style="padding-top: 20px; padding-bottom: 25px;">
+    <section class="section fade-up" style="padding-top: 20px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">Ещё немного обо мне</div>
             <div class="section-subtitle">Мой след в фотографии</div>
@@ -159,5 +159,26 @@
     </footer>
 
     <script src="js/main.js"></script>
+
+    <!-- Анимация появления блоков при скролле -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.section, .project-card, .card, .stat-card').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
+            });
+        });
+    </script>
+
 </body>
 </html>
