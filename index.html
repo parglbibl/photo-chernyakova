@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="css/style.css" />
     
     <style>
-        /* Стили для двухколоночного героя */
+        /* =============== ДВУХКОЛОНОЧНЫЙ ГЕРОЙ (ГИБКИЙ) =============== */
         .hero .container {
             display: flex;
             align-items: flex-start;
@@ -32,13 +32,13 @@
         }
         .hero-left {
             flex: 1;
-            min-width: 300px;
+            min-width: 280px;
             display: flex;
             justify-content: flex-end;
         }
         .hero-right {
             flex: 1.2;
-            min-width: 350px;
+            min-width: 320px;
             text-align: left;
             padding-top: 10px;
         }
@@ -92,10 +92,8 @@
             pointer-events: none;
         }
 
-        /* ================================================== */
-        /* АДАПТИВ: ДВЕ КОЛОНКИ ДО 800px (вкл. большие телефоны) */
-        /* ================================================== */
-        @media (max-width: 800px) {
+        /* =============== АДАПТИВ (ТОЛЬКО ДЛЯ МАЛЕНЬКИХ ЭКРАНОВ) =============== */
+        @media (max-width: 700px) {
             .hero .container {
                 flex-direction: column;
                 text-align: center;
@@ -129,13 +127,15 @@
                 max-width: 100%;
             }
         }
-        @media (max-width: 600px) {
+        
+        /* На очень маленьких телефонах делаем превьюшки компактнее */
+        @media (max-width: 550px) {
             .home-photo { width: 95px; height: 95px; }
             .home-gallery { gap: 10px; }
         }
-        @media (max-width: 480px) {
-            .home-photo { width: 85px; height: 85px; }
-            .home-gallery { gap: 10px; }
+        @media (max-width: 450px) {
+            .home-photo { width: 80px; height: 80px; }
+            .home-gallery { gap: 8px; }
         }
     </style>
 </head>
