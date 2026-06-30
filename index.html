@@ -21,40 +21,45 @@
 
     <link rel="stylesheet" href="css/style.css" />
     
-    <!-- Микро-стили специально для главной -->
+    <!-- Стили для блока на главной -->
     <style>
         .home-gallery {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
-            margin-top: 30px;
-            margin-bottom: 20px;
+            margin-top: 35px;
+            margin-bottom: 25px;
         }
         .home-photo {
-            width: 140px;
-            height: 140px;
+            width: 160px;
+            height: 160px;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--line);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             background: var(--panel);
+            cursor: pointer;
         }
         .home-photo:hover {
-            transform: scale(1.05);
+            transform: scale(1.06);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
         }
         .home-photo img {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Чтобы не обрезались края PNG */
+            object-fit: contain;
             display: block;
             background: var(--bg);
+            pointer-events: none;
         }
         @media (max-width: 760px) {
-            .home-photo { width: 100px; height: 100px; }
+            .home-photo { width: 120px; height: 120px; }
+            .home-gallery { gap: 15px; }
         }
         @media (max-width: 480px) {
-            .home-photo { width: 80px; height: 80px; }
+            .home-photo { width: 95px; height: 95px; }
+            .home-gallery { gap: 12px; }
         }
     </style>
 </head>
@@ -82,12 +87,12 @@
             <p class="hero-lead">Фотограф • Сортавала — Санкт-Петербург • Макро и концепт</p>
             <div class="hero-quote">✨ «Рассмотреть то, мимо чего мы проходим каждый день» ✨</div>
 
-            <!-- ===== ЛУЧШИЕ РАБОТЫ НА ГЛАВНОЙ ===== -->
+            <!-- ===== КЛИКАБЕЛЬНАЯ ГАЛЕРЕЯ НА ГЛАВНОЙ ===== -->
             <div class="home-gallery">
-                <div class="home-photo"><img src="images/gallery/5.png" alt="Мир в капле"></div>
-                <div class="home-photo"><img src="images/gallery/7.png" alt="Ледяная синева"></div>
-                <div class="home-photo"><img src="images/gallery/1.png" alt="Алые капли"></div>
-                <div class="home-photo"><img src="images/gallery/14.png" alt="Бархат и свет"></div>
+                <div class="home-photo" data-src="images/gallery/5.png"><img src="images/gallery/5.png" alt="Мир в капле"></div>
+                <div class="home-photo" data-src="images/gallery/17.png"><img src="images/gallery/17.png" alt="Оранжевая сфера"></div>
+                <div class="home-photo" data-src="images/gallery/1.png"><img src="images/gallery/1.png" alt="Алые капли"></div>
+                <div class="home-photo" data-src="images/gallery/4.png"><img src="images/gallery/4.png" alt="Одинокий лепесток"></div>
             </div>
             
             <div class="stats">
@@ -204,5 +209,196 @@
     </footer>
 
     <script src="js/main.js"></script>
+
+    <!-- ========================================== -->
+    <!-- СКРИПТ ЛАЙТБОКСА ДЛЯ 4 ФОТО НА ГЛАВНОЙ -->
+    <!-- ========================================== -->
+    <script>
+    (function() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initHomeLightbox);
+        } else {
+            initHomeLightbox();
+        }
+
+        function initHomeLightbox() {
+            var items = document.querySelectorAll('.home-photo');
+            if (items.length === 0) return;
+
+            var overlay = document.querySelector('.home-lightbox-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'home-lightbox-overlay lightbox-overlay';
+                overlay.innerHTML = `
+                    <div class="lightbox-content">
+                        <span class="close-btn">&times;</span>
+                        <div class="lightbox-image-wrapper">
+                            <img src="" alt="Увеличенное фото" />
+                        </div>
+                        <div class="caption"></div>
+                        <div class="lightbox-nav">
+                            <button class="nav-btn prev-btn">‹</button>
+                            <span class="counter">1 / 4</span>
+                            <button class="nav-btn next-btn">›</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+            }
+
+            var lightboxImg = overlay.querySelector('img');
+            var captionEl = overlay.querySelector('.caption');
+            var closeBtn = overlay.querySelector('.close-btn');
+            var prevBtn = overlay.querySelector('.prev-btn');
+            var nextBtn = overlay.querySelector('.next-btn');
+            var counter = overlay.querySelector('.counter');
+
+            var imageItems = [];
+            items.forEach(function(item) {
+                var src = item.getAttribute('data-src');
+                if (src) {
+                    imageItems.push({
+                        src: src,
+                        caption: item.querySelector('img') ? item.querySelector('img').getAttribute('alt') : 'Фотография'
+                    });
+                }
+            });
+
+            var currentIndex = 0;
+            var currentScale = 1;
+            var minScale = 1;
+            var maxScale = 5;
+
+            function openLightbox(index) {
+                if (imageItems.length === 0) return;
+                if (index < 0) index = imageItems.length - 1;
+                if (index >= imageItems.length) index = 0;
+                currentIndex = index;
+                
+                var item = imageItems[currentIndex];
+                lightboxImg.src = item.src;
+                captionEl.textContent = item.caption;
+                counter.textContent = (currentIndex + 1) + ' / ' + imageItems.length;
+                
+                currentScale = 1;
+                lightboxImg.style.transform = 'scale(1)';
+                lightboxImg.style.cursor = 'zoom-in';
+                
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            items.forEach(function(item) {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var src = this.getAttribute('data-src');
+                    if (src) {
+                        for (var j = 0; j < imageItems.length; j++) {
+                            if (imageItems[j].src === src) {
+                                openLightbox(j);
+                                break;
+                            }
+                        }
+                    }
+                });
+            });
+
+            prevBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openLightbox(currentIndex - 1);
+            });
+
+            nextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openLightbox(currentIndex + 1);
+            });
+
+            closeBtn.addEventListener('click', closeLightbox);
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeLightbox();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (!overlay.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') openLightbox(currentIndex - 1);
+                if (e.key === 'ArrowRight') openLightbox(currentIndex + 1);
+            });
+
+            lightboxImg.addEventListener('wheel', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var delta = e.deltaY > 0 ? -0.1 : 0.1;
+                currentScale = Math.min(maxScale, Math.max(minScale, currentScale + delta));
+                this.style.transform = 'scale(' + currentScale + ')';
+                this.style.cursor = currentScale > 1 ? 'zoom-out' : 'zoom-in';
+            }, { passive: false });
+
+            lightboxImg.addEventListener('dblclick', function() {
+                currentScale = 1;
+                this.style.transform = 'scale(1)';
+                this.style.cursor = 'zoom-in';
+            });
+
+            var touchStartX = 0;
+            var lastTouchDistance = 0;
+            var touchStartScale = 1;
+
+            overlay.addEventListener('touchstart', function(e) {
+                var target = e.target;
+                if (target === overlay || target === lightboxImg || target.closest('.lightbox-image-wrapper')) {
+                    if (e.touches.length === 1) {
+                        touchStartX = e.touches[0].clientX;
+                    }
+                    if (e.touches.length === 2) {
+                        var t1 = e.touches[0];
+                        var t2 = e.touches[1];
+                        lastTouchDistance = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+                        touchStartScale = currentScale;
+                    }
+                }
+            }, { passive: true });
+
+            overlay.addEventListener('touchmove', function(e) {
+                if (e.touches.length === 2) {
+                    e.preventDefault();
+                    var t1 = e.touches[0];
+                    var t2 = e.touches[1];
+                    var distance = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+                    if (lastTouchDistance > 0) {
+                        var scaleChange = distance / lastTouchDistance;
+                        currentScale = Math.min(maxScale, Math.max(minScale, touchStartScale * scaleChange));
+                        lightboxImg.style.transform = 'scale(' + currentScale + ')';
+                    }
+                }
+            }, { passive: false });
+
+            overlay.addEventListener('touchend', function(e) {
+                if (currentScale > 1) {
+                    touchStartX = 0;
+                    return;
+                }
+                if (touchStartX === 0) return;
+                
+                var touchEndX = e.changedTouches[0].clientX;
+                var diffX = touchStartX - touchEndX;
+                
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        openLightbox(currentIndex + 1);
+                    } else {
+                        openLightbox(currentIndex - 1);
+                    }
+                }
+                touchStartX = 0;
+            }, { passive: true });
+        }
+    })();
+    </script>
 </body>
 </html>
