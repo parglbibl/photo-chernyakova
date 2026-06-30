@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://photo-chernyakova.ru/</loc>
+        <lastmod>2026-06-30</lastmod>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://photo-chernyakova.ru/about.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://photo-chernyakova.ru/projects.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://photo-chernyakova.ru/achievements.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://photo-chernyakova.ru/gallery.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://photo-chernyakova.ru/contacts.html</loc>
+        <priority>0.8</priority>
+    </url>
+</urlset>
