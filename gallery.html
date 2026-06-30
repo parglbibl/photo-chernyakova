@@ -231,4 +231,19 @@
                     return;
                 }
                 if (touchStartX === 0) return;
-                var touchEndX = e.changedTouches[
+                var touchEndX = e.changedTouches[0].clientX;
+                var diffX = touchStartX - touchEndX;
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        openLightbox(currentIndex + 1);
+                    } else {
+                        openLightbox(currentIndex - 1);
+                    }
+                }
+                touchStartX = 0;
+            }, { passive: true });
+        }
+    })();
+    </script>
+</body>
+</html>
