@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <title>Контакты — Галина Чернякова | Фотограф из Санкт-Петербурга</title>
-    <meta name="description" content="Контакты фотографа Галины Черняковой. Телефон для связи, электронная почта, адрес в Санкт-Петербурге. Открыта для съёмок и проектов." />
-    <meta name="keywords" content="контакты фотографа, Галина Чернякова телефон, фотограф Санкт-Петербург, заказать фотосъемку, портфолио фотографа контакты" />
+    <title>Контакты — Галина Чернякова | Фотограф</title>
+    <meta name="description" content="Свяжитесь с фотографом Галиной Черняковой через удобную форму. Открыта для проектов, съемок и сотрудничества." />
+    <meta name="keywords" content="контакты фотографа, Галина Чернякова, заказать фотосъемку, форма обратной связи, фотограф Санкт-Петербург" />
     
-    <meta property="og:title" content="Контакты — Галина Чернякова | Фотограф" />
-    <meta property="og:description" content="Телефон, почта, адрес. Открыта для новых идей, проектов и съёмок." />
+    <meta property="og:title" content="Контакты — Галина Чернякова" />
+    <meta property="og:description" content="Отправьте сообщение через форму, свяжитесь по телефону или почте." />
     <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
     <meta property="og:url" content="https://photo-chernyakova.ru/contacts.html" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -31,18 +31,50 @@
         </div>
     </header>
 
-    <section class="hero" style="padding-top: 60px; padding-bottom: 10px;">
+    <section class="hero" style="padding-top: 60px; padding-bottom: 20px;">
         <div class="container">
             <h1>Будем <span>на связи</span></h1>
-            <p class="hero-lead">Открыта для идей, проектов и интересных съёмок</p>
+            <p class="hero-lead">Всегда открыта для идей, проектов и съёмок</p>
             <div class="hero-quote">✨ «Увидеть красоту в привычных вещах» ✨</div>
         </div>
     </section>
 
-    <section class="section" style="padding-top: 25px; padding-bottom: 25px;">
+    <section class="section fade-up" style="padding-top: 20px; padding-bottom: 20px;">
         <div class="container">
-            <div class="section-title">Контакты</div>
-            <div class="section-subtitle">Всегда на связи для новых идей, проектов и сотрудничества</div>
+            <div class="section-title">Напишите мне</div>
+            <div class="section-subtitle">Заполните форму, и я свяжусь с вами в ближайшее время</div>
+            
+            <div class="card" style="max-width: 600px; margin: 0 auto;">
+                <form action="https://formspree.io/f/mnjkbkvl" method="POST" style="display: flex; flex-direction: column; gap: 16px;">
+                    
+                    <div>
+                        <label for="name" style="display: block; margin-bottom: 4px; font-weight: 500; font-size: 15px; color: var(--text);">Ваше имя</label>
+                        <input type="text" id="name" name="name" placeholder="Например, Иван Иванов" required style="width: 100%; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); font-size: 16px; outline: none; transition: border 0.3s;">
+                    </div>
+
+                    <div>
+                        <label for="email" style="display: block; margin-bottom: 4px; font-weight: 500; font-size: 15px; color: var(--text);">Ваша почта</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required style="width: 100%; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); font-size: 16px; outline: none; transition: border 0.3s;">
+                    </div>
+
+                    <div>
+                        <label for="message" style="display: block; margin-bottom: 4px; font-weight: 500; font-size: 15px; color: var(--text);">Сообщение</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Расскажите о вашем проекте или идее..." required style="width: 100%; padding: 12px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--text); font-size: 16px; outline: none; transition: border 0.3s; resize: vertical;"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; text-align: center; border: none; cursor: pointer;">Отправить сообщение</button>
+                </form>
+            </div>
+
+            <div style="text-align: center; margin-top: 25px;">
+                <a href="mailto:galyagolowanowa2015@yandex.ru" style="color: var(--accent); font-weight: 500; text-decoration: underline;">Или напишите на прямую почту</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section fade-up" style="padding-top: 0px; padding-bottom: 30px;">
+        <div class="container">
+            <div class="section-title">Другие способы связи</div>
             <div class="contacts" style="flex-direction: column; align-items: center; gap: 12px;">
                 <a href="tel:+79217803810" style="width: fit-content;">📞 Телефон: +7 (921) 780-38-10</a>
                 <a href="mailto:galyagolowanowa2015@yandex.ru" style="width: fit-content;">📧 Почта: galyagolowanowa2015@yandex.ru</a>
@@ -55,11 +87,29 @@
 
     <footer>
         <div class="container">
-            <p class="stardust">✦ Спасибо, что заглянули в объектив ✦</p>
+            <p class="stardust">✦ Всегда рада новым проектам ✦</p>
             <p>© <span id="current-year"></span> Галина Чернякова</p>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            document.querySelectorAll('.section, .card').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
