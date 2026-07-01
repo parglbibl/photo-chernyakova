@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --bg: #FDFBF7;
-    --panel: #F8F5F0;
-    --panel2: #F2EEE8;
-    --text: #2C2C2C;
-    --muted: #77736C;
-    --accent: #8B6B54;
-    --accent-glow: rgba(139, 107, 84, 0.08);
-    --line: rgba(0, 0, 0, 0.06);
+    --bg: #F7F7F5;
+    --panel: #FFFFFF;
+    --panel2: #F1F1EE;
+    --text: #1F1F1F;
+    --muted: #6B6B6B;
+    --accent: #B08D57;
+    --accent-glow: rgba(176, 141, 87, 0.10);
+    --line: rgba(0, 0, 0, 0.08);
 }
 
 * {
@@ -47,7 +47,7 @@ header {
     left: 0 !important;
     width: 100% !important;
     z-index: 100 !important;
-    background: rgba(253, 251, 247, 0.92);
+    background: rgba(247, 247, 245, 0.92);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
     height: 80px;
