@@ -1,15 +1,15 @@
 /* ============================================================
-   PREMIUM PHOTOGRAPHER THEME (Dark / Black Sand)
+   PREMIUM PHOTOGRAPHER THEME (Custom Background Image)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
     /* ===== ПРЕМИАЛЬНАЯ ТЁМНАЯ ПАЛИТРА ===== */
-    --bg: #181715;             /* Фон сайта */
-    --text: #F7F3EE;           /* Заголовки (светлый крем) */
-    --muted: #D2CBC2;          /* Основной текст */
-    --small: #AEA49A;          /* Мелкий текст */
-    --accent: #C39A74;         /* Золотисто-бежевый акцент (кнопки, ссылки) */
+    --bg: #181715;
+    --text: #F7F3EE;
+    --muted: #D2CBC2;
+    --small: #AEA49A;
+    --accent: #C39A74;
     --accent-glow: rgba(195, 154, 116, 0.28);
     --line: rgba(255, 255, 255, 0.08);
     --card-shadow: 0 30px 80px rgba(0, 0, 0, 0.42);
@@ -24,12 +24,9 @@
 html, body {
     margin: 0 !important;
     padding: 0 !important;
-    /* Тот самый тёмный песочный/мраморный фон с лёгким свечением */
-    background:
-        radial-gradient(circle at top, rgba(255, 255, 255, 0.05), transparent 35%),
-        radial-gradient(circle at bottom, rgba(195, 154, 116, 0.05), transparent 45%),
-        linear-gradient(180deg, #1b1917, #181715 45%, #141311);
-    background-attachment: fixed;
+    /* Тот самый чёрный фон с волнистыми линиями через картинку */
+    background: url('images/bg-dark.PNG') no-repeat center center fixed;
+    background-size: cover;
     scroll-behavior: smooth;
 }
 
