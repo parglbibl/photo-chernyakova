@@ -166,16 +166,24 @@
         });
     </script>
 
-    <!-- СКРИПТ ЛАЙКОВ (SUPABASE) -->
+    <!-- ПОДКЛЮЧАЕМ БИБЛИОТЕКУ -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- НОВЫЙ СКРИПТ ЛАЙКОВ (БЕЗ КОНФЛИКТОВ) -->
     <script>
-        const SUPABASE_URL = 'https://lcadyvgzzcnflggvsfec.supabase.co';
-        const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxjYWR5dmd6emNuZmxnZ3ZzZmVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5ODk2MDcsImV4cCI6MjA5ODU2NTYwN30.QL8M-GGvhxbckBpTprshChpbru7w8g4dD2z9HB3m9nQ';
-
-        // Создаём клиент для работы с базой данных
-        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
         document.addEventListener("DOMContentLoaded", async function() {
+            // Проверяем, загрузилась ли библиотека
+            if (typeof window.supabase === 'undefined') {
+                console.error('Ошибка: библиотека Supabase не загружена!');
+                return;
+            }
+
+            const SUPABASE_URL = 'https://lcadyvgzzcnflggvsfec.supabase.co';
+            const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxjYWR5dmd6emNuZmxnZ3ZzZmVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5ODk2MDcsImV4cCI6MjA5ODU2NTYwN30.QL8M-GGvhxbckBpTprshChpbru7w8g4dD2z9HB3m9nQ';
+
+            // Используем уникальное имя переменной, чтобы точно избежать конфликта
+            const galinaSupabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
             const wrappers = document.querySelectorAll('.like-wrapper');
 
             for (const wrapper of wrappers) {
@@ -183,8 +191,8 @@
                 const countDisplay = wrapper.querySelector('.like-count');
                 const photoId = btn.dataset.photoId;
 
-                // 1. Загружаем текущее количество лайков
-                let { data, error } = await supabase
+                // 1. Загружаем текущее количество лайков из базы
+                let { data, error } = await galinaSupabase
                     .from('likes')
                     .select('count')
                     .eq('photo_id', photoId)
@@ -193,13 +201,13 @@
                 if (data) {
                     countDisplay.textContent = data.count;
                 } else {
-                    // Если запись отсутствует, создаём новую
-                    await supabase
+                    // Если записи нет, создаём её с нулём
+                    await galinaSupabase
                         .from('likes')
                         .insert({ photo_id: photoId, count: 0 });
                 }
 
-                // 2. Проверяем, лайкал ли пользователь в этом браузере
+                // 2. Проверяем, лайкал ли уже пользователь в этом браузере
                 if (localStorage.getItem('liked_' + photoId) === 'true') {
                     btn.querySelector('.heart-icon').textContent = '❤️';
                 }
@@ -210,14 +218,14 @@
 
                     if (localStorage.getItem('liked_' + photoId) === 'true') return;
 
-                    // Мгновенный визуальный эффект
+                    // Визуальный эффект
                     btn.querySelector('.heart-icon').textContent = '❤️';
                     let currentCount = parseInt(countDisplay.textContent);
                     countDisplay.textContent = currentCount + 1;
                     localStorage.setItem('liked_' + photoId, 'true');
 
                     // Сохраняем в базу данных
-                    const { error: updateError } = await supabase
+                    const { error: updateError } = await galinaSupabase
                         .from('likes')
                         .update({ count: currentCount + 1 })
                         .eq('photo_id', photoId);
