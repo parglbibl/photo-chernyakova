@@ -166,23 +166,22 @@
         });
     </script>
 
-    <!-- ПОДКЛЮЧАЕМ БИБЛИОТЕКУ -->
+    <!-- ПОДКЛЮЧАЕМ БИБЛИОТЕКУ SUPABASE -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    <!-- НОВЫЙ СКРИПТ ЛАЙКОВ (БЕЗ КОНФЛИКТОВ) -->
     <script>
         document.addEventListener("DOMContentLoaded", async function() {
             // Проверяем, загрузилась ли библиотека
             if (typeof window.supabase === 'undefined') {
-                console.error('Ошибка: библиотека Supabase не загружена!');
+                console.error('Ошибка: Библиотека Supabase не загружена!');
                 return;
             }
 
             const SUPABASE_URL = 'https://lcadyvgzzcnflggvsfec.supabase.co';
             const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxjYWR5dmd6emNuZmxnZ3ZzZmVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5ODk2MDcsImV4cCI6MjA5ODU2NTYwN30.QL8M-GGvhxbckBpTprshChpbru7w8g4dD2z9HB3m9nQ';
 
-            // Используем уникальное имя переменной, чтобы точно избежать конфликта
-            const galinaSupabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+            // ИСПОЛЬЗУЕМ УНИКАЛЬНОЕ ИМЯ ПЕРЕМЕННОЙ
+            const galinaApp = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
             const wrappers = document.querySelectorAll('.like-wrapper');
 
@@ -192,7 +191,7 @@
                 const photoId = btn.dataset.photoId;
 
                 // 1. Загружаем текущее количество лайков из базы
-                let { data, error } = await galinaSupabase
+                let { data, error } = await galinaApp
                     .from('likes')
                     .select('count')
                     .eq('photo_id', photoId)
@@ -202,7 +201,7 @@
                     countDisplay.textContent = data.count;
                 } else {
                     // Если записи нет, создаём её с нулём
-                    await galinaSupabase
+                    await galinaApp
                         .from('likes')
                         .insert({ photo_id: photoId, count: 0 });
                 }
@@ -225,7 +224,7 @@
                     localStorage.setItem('liked_' + photoId, 'true');
 
                     // Сохраняем в базу данных
-                    const { error: updateError } = await galinaSupabase
+                    const { error: updateError } = await galinaApp
                         .from('likes')
                         .update({ count: currentCount + 1 })
                         .eq('photo_id', photoId);
