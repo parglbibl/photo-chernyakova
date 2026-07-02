@@ -98,16 +98,24 @@ document.addEventListener("DOMContentLoaded", function() {
         ecommerce:"dataLayer"
     });
 
-    // ===== ЗАЩИТА ФОТОГРАФИЙ ОТ ВОРОВСТВА =====
+    // ===== ЗАЩИТА ФОТОГРАФИЙ ОТ ВОРОВСТВА (ИСПРАВЛЕННАЯ, БЕЗ ОШИБОК) =====
+    function safeClosest(e, selector) {
+        try {
+            return e.target.closest(selector);
+        } catch (err) {
+            return null;
+        }
+    }
+
     document.addEventListener('contextmenu', function(e) {
-        if (e.target.closest('.gallery-item img') || e.target.closest('.home-photo img') || e.target.closest('.hero-avatar img')) {
+        if (safeClosest(e, '.gallery-item img') || safeClosest(e, '.home-photo img') || safeClosest(e, '.hero-avatar img')) {
             e.preventDefault();
             return false;
         }
     });
 
     document.addEventListener('mousedown', function(e) {
-        if (e.target.closest('.gallery-item img') || e.target.closest('.home-photo img') || e.target.closest('.hero-avatar img')) {
+        if (safeClosest(e, '.gallery-item img') || safeClosest(e, '.home-photo img') || safeClosest(e, '.hero-avatar img')) {
             if (e.button === 2) {
                 e.preventDefault();
                 return false;
@@ -116,21 +124,22 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.addEventListener('dragstart', function(e) {
-        if (e.target.closest('.gallery-item img') || e.target.closest('.home-photo img') || e.target.closest('.hero-avatar img')) {
+        if (safeClosest(e, '.gallery-item img') || safeClosest(e, '.home-photo img') || safeClosest(e, '.hero-avatar img')) {
             e.preventDefault();
         }
     });
 
     document.addEventListener('selectstart', function(e) {
-        if (e.target.closest('.gallery-item img') || e.target.closest('.home-photo img') || e.target.closest('.hero-avatar img')) {
+        if (safeClosest(e, '.gallery-item img') || safeClosest(e, '.home-photo img') || safeClosest(e, '.hero-avatar img')) {
             e.preventDefault();
         }
     });
-
+    
+    // Защита от Ctrl+C на картинках
     document.addEventListener('keydown', function(e) {
         if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
             var target = e.target;
-            if (target.closest('.gallery-item img') || target.closest('.home-photo img') || target.closest('.hero-avatar img')) {
+            if (safeClosest(e, '.gallery-item img') || safeClosest(e, '.home-photo img') || safeClosest(e, '.hero-avatar img')) {
                 e.preventDefault();
                 return false;
             }
