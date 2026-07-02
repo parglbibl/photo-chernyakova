@@ -1,5 +1,5 @@
 /* ============================================================
-   PREMIUM PHOTOGRAPHER THEME (Custom Background Image from file)
+   PREMIUM PHOTOGRAPHER THEME
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -23,7 +23,6 @@
 html, body {
     margin: 0 !important;
     padding: 0 !important;
-    /* ТВОЯ КАРТИНКА ТЕПЕРЬ НАСТОЯЩИЙ ФОН! */
     background: url('images/bg-dark.PNG') no-repeat center center fixed;
     background-size: cover;
     scroll-behavior: smooth;
