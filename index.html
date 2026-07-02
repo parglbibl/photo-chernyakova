@@ -10,7 +10,7 @@
     
     <link rel="canonical" href="https://photo-chernyakova.ru/" />
     
-    <!-- ===== ФАВИКОНКИ (ПРАВИЛЬНЫЕ ПУТИ) ===== -->
+    <!-- ФАВИКОНКИ -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -351,20 +351,20 @@
             <!-- ========================================= -->
             <div class="home-gallery-wrap">
                 <div class="home-gallery">
-                    <div class="home-photo" data-src="images/gallery/5.png" data-caption="Мир в капле" loading="lazy">
-                        <img src="images/gallery/5.png" alt="Мир в капле" loading="lazy">
+                    <div class="home-photo" data-src="images/gallery/5.png" data-caption="Мир в капле">
+                        <img src="images/gallery/5.png" alt="Мир в капле">
                         <div class="caption-overlay">Мир в капле</div>
                     </div>
-                    <div class="home-photo" data-src="images/gallery/17.png" data-caption="Головоломка" loading="lazy">
-                        <img src="images/gallery/17.png" alt="Головоломка" loading="lazy">
+                    <div class="home-photo" data-src="images/gallery/17.png" data-caption="Головоломка">
+                        <img src="images/gallery/17.png" alt="Головоломка">
                         <div class="caption-overlay">Головоломка</div>
                     </div>
-                    <div class="home-photo" data-src="images/gallery/1.png" data-caption="Алые капли" loading="lazy">
-                        <img src="images/gallery/1.png" alt="Алые капли" loading="lazy">
+                    <div class="home-photo" data-src="images/gallery/1.png" data-caption="Алые капли">
+                        <img src="images/gallery/1.png" alt="Алые капли">
                         <div class="caption-overlay">Алые капли</div>
                     </div>
-                    <div class="home-photo" data-src="images/gallery/4.png" data-caption="Одинокий лепесток" loading="lazy">
-                        <img src="images/gallery/4.png" alt="Одинокий лепесток" loading="lazy">
+                    <div class="home-photo" data-src="images/gallery/4.png" data-caption="Одинокий лепесток">
+                        <img src="images/gallery/4.png" alt="Одинокий лепесток">
                         <div class="caption-overlay">Одинокий лепесток</div>
                     </div>
                 </div>
@@ -508,7 +508,6 @@
             }, {
                 threshold: 0.1
             });
-
             document.querySelectorAll('.section, .project-card, .card, .stat-card').forEach(function(el) {
                 el.classList.add('fade-up');
                 observer.observe(el);
@@ -705,5 +704,18 @@
         }
     })();
     </script>
+
+    <!-- ===== ЯНДЕКС.МЕТРИКА ===== -->
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();for (var j=0;j<document.scripts.length;j++){if(document.scripts[j].src===r){return;}}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110292534', 'ym');
+       ym(110292534, 'init', {clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true,ecommerce:"dataLayer"});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/110292534" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
 </body>
 </html>
