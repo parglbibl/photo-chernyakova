@@ -44,7 +44,9 @@
         <div class="container">
             <div class="section-title">🌿 Макромир</div>
             <div class="section-subtitle">Капли, цветы, текстуры</div>
-            <div class="gallery" id="photoGalleryMacro">
+            
+            <!-- ЕДИНАЯ ГАЛЕРЕЯ ДЛЯ ВСЕХ ФОТО (Лайтбокс видит всё) -->
+            <div class="gallery" id="photoGallery">
                 <div class="gallery-item"><img src="images/gallery/1.png" alt="" loading="lazy" /></div>
                 <div class="gallery-item"><img src="images/gallery/2.png" alt="" loading="lazy" /></div>
                 <div class="gallery-item"><img src="images/gallery/3.png" alt="" loading="lazy" /></div>
@@ -72,7 +74,9 @@
         <div class="container">
             <div class="section-title">💡 Концепт</div>
             <div class="section-subtitle">Идея, минимализм, форма</div>
-            <div class="gallery" id="photoGalleryConcept">
+            
+            <!-- ПРОДОЛЖЕНИЕ ТОЙ ЖЕ ГАЛЕРЕИ -->
+            <div class="gallery">
                 <div class="gallery-item"><img src="images/gallery/4.png" alt="" loading="lazy" /></div>
                 <div class="gallery-item"><img src="images/gallery/6.png" alt="" loading="lazy" /></div>
                 <div class="gallery-item"><img src="images/gallery/16.png" alt="" loading="lazy" /></div>
@@ -93,7 +97,9 @@
         <div class="container">
             <div class="section-title">🌄 Природа</div>
             <div class="section-subtitle">Атмосфера и пространство</div>
-            <div class="gallery" id="photoGalleryNature">
+            
+            <!-- ПРОДОЛЖЕНИЕ ТОЙ ЖЕ ГАЛЕРЕИ -->
+            <div class="gallery">
                 <div class="gallery-item"><img src="images/gallery/15.png" alt="" loading="lazy" /></div>
                 <div class="gallery-item"><img src="images/gallery/23.png" alt="" loading="lazy" /></div>
                 <div class="gallery-item"><img src="images/gallery/24.png" alt="" loading="lazy" /></div>
@@ -112,18 +118,17 @@
 
     <script src="js/main.js"></script>
 
-    <!-- СКРИПТ ЕДИНОГО ЛАЙТБОКСА ДЛЯ ВСЕХ РАЗДЕЛОВ (ИСПРАВЛЕННЫЙ) -->
+    <!-- ЛАЙТБОКС (ПРОСТОЙ И РАБОЧИЙ) -->
     <script>
     (function() {
         if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', initFullGallery);
+            document.addEventListener('DOMContentLoaded', initGallery);
         } else {
-            initFullGallery();
+            initGallery();
         }
 
-        function initFullGallery() {
-            // Ищем все галереи по новым ID
-            var items = document.querySelectorAll('#photoGalleryMacro .gallery-item, #photoGalleryConcept .gallery-item, #photoGalleryNature .gallery-item');
+        function initGallery() {
+            var items = document.querySelectorAll('#photoGallery .gallery-item');
             if (items.length === 0) return;
 
             var overlay = document.querySelector('.lightbox-overlay');
