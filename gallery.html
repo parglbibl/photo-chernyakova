@@ -166,13 +166,14 @@
         });
     </script>
 
-    <!-- СКРИПТ ЛАЙКОВ (SUPABASE) - БЕЗ ДУБЛИРОВАНИЯ ПЕРЕМЕННОЙ -->
+    <!-- СКРИПТ ЛАЙКОВ (SUPABASE) -->
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
         const SUPABASE_URL = 'https://lcadyvgzzcnflggvsfec.supabase.co';
         const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxjYWR5dmd6emNuZmxnZ3ZzZmVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5ODk2MDcsImV4cCI6MjA5ODU2NTYwN30.QL8M-GGvhxbckBpTprshChpbru7w8g4dD2z9HB3m9nQ';
 
-        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+        // Создаём клиент для работы с базой данных
+        const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
         document.addEventListener("DOMContentLoaded", async function() {
             const wrappers = document.querySelectorAll('.like-wrapper');
@@ -182,7 +183,7 @@
                 const countDisplay = wrapper.querySelector('.like-count');
                 const photoId = btn.dataset.photoId;
 
-                // Загружаем текущее кол-во лайков
+                // 1. Загружаем текущее количество лайков
                 let { data, error } = await supabase
                     .from('likes')
                     .select('count')
@@ -192,28 +193,30 @@
                 if (data) {
                     countDisplay.textContent = data.count;
                 } else {
-                    // Если записи нет, создаём её с нулём
+                    // Если запись отсутствует, создаём новую
                     await supabase
                         .from('likes')
                         .insert({ photo_id: photoId, count: 0 });
                 }
 
-                // Проверяем, лайкал ли уже этот браузер
+                // 2. Проверяем, лайкал ли пользователь в этом браузере
                 if (localStorage.getItem('liked_' + photoId) === 'true') {
                     btn.querySelector('.heart-icon').textContent = '❤️';
                 }
 
-                // Обработчик клика
+                // 3. Обработчик клика по кнопке
                 btn.addEventListener('click', async function(e) {
                     e.preventDefault();
 
                     if (localStorage.getItem('liked_' + photoId) === 'true') return;
 
+                    // Мгновенный визуальный эффект
                     btn.querySelector('.heart-icon').textContent = '❤️';
                     let currentCount = parseInt(countDisplay.textContent);
                     countDisplay.textContent = currentCount + 1;
                     localStorage.setItem('liked_' + photoId, 'true');
 
+                    // Сохраняем в базу данных
                     const { error: updateError } = await supabase
                         .from('likes')
                         .update({ count: currentCount + 1 })
