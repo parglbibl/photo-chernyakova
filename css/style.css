@@ -1,14 +1,15 @@
-/* Обновлено 02.07.2026 - новый дизайн с шалфеем */
+/* Обновлено 02.07.2026 - палитра от жены */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    /* ===== ПАЛИТРА С ШАЛФЕЕМ ===== */
+    /* ===== ПАЛИТРА ОТ ЖЕНЫ ===== */
     --bg: #F8F4EC;
-    --panel: #FDFBF7;
-    --panel2: #EFEAE0;
     --text: #2E2E2E;
     --muted: #4A4A4A;
+    --small: #7A7A7A;
     --accent: #7C8C7A;
+    /* --accent: #C49A6C; */
+    
     --accent-glow: rgba(124, 140, 122, 0.15);
     --line: #DCD6CC;
     --card-shadow: 0 12px 35px rgba(80, 70, 60, 0.10);
@@ -179,10 +180,10 @@ h1 {
     display: inline-block;
     padding: 14px 28px;
     border-radius: 40px;
-    background: var(--panel);
+    background: var(--bg);
     border: 1px solid var(--line);
     font-size: 18px;
-    color: var(--muted);
+    color: var(--small);
     font-style: italic;
     max-width: 100%;
     word-break: break-word;
@@ -197,7 +198,7 @@ h1 {
 }
 
 .stat-card {
-    background: var(--panel);
+    background: var(--bg);
     border: 1px solid var(--line);
     border-radius: 16px;
     padding: 28px 20px;
@@ -218,7 +219,7 @@ h1 {
 }
 
 .stat-label {
-    color: var(--text);
+    color: var(--muted);
     font-size: 16px;
     font-weight: 500;
     margin-top: 2px;
@@ -226,7 +227,7 @@ h1 {
 }
 
 .stat-desc {
-    color: var(--muted);
+    color: var(--small);
     font-size: 14px;
     opacity: 0.6;
     margin-top: 2px;
@@ -247,7 +248,7 @@ h1 {
 
 .section-subtitle {
     text-align: center;
-    color: var(--muted);
+    color: var(--small);
     font-size: 19px;
     max-width: 640px;
     margin: 0 auto 40px;
@@ -269,7 +270,7 @@ h1 {
 }
 
 .card {
-    background: var(--panel);
+    background: var(--bg);
     border: 1px solid var(--line);
     border-radius: 20px;
     padding: 32px 28px;
@@ -316,7 +317,7 @@ h1 {
 }
 
 .project-card {
-    background: var(--panel);
+    background: var(--bg);
     border: 1px solid var(--line);
     border-radius: 20px;
     padding: 32px 28px;
@@ -348,7 +349,7 @@ h1 {
     border-radius: 20px;
     font-size: 13px;
     font-weight: 600;
-    background: var(--panel);
+    background: var(--bg);
     color: var(--accent);
     border: 1px solid var(--line);
     margin-right: 6px;
@@ -364,7 +365,7 @@ h1 {
 }
 
 .contacts a {
-    color: var(--text);
+    color: var(--muted);
     text-decoration: none;
     font-size: 18px;
     font-weight: 500;
@@ -376,7 +377,7 @@ h1 {
 }
 
 .contacts a:hover {
-    background: var(--panel);
+    background: var(--bg);
     border-color: var(--accent);
     transform: translateY(-2px);
 }
@@ -392,7 +393,7 @@ h1 {
     padding: 16px 22px;
     margin-bottom: 10px;
     border-radius: 12px;
-    background: var(--panel);
+    background: var(--bg);
     border: 1px solid var(--line);
     color: var(--muted);
     font-size: 17px;
@@ -433,7 +434,7 @@ h1 {
 }
 
 .timeline-text {
-    color: var(--muted);
+    color: var(--small);
     font-size: 17px;
     opacity: 0.9;
 }
@@ -449,7 +450,7 @@ h1 {
     position: relative;
     border-radius: 16px;
     overflow: hidden;
-    background: var(--panel);
+    background: var(--bg);
     border: 1px solid var(--line);
     cursor: pointer;
     transition: 0.3s;
@@ -552,7 +553,7 @@ h1 {
 .lightbox-content .caption {
     margin-top: 8px;
     text-align: center;
-    color: var(--text);
+    color: var(--small);
     font-size: 18px;
     font-weight: 500;
     opacity: 0.9;
@@ -654,7 +655,7 @@ h1 {
 }
 
 .btn-outline:hover {
-    background: var(--panel);
+    background: var(--bg);
     border-color: var(--accent);
     box-shadow: none;
 }
@@ -662,7 +663,7 @@ h1 {
 footer {
     padding: 36px 0;
     border-top: 1px solid var(--line);
-    color: var(--muted);
+    color: var(--small);
     text-align: center;
 }
 
@@ -764,7 +765,7 @@ img {
     align-items: center;
     justify-content: center;
     gap: 6px;
-    background: rgba(253, 251, 247, 0.9);
+    background: rgba(248, 244, 236, 0.9);
     padding: 6px 12px;
     border-radius: 30px;
     backdrop-filter: blur(4px);
