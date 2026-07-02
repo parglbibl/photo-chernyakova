@@ -112,7 +112,7 @@
 
     <script src="js/main.js"></script>
 
-    <!-- СКРИПТ ЕДИНОГО ЛАЙТБОКСА ДЛЯ ВСЕХ РАЗДЕЛОВ -->
+    <!-- СКРИПТ ЕДИНОГО ЛАЙТБОКСА ДЛЯ ВСЕХ РАЗДЕЛОВ (ИСПРАВЛЕННЫЙ) -->
     <script>
     (function() {
         if (document.readyState === 'loading') {
@@ -122,7 +122,8 @@
         }
 
         function initFullGallery() {
-            var items = document.querySelectorAll('.gallery-item');
+            // Ищем все галереи по новым ID
+            var items = document.querySelectorAll('#photoGalleryMacro .gallery-item, #photoGalleryConcept .gallery-item, #photoGalleryNature .gallery-item');
             if (items.length === 0) return;
 
             var overlay = document.querySelector('.lightbox-overlay');
