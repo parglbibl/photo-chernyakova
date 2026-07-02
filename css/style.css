@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    /* ===== ПАЛИТРА С ШАЛФЕЕМ ===== */
+    /* ===== ПАЛИТРА С ЗОЛОТОМ ===== */
     --bg: #F8F4EC;
     --panel: #FDFBF7;
     --panel2: #EFEAE0;
     --text: #2E2E2E;
     --muted: #4A4A4A;
-    --accent: #7C8C7A;
-    --accent-glow: rgba(124, 140, 122, 0.15);
+    --accent: #C49A6C;
+    --accent-glow: rgba(196, 154, 108, 0.15);
     --line: #DCD6CC;
     --card-shadow: 0 12px 35px rgba(80, 70, 60, 0.10);
 }
@@ -643,7 +643,7 @@ h1 {
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 30px var(--accent-glow);
-    background: #6A7A68; /* чуть темнее шалфея */
+    background: #B0855A; /* чуть темнее золота */
 }
 
 .btn-outline {
