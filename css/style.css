@@ -1,15 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
-    /* ===== НОВАЯ ПРЕМИАЛЬНАЯ ПАЛИТРА ===== */
-    --bg: #E9E4DA;
-    --panel: #F3EFE7;
-    --panel2: #EEE7DC;
-    --text: #303236;
-    --muted: #686A6E;
-    --accent: #9B7B55;
-    --accent-glow: rgba(155, 123, 85, 0.15);
-    --line: rgba(48, 50, 54, 0.12);
+    /* ===== ПАЛИТРА С ШАЛФЕЕМ ===== */
+    --bg: #F8F4EC;
+    --panel: #FDFBF7;
+    --panel2: #EFEAE0;
+    --text: #2E2E2E;
+    --muted: #4A4A4A;
+    --accent: #7C8C7A;
+    --accent-glow: rgba(124, 140, 122, 0.15);
+    --line: #DCD6CC;
     --card-shadow: 0 12px 35px rgba(80, 70, 60, 0.10);
 }
 
@@ -49,7 +49,7 @@ header {
     left: 0 !important;
     width: 100% !important;
     z-index: 100 !important;
-    background: rgba(233, 228, 218, 0.92);
+    background: rgba(248, 244, 236, 0.92);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line);
     height: 80px;
@@ -481,7 +481,7 @@ h1 {
     left: 0;
     right: 0;
     padding: 14px;
-    background: linear-gradient(transparent, rgba(243, 239, 231, 0.9));
+    background: linear-gradient(transparent, rgba(248, 244, 236, 0.9));
     color: var(--text);
     font-weight: 500;
     font-size: 15px;
@@ -502,7 +502,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(233, 228, 218, 0.96);
+    background: rgba(248, 244, 236, 0.96);
     z-index: 9999;
     justify-content: center;
     align-items: center;
@@ -556,7 +556,7 @@ h1 {
     font-weight: 500;
     opacity: 0.9;
     padding: 8px 20px;
-    background: rgba(243, 239, 231, 0.5);
+    background: rgba(253, 251, 247, 0.5);
     border-radius: 8px;
     max-width: 90%;
     backdrop-filter: blur(4px);
@@ -631,7 +631,7 @@ h1 {
     padding: 14px 32px;
     border-radius: 40px;
     background: var(--accent);
-    color: #F8F4EC;
+    color: #FFFFFF;
     font-weight: 700;
     font-size: 17px;
     text-decoration: none;
@@ -643,7 +643,7 @@ h1 {
 .btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 30px var(--accent-glow);
-    background: #B39168;
+    background: #6A7A68; /* чуть темнее шалфея */
 }
 
 .btn-outline {
@@ -762,7 +762,7 @@ img {
     display: flex;
     align-items: center;
     gap: 6px;
-    background: rgba(243, 239, 231, 0.85);
+    background: rgba(253, 251, 247, 0.85);
     padding: 6px 12px;
     border-radius: 30px;
     backdrop-filter: blur(4px);
@@ -795,7 +795,6 @@ img {
     text-align: center;
 }
 
-/* Адаптив для мобильных */
 @media (max-width: 600px) {
     .like-wrapper {
         bottom: 8px;
