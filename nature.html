@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <title>Природа — Галина Чернякова | Фотограф</title>
+    <meta name="description" content="Пейзажи и атмосферные фотографии Галины Черняковой: сакура, лёд, закаты." />
+    <meta name="keywords" content="пейзажи, природа, сакура, закат, Галина Чернякова" />
+    
+    <meta property="og:title" content="Природа — Галина Чернякова" />
+    <meta property="og:description" content="Атмосферные пейзажи в работах Галины Черняковой." />
+    <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
+    <meta property="og:url" content="https://photo-chernyakova.ru/nature.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                <li><a href="gallery.html">Галерея</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero" style="padding-top: 60px; padding-bottom: 10px;">
+        <div class="container">
+            <h1>Природа</h1>
+            <p class="hero-lead">Атмосфера и пространство</p>
+            <div class="hero-quote">✨ «Самое главное — это то, что невозможно увидеть глазами» ✨</div>
+        </div>
+    </section>
+
+    <section class="section fade-up" style="padding-top: 25px; padding-bottom: 25px;">
+        <div class="container">
+            <div class="section-title">Пейзажи</div>
+            <div class="section-subtitle">Сакура, лёд и закаты</div>
+            <div class="gallery" id="natureGallery">
+                <div class="gallery-item" data-caption="Сакура в сумерках"><img src="images/gallery/23.png" alt="Сакура в сумерках" loading="lazy" /><div class="overlay">Сакура в сумерках</div></div>
+                <div class="gallery-item" data-caption="Сакура в лучах"><img src="images/gallery/32.png" alt="Сакура в лучах" loading="lazy" /><div class="overlay">Сакура в лучах</div></div>
+                <div class="gallery-item" data-caption="Ледяная синева 2"><img src="images/gallery/24.png" alt="Ледяная синева 2" loading="lazy" /><div class="overlay">Ледяная синева 2</div></div>
+                <div class="gallery-item" data-caption="Светящиеся нити"><img src="images/gallery/6.png" alt="Светящиеся нити" loading="lazy" /><div class="overlay">Светящиеся нити</div></div>
+                <div class="gallery-item" data-caption="Перевёрнутый сад"><img src="images/gallery/11.png" alt="Перевёрнутый сад" loading="lazy" /><div class="overlay">Перевёрнутый сад</div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Каждое фото — это застывшая эмоция ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            document.querySelectorAll('.section, .gallery').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <script>
+    (function() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initNatureGallery);
+        } else {
+            initNatureGallery();
+        }
+
+        function initNatureGallery() {
+            var items = document.querySelectorAll('.gallery-item');
+            if (items.length === 0) return;
+
+            var overlay = document.querySelector('.lightbox-overlay');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'lightbox-overlay';
+                overlay.innerHTML = `
+                    <div class="lightbox-content">
+                        <span class="close-btn">&times;</span>
+                        <div class="lightbox-image-wrapper">
+                            <img src="" alt="Увеличенное фото" />
+                        </div>
+                        <div class="caption"></div>
+                        <div class="lightbox-nav">
+                            <button class="nav-btn prev-btn">‹</button>
+                            <span class="counter">1 / 5</span>
+                            <button class="nav-btn next-btn">›</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(overlay);
+            }
+
+            var lightboxImg = overlay.querySelector('img');
+            var captionEl = overlay.querySelector('.caption');
+            var closeBtn = overlay.querySelector('.close-btn');
+            var prevBtn = overlay.querySelector('.prev-btn');
+            var nextBtn = overlay.querySelector('.next-btn');
+            var counter = overlay.querySelector('.counter');
+
+            var imageItems = [];
+            items.forEach(function(item) {
+                var img = item.querySelector('img');
+                if (img && img.src) {
+                    imageItems.push({
+                        src: img.src,
+                        caption: item.getAttribute('data-caption') || 'Фотография'
+                    });
+                }
+            });
+
+            var currentIndex = 0;
+            var currentScale = 1;
+            var minScale = 1;
+            var maxScale = 5;
+
+            function openLightbox(index) {
+                if (imageItems.length === 0) return;
+                if (index < 0) index = imageItems.length - 1;
+                if (index >= imageItems.length) index = 0;
+                currentIndex = index;
+                
+                var item = imageItems[currentIndex];
+                lightboxImg.src = item.src;
+                captionEl.textContent = item.caption;
+                counter.textContent = (currentIndex + 1) + ' / ' + imageItems.length;
+                
+                currentScale = 1;
+                lightboxImg.style.transform = 'scale(1)';
+                lightboxImg.style.cursor = 'zoom-in';
+                
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeLightbox() {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            items.forEach(function(item) {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var img = this.querySelector('img');
+                    if (img && img.src) {
+                        for (var j = 0; j < imageItems.length; j++) {
+                            if (imageItems[j].src === img.src) {
+                                openLightbox(j);
+                                break;
+                            }
+                        }
+                    }
+                });
+            });
+
+            prevBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openLightbox(currentIndex - 1);
+            });
+
+            nextBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                openLightbox(currentIndex + 1);
+            });
+
+            closeBtn.addEventListener('click', closeLightbox);
+            overlay.addEventListener('click', function(e) {
+                if (e.target === overlay) closeLightbox();
+            });
+
+            document.addEventListener('keydown', function(e) {
+                if (!overlay.classList.contains('active')) return;
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') openLightbox(currentIndex - 1);
+                if (e.key === 'ArrowRight') openLightbox(currentIndex + 1);
+            });
+
+            lightboxImg.addEventListener('wheel', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var delta = e.deltaY > 0 ? -0.1 : 0.1;
+                currentScale = Math.min(maxScale, Math.max(minScale, currentScale + delta));
+                this.style.transform = 'scale(' + currentScale + ')';
+                this.style.cursor = currentScale > 1 ? 'zoom-out' : 'zoom-in';
+            }, { passive: false });
+
+            lightboxImg.addEventListener('dblclick', function() {
+                currentScale = 1;
+                this.style.transform = 'scale(1)';
+                this.style.cursor = 'zoom-in';
+            });
+
+            var touchStartX = 0;
+            var lastTouchDistance = 0;
+            var touchStartScale = 1;
+
+            overlay.addEventListener('touchstart', function(e) {
+                var target = e.target;
+                if (target === overlay || target === lightboxImg || target.closest('.lightbox-image-wrapper')) {
+                    if (e.touches.length === 1) {
+                        touchStartX = e.touches[0].clientX;
+                    }
+                    if (e.touches.length === 2) {
+                        var t1 = e.touches[0];
+                        var t2 = e.touches[1];
+                        lastTouchDistance = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+                        touchStartScale = currentScale;
+                    }
+                }
+            }, { passive: true });
+
+            overlay.addEventListener('touchmove', function(e) {
+                if (e.touches.length === 2) {
+                    e.preventDefault();
+                    var t1 = e.touches[0];
+                    var t2 = e.touches[1];
+                    var distance = Math.hypot(t1.clientX - t2.clientX, t1.clientY - t2.clientY);
+                    if (lastTouchDistance > 0) {
+                        var scaleChange = distance / lastTouchDistance;
+                        currentScale = Math.min(maxScale, Math.max(minScale, touchStartScale * scaleChange));
+                        lightboxImg.style.transform = 'scale(' + currentScale + ')';
+                    }
+                }
+            }, { passive: false });
+
+            overlay.addEventListener('touchend', function(e) {
+                if (currentScale > 1) {
+                    touchStartX = 0;
+                    return;
+                }
+                if (touchStartX === 0) return;
+                
+                var touchEndX = e.changedTouches[0].clientX;
+                var diffX = touchStartX - touchEndX;
+                
+                if (Math.abs(diffX) > 50) {
+                    if (diffX > 0) {
+                        openLightbox(currentIndex + 1);
+                    } else {
+                        openLightbox(currentIndex - 1);
+                    }
+                }
+                touchStartX = 0;
+            }, { passive: true });
+        }
+    })();
+    </script>
+</body>
+</html>
