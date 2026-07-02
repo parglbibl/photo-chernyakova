@@ -45,10 +45,10 @@
             <div class="section-title">Пейзажи</div>
             <div class="section-subtitle">Сакура, лёд и закаты</div>
             <div class="gallery" id="natureGallery">
-                <div class="gallery-item" data-caption="Стеклянное золото"><img src="images/gallery/15.png" alt="Стеклянное золото" loading="lazy" /><div class="overlay">Стеклянное золото</div></div>
-                <div class="gallery-item" data-caption="Сакура в сумерках"><img src="images/gallery/23.png" alt="Сакура в сумерках" loading="lazy" /><div class="overlay">Сакура в сумерках</div></div>
-                <div class="gallery-item" data-caption="Ледяная синева 2"><img src="images/gallery/24.png" alt="Ледяная синева 2" loading="lazy" /><div class="overlay">Ледяная синева 2</div></div>
-                <div class="gallery-item" data-caption="Сакура в лучах"><img src="images/gallery/32.png" alt="Сакура в лучах" loading="lazy" /><div class="overlay">Сакура в лучах</div></div>
+                <div class="gallery-item"><img src="images/gallery/15.png" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/23.png" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/24.png" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/32.png" alt="" loading="lazy" /></div>
             </div>
         </div>
     </section>
@@ -100,7 +100,7 @@
                     <div class="lightbox-content">
                         <span class="close-btn">&times;</span>
                         <div class="lightbox-image-wrapper">
-                            <img src="" alt="Увеличенное фото" />
+                            <img src="" alt="" />
                         </div>
                         <div class="caption"></div>
                         <div class="lightbox-nav">
@@ -126,7 +126,7 @@
                 if (img && img.src) {
                     imageItems.push({
                         src: img.src,
-                        caption: item.getAttribute('data-caption') || 'Фотография'
+                        caption: ''
                     });
                 }
             });
@@ -144,7 +144,7 @@
                 
                 var item = imageItems[currentIndex];
                 lightboxImg.src = item.src;
-                captionEl.textContent = item.caption;
+                captionEl.textContent = '';
                 counter.textContent = (currentIndex + 1) + ' / ' + imageItems.length;
                 
                 currentScale = 1;
