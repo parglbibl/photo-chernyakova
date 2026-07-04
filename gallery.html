@@ -1,524 +1,349 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Фотоотчёты с мероприятий Книжные грани</title>
-    <meta name="description" content="Фотографии с игротек, турниров по спидкубингу и мастер-классов в библиотеке. Смотрите, как это было!">
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Yandex.Metrika counter -->
-    <script type="text/javascript">
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=109783209', 'ym');
-
-        ym(109783209, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/109783209" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- /Yandex.Metrika counter -->
-
-    <!-- ===== FAVICON ===== -->
-    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-    <link rel="manifest" href="/favicon/site.webmanifest">
-    <meta name="msapplication-TileColor" content="#ff2e5a">
-    <meta name="theme-color" content="#fef9f0">
-
-    <style>
-        .gallery-filters {
-            display: flex;
-            gap: 0.8rem;
-            justify-content: center;
-            margin-bottom: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .gallery-filters .btn-sm {
-            padding: 0.4rem 1.2rem;
-            font-size: 0.7rem;
-            border-radius: 20px;
-            background: rgba(0,0,0,0.04);
-            border-color: transparent;
-            color: var(--text-secondary);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .gallery-filters .btn-sm:hover {
-            background: rgba(255,46,90,0.08);
-            color: var(--neon-coral);
-        }
-
-        .gallery-filters .btn-sm.active {
-            background: var(--neon-coral);
-            color: #fff;
-            border-color: var(--neon-coral);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1.2rem;
-        }
-
-        .gallery-item {
-            border-radius: 16px;
-            overflow: hidden;
-            background: var(--graphite-dark);
-            border: 1px solid rgba(0,0,0,0.06);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .gallery-item .gallery-label {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-            padding: 1.5rem 1rem 0.8rem;
-            color: #fff;
-            font-size: 0.75rem;
-            font-weight: 500;
-            pointer-events: none;
-        }
-
-        .gallery-empty {
-            text-align: center;
-            padding: 3rem;
-            color: var(--text-secondary);
-            grid-column: 1 / -1;
-        }
-
-        .gallery-empty i {
-            font-size: 3rem;
-            color: rgba(0,0,0,0.06);
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        @media (max-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 0.8rem;
-            }
-            .gallery-item img {
-                height: 140px;
-            }
-            .gallery-filters .btn-sm {
-                font-size: 0.6rem;
-                padding: 0.3rem 0.8rem;
-            }
-        }
-
-        /* ===== ЛАЙТБОКС ДЛЯ ГАЛЕРЕИ ===== */
-        .gallery-lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(8px);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .gallery-lightbox.active {
-            display: flex;
-        }
-
-        .gallery-lightbox-image-wrapper {
-            position: relative;
-            max-width: 90vw;
-            max-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gallery-lightbox-image-wrapper img {
-            max-width: 100%;
-            max-height: 90vh;
-            border-radius: 16px;
-            object-fit: contain;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-        }
-
-        .gallery-lightbox-close {
-            position: absolute;
-            top: -50px;
-            right: 0;
-            color: #fff;
-            font-size: 2.5rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-            transition: color 0.2s;
-        }
-
-        .gallery-lightbox-close:hover {
-            color: var(--neon-coral);
-        }
-
-        .gallery-lightbox-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #fff;
-            font-size: 2.5rem;
-            cursor: pointer;
-            background: rgba(0,0,0,0.4);
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-            border: none;
-        }
-
-        .gallery-lightbox-nav:hover {
-            background: var(--neon-coral);
-        }
-
-        .gallery-lightbox-prev {
-            left: -70px;
-        }
-
-        .gallery-lightbox-next {
-            right: -70px;
-        }
-
-        .gallery-lightbox-counter {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-            margin-top: 1rem;
-            font-family: 'Inter', sans-serif;
-        }
-
-        @media (max-width: 768px) {
-            .gallery-lightbox-close {
-                top: -40px;
-                font-size: 2rem;
-            }
-            .gallery-lightbox-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 1.5rem;
-            }
-            .gallery-lightbox-prev {
-                left: 10px;
-            }
-            .gallery-lightbox-next {
-                right: 10px;
-            }
-            .gallery-lightbox-image-wrapper {
-                max-width: 95vw;
-                max-height: 90vh;
-            }
-            .gallery-lightbox-image-wrapper img {
-                max-height: 90vh;
-            }
-        }
-    </style>
+    <title>Галерея — Галина Чернякова | Макро, пейзажи и концептуальная фотография</title>
+    <meta name="description" content="Галерея фотографа Галины Черняковой. Макромир, капли, цветы, черно-белые пейзажи, минимализм, концептуальные работы и творческие проекты." />
+    <meta name="keywords" content="галерея фотографа, макрофотография, капли росы, макромир цветов, концептуальный минимализм, пейзажи Санкт-Петербурга, Галина Чернякова фото" />
+    
+    <meta property="og:title" content="Галерея — Галина Чернякова | Фотограф" />
+    <meta property="og:description" content="Макро, концепт, природа, черно-белая классика. Фотоработы Галины Черняковой." />
+    <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
+    <meta property="og:url" content="https://photo-chernyakova.ru/gallery.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
 
-<header>
-    <div class="container header-inner">
-        <div class="logo">
-            <div class="logo-cbs">
-                <img src="/images/logo-cbs.png" alt="ЦБС Выборгского района">
-            </div>
-            <div class="logo-rost">
-                <img src="/images/logo-rost.png" alt="Проектный офис РОСТ">
-            </div>
-            <a href="/index.html">
-                <img src="/images/logo-grani.png" alt="Книжные грани">
-            </a>
+    <header>
+        <div class="header-inner">
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                <li><a href="gallery.html" class="active">Галерея</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
         </div>
-        <div class="menu-toggle" id="menuToggle">
-            <i class="fas fa-bars"></i>
+    </header>
+
+    <section class="hero" style="padding-top: 60px; padding-bottom: 10px;">
+        <div class="container">
+            <h1>Галерея <span>мгновений</span></h1>
+            <p class="hero-lead">Макромир, концепт, пейзаж и черно-белая классика</p>
+            <div class="hero-quote">✨ «Рассмотреть то, мимо чего мы проходим каждый день» ✨</div>
         </div>
-        <nav class="nav" id="nav"></nav>
-    </div>
-</header>
+    </section>
 
-<section class="section">
-    <div class="container">
-        <h1 class="section-title">📸 Фотоотчёты</h1>
-        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 2rem;">
-            Снимки с наших мероприятий — игротеки, турниры по спидкубингу, мастер-классы и встречи.
-        </p>
-
-        <div class="gallery-filters" id="galleryFilters">
-            <button class="btn-sm active" data-filter="all">Все</button>
-            <button class="btn-sm" data-filter="speedcubing">Спидкубинг</button>
-            <button class="btn-sm" data-filter="boardgames">Настольные игры</button>
-        </div>
-
-        <div class="gallery-grid" id="galleryGrid">
-            <div class="gallery-empty">
-                <i class="fas fa-images"></i>
-                <p>Фотографии загружаются...</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== ЛАЙТБОКС ДЛЯ ГАЛЕРЕИ ===== -->
-<div class="gallery-lightbox" id="galleryLightbox">
-    <button class="gallery-lightbox-close" id="galleryLightboxClose">&times;</button>
-    <button class="gallery-lightbox-nav gallery-lightbox-prev" id="galleryLightboxPrev">‹</button>
-    <button class="gallery-lightbox-nav gallery-lightbox-next" id="galleryLightboxNext">›</button>
-    <div class="gallery-lightbox-image-wrapper">
-        <img id="galleryLightboxImage" src="" alt="">
-    </div>
-    <div class="gallery-lightbox-counter" id="galleryLightboxCounter">1 / 10</div>
-</div>
-
-<footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h3>Книжные грани</h3>
-                <p>Проект ЦБС Выборгского района</p>
-                <p>Работает на базе <strong>Библиотеки-мастерской</strong></p>
-                <p>пр. Просвещения, 43, ТРК «Парк-Молл», 2 этаж</p>
-                <p><strong>+7 (812) 246-93-15</strong></p>
-            </div>
-            <div class="footer-col">
-                <h3>Разделы</h3>
-                <p><a href="/index.html">Главная</a></p>
-                <p><a href="/about.html">О проекте</a></p>
-                <p><a href="/events.html">Мероприятия</a></p>
-                <p><a href="/contacts.html">Контакты</a></p>
-            </div>
-            <div class="footer-col">
-                <h3>Мы в соцсетях</h3>
-                <div class="footer-social">
-                    <a href="https://vk.com/officecbsbvib" target="_blank"><i class="fab fa-vk"></i></a>
-                </div>
-                <p style="margin-top:1.5rem;">Следите за анонсами в нашей группе ВКонтакте</p>
-            </div>
-        </div>
-
-        <!-- ===== НАШИ ПАРТНЁРЫ ===== -->
-        <div class="footer-partners" style="border-top: 1px solid rgba(0,0,0,0.05); padding-top: 1.5rem; margin-top: 1.5rem;">
-            <p style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-secondary); margin-bottom: 1rem;">Наши партнёры</p>
-            <div style="display: flex; justify-content: center; align-items: center; gap: 2rem; flex-wrap: wrap;">
-                <a href="https://ait-game.ru/" target="_blank" rel="noopener noreferrer" style="display: inline-block;">
-                    <img src="/images/partners/ait-logo.PNG" alt="Ассоциация Игровых Технологий" style="height: 35px; width: auto; opacity: 0.7; transition: opacity 0.3s;">
-                </a>
-                <a href="https://cubingrf.org/" target="_blank" rel="noopener noreferrer" style="display: inline-block;">
-                    <img src="/images/partners/cubingrf.PNG" alt="Федерация спидкубинга России" style="height: 40px; width: auto; opacity: 0.7; transition: opacity 0.3s;">
-                </a>
-                <a href="http://speedcubes.ru/" target="_blank" rel="noopener noreferrer" style="display: inline-block;">
-                    <img src="/images/partners/speedcubes.PNG" alt="SpeedCubes" style="height: 40px; width: auto; opacity: 0.7; transition: opacity 0.3s;">
-                </a>
-                <a href="https://cccstore.ru/" target="_blank" rel="noopener noreferrer" style="display: inline-block;">
-                    <img src="/images/partners/cccstore.PNG" alt="CCCStore" style="height: 40px; width: auto; opacity: 0.7; transition: opacity 0.3s;">
-                </a>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© <span id="current-year"></span> Книжные грани | ЦБС Выборгского района</p>
-        </div>
-
-        <!-- ===== ЯНДЕКС.МЕТРИКА ИНФОРМЕР ===== -->
-        <div style="text-align: center; margin-top: 1.5rem;">
-            <a href="https://metrika.yandex.ru/stat/?id=109783209&amp;from=informer" target="_blank" rel="nofollow">
-                <img src="https://informer.yandex.ru/informer/109783209/3_1_FFFFFFFF_EFEFEFFF_0_pageviews"
-                     style="width:88px; height:31px; border:0;"
-                     alt="Яндекс.Метрика"
-                     title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)"
-                     class="ym-advanced-informer"
-                     data-cid="109783209"
-                     data-lang="ru"/>
-            </a>
-        </div>
-    </div>
-</footer>
-
-<script src="/js/main.js"></script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const grid = document.getElementById('galleryGrid');
-        const filters = document.querySelectorAll('.gallery-filters .btn-sm');
-
-        // Лайтбокс элементы
-        const lightbox = document.getElementById('galleryLightbox');
-        const lightboxImage = document.getElementById('galleryLightboxImage');
-        const lightboxCounter = document.getElementById('galleryLightboxCounter');
-        const closeBtn = document.getElementById('galleryLightboxClose');
-        const prevBtn = document.getElementById('galleryLightboxPrev');
-        const nextBtn = document.getElementById('galleryLightboxNext');
-
-        // ===== ВСЕ ФОТО С ПРАВИЛЬНЫМ РАСПРЕДЕЛЕНИЕМ =====
-        const photos = [
-            // ===== СПИДКУБИНГ (6 фото) =====
-            { src: '/images/july-01/1.jpg', category: 'speedcubing', label: 'Спидкубинг' },
-            { src: '/images/july-01/3.jpg', category: 'speedcubing', label: 'Спидкубинг' },
-            { src: '/images/july-01/4.jpg', category: 'speedcubing', label: 'Спидкубинг' },
-            { src: '/images/july-01/6.jpg', category: 'speedcubing', label: 'Спидкубинг' },
-            { src: '/images/july-01/7.jpg', category: 'speedcubing', label: 'Спидкубинг' },
-            { src: '/images/july-01/10.jpg', category: 'speedcubing', label: 'Спидкубинг' },
-
-            // ===== НАСТОЛЬНЫЕ ИГРЫ (4 фото) =====
-            { src: '/images/july-01/2.jpg', category: 'boardgames', label: 'Настольные игры' },
-            { src: '/images/july-01/5.jpg', category: 'boardgames', label: 'Настольные игры' },
-            { src: '/images/july-01/8.jpg', category: 'boardgames', label: 'Настольные игры' },
-            { src: '/images/july-01/9.jpg', category: 'boardgames', label: 'Настольные игры' }
-        ];
-
-        let currentImageIndex = 0;
-        let currentFilter = 'all';
-
-        function renderGallery(filter = 'all') {
-            currentFilter = filter;
-            const filtered = filter === 'all' ? photos : photos.filter(p => p.category === filter);
+    <section class="section fade-up" style="padding-top: 25px; padding-bottom: 25px;">
+        <div class="container">
+            <div class="section-title">Мои работы</div>
+            <div class="section-subtitle">Нажмите на любую фотографию, чтобы рассмотреть в деталях</div>
             
-            if (filtered.length === 0) {
-                grid.innerHTML = `
-                    <div class="gallery-empty">
-                        <i class="fas fa-images"></i>
-                        <p>В этой категории пока нет фотографий</p>
-                    </div>
-                `;
+            <div class="gallery" id="photoGallery">
+                
+                <!-- ФОТО 1 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/1.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="1"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 2 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/2.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="2"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 3 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/3.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="3"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 4 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/4.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="4"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 5 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/5.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="5"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 6 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/6.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="6"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 7 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/7.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="7"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 8 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/8.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="8"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 9 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/9.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="9"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 10 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/10.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="10"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 11 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/11.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="11"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 12 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/12.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="12"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 13 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/13.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="13"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 14 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/14.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="14"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 15 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/15.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="15"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 16 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/16.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="16"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 17 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/17.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="17"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 18 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/18.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="18"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 19 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/19.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="19"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 20 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/20.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="20"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 21 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/21.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="21"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 22 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/22.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="22"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 23 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/23.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="23"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 24 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/24.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="24"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 25 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/25.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="25"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 26 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/26.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="26"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 27 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/27.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="27"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 28 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/28.png" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="28"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 33 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/33.PNG" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="33"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 34 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/34.PNG" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="34"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 35 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/35.PNG" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="35"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 36 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/36.PNG" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="36"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+
+                <!-- ФОТО 37 -->
+                <div class="gallery-item">
+                    <img src="images/gallery/37.PNG" alt="" loading="lazy" />
+                    <div class="like-wrapper"><button class="like-btn" data-photo-id="37"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Каждое фото — это застывшая эмоция ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            document.querySelectorAll('.section, .gallery').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- ===== СУПЕР-БЫСТРЫЙ СКРИПТ ЛАЙКОВ ===== -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            if (typeof window.supabase === 'undefined') {
+                console.error('Библиотека Supabase не загружена!');
                 return;
             }
 
-            grid.innerHTML = filtered.map((photo, index) => {
-                const originalIndex = photos.indexOf(photo);
-                return `
-                    <div class="gallery-item" data-category="${photo.category}" data-index="${originalIndex}">
-                        <img src="${photo.src}" alt="${photo.label}" loading="lazy" onerror="this.src='https://placehold.co/400x300/2a3a5a/ffffff?text=Фото+скоро'">
-                        <div class="gallery-label">${photo.label}</div>
-                    </div>
-                `;
-            }).join('');
+            const SUPABASE_URL = 'https://lcadyvgzzcnflggvsfec.supabase.co';
+            const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxjYWR5dmd6emNuZmxnZ3ZzZmVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5ODk2MDcsImV4cCI6MjA5ODU2NTYwN30.QL8M-GGvhxbckBpTprshChpbru7w8g4dD2z9HB3m9nQ';
 
-            document.querySelectorAll('.gallery-item').forEach(item => {
-                item.addEventListener('click', function() {
-                    const index = parseInt(this.dataset.index);
-                    openLightbox(index);
+            const galinaApp = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+            // 0. ПРЕДВАРИТЕЛЬНЫЙ РАЗОГРЕВ (чтобы база проснулась до клика)
+            console.log('🔁 Разогрев базы...');
+            await galinaApp.from('likes').select('count').limit(1).then(() => {
+                console.log('✅ База разогрета, лайки будут мгновенными!');
+            }).catch(() => {});
+
+            // Ищем все кнопки
+            const buttons = document.querySelectorAll('.like-btn');
+
+            for (const btn of buttons) {
+                const wrapper = btn.closest('.like-wrapper');
+                const countDisplay = wrapper.querySelector('.like-count');
+                const photoId = btn.dataset.photoId;
+
+                // 1. ЗАГРУЗКА
+                let { data } = await galinaApp
+                    .from('likes')
+                    .select('count')
+                    .eq('photo_id', photoId)
+                    .single();
+
+                if (data) {
+                    countDisplay.textContent = data.count;
+                } else {
+                    await galinaApp
+                        .from('likes')
+                        .insert({ photo_id: photoId, count: 0 });
+                }
+
+                if (localStorage.getItem('liked_' + photoId) === 'true') {
+                    btn.querySelector('.heart-icon').textContent = '❤️';
+                }
+
+                // 2. МГНОВЕННЫЙ КЛИК
+                btn.addEventListener('click', async function(e) {
+                    e.stopPropagation();
+                    e.preventDefault();
+
+                    if (localStorage.getItem('liked_' + photoId) === 'true') return;
+
+                    btn.querySelector('.heart-icon').textContent = '❤️';
+                    let currentCount = parseInt(countDisplay.textContent);
+                    countDisplay.textContent = currentCount + 1;
+                    localStorage.setItem('liked_' + photoId, 'true');
+
+                    // Фоновая отправка
+                    await galinaApp
+                        .from('likes')
+                        .update({ count: currentCount + 1 })
+                        .eq('photo_id', photoId);
                 });
-            });
-        }
-
-        function openLightbox(index) {
-            currentImageIndex = index;
-            const photo = photos[index];
-            lightboxImage.src = photo.src;
-            lightboxCounter.textContent = `${index + 1} / ${photos.length}`;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeLightbox() {
-            lightbox.classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function prevImage() {
-            currentImageIndex = (currentImageIndex - 1 + photos.length) % photos.length;
-            const photo = photos[currentImageIndex];
-            lightboxImage.src = photo.src;
-            lightboxCounter.textContent = `${currentImageIndex + 1} / ${photos.length}`;
-        }
-
-        function nextImage() {
-            currentImageIndex = (currentImageIndex + 1) % photos.length;
-            const photo = photos[currentImageIndex];
-            lightboxImage.src = photo.src;
-            lightboxCounter.textContent = `${currentImageIndex + 1} / ${photos.length}`;
-        }
-
-        // Обработчики лайтбокса
-        closeBtn.addEventListener('click', closeLightbox);
-        prevBtn.addEventListener('click', prevImage);
-        nextBtn.addEventListener('click', nextImage);
-
-        lightbox.addEventListener('click', function(e) {
-            if (e.target === lightbox) {
-                closeLightbox();
             }
         });
+    </script>
 
-        // Клавиатура
-        document.addEventListener('keydown', function(e) {
-            if (!lightbox.classList.contains('active')) return;
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') prevImage();
-            if (e.key === 'ArrowRight') nextImage();
-        });
-
-        // Свайпы на мобильных
-        let touchStartX = 0;
-        lightbox.addEventListener('touchstart', function(e) {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-        lightbox.addEventListener('touchend', function(e) {
-            const diff = touchStartX - e.changedTouches[0].screenX;
-            if (Math.abs(diff) > 50) {
-                if (diff > 0) nextImage();
-                else prevImage();
-            }
-        });
-
-        // Фильтры
-        filters.forEach(btn => {
-            btn.addEventListener('click', function() {
-                filters.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                renderGallery(this.dataset.filter);
-            });
-        });
-
-        // Загрузка по параметру URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const filterParam = urlParams.get('filter');
-        if (filterParam) {
-            const filterBtn = document.querySelector(`.gallery-filters .btn-sm[data-filter="${filterParam}"]`);
-            if (filterBtn) {
-                filters.forEach(b => b.classList.remove('active'));
-                filterBtn.classList.add('active');
-                renderGallery(filterParam);
-            } else {
-                renderGallery('all');
-            }
-        } else {
-            renderGallery('all');
-        }
-    });
-</script>
 </body>
 </html>
