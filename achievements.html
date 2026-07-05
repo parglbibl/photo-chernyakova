@@ -45,10 +45,10 @@
             <div class="section-title">Награды и премии</div>
             <div class="section-subtitle">Каждый диплом — это остановленное мгновение.</div>
 
-            <!-- ВСТРОЕННЫЙ ЛАЙТБОКС (без прокрутки) -->
+            <!-- ЛАЙТБОКС С ЖЁСТКОЙ ВЫСОТОЙ -->
             <div id="lightbox" onclick="closeLightbox()" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:9999; justify-content:center; align-items:center; backdrop-filter:blur(8px); overflow:hidden;">
-                <span onclick="closeLightbox()" style="position:absolute; top:20px; right:30px; color:#fff; font-size:40px; font-weight:300; cursor:pointer; line-height:1; z-index:10000;">&times;</span>
-                <img id="lightbox-img" src="" style="max-width:100vw; max-height:100vh; width:auto; height:auto; object-fit:contain; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,0.8);">
+                <span onclick="closeLightbox()" style="position:absolute; top:15px; right:25px; color:#fff; font-size:40px; font-weight:300; cursor:pointer; line-height:1; z-index:10000;">&times;</span>
+                <img id="lightbox-img" src="" style="max-width:98%; max-height:90vh; width:auto; height:auto; object-fit:contain; border-radius:12px; box-shadow:0 20px 60px rgba(0,0,0,0.8);">
             </div>
 
             <script>
@@ -61,7 +61,6 @@
                     document.getElementById('lightbox').style.display = 'none';
                     document.body.style.overflow = '';
                 }
-                // Закрытие по клавише Escape
                 document.addEventListener('keydown', function(e) {
                     if (e.key === 'Escape') closeLightbox();
                 });
