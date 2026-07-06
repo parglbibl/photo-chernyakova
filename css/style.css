@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE (GERBERA RIGHT SIDE ONLY)
+   FINAL STYLE (BACK TO THE BEST LOOK)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,13 +40,13 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* --- ГЕРБЕРА: ТОЛЬКО ПРАВАЯ СТОРОНА (ЧЁРНЫЙ ФОН СЛЕВА) --- */
+/* --- ГЕРБЕРА: КАК НА ЛУЧШЕМ СКРИНШОТЕ --- */
 #top-layer-gerbera {
     position: fixed;
     top: 0;
     right: 0;
-    width: 50vw;       /* Ровно половина экрана */
-    height: 100vh;     /* Высота на весь экран */
+    width: 60vw;       /* Занимает 60% ширины экрана */
+    height: 100vh;     /* Полная высота экрана */
     object-fit: cover;
     object-position: right center;
     opacity: 0.65;
