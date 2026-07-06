@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL GERBERA BACKGROUND (ChatGPT Approved)
+   FINAL CLEAN CSS
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -23,16 +23,7 @@
 html, body {
     margin: 0 !important;
     padding: 0 !important;
-
-    /* Твой путь к картинке + затемнение, как написал ChatGPT */
-    background:
-        linear-gradient(
-            rgba(8, 8, 8, 0.55),
-            rgba(8, 8, 8, 0.70)
-        ),
-        url('images/bg.webp') no-repeat center center fixed;
-
-    background-size: cover;
+    background: #181715;
     scroll-behavior: smooth;
 }
 
