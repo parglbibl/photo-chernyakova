@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE (GERBERA BIG, FULL HEIGHT, CROPPED RIGHT)
+   FINAL STYLE (GERBERA RIGHT SIDE ONLY)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,15 +40,15 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* --- ГЕРБЕРА БОЛЬШАЯ, НА ВЕСЬ ЭКРАН, ОБРЕЗАЕТСЯ ТОЛЬКО СПРАВА --- */
+/* --- ГЕРБЕРА: ТОЛЬКО ПРАВАЯ СТОРОНА (ЧЁРНЫЙ ФОН СЛЕВА) --- */
 #top-layer-gerbera {
     position: fixed;
     top: 0;
     right: 0;
-    width: 80vw;       /* Широкое полотно, занимает почти весь экран */
+    width: 50vw;       /* Ровно половина экрана */
     height: 100vh;     /* Высота на весь экран */
     object-fit: cover;
-    object-position: right center; /* Прижимаем к правому краю — левая часть не обрезается */
+    object-position: right center;
     opacity: 0.65;
     filter: blur(0px);
     pointer-events: none;
