@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE (BACK TO THE BEST LOOK)
+   FINAL STYLE (GERBERA FULL IMAGE - NO GRAY ZONE)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,14 +40,14 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* --- ГЕРБЕРА: КАК НА ЛУЧШЕМ СКРИНШОТЕ --- */
+/* --- ГЕРБЕРА: ПОКАЗЫВАЕМ КАРТИНКУ ЦЕЛИКОМ --- */
 #top-layer-gerbera {
     position: fixed;
     top: 0;
     right: 0;
-    width: 60vw;       /* Занимает 60% ширины экрана */
-    height: 100vh;     /* Полная высота экрана */
-    object-fit: cover;
+    width: 80vw;       /* Широкое полотно, чтобы занять экран */
+    height: 100vh;     /* Высота на весь экран */
+    object-fit: contain;  /* ВАЖНО: показываем всю картинку, без обрезки */
     object-position: right center;
     opacity: 0.65;
     filter: blur(0px);
