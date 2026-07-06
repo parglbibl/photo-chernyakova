@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL CINEMATIC STYLE (LAYER-FIXED)
+   FINAL CINEMATIC STYLE (GERBERA ON TOP - CSS ONLY)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,8 +40,8 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* --- ГЕРБЕРА В ОТДЕЛЬНОМ СЛОЕ (ГАРАНТИРОВАННО ВИДНА) --- */
-body::before {
+/* --- ГЕРБЕРА НА САМОМ ВЕРХНЕМ СЛОЕ (z-index: 999) --- */
+body::after {
     content: '';
     position: fixed;
     top: 0;
@@ -49,11 +49,14 @@ body::before {
     width: 100vw;
     height: 100vh;
     background: 
-        linear-gradient(to right, rgba(24, 23, 21, 0.95) 0%, rgba(24, 23, 21, 0.4) 60%, transparent 100%),
         url('images/bg.webp') no-repeat right center fixed;
     background-size: cover;
-    z-index: -1;
+    z-index: 999;
     pointer-events: none;
+    opacity: 0.35;
+    filter: blur(4px);
+    /* Затемнение поверх герберы (чтобы текст читался) */
+    box-shadow: inset 500px 0 150px 50px #181715;
 }
 
 .container {
