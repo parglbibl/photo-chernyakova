@@ -30,7 +30,7 @@ html, body {
             rgba(8, 8, 8, 0.25),
             rgba(8, 8, 8, 0.35)
         ),
-        url('images/gerbera-bg.webp')
+        url('images/bg.webp')
         no-repeat center center fixed;
 
     background-size: cover;
