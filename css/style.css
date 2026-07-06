@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE (GERBERA VIA HTML + CSS ID)
+   FINAL STYLE (GERBERA RIGHT THIRD - CINEMATIC)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,7 +40,7 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* ===== ГЕРБЕРА В ОТДЕЛЬНОМ ID (НАСТРАИВАЕТСЯ ЗДЕСЬ) ===== */
+/* --- ГЕРБЕРА: ТОЛЬКО ПРАВАЯ ТРЕТЬ, ИДЕАЛЬНО КАК НА МАКЕТЕ --- */
 #top-layer-gerbera {
     position: fixed;
     top: 0;
@@ -49,10 +49,13 @@ body:not(.page-home) {
     height: 100vh;
     object-fit: cover;
     object-position: right center;
-    opacity: 0.35;
-    filter: blur(4px);
+    opacity: 1;
+    filter: blur(2px);
     pointer-events: none;
-    z-index: 9999;
+    z-index: 0;
+    /* Самая важная строчка: маска скрывает левую часть */
+    mask-image: linear-gradient(to right, rgba(0,0,0,0) 55%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 100%);
+    -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0) 55%, rgba(0,0,0,1) 75%, rgba(0,0,0,1) 100%);
 }
 
 .container {
