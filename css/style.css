@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE (GERBERA 100vw - PERFECT LAYOUT)
+   PERFECT 60% LAYOUT (GERBERA WITH HEART & PETALS)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,15 +40,15 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* --- ГЕРБЕРА: НА ВЕСЬ ЭКРАН, ЦВЕТОК ПО ЦЕНТРУ --- */
+/* --- ГЕРБЕРА: 60% ЭКРАНА, СЕРЕДИНКА ВИДНА ИДЕАЛЬНО --- */
 #top-layer-gerbera {
     position: fixed;
     top: 0;
     right: 0;
-    width: 100vw;       /* Вся ширина экрана */
-    height: 100vh;      /* Вся высота экрана */
+    width: 60vw;       /* Цветок занимает 60% экрана — идеально */
+    height: 100vh;
     object-fit: cover;
-    object-position: 60% center; /* Цветок чётко по центру */
+    object-position: 52% center; /* Чуть сдвигаем, чтобы увидеть сердцевину */
     opacity: 0.65;
     filter: blur(0px);
     pointer-events: none;
