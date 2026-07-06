@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE (GERBERA RIGHT THIRD WITH CLIP-PATH)
+   FINAL STYLE (SMALL GERBERA ON THE RIGHT)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,22 +40,20 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* --- ГЕРБЕРА: ВИДНА ТОЛЬКО ПРАВАЯ ЧАСТЬ --- */
+/* --- ГЕРБЕРА: МАЛЕНЬКАЯ, ЧЁТКАЯ, ПРИЖАТА ВПРАВО --- */
 #top-layer-gerbera {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 45vw;       /* Занимает только 45% ширины экрана */
+    height: auto;      /* Сохраняет пропорции */
+    object-fit: contain;
     object-position: right center;
-    opacity: 0.55;
-    filter: blur(2px);
+    opacity: 0.7;      /* Чёткая, но не выжигает глаза */
+    filter: blur(0px); /* Без размытия */
     pointer-events: none;
     z-index: 0;
-    
-    /* Жёсткая маска: отрезаем левую часть, оставляя правую треть */
-    clip-path: inset(0 0 0 65%);
 }
 
 .container {
