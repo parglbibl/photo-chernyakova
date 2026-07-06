@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE (GERBERA PERFECT MOBILE SIZE)
+   FINAL STYLE (GERBERA 100vw - PERFECT LAYOUT)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,15 +40,15 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* --- ГЕРБЕРА: 60% ЭКРАНА, БОЛЬШАЯ, БЕЗ СЕРЫХ ОБЛАСТЕЙ --- */
+/* --- ГЕРБЕРА: НА ВЕСЬ ЭКРАН, ЦВЕТОК ПО ЦЕНТРУ --- */
 #top-layer-gerbera {
     position: fixed;
     top: 0;
     right: 0;
-    width: 60vw;
-    height: 100vh;
+    width: 100vw;       /* Вся ширина экрана */
+    height: 100vh;      /* Вся высота экрана */
     object-fit: cover;
-    object-position: 60% center;  /* Сдвиг ровно на цветок */
+    object-position: 50% center; /* Цветок чётко по центру */
     opacity: 0.65;
     filter: blur(0px);
     pointer-events: none;
