@@ -1,9 +1,10 @@
 /* ============================================================
-   PREMIUM PHOTOGRAPHER THEME (GERBERA FIXED)
+   PREMIUM PHOTOGRAPHER THEME (TWO-LAYER FINAL)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
+    /* ===== ПРЕМИАЛЬНАЯ ТЁМНАЯ ПАЛИТРА ===== */
     --bg: #181715;
     --text: #F7F3EE;
     --muted: #D2CBC2;
@@ -20,30 +21,38 @@
     box-sizing: border-box;
 }
 
-html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-
-    /* СЛАБОЕ ЗАТЕМНЕНИЕ (всего 25-35%) */
-    background:
-    /* linear-gradient(rgba(8, 8, 8, 0.25), rgba(8, 8, 8, 0.35)), */
-    url('images/bg.webp') no-repeat center center fixed;
-
-    background-size: contain;
-    scroll-behavior: smooth;
-}
-
-/* Свечение (виньетка) — оно теперь тоже не перекрывает картинку */
+/* СЛОЙ 1 (самый нижний): твой фон с герберой */
 body::before {
     content: '';
     position: fixed;
-    inset: 0;
-    background:
-        radial-gradient(circle at 15% 20%, rgba(255, 190, 90, 0.12), transparent 35%),
-        radial-gradient(circle at 85% 25%, rgba(170, 25, 45, 0.16), transparent 40%),
-        radial-gradient(circle at 55% 85%, rgba(80, 120, 40, 0.08), transparent 45%);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('images/bg.webp') no-repeat center center;
+    background-size: cover;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* СЛОЙ 2 (посередине): глубокое затемнение */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(rgba(8, 8, 8, 0.75), rgba(8, 8, 8, 0.85));
     z-index: -1;
     pointer-events: none;
+}
+
+html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #181715; /* если всё сломается, будет просто чёрный */
+    scroll-behavior: smooth;
 }
 
 body {
