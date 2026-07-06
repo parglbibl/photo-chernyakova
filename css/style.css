@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE (GERBERA FULL IMAGE - NO GRAY ZONE)
+   FINAL STYLE (GERBERA PERFECT MOBILE SIZE)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,15 +40,15 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* --- ГЕРБЕРА: ПОКАЗЫВАЕМ КАРТИНКУ ЦЕЛИКОМ --- */
+/* --- ГЕРБЕРА: 60% ЭКРАНА, БОЛЬШАЯ, БЕЗ СЕРЫХ ОБЛАСТЕЙ --- */
 #top-layer-gerbera {
     position: fixed;
     top: 0;
     right: 0;
-    width: 80vw;       /* Широкое полотно, чтобы занять экран */
-    height: 100vh;     /* Высота на весь экран */
-    object-fit: contain;  /* ВАЖНО: показываем всю картинку, без обрезки */
-    object-position: right center;
+    width: 60vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: 60% center;  /* Сдвиг ровно на цветок */
     opacity: 0.65;
     filter: blur(0px);
     pointer-events: none;
