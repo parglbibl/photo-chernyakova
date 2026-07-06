@@ -1,5 +1,5 @@
 /* ============================================================
-   PREMIUM PHOTOGRAPHER THEME (GERBERA CUSTOM BACKGROUND)
+   PREMIUM PHOTOGRAPHER THEME (STABLE MOBILE BACKGROUND)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -24,12 +24,12 @@
 html, body {
     margin: 0 !important;
     padding: 0 !important;
-    /* Тёмный цвет на случай, если картинка не загрузится */
+    /* ВСЁ В ОДНОЙ СТРОКЕ: тёмный фон + картинка + размытие + затемнение */
     background: #181715;
     scroll-behavior: smooth;
 }
 
-/* СЛОЙ 1: Картинка с размытием и затемнением */
+/* Отдельный слой для картинки, чтобы размытие не ломало текст */
 body::before {
     content: '';
     position: fixed;
@@ -37,24 +37,28 @@ body::before {
     left: 0;
     width: 100vw;
     height: 100vh;
+    /* Картинка + размытие + затемнение + контраст */
     background: url('images/gerbera-bg.webp') no-repeat center center fixed;
     background-size: cover;
-    filter: blur(20px) brightness(0.6) contrast(0.8);
+    filter: blur(15px) brightness(0.5) contrast(0.8);
     z-index: -2;
     pointer-events: none;
 }
 
-/* СЛОЙ 2: Свечение от ChatGPT (поверх картинки) */
+/* Свечение (виньетка) — поверх картинки, под контентом */
 body::after {
     content: '';
     position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     background:
         radial-gradient(circle at 15% 20%, rgba(255, 180, 70, 0.12), transparent 35%),
         radial-gradient(circle at 80% 30%, rgba(180, 25, 40, 0.18), transparent 40%),
         radial-gradient(circle at 50% 80%, rgba(80, 120, 40, 0.10), transparent 45%);
+    z-index: -1;
+    pointer-events: none;
 }
 
 body {
