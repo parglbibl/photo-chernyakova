@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE (GERBERA PERFECT SIZE)
+   FINAL STYLE (GERBERA FULL HEIGHT, RIGHT ALIGNED)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,17 +40,16 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* --- ГЕРБЕРА: ИДЕАЛЬНЫЙ РАЗМЕР ДЛЯ ТЕЛЕФОНА --- */
+/* --- ГЕРБЕРА НА ВЕСЬ ЭКРАН ПО ВЫСОТЕ --- */
 #top-layer-gerbera {
     position: fixed;
-    top: 50%;
+    top: 0;
     right: 0;
-    transform: translateY(-50%);
-    width: 65vw;       /* Занимает ровно правую половину экрана */
-    height: auto;      /* Сохраняет пропорции */
-    object-fit: contain;
+    width: 60vw;       /* Занимает 60% ширины экрана (как рендер) */
+    height: 100vh;     /* Растягивается на весь экран по вертикали */
+    object-fit: cover;
     object-position: right center;
-    opacity: 0.7;      /* Чёткая, как ты хотела */
+    opacity: 0.65;     /* Чёткая, но не выжигает глаза */
     filter: blur(0px); /* Без размытия */
     pointer-events: none;
     z-index: 0;
