@@ -1,5 +1,5 @@
 /* ============================================================
-   PREMIUM PHOTOGRAPHER THEME (GERBERA CUSTOM BLUR BACKGROUND)
+   PREMIUM PHOTOGRAPHER THEME (GERBERA CUSTOM BACKGROUND)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -24,11 +24,37 @@
 html, body {
     margin: 0 !important;
     padding: 0 !important;
-    /* Фон: тёмная подложка + размытая гербера */
-    background: #181715 url('images/gerbera-bg.webp') no-repeat center center fixed;
-    background-size: cover;
-    backdrop-filter: blur(20px) brightness(0.6) contrast(0.8);
+    /* Тёмный цвет на случай, если картинка не загрузится */
+    background: #181715;
     scroll-behavior: smooth;
+}
+
+/* СЛОЙ 1: Картинка с размытием и затемнением */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: url('images/gerbera-bg.webp') no-repeat center center fixed;
+    background-size: cover;
+    filter: blur(20px) brightness(0.6) contrast(0.8);
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* СЛОЙ 2: Свечение от ChatGPT (поверх картинки) */
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 180, 70, 0.12), transparent 35%),
+        radial-gradient(circle at 80% 30%, rgba(180, 25, 40, 0.18), transparent 40%),
+        radial-gradient(circle at 50% 80%, rgba(80, 120, 40, 0.10), transparent 45%);
 }
 
 body {
@@ -47,18 +73,6 @@ body:not(.page-home) {
 .container {
     width: min(1400px, 94%);
     margin: 0 auto;
-}
-
-body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    background:
-        radial-gradient(circle at 15% 20%, rgba(255, 180, 70, 0.12), transparent 35%),
-        radial-gradient(circle at 80% 30%, rgba(180, 25, 40, 0.18), transparent 40%),
-        radial-gradient(circle at 50% 80%, rgba(80, 120, 40, 0.10), transparent 45%);
 }
 
 /* ===== ШАПКА ===== */
