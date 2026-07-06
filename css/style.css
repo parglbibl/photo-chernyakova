@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL CINEMATIC STYLE (RIGHT-ALIGNED GERBERA)
+   FINAL CINEMATIC STYLE (LAYER-FIXED)
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -27,7 +27,6 @@ html, body {
     scroll-behavior: smooth;
 }
 
-/* --- ФОН: ГЕРБЕРА + ГРАДИЕНТ --- */
 body {
     font-family: 'Inter', Arial, sans-serif;
     color: var(--text);
@@ -35,16 +34,26 @@ body {
     min-height: 100vh;
     font-size: 18px;
     padding-top: 70px !important;
-    
-    /* ЕДИНАЯ СТРОКА ФОНА: градиент + гербера */
-    background: 
-        linear-gradient(to right, rgba(24, 23, 21, 1) 0%, rgba(24, 23, 21, 0.6) 60%, rgba(24, 23, 21, 0) 100%),
-        url('images/bg.webp') no-repeat right center fixed;
-    background-size: cover, cover;
 }
 
 body:not(.page-home) {
     padding-top: 40px !important;
+}
+
+/* --- ГЕРБЕРА В ОТДЕЛЬНОМ СЛОЕ (ГАРАНТИРОВАННО ВИДНА) --- */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: 
+        linear-gradient(to right, rgba(24, 23, 21, 0.95) 0%, rgba(24, 23, 21, 0.4) 60%, transparent 100%),
+        url('images/bg.webp') no-repeat right center fixed;
+    background-size: cover;
+    z-index: -1;
+    pointer-events: none;
 }
 
 .container {
