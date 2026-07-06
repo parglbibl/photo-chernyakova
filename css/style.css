@@ -48,7 +48,7 @@ body:not(.page-home) {
     width: 100vw;       /* Вся ширина экрана */
     height: 100vh;      /* Вся высота экрана */
     object-fit: cover;
-    object-position: 40% center; /* Цветок чётко по центру */
+    object-position: 60% center; /* Цветок чётко по центру */
     opacity: 0.65;
     filter: blur(0px);
     pointer-events: none;
