@@ -322,7 +322,7 @@ h1 span,
     font-weight: 400;
 }
 
-/* --- Адаптивность для мобильных устройств (референс с крупным фото) --- */
+/* --- Адаптивность для мобильных устройств (как на референсе) --- */
 @media (max-width: 900px) {
     .hero-top-v2 {
         display: flex;
@@ -354,24 +354,25 @@ h1 span,
     }
     
     .hero-title-v2 {
-        font-size: 28px;
-        line-height: 1.2;
+        font-size: 32px;
+        line-height: 1.1;
+        margin-top: -4px;
     }
     
     .hero-lead-v2 {
         font-size: 15px;
         line-height: 1.4;
-        margin-top: 2px;
+        margin-top: 0px;
     }
     
     .hero-quote-v2 {
         font-size: 15px;
-        padding: 12px 16px;
+        padding: 10px 18px;
         margin-top: 6px;
         text-align: left;
         display: block;
         max-width: 100%;
-        border-radius: 30px; /* Как на вашем референсе - более округлые края */
+        border-radius: 40px; /* Идеальная форма таблетки как на референсе */
     }
 
     .hero-gallery-v2 {
@@ -397,15 +398,15 @@ h1 span,
         height: 110px;
     }
     .hero-title-v2 {
-        font-size: 24px;
+        font-size: 28px;
     }
     .hero-lead-v2 {
         font-size: 13px;
     }
     .hero-quote-v2 {
         font-size: 14px;
-        padding: 10px 14px;
-        border-radius: 20px;
+        padding: 8px 16px;
+        border-radius: 30px;
     }
 }
 
