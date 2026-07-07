@@ -3,20 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
     <title>О себе — Галина Чернякова | Фотограф из Санкт-Петербурга</title>
     <meta name="description" content="Галина Чернякова — фотограф из Санкт-Петербурга. Жанры: макросъемка, природа, архитектура, творческая съемка. Образование, опыт, выставки и контакты." />
     <meta name="keywords" content="Галина Чернякова, фотограф Санкт-Петербург, макросъемка, портфолио фотографа, творческая фотография, выставка Крупным планом, РГПУ Герцена" />
-    
     <meta property="og:title" content="О себе — Галина Чернякова | Фотограф" />
     <meta property="og:description" content="Фотограф из Санкт-Петербурга. Макро, природа, архитектура, творческая съемка. Образование, проекты и достижения." />
     <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
     <meta property="og:url" content="https://photo-chernyakova.ru/about.html" />
     <meta name="twitter:card" content="summary_large_image" />
-    
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+
+    <img id="top-layer-gerbera" src="images/bg.webp">
 
     <header>
         <div class="header-inner">
@@ -41,7 +40,6 @@
         </div>
     </section>
 
-    <!-- Секция "О себе" -->
     <section class="section fade-up" style="padding-top: 15px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">О себе</div>
@@ -53,7 +51,6 @@
         </div>
     </section>
 
-    <!-- Секция "Образование" -->
     <section class="section fade-up" style="padding-top: 20px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Образование</div>
@@ -73,7 +70,6 @@
         </div>
     </section>
 
-    <!-- Секция "Подход к работе" -->
     <section class="section fade-up" style="padding-top: 20px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Подход к работе</div>
@@ -98,13 +94,10 @@
         </div>
     </section>
 
-    <!-- Секция "Опыт и проекты" -->
     <section class="section fade-up" style="padding-top: 20px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Опыт и проекты</div>
             <div class="section-subtitle">От первых кадров до персональных выставок</div>
-
-            <!-- Лекции и мероприятия -->
             <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 20px; color: var(--text);">Лекции и мероприятия</h3>
             <div class="grid-2">
                 <div class="card">
@@ -167,9 +160,7 @@
                         entry.target.classList.add('visible');
                     }
                 });
-            }, {
-                threshold: 0.1
-            });
+            }, { threshold: 0.1 });
             document.querySelectorAll('.section, .project-card, .card, .stat-card').forEach(function(el) {
                 el.classList.add('fade-up');
                 observer.observe(el);
