@@ -1,5 +1,5 @@
 /* ============================================================
-   STABLE RELEASE - 100vw WITH HEART VISIBLE
+   FINAL STYLE - 100vw WITH HEART VISIBLE
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,6 +40,7 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
+/* --- ГЕРБЕРА: НА ВЕСЬ ЭКРАН, СЕРДЦЕВИНА ВИДНА --- */
 #top-layer-gerbera {
     position: fixed;
     top: 0;
@@ -85,6 +86,7 @@ header {
     justify-content: center;
 }
 
+/* ----- НАВИГАЦИЯ И ВЫПАДАЮЩЕЕ МЕНЮ (ЧЕРЕЗ ЧЕКБОКС) ----- */
 .nav {
     display: flex;
     flex-wrap: wrap;
@@ -96,9 +98,8 @@ header {
 }
 
 .nav li {
+    position: relative;
     list-style: none;
-    margin: 0;
-    padding: 0;
 }
 
 .nav a {
@@ -108,27 +109,38 @@ header {
     font-size: 18px;
     transition: 0.3s;
     padding: 6px 0;
-    display: inline-block;
-    line-height: 1.2;
 }
 
 .nav a:hover {
     color: #FFFFFF;
 }
 
+/* --- ВЫПАДАЮЩЕЕ МЕНЮ ЧЕРЕЗ ЧЕКБОКС --- */
 .nav .dropdown {
     position: relative;
-    display: inline-block;
+}
+
+/* Скрываем чекбокс, но оставляем для логики */
+.nav .dropdown-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    margin: 0;
 }
 
 .nav .dropdown-toggle {
     display: inline-block;
-    line-height: 1.2;
     padding: 6px 0;
+    cursor: pointer;
+    color: var(--muted);
     font-weight: 600;
     font-size: 18px;
-    color: var(--muted);
-    cursor: pointer;
+    pointer-events: none; /* Клик перехватывает чекбокс */
 }
 
 .nav .dropdown-content {
@@ -167,8 +179,40 @@ header {
     background: rgba(195, 154, 116, 0.1);
 }
 
-.nav .dropdown:target .dropdown-content {
+/* Магия: при нажатии на чекбокс открываем/закрываем */
+.nav .dropdown-checkbox:checked ~ .dropdown-content {
     display: block;
+}
+
+/* --- МОБИЛЬНАЯ АДАПТАЦИЯ --- */
+@media (max-width: 900px) {
+    .nav .dropdown-content {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 180px;
+        background: rgba(24, 23, 21, 0.92);
+        backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 16px;
+        padding: 10px 0;
+        margin-top: 8px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .nav .dropdown-content a {
+        font-size: 17px;
+        padding: 10px 20px;
+        color: var(--muted);
+        display: block;
+        text-align: center;
+    }
+
+    .nav .dropdown-content a:hover {
+        color: #FFFFFF;
+        background: rgba(195, 154, 116, 0.15);
+    }
 }
 
 h1 span,
@@ -176,6 +220,7 @@ h1 span,
     color: var(--accent);
 }
 
+/* ----- ОБЩИЕ СТИЛИ ДЛЯ ЦИТАТЫ (hero-quote) ----- */
 .hero-quote {
     display: inline-block;
     padding: 14px 28px;
@@ -192,6 +237,7 @@ h1 span,
     margin-top: 6px;
 }
 
+/* ----- НОВЫЕ СТИЛИ ДЛЯ ГЛАВНОЙ ----- */
 .hero-top-v2 {
     display: flex;
     align-items: center;
@@ -332,6 +378,7 @@ h1 span,
     font-weight: 400;
 }
 
+/* ----- АДАПТИВНОСТЬ ГЛАВНОЙ ----- */
 @media (max-width: 900px) {
     .hero-top-v2 {
         display: flex;
@@ -418,6 +465,8 @@ h1 span,
         font-size: 14px;
     }
 }
+
+/* ----- ОСТАЛЬНЫЕ СТИЛИ (СТАРЫЕ) ----- */
 
 .hero {
     text-align: center;
