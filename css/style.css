@@ -63,7 +63,6 @@ body:not(.page-home) {
 /* ===========================
    HEADER
 =========================== */
-
 header {
     position: fixed;
     top: 0;
@@ -74,141 +73,140 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background: rgba(18,18,18,.58);
+    background: rgba(18, 18, 18, 0.58);
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255,255,255,.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.header-inner{
-    width:100%;
-    max-width:1400px;
-    padding:0 28px;
+.header-inner {
+    width: 100%;
+    max-width: 1400px;
+    padding: 0 28px;
 }
 
 /* ===========================
    MENU
 =========================== */
-
-.nav{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    flex-wrap:wrap;
-    gap:14px 30px;
-
-    list-style:none;
-    margin:0;
-    padding:0;
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px 30px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-.nav>li{
-    position:relative;
-    display:flex;
-    align-items:center;
+.nav > li {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .nav a,
-.dropdown-toggle{
-    display:flex;
-    align-items:center;
-    height:42px;
-    color:var(--muted);
-    text-decoration:none;
-    font-size:18px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.25s;
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    height: 42px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.25s;
 }
 
 .nav a:hover,
-.dropdown-toggle:hover{
-    color:#fff;
+.dropdown-toggle:hover {
+    color: #fff;
 }
 
-.nav a.active{
-    color:#fff;
+.nav a.active {
+    color: #fff;
 }
 
-.dropdown{
-    position:relative;
+.dropdown {
+    position: relative;
 }
 
-.dropdown-checkbox{
-    display:none;
+.dropdown-checkbox {
+    display: none;
 }
 
-.dropdown-content{
-    display:none;
-    position:absolute;
-    top:48px;
-    left:50%;
-    transform:translateX(-50%);
-    min-width:190px;
-    background:rgba(22,22,22,.95);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:14px;
-    backdrop-filter:blur(14px);
-    overflow:hidden;
-    z-index:999;
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 190px;
+    background: rgba(22, 22, 22, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    backdrop-filter: blur(14px);
+    overflow: hidden;
+    z-index: 999;
 }
 
-.dropdown-content li{
-    list-style:none;
+.dropdown-content li {
+    list-style: none;
 }
 
-.dropdown-content a{
-    display:block;
-    height:auto;
-    padding:12px 22px;
-    font-size:16px;
-    color:var(--muted);
+.dropdown-content a {
+    display: block;
+    height: auto;
+    padding: 12px 22px;
+    font-size: 16px;
+    color: var(--muted);
 }
 
-.dropdown-content a:hover{
-    background:rgba(195,154,116,.12);
-    color:#fff;
+.dropdown-content a:hover {
+    background: rgba(195, 154, 116, 0.12);
+    color: #fff;
 }
 
-.dropdown-checkbox:checked~.dropdown-content{
-    display:block;
+.dropdown-checkbox:checked ~ .dropdown-content {
+    display: block;
 }
 
 /* ===========================
    MOBILE
 =========================== */
-
-@media (max-width:760px){
-    header{
-        height:auto;
-        padding:10px 0;
+@media (max-width: 760px) {
+    header {
+        height: auto;
+        padding: 10px 0;
     }
-    body{
-        padding-top:70px!important;
+    body {
+        padding-top: 70px !important;
     }
-    .nav{
-        gap:10px 20px;
+    .nav {
+        gap: 10px 20px;
     }
     .nav a,
-    .dropdown-toggle{
-        height:34px;
-        font-size:17px;
+    .dropdown-toggle {
+        height: 34px;
+        font-size: 17px;
     }
-    .dropdown-content{
-        top:40px;
+    .dropdown-content {
+        top: 40px;
     }
 }
 
-@media (max-width:480px){
-    .nav{
-        gap:8px 16px;
+@media (max-width: 480px) {
+    .nav {
+        gap: 8px 16px;
     }
     .nav a,
-    .dropdown-toggle{
-        font-size:16px;
+    .dropdown-toggle {
+        font-size: 16px;
     }
 }
 
+/* ===========================
+   HERO & CONTENT
+=========================== */
 .hero {
     text-align: center;
     padding: 48px 0 90px;
