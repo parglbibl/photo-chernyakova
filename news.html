@@ -11,9 +11,10 @@
     <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
     <meta property="og:url" content="https://photo-chernyakova.ru/news.html" />
     <meta name="twitter:card" content="summary_large_image" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css" />
 
-    <!-- ПОЛНЫЙ НАБОР ФАВИКОНОК (СТАНДАРТ) -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -30,7 +31,14 @@
                 <li><a href="about.html">О себе</a></li>
                 <li><a href="projects.html">Проекты</a></li>
                 <li><a href="achievements.html">Достижения</a></li>
-                <li><a href="gallery.html">Галерея</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">Галерея <span class="arrow">▼</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="macro.html">Макромир</a></li>
+                        <li><a href="concept.html">Концепт</a></li>
+                        <li><a href="nature.html">Природа</a></li>
+                    </ul>
+                </li>
                 <li><a href="news.html" class="active">Новости</a></li>
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
@@ -50,7 +58,7 @@
             <div class="section-title">Новости</div>
             <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
                 <div class="card fade-up" style="width: 100%;">
-                    <div class="emoji">📋</div>
+                    <div class="icon"><i class="fa-regular fa-file-lines" style="font-size: 30px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>1 июля 2026</h3>
                     <p>Поданы заявки на участие в трёх конкурсах:</p>
                     <ul style="margin-top: 10px; padding-left: 20px; color: var(--muted); font-size: 15px; line-height: 1.8;">
@@ -60,17 +68,17 @@
                     </ul>
                 </div>
                 <div class="card fade-up" style="width: 100%;">
-                    <div class="emoji">📸</div>
+                    <div class="icon"><i class="fa-solid fa-camera" style="font-size: 30px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>29 июня 2026</h3>
                     <p>На сайте появилась отдельная страница с подборкой макро-работ.</p>
                 </div>
                 <div class="card fade-up" style="width: 100%;">
-                    <div class="emoji">🖼️</div>
+                    <div class="icon"><i class="fa-regular fa-image" style="font-size: 30px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>2025</h3>
                     <p>Совместная фотовыставка в Библиотеках Выборгского района.</p>
                 </div>
                 <div class="card fade-up" style="width: 100%;">
-                    <div class="emoji">🎉</div>
+                    <div class="icon"><i class="fa-solid fa-star" style="font-size: 30px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>2026</h3>
                     <p>Персональная фотовыставка в Сортавальской центральной библиотеке.</p>
                 </div>
