@@ -322,7 +322,7 @@ h1 span,
     font-weight: 400;
 }
 
-/* --- Адаптивность для мобильных устройств (Широкий блок) --- */
+/* --- Адаптивность для мобильных устройств (ПРИНУДИТЕЛЬНЫЙ ПЕРЕНОС) --- */
 @media (max-width: 900px) {
     .hero-top-v2 {
         display: flex;
@@ -332,7 +332,7 @@ h1 span,
         gap: 20px;
         padding-top: 20px;
         margin-bottom: 20px;
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* ОБЯЗАТЕЛЬНО для переноса цитаты! */
     }
     
     .hero-left-v2 {
@@ -366,12 +366,12 @@ h1 span,
         margin-top: 0px;
     }
     
-    /* Цитата: На всю ширину, красивая и в одну строку */
+    /* Цитата: ОТДЕЛЬНЫЙ БЛОК НА СЛЕДУЮЩЕЙ СТРОКЕ, НА ВСЮ ШИРИНУ */
     .hero-quote-v2 {
-        margin-top: 12px;
+        margin-top: 20px; /* ВОЗДУХ ОТ ФОТО И ТЕКСТА */
         padding: 14px 24px;
         background: rgba(0, 0, 0, 0.5);
-        border-radius: 20px;
+        border-radius: 30px;
         backdrop-filter: blur(4px);
         border: 1px solid rgba(255, 255, 255, 0.08);
         font-size: 16px;
@@ -381,13 +381,14 @@ h1 span,
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         display: block;
         width: 100%;
-        flex-basis: 100%;
+        flex-basis: 100%; /* ЗАСТАВЛЯЕТ ВСТАТЬ НА НОВУЮ СТРОКУ */
         box-sizing: border-box;
-        white-space: nowrap; /* Строгий запрет на перенос слов */
+        white-space: nowrap; /* ЗАПРЕТ ПЕРЕНОСА СЛОВ */
     }
 
     .hero-gallery-v2 {
         grid-template-columns: repeat(2, 1fr);
+        margin-top: 10px;
     }
     .hero-stats-v2 {
         grid-template-columns: 1fr;
@@ -416,7 +417,8 @@ h1 span,
     }
     .hero-quote-v2 {
         font-size: 15px;
-        padding: 12px 18px;
+        padding: 12px 16px;
+        margin-top: 15px;
     }
 }
 
