@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE - 100vw WITH HEART VISIBLE
+   FINAL STYLE - 70vw PERFECT
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,16 +40,15 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* --- ГЕРБЕРА: НА ВЕСЬ ЭКРАН, СЕРДЦЕВИНА ВИДНА --- */
+/* --- ГЕРБЕРА: 70vw, ИДЕАЛЬНАЯ ПОЗИЦИЯ --- */
 #top-layer-gerbera {
     position: fixed;
     top: 0;
     right: 0;
-    width: 100vw;
+    width: 70vw;
     height: 100vh;
     object-fit: cover;
-    /* Единственное изменение: 43% вместо 50% — сдвигает фокус на сердцевину */
-    object-position: 70% center;
+    object-position: 45% center;
     opacity: 0.65;
     filter: blur(0px);
     pointer-events: none;
