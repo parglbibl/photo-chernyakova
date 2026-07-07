@@ -36,7 +36,10 @@
                 <li><a href="achievements.html">Достижения</a></li>
                 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">Галерея</a>
+                    <!-- Магический чекбокс -->
+                    <input type="checkbox" id="galleryToggle" class="dropdown-checkbox">
+                    <label for="galleryToggle" class="dropdown-toggle">Галерея</label>
+                    
                     <ul class="dropdown-content">
                         <li><a href="macro.html">Макромир</a></li>
                         <li><a href="concept.html">Концепт</a></li>
@@ -209,24 +212,6 @@
             if (year) {
                 year.textContent = new Date().getFullYear();
             }
-        });
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const dropdown = document.querySelector(".dropdown");
-            const toggle = dropdown.querySelector(".dropdown-toggle");
-
-            toggle.addEventListener("click", function(e){
-                e.preventDefault();
-                dropdown.classList.toggle("open");
-            });
-
-            document.addEventListener("click", function(e){
-                if(!dropdown.contains(e.target)){
-                    dropdown.classList.remove("open");
-                }
-            });
         });
     </script>
 
