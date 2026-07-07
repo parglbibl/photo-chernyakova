@@ -328,7 +328,9 @@ h1 span,
         flex-direction: column;
         text-align: center;
         gap: 20px;
-    }
+        padding-top: 30px; /* ЭТО ОТСТУП, КОТОРЫЙ ОТОДВИНЕТ ФОТО ОТ МЕНЮ */
+}
+
     .hero-right-v2 {
         align-items: center;
         text-align: center;
