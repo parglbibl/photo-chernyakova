@@ -11,9 +11,10 @@
     <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
     <meta property="og:url" content="https://photo-chernyakova.ru/contacts.html" />
     <meta name="twitter:card" content="summary_large_image" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css" />
 
-    <!-- ПОЛНЫЙ НАБОР ФАВИКОНОК (СТАНДАРТ) -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -30,7 +31,14 @@
                 <li><a href="about.html">О себе</a></li>
                 <li><a href="projects.html">Проекты</a></li>
                 <li><a href="achievements.html">Достижения</a></li>
-                <li><a href="gallery.html">Галерея</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">Галерея <span class="arrow">▼</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="macro.html">Макромир</a></li>
+                        <li><a href="concept.html">Концепт</a></li>
+                        <li><a href="nature.html">Природа</a></li>
+                    </ul>
+                </li>
                 <li><a href="news.html">Новости</a></li>
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html" class="active">Контакты</a></li>
@@ -68,10 +76,10 @@
         <div class="container">
             <div class="section-title">Другие способы связи</div>
             <div class="contacts" style="flex-direction: column; align-items: center; gap: 12px;">
-                <a href="tel:+79217803810" style="width: fit-content;">📞 Телефон: +7 (921) 780-38-10</a>
-                <a href="mailto:galyagolowanowa2015@yandex.ru" style="width: fit-content;">📧 Почта: galyagolowanowa2015@yandex.ru</a>
+                <a href="tel:+79217803810" style="width: fit-content;"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> Телефон: +7 (921) 780-38-10</a>
+                <a href="mailto:galyagolowanowa2015@yandex.ru" style="width: fit-content;"><i class="fa-regular fa-envelope" style="margin-right: 8px;"></i> Почта: galyagolowanowa2015@yandex.ru</a>
                 <div style="color: var(--muted); font-size: 17px; border: 1px solid var(--line); border-radius: 40px; padding: 12px 32px; background: var(--bg);">
-                    📍 Адрес: Санкт-Петербург / Сертолово
+                    <i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Адрес: Санкт-Петербург / Сертолово
                 </div>
             </div>
         </div>
