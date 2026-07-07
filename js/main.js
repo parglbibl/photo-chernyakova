@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
         ecommerce:"dataLayer"
     });
 
-    // ===== ЗАЩИТА ФОТОГРАФИЙ ОТ ВОРОВСТВА (ИСПРАВЛЕННАЯ, БЕЗ ОШИБОК) =====
+    // ===== ЗАЩИТА ФОТОГРАФИЙ ОТ ВОРОВСТВА =====
     function safeClosest(e, selector) {
         try {
             return e.target.closest(selector);
@@ -135,7 +135,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
     
-    // Защита от Ctrl+C на картинках
     document.addEventListener('keydown', function(e) {
         if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
             var target = e.target;
@@ -145,4 +144,41 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     });
+
+    // ===== ИНТЕРАКТИВНОЕ МЕНЮ (ОТКРЫТИЕ И ЗАКРЫТИЕ ПОДМЕНЮ) =====
+    var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
+    
+    dropdownToggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            var parentDropdown = this.closest('.dropdown');
+            
+            // Закрываем все другие открытые подменю
+            document.querySelectorAll('.nav .dropdown.active').forEach(function(drop) {
+                if (drop !== parentDropdown) {
+                    drop.classList.remove('active');
+                }
+            });
+            
+            // Переключаем текущее
+            parentDropdown.classList.toggle('active');
+        });
+    });
+
+    // Закрываем подменю при клике в любом месте за пределами меню
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav .dropdown')) {
+            document.querySelectorAll('.nav .dropdown.active').forEach(function(drop) {
+                drop.classList.remove('active');
+            });
+        }
+    });
+
+    // Закрываем подменю при скролле (опционально, для удобства)
+    window.addEventListener('scroll', function() {
+        document.querySelectorAll('.nav .dropdown.active').forEach(function(drop) {
+            drop.classList.remove('active');
+        });
+    });
+
 });
