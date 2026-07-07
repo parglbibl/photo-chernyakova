@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE - 100vw WITH HEART VISIBLE
+   STABLE RELEASE - 100vw WITH HEART VISIBLE
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -40,7 +40,6 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* --- ГЕРБЕРА: НА ВЕСЬ ЭКРАН, СЕРДЦЕВИНА ВИДНА --- */
 #top-layer-gerbera {
     position: fixed;
     top: 0;
@@ -86,7 +85,6 @@ header {
     justify-content: center;
 }
 
-/* ----- НАВИГАЦИЯ (ИДЕАЛЬНО ВЫРОВНЕННАЯ) ----- */
 .nav {
     display: flex;
     flex-wrap: wrap;
@@ -98,7 +96,6 @@ header {
 }
 
 .nav li {
-    position: relative;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -119,7 +116,6 @@ header {
     color: #FFFFFF;
 }
 
-/* --- ВЫПАДАЮЩЕЕ МЕНЮ (БЕЗ ЧЕКБОКСОВ, БЕЗ СКРИПТОВ) --- */
 .nav .dropdown {
     position: relative;
     display: inline-block;
@@ -128,10 +124,10 @@ header {
 .nav .dropdown-toggle {
     display: inline-block;
     line-height: 1.2;
-    color: var(--muted);
+    padding: 6px 0;
     font-weight: 600;
     font-size: 18px;
-    padding: 6px 0;
+    color: var(--muted);
     cursor: pointer;
 }
 
@@ -171,8 +167,7 @@ header {
     background: rgba(195, 154, 116, 0.1);
 }
 
-.nav .dropdown:hover .dropdown-content,
-.nav .dropdown.active .dropdown-content {
+.nav .dropdown:target .dropdown-content {
     display: block;
 }
 
@@ -181,7 +176,6 @@ h1 span,
     color: var(--accent);
 }
 
-/* ----- ОБЩИЕ СТИЛИ ДЛЯ ЦИТАТЫ (hero-quote) ----- */
 .hero-quote {
     display: inline-block;
     padding: 14px 28px;
@@ -198,7 +192,6 @@ h1 span,
     margin-top: 6px;
 }
 
-/* ----- НОВЫЕ СТИЛИ ДЛЯ ГЛАВНОЙ ----- */
 .hero-top-v2 {
     display: flex;
     align-items: center;
@@ -339,7 +332,6 @@ h1 span,
     font-weight: 400;
 }
 
-/* ----- АДАПТИВНОСТЬ ГЛАВНОЙ ----- */
 @media (max-width: 900px) {
     .hero-top-v2 {
         display: flex;
@@ -426,8 +418,6 @@ h1 span,
         font-size: 14px;
     }
 }
-
-/* ----- ОСТАЛЬНЫЕ СТИЛИ (СТАРЫЕ) ----- */
 
 .hero {
     text-align: center;
