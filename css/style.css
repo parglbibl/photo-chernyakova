@@ -322,7 +322,7 @@ h1 span,
     font-weight: 400;
 }
 
-/* --- Адаптивность для мобильных устройств (ФИНАЛЬНАЯ версия) --- */
+/* --- Адаптивность для мобильных устройств (Широкий блок) --- */
 @media (max-width: 900px) {
     .hero-top-v2 {
         display: flex;
@@ -332,7 +332,7 @@ h1 span,
         gap: 20px;
         padding-top: 20px;
         margin-bottom: 20px;
-        flex-wrap: wrap; /* Позволяет элементам переноситься */
+        flex-wrap: wrap;
     }
     
     .hero-left-v2 {
@@ -366,22 +366,24 @@ h1 span,
         margin-top: 0px;
     }
     
-    /* Цитата на мобильных: отдельный блок на всю ширину, прозрачный */
+    /* Цитата: На всю ширину, красивая и в одну строку */
     .hero-quote-v2 {
-        margin-top: 15px;
-        padding: 16px 22px;
-        background: rgba(0, 0, 0, 0.4); /* Более прозрачный фон */
-        border-radius: 16px;
+        margin-top: 12px;
+        padding: 14px 24px;
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 20px;
         backdrop-filter: blur(4px);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        font-size: 15px;
+        font-size: 16px;
         font-style: italic;
         color: #FFFFFF;
         text-align: center;
-        box-shadow: none;
-        display: block; /* Заставляет занять всю ширину */
-        width: 100%;    /* На всю ширину */
-        flex-basis: 100%; /* Переносит на новую строку отдельно */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        display: block;
+        width: 100%;
+        flex-basis: 100%;
+        box-sizing: border-box;
+        white-space: nowrap; /* Строгий запрет на перенос слов */
     }
 
     .hero-gallery-v2 {
@@ -413,8 +415,8 @@ h1 span,
         font-size: 13px;
     }
     .hero-quote-v2 {
-        font-size: 14px;
-        padding: 14px 18px;
+        font-size: 15px;
+        padding: 12px 18px;
     }
 }
 
