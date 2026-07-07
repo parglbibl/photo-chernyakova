@@ -86,7 +86,7 @@ header {
     justify-content: center;
 }
 
-/* ----- НАВИГАЦИЯ И ВЫПАДАЮЩЕЕ МЕНЮ (УНИВЕРСАЛЬНОЕ) ----- */
+/* ----- НАВИГАЦИЯ И ВЫПАДАЮЩЕЕ МЕНЮ (ВЫРОВНЕННОЕ) ----- */
 .nav {
     display: flex;
     flex-wrap: wrap;
@@ -100,6 +100,8 @@ header {
 .nav li {
     position: relative;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav a {
@@ -109,21 +111,25 @@ header {
     font-size: 18px;
     transition: 0.3s;
     padding: 6px 0;
+    display: inline-block;
 }
 
 .nav a:hover {
     color: #FFFFFF;
 }
 
+/* ВЫПАДАЮЩЕЕ МЕНЮ (РАБОТАЕТ ВЕЗДЕ) */
 .nav .dropdown {
     position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
 }
 
 .nav .dropdown-toggle {
     cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    display: inline-block;
 }
 
 /* Убираем треугольник полностью */
