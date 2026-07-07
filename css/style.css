@@ -319,7 +319,7 @@ h1 span,
     .hero-top-v2 {
         display: flex;
         flex-direction: row;
-        align-items: center; /* Центрируем блоки по вертикали */
+        align-items: center;
         justify-content: flex-start;
         gap: 20px;
         padding-top: 20px;
@@ -346,7 +346,7 @@ h1 span,
     .hero-right-v2 {
         flex: 1;
         min-width: 0;
-        text-align: left; /* ОСТАВЛЯЕМ ЛЕВОЕ ВЫРАВНИВАНИЕ ТЕКСТА */
+        text-align: left;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -360,7 +360,7 @@ h1 span,
         font-size: 34px;
         line-height: 1.1;
         color: #FFFFFF;
-        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.95); /* Очень глубокая тень для контраста */
+        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.95);
         margin-top: 0;
     }
     
@@ -368,7 +368,7 @@ h1 span,
         font-size: 16px;
         line-height: 1.4;
         color: #FFFFFF;
-        text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9); /* Тень для подзаголовков */
+        text-shadow: 0 3px 12px rgba(0, 0, 0, 0.9);
         margin-top: 0px;
     }
 
@@ -934,12 +934,30 @@ img {
     pointer-events: auto;
 }
 
+/* ===== УПЛОТНЕНИЕ МЕНЮ НА МОБИЛЬНЫХ (КОМФОРТНОЕ ДЛЯ ПАЛЬЦЕВ) ===== */
+@media (max-width: 900px) {
+    header {
+        height: auto !important;
+        min-height: 54px !important;
+        padding: 6px 0 !important;
+    }
+    body {
+        padding-top: 54px !important;
+    }
+    .nav {
+        gap: 14px 28px;
+    }
+    .nav a {
+        font-size: 18px;
+        padding: 6px 0;
+    }
+}
+
 @media (max-width: 760px) {
-    header { height: auto !important; min-height: 72px; padding: 10px 0; }
-    body { padding-top: 72px !important; }
-    body:not(.page-home) { padding-top: 40px !important; }
-    .nav { gap: 14px 26px; }
-    .nav a { font-size: 20px; padding: 5px 0; }
+    header { min-height: 50px !important; }
+    body { padding-top: 50px !important; }
+    .nav { gap: 12px 22px; }
+    .nav a { font-size: 16px; }
     
     .section { padding: 50px 0; }
     body { font-size: 16px; }
@@ -957,11 +975,11 @@ img {
 }
 
 @media (max-width: 480px) {
-    header { height: auto !important; min-height: 62px; padding: 8px 0; }
-    body { padding-top: 62px !important; }
-    body:not(.page-home) { padding-top: 40px !important; }
+    header { min-height: 48px !important; }
+    body { padding-top: 48px !important; }
     .nav { gap: 8px 16px; }
-    .nav a { font-size: 16px; padding: 4px 0; }
+    .nav a { font-size: 15px; }
+    
     .stats { grid-template-columns: 1fr; }
     .gallery { grid-template-columns: 1fr 1fr; gap: 12px; }
     .gallery-item { aspect-ratio: 1 / 1; }
