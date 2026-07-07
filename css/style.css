@@ -323,19 +323,24 @@ h1 span,
         justify-content: flex-start;
         gap: 20px;
         padding-top: 20px;
-        margin-bottom: 0px;
+        margin-bottom: 20px;
         flex-wrap: wrap;
     }
     
     .hero-left-v2 {
-        flex: 0 0 120px;
-        max-width: 120px;
+        flex: 0 0 130px;
+        max-width: 130px;
     }
     
     .hero-avatar-v2 img {
-        width: 120px;
-        height: 120px;
-        border-radius: 20px;
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        object-fit: contain; /* НЕ ОБРЕЗАЕТ ГОЛОВУ */
+        border: 2px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        opacity: 1 !important;
+        filter: contrast(1.1) brightness(1.1) !important;
     }
     
     .hero-right-v2 {
@@ -358,24 +363,6 @@ h1 span,
         margin-top: 0px;
     }
 
-    /* Теперь цитата на главной использует класс hero-quote */
-    .hero-quote {
-        margin-top: 45px; /* ОГРОМНЫЙ ОТСТУП ОТ ФОТО */
-        padding: 14px 28px;
-        border-radius: 40px;
-        background: rgba(34, 32, 29, 0.80) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        backdrop-filter: blur(18px);
-        box-shadow: var(--card-shadow);
-        font-size: 18px;
-        color: var(--small);
-        font-style: italic;
-        max-width: 100%;
-        word-break: break-word;
-        display: block;
-        width: 100%;
-    }
-
     .hero-gallery-v2 {
         grid-template-columns: repeat(2, 1fr);
         margin-top: 10px;
@@ -392,23 +379,18 @@ h1 span,
 
 @media (max-width: 480px) {
     .hero-left-v2 {
-        flex: 0 0 110px;
-        max-width: 110px;
+        flex: 0 0 115px;
+        max-width: 115px;
     }
     .hero-avatar-v2 img {
-        width: 110px;
-        height: 110px;
+        width: 115px;
+        height: 115px;
     }
     .hero-title-v2 {
         font-size: 28px;
     }
     .hero-lead-v2 {
         font-size: 13px;
-    }
-    .hero-quote {
-        font-size: 16px;
-        padding: 12px 20px;
-        margin-top: 35px;
     }
 }
 
@@ -1053,28 +1035,4 @@ img {
         min-width: 44px;
         min-height: 28px;
     }
-    .like-wrapper .like-btn {
-        font-size: 16px;
-        width: 20px;
-        height: 20px;
-    }
-    .like-wrapper .like-count {
-        font-size: 12px;
-        min-width: 14px;
-    }
-}
-
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #171614; }
-::-webkit-scrollbar-thumb {
-    background: #5b4a3b;
-    border-radius: 20px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #7a624d;
-}
-
-::selection {
-    background: #c39a74;
-    color: #111;
-}
+    .like-wrapper .
