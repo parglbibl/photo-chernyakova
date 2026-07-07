@@ -34,14 +34,19 @@
                 <li><a href="about.html">О себе</a></li>
                 <li><a href="projects.html">Проекты</a></li>
                 <li><a href="achievements.html">Достижения</a></li>
+                
                 <li class="dropdown">
-                    <a href="javascript:void(0);" class="dropdown-toggle">Галерея</a>
+                    <!-- Магический чекбокс -->
+                    <input type="checkbox" id="galleryToggle" class="dropdown-checkbox">
+                    <label for="galleryToggle" class="dropdown-toggle">Галерея</label>
+                    
                     <ul class="dropdown-content">
                         <li><a href="macro.html">Макромир</a></li>
                         <li><a href="concept.html">Концепт</a></li>
                         <li><a href="nature.html">Природа</a></li>
                     </ul>
                 </li>
+
                 <li><a href="news.html">Новости</a></li>
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
@@ -201,66 +206,12 @@
         </div>
     </footer>
 
-    <!-- ===== СКРИПТ СПЕЦИАЛЬНО ДЛЯ ТЕЛЕФОНА (touch events) ===== -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            // ===== ГОД В ФУТЕРЕ =====
             var year = document.getElementById("current-year");
             if (year) {
                 year.textContent = new Date().getFullYear();
             }
-
-            // ===== ЗАЩИТА ФОТО =====
-            function safeClosest(e, selector) {
-                try {
-                    return e.target.closest(selector);
-                } catch (err) {
-                    return null;
-                }
-            }
-            document.addEventListener('contextmenu', function(e) {
-                if (safeClosest(e, '.gallery-item img') || safeClosest(e, '.home-photo img') || safeClosest(e, '.hero-avatar img')) {
-                    e.preventDefault();
-                    return false;
-                }
-            });
-            document.addEventListener('dragstart', function(e) {
-                if (safeClosest(e, '.gallery-item img') || safeClosest(e, '.home-photo img') || safeClosest(e, '.hero-avatar img')) {
-                    e.preventDefault();
-                }
-            });
-
-            // ===== ИНТЕРАКТИВНОЕ МЕНЮ (СПЕЦИАЛЬНО ДЛЯ ТАЧ-ЭКРАНОВ) =====
-            var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
-            
-            dropdownToggles.forEach(function(toggle) {
-                // На телефонах используем touchstart вместо click
-                toggle.addEventListener('touchstart', function(e) {
-                    e.preventDefault(); // Запрещает скролл страницы при нажатии на меню
-                    e.stopPropagation();
-                    
-                    var parentDropdown = this.closest('.dropdown');
-                    
-                    // Закрываем все другие открытые подменю
-                    document.querySelectorAll('.nav .dropdown.active').forEach(function(drop) {
-                        if (drop !== parentDropdown) {
-                            drop.classList.remove('active');
-                        }
-                    });
-                    
-                    // Переключаем текущее
-                    parentDropdown.classList.toggle('active');
-                }, { passive: false }); // Важно: passive: false чтобы сработал preventDefault
-            });
-
-            // Закрываем подменю при тапе в любом месте за пределами меню
-            document.addEventListener('touchstart', function(e) {
-                if (!e.target.closest('.nav .dropdown')) {
-                    document.querySelectorAll('.nav .dropdown.active').forEach(function(drop) {
-                        drop.classList.remove('active');
-                    });
-                }
-            }, { passive: true });
         });
     </script>
 
