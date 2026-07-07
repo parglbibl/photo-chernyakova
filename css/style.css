@@ -135,6 +135,7 @@ header {
 
 .nav .dropdown-toggle {
     display: inline-block;
+    vertical-align: middle; /* ЭТА СТРОЧКА ВЫРАВНИВАЕТ ПО ЦЕНТРУ! */
     padding: 6px 0;
     cursor: pointer;
     color: var(--muted);
@@ -1088,26 +1089,4 @@ img {
     color: #D2CBC2;
 }
 
-.like-wrapper .like-btn:hover {
-    transform: scale(1.15);
-}
-
-.like-wrapper .like-count {
-    font-size: 14px;
-    font-weight: 600;
-    color: #D2CBC2;
-    margin: 0;
-    padding: 0;
-    min-width: 16px;
-    text-align: center;
-    line-height: 1;
-    display: flex;
-    align-items: center;
-}
-
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #171614; }
-::-webkit-scrollbar-thumb { background: #5b4a3b; border-radius: 20px; }
-::-webkit-scrollbar-thumb:hover { background: #7a624d; }
-
-::selection { background: #c39a74; color: #111; }
+.like-wrapper
