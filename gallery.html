@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Галерея — Галина Чернякова | Макро, пейзажи и концептуальная фотография</title>
-    <meta name="description" content="Галерея фотографа Галины Черняковой. Макромир, капли, цветы, черно-белые пейзажи, минимализм, концептуальные работы и творческие проекты." />
-    <meta name="keywords" content="галерея фотографа, макрофотография, капли росы, макромир цветов, концептуальный минимализм, пейзажи Санкт-Петербурга, Галина Чернякова фото" />
+    <meta name="description" content="Галерея фотографа Галины Черняковой. Макромир, капли, цветы, черно-белые пейзажи, минимализм." />
+    <meta name="keywords" content="галерея фотографа, макрофотография, капли росы, макромир цветов, Галина Чернякова фото" />
     <meta property="og:title" content="Галерея — Галина Чернякова | Фотограф" />
-    <meta property="og:description" content="Макро, концепт, природа, черно-белая классика. Фотоработы Галины Черняковой." />
+    <meta property="og:description" content="Макро, концепт, природа, черно-белая классика." />
     <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
     <meta property="og:url" content="https://photo-chernyakova.ru/gallery.html" />
     <meta name="twitter:card" content="summary_large_image" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css" />
 
-    <!-- ПОЛНЫЙ НАБОР ФАВИКОНОК (СТАНДАРТ) -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -30,7 +31,14 @@
                 <li><a href="about.html">О себе</a></li>
                 <li><a href="projects.html">Проекты</a></li>
                 <li><a href="achievements.html">Достижения</a></li>
-                <li><a href="gallery.html" class="active">Галерея</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">Галерея <span class="arrow">▼</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="macro.html">Макромир</a></li>
+                        <li><a href="concept.html">Концепт</a></li>
+                        <li><a href="nature.html">Природа</a></li>
+                    </ul>
+                </li>
                 <li><a href="news.html">Новости</a></li>
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
@@ -51,39 +59,39 @@
             <div class="section-title">Мои работы</div>
             <div class="section-subtitle">Нажмите на любую фотографию, чтобы рассмотреть в деталях</div>
             <div class="gallery" id="photoGallery">
-                <div class="gallery-item"><img src="images/gallery/1.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="1"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/2.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="2"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/3.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="3"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/4.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="4"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/5.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="5"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/6.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="6"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/7.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="7"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/8.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="8"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/9.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="9"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/10.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="10"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/11.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="11"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/12.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="12"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/13.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="13"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/14.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="14"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/15.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="15"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/16.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="16"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/17.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="17"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/18.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="18"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/19.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="19"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/20.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="20"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/21.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="21"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/22.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="22"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/23.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="23"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/24.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="24"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/25.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="25"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/26.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="26"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/27.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="27"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/28.png" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="28"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/33.PNG" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="33"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/34.PNG" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="34"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/35.PNG" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="35"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/36.PNG" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="36"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
-                <div class="gallery-item"><img src="images/gallery/37.PNG" loading="lazy" /><div class="like-wrapper"><button class="like-btn" data-photo-id="37"><span class="heart-icon">🤍</span></button><span class="like-count">0</span></div></div>
+                <div class="gallery-item"><img src="images/gallery/1.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/2.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/3.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/4.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/5.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/6.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/7.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/8.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/9.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/10.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/11.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/12.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/13.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/14.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/15.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/16.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/17.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/18.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/19.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/20.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/21.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/22.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/23.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/24.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/25.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/26.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/27.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/28.png" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/33.PNG" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/34.PNG" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/35.PNG" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/36.PNG" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/37.PNG" loading="lazy" /></div>
             </div>
         </div>
     </section>
@@ -96,6 +104,7 @@
     </footer>
 
     <script src="js/main.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var observer = new IntersectionObserver(function(entries) {
@@ -109,57 +118,6 @@
                 el.classList.add('fade-up');
                 observer.observe(el);
             });
-        });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", async function() {
-            if (typeof window.supabase === 'undefined') {
-                console.error('Библиотека Supabase не загружена!');
-                return;
-            }
-            const SUPABASE_URL = 'https://lcadyvgzzcnflggvsfec.supabase.co';
-            const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxjYWR5dmd6emNuZmxnZ3ZzZmVjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5ODk2MDcsImV4cCI6MjA5ODU2NTYwN30.QL8M-GGvhxbckBpTprshChpbru7w8g4dD2z9HB3m9nQ';
-            const galinaApp = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-            console.log('🔁 Разогрев базы...');
-            await galinaApp.from('likes').select('count').limit(1).then(() => {
-                console.log('✅ База разогрета, лайки будут мгновенными!');
-            }).catch(() => {});
-            const buttons = document.querySelectorAll('.like-btn');
-            for (const btn of buttons) {
-                const wrapper = btn.closest('.like-wrapper');
-                const countDisplay = wrapper.querySelector('.like-count');
-                const photoId = btn.dataset.photoId;
-                let { data } = await galinaApp
-                    .from('likes')
-                    .select('count')
-                    .eq('photo_id', photoId)
-                    .single();
-                if (data) {
-                    countDisplay.textContent = data.count;
-                } else {
-                    await galinaApp
-                        .from('likes')
-                        .insert({ photo_id: photoId, count: 0 });
-                }
-                if (localStorage.getItem('liked_' + photoId) === 'true') {
-                    btn.querySelector('.heart-icon').textContent = '❤️';
-                }
-                btn.addEventListener('click', async function(e) {
-                    e.stopPropagation();
-                    e.preventDefault();
-                    if (localStorage.getItem('liked_' + photoId) === 'true') return;
-                    btn.querySelector('.heart-icon').textContent = '❤️';
-                    let currentCount = parseInt(countDisplay.textContent);
-                    countDisplay.textContent = currentCount + 1;
-                    localStorage.setItem('liked_' + photoId, 'true');
-                    await galinaApp
-                        .from('likes')
-                        .update({ count: currentCount + 1 })
-                        .eq('photo_id', photoId);
-                });
-            }
         });
     </script>
 
