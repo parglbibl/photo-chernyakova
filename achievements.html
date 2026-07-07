@@ -3,20 +3,15 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
     <title>Достижения — Галина Чернякова | Награды и победы в фотоконкурсах</title>
     <meta name="description" content="Достижения фотографа Галины Черняковой: 35AWARDS, призовые места Фотопризер.ру, конкурс Самая красивая страна, сертификаты Photoshop и выставочные проекты." />
     <meta name="keywords" content="35AWARDS, Галина Чернякова награды, фотоконкурс Самая красивая страна, Фотопризер, победы фотографа, сертификат Photoshop" />
-    
     <meta property="og:title" content="Достижения — Галина Чернякова | Фотограф" />
     <meta property="og:description" content="Международные и российские награды, дипломы, победы в конкурсах и выставочные проекты." />
     <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
     <meta property="og:url" content="https://photo-chernyakova.ru/achievements.html" />
     <meta name="twitter:card" content="summary_large_image" />
-    
     <link rel="stylesheet" href="css/style.css" />
-
-    <!-- ФАВИКОНКИ -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -24,9 +19,10 @@
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#A8613D">
     <meta name="msapplication-TileColor" content="#FDFBF7">
     <meta name="theme-color" content="#FDFBF7">
-
 </head>
 <body>
+
+    <img id="top-layer-gerbera" src="images/bg.webp">
 
     <header>
         <div class="header-inner">
@@ -51,7 +47,6 @@
         </div>
     </section>
 
-    <!-- Секция "Награды и премии" -->
     <section class="section fade-up" style="padding-top: 25px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Награды и премии</div>
@@ -67,7 +62,6 @@
         </div>
     </section>
 
-    <!-- Секция "В цифрах" -->
     <section class="section fade-up" style="padding-top: 20px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">В цифрах</div>
@@ -100,7 +94,6 @@
 
     <script src="js/main.js"></script>
 
-    <!-- Анимация появления блоков при скролле -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var observer = new IntersectionObserver(function(entries) {
@@ -109,10 +102,7 @@
                         entry.target.classList.add('visible');
                     }
                 });
-            }, {
-                threshold: 0.1
-            });
-
+            }, { threshold: 0.1 });
             document.querySelectorAll('.section, .project-card, .card, .stat-card').forEach(function(el) {
                 el.classList.add('fade-up');
                 observer.observe(el);
