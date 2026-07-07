@@ -134,14 +134,16 @@ header {
 }
 
 .nav .dropdown-toggle {
-    display: inline-block;
-    vertical-align: middle; /* ЭТА СТРОЧКА ВЫРАВНИВАЕТ ПО ЦЕНТРУ! */
+    display: flex;
+    align-items: center; /* ИДЕАЛЬНОЕ ВЫРАВНИВАНИЕ ПО ЦЕНТРУ */
+    justify-content: center;
     padding: 6px 0;
     cursor: pointer;
     color: var(--muted);
     font-weight: 600;
     font-size: 18px;
-    pointer-events: none; /* Клик перехватывает чекбокс */
+    pointer-events: none;
+    height: 100%;
 }
 
 .nav .dropdown-content {
