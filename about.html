@@ -4,16 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>О себе — Галина Чернякова | Фотограф из Санкт-Петербурга</title>
-    <meta name="description" content="Галина Чернякова — фотограф из Санкт-Петербурга. Жанры: макросъемка, природа, архитектура, творческая съемка. Образование, опыт, выставки и контакты." />
-    <meta name="keywords" content="Галина Чернякова, фотограф Санкт-Петербург, макросъемка, портфолио фотографа, творческая фотография, выставка Крупным планом, РГПУ Герцена" />
+    <meta name="description" content="Галина Чернякова — фотограф из Санкт-Петербурга. Жанры: макросъемка, природа, архитектура, творческая съемка." />
+    <meta name="keywords" content="Галина Чернякова, фотограф Санкт-Петербург, макросъемка, портфолио фотографа" />
     <meta property="og:title" content="О себе — Галина Чернякова | Фотограф" />
-    <meta property="og:description" content="Фотограф из Санкт-Петербурга. Макро, природа, архитектура, творческая съемка. Образование, проекты и достижения." />
+    <meta property="og:description" content="Фотограф из Санкт-Петербурга. Макро, природа, архитектура, творческая съемка." />
     <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
     <meta property="og:url" content="https://photo-chernyakova.ru/about.html" />
     <meta name="twitter:card" content="summary_large_image" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css" />
 
-    <!-- ПОЛНЫЙ НАБОР ФАВИКОНОК (СТАНДАРТ) -->
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -30,7 +31,14 @@
                 <li><a href="about.html" class="active">О себе</a></li>
                 <li><a href="projects.html">Проекты</a></li>
                 <li><a href="achievements.html">Достижения</a></li>
-                <li><a href="gallery.html">Галерея</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0);" class="dropdown-toggle">Галерея <span class="arrow">▼</span></a>
+                    <ul class="dropdown-content">
+                        <li><a href="macro.html">Макромир</a></li>
+                        <li><a href="concept.html">Концепт</a></li>
+                        <li><a href="nature.html">Природа</a></li>
+                    </ul>
+                </li>
                 <li><a href="news.html">Новости</a></li>
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
@@ -63,12 +71,12 @@
             <div class="section-subtitle">Знания и опыт, которые формируют взгляд</div>
             <div class="grid-2">
                 <div class="card">
-                    <div class="emoji">🎓</div>
+                    <div class="icon"><i class="fa-solid fa-graduation-cap" style="font-size: 36px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>РГПУ им. А.И. Герцена</h3>
                     <p><strong>2011 – 2018</strong><br>Высшее образование, специализация «Социальная работа в различных сферах жизнедеятельности».<br><span class="accent-text">Степень магистра</span></p>
                 </div>
                 <div class="card">
-                    <div class="emoji">💻</div>
+                    <div class="icon"><i class="fa-solid fa-pen-to-square" style="font-size: 36px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>Adobe Photoshop 1.0</h3>
                     <p><strong>2024</strong><br>Курс по профессиональной обработке фотографий и цветокоррекции.</p>
                 </div>
@@ -82,17 +90,17 @@
             <div class="section-subtitle">Три принципа, которые я ценю в каждой съёмке</div>
             <div class="grid-3">
                 <div class="card" style="text-align: center;">
-                    <div class="emoji">🫶</div>
+                    <div class="icon"><i class="fa-regular fa-eye" style="font-size: 36px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>Честный взгляд</h3>
-                    <p>Я не просто нажимаю на кнопку — я я ищу ту самую эмоцию и свет, которые сделают кадр уникальным.</p>
+                    <p>Я не просто нажимаю на кнопку — я ищу ту самую эмоцию и свет, которые сделают кадр уникальным.</p>
                 </div>
                 <div class="card" style="text-align: center;">
-                    <div class="emoji">🤝</div>
+                    <div class="icon"><i class="fa-regular fa-handshake" style="font-size: 36px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>Доверие и диалог</h3>
                     <p>Мне важно, чтобы вам было комфортно перед объективом. Я всегда на связи, чтобы обсудить любые идеи.</p>
                 </div>
                 <div class="card" style="text-align: center;">
-                    <div class="emoji">⏳</div>
+                    <div class="icon"><i class="fa-regular fa-clock" style="font-size: 36px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>Внимание к деталям</h3>
                     <p>Я уважаю ваше время и ваш замысел. Каждый кадр я довожу до того самого результата, который вы искали.</p>
                 </div>
@@ -107,22 +115,22 @@
             <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 20px; color: var(--text);">Лекции и мероприятия</h3>
             <div class="grid-2">
                 <div class="card">
-                    <div class="emoji">🎨</div>
+                    <div class="icon"><i class="fa-solid fa-paintbrush" style="font-size: 30px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>Годовая выставка фотоклуба</h3>
                     <p><strong>Декабрь 2025</strong><br>Участие в годовой выставке фотоклуба «Творческая фотомастерская».</p>
                 </div>
                 <div class="card">
-                    <div class="emoji">📸</div>
+                    <div class="icon"><i class="fa-solid fa-calendar-day" style="font-size: 30px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>Фотосушка на Дне города</h3>
                     <p><strong>Август 2024</strong><br>Участие в фотосушке на Дне города в Сертолово.</p>
                 </div>
                 <div class="card">
-                    <div class="emoji">🗣️</div>
+                    <div class="icon"><i class="fa-solid fa-chalkboard-user" style="font-size: 30px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>«Учимся видеть прекрасное»</h3>
                     <p><strong>Июль 2024</strong><br>Лекция о фотографии в Сертолово.</p>
                 </div>
                 <div class="card">
-                    <div class="emoji">🌿</div>
+                    <div class="icon"><i class="fa-solid fa-leaf" style="font-size: 30px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
                     <h3>«Хрупкость природы»</h3>
                     <p><strong>Март 2024</strong><br>Лекция о фотографии в Сертоловской городской библиотеке.</p>
                 </div>
@@ -167,7 +175,7 @@
                     }
                 });
             }, { threshold: 0.1 });
-            document.querySelectorAll('.section, .project-card, .card, .stat-card').forEach(function(el) {
+            document.querySelectorAll('.section, .project-card, .card').forEach(function(el) {
                 el.classList.add('fade-up');
                 observer.observe(el);
             });
