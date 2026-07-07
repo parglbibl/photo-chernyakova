@@ -164,6 +164,7 @@ h1 span,
     object-fit: cover;
     border: 2px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    opacity: 1 !important; /* Фикс прозрачности! */
 }
 
 .hero-right-v2 {
