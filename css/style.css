@@ -875,9 +875,3 @@ img {
     filter: contrast(1.1) brightness(1.1) !important;
     opacity: 1 !important;
 }
-
-/* ФИКС ПРОЗРАЧНОСТИ ПОРТРЕТА ДЛЯ ТЕЛЕФОНОВ */
-.hero-avatar-v2 img {
-    filter: contrast(1.1) brightness(1.1) !important;
-    opacity: 1 !important;
-}
