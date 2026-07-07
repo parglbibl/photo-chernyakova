@@ -36,10 +36,7 @@
                 <li><a href="achievements.html">Достижения</a></li>
                 
                 <li class="dropdown">
-                    <!-- Магический чекбокс -->
-                    <input type="checkbox" id="galleryToggle" class="dropdown-checkbox">
-                    <label for="galleryToggle" class="dropdown-toggle">Галерея</label>
-                    
+                    <a href="javascript:void(0);" class="dropdown-toggle">Галерея</a>
                     <ul class="dropdown-content">
                         <li><a href="macro.html">Макромир</a></li>
                         <li><a href="concept.html">Концепт</a></li>
@@ -205,15 +202,6 @@
             <p>© <span id="current-year"></span> Галина Чернякова</p>
         </div>
     </footer>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var year = document.getElementById("current-year");
-            if (year) {
-                year.textContent = new Date().getFullYear();
-            }
-        });
-    </script>
 
 </body>
 </html>
