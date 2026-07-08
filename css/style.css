@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE - 100vw WITH HEART VISIBLE + BURGER
+   FINAL STYLE - 100vw WITH HEART VISIBLE + COMPACT BURGER
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -191,7 +191,7 @@ header {
     display: block;
 }
 
-/* ----- МОБИЛЬНЫЙ БУРГЕР (СКРЫВАЕТ МЕНЮ, ПОКАЗЫВАЕТ ГАМБУРГЕР) ----- */
+/* ----- МОБИЛЬНЫЙ БУРГЕР (КОМПАКТНЫЙ И ЛЁГКИЙ) ----- */
 @media (max-width: 900px) {
     /* Прячем всё меню */
     .nav {
@@ -201,10 +201,10 @@ header {
         top: 80px;
         left: 0;
         width: 100%;
-        background: rgba(24, 23, 21, 0.96);
-        backdrop-filter: blur(12px);
-        padding: 20px 20px 30px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(24, 23, 21, 0.85);
+        backdrop-filter: blur(16px);
+        padding: 8px 0 12px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
         z-index: 999;
     }
 
@@ -213,7 +213,7 @@ header {
         display: flex;
     }
 
-    /* Стили для пунктов внутри бургера (компактные) */
+    /* Стили для пунктов внутри бургера */
     .nav li {
         width: 100%;
         text-align: center;
@@ -221,10 +221,16 @@ header {
 
     .nav a {
         display: block;
-        padding: 8px 0;
-        font-size: 18px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 6px 0;
+        font-size: 17px;
+        border-bottom: none;
         width: 100%;
+        color: var(--muted);
+        transition: 0.2s;
+    }
+
+    .nav a:hover {
+        color: #FFFFFF;
     }
 
     .nav .dropdown {
@@ -234,10 +240,15 @@ header {
     .nav .dropdown-toggle {
         display: block;
         width: 100%;
-        padding: 8px 0;
+        padding: 6px 0;
         pointer-events: auto;
-        font-size: 18px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        font-size: 17px;
+        border-bottom: none;
+        color: var(--muted);
+    }
+
+    .nav .dropdown-toggle:hover {
+        color: #FFFFFF;
     }
 
     .nav .dropdown-content {
@@ -246,7 +257,7 @@ header {
         width: 100%;
         box-shadow: none;
         border: none;
-        background: rgba(0, 0, 0, 0.2);
+        background: transparent;
         border-radius: 0;
         padding: 0;
         margin-top: 0;
@@ -258,9 +269,9 @@ header {
     }
 
     .nav .dropdown-content a {
-        font-size: 18px;
-        padding: 8px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        font-size: 16px;
+        padding: 4px 0;
+        border-bottom: none;
         color: var(--small);
     }
 
@@ -278,28 +289,28 @@ header {
         padding: 5px;
         position: absolute;
         right: 20px;
-        top: 50%;
+        top: 45%;
         transform: translateY(-50%);
     }
 
     .burger-btn span {
         display: block;
-        width: 26px;
-        height: 3px;
+        width: 24px;
+        height: 2px;
         background-color: var(--muted);
-        border-radius: 2px;
+        border-radius: 1px;
         transition: 0.3s;
     }
 
     /* Анимация превращения бургера в крестик при открытии */
     #burgerToggle:checked ~ .burger-btn span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
+        transform: translateY(7px) rotate(45deg);
     }
     #burgerToggle:checked ~ .burger-btn span:nth-child(2) {
         opacity: 0;
     }
     #burgerToggle:checked ~ .burger-btn span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
+        transform: translateY(-7px) rotate(-45deg);
     }
 
     /* Скрываем чекбокс бургера */
