@@ -154,30 +154,30 @@ document.addEventListener("DOMContentLoaded", function() {
             var parentDropdown = this.closest('.dropdown');
             
             // Закрываем все другие открытые подменю
-            document.querySelectorAll('.nav .dropdown.active').forEach(function(drop) {
+            document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
                 if (drop !== parentDropdown) {
-                    drop.classList.remove('active');
+                    drop.classList.remove('open');
                 }
             });
             
             // Переключаем текущее
-            parentDropdown.classList.toggle('active');
+            parentDropdown.classList.toggle('open');
         });
     });
 
-    // Закрываем подменю при клике в любом месте за пределами меню
+    // Закрываем подменю при клике вне меню
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.nav .dropdown')) {
-            document.querySelectorAll('.nav .dropdown.active').forEach(function(drop) {
-                drop.classList.remove('active');
+            document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                drop.classList.remove('open');
             });
         }
     });
 
     // Закрываем подменю при скролле (опционально, для удобства)
     window.addEventListener('scroll', function() {
-        document.querySelectorAll('.nav .dropdown.active').forEach(function(drop) {
-            drop.classList.remove('active');
+        document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+            drop.classList.remove('open');
         });
     });
 
