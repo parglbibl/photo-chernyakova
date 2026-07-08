@@ -58,7 +58,6 @@
     <section class="section fade-up" style="padding-top: 15px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">О себе</div>
-            <div class="section-subtitle">«Фотография — это остановленное мгновение»</div>
             <div class="section-text">
                 <p>Мне 33 года. Я занимаюсь фотографией с 2014 года. Мой основной жанр — макросъемка. Но я также люблю снимать повседневную жизнь, природу, архитектуру и заниматься творческой съемкой. Фотография — это мой способ говорить с миром без слов.</p>
                 <p style="margin-top: 20px;">Мои работы были представлены на персональной выставке «Крупным планом» в Сортавала и совместной выставке «Две линзы, один сюжет» в Санкт-Петербурге.</p>
@@ -69,7 +68,6 @@
     <section class="section fade-up" style="padding-top: 20px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Образование</div>
-            <div class="section-subtitle">Знания и опыт, которые формируют взгляд</div>
             <div class="grid-2">
                 <div class="card">
                     <div class="icon"><i class="fa-solid fa-graduation-cap" style="font-size: 36px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
@@ -88,7 +86,6 @@
     <section class="section fade-up" style="padding-top: 20px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Подход к работе</div>
-            <div class="section-subtitle">Три принципа, которые я ценю в каждой съёмке</div>
             <div class="grid-3">
                 <div class="card" style="text-align: center;">
                     <div class="icon"><i class="fa-regular fa-eye" style="font-size: 36px; color: var(--accent); display: block; margin-bottom: 12px;"></i></div>
@@ -112,7 +109,6 @@
     <section class="section fade-up" style="padding-top: 20px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Опыт и проекты</div>
-            <div class="section-subtitle">От первых кадров до персональных выставок</div>
             <h3 style="margin-top: 0; margin-bottom: 12px; font-size: 20px; color: var(--text);">Лекции и мероприятия</h3>
             <div class="grid-2">
                 <div class="card">
@@ -142,7 +138,6 @@
     <section class="section fade-up" style="padding-top: 20px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">Ещё немного обо мне</div>
-            <div class="section-subtitle">Мой след в фотографии</div>
             <div class="card" style="max-width: 760px; margin: 0 auto;">
                 <p style="text-align: center; font-size: 17px; line-height: 1.8;">
                     Участник и победитель таких конкурсов как: 
@@ -176,7 +171,7 @@
                     }
                 });
             }, { threshold: 0.1 });
-            document.querySelectorAll('.section, .project-card, .card, .stat-card').forEach(function(el) {
+            document.querySelectorAll('.section, .project-card, .card').forEach(function(el) {
                 el.classList.add('fade-up');
                 observer.observe(el);
             });
