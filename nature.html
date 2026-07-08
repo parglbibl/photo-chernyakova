@@ -164,6 +164,7 @@
                         <li><a href="nature.html" class="active">Природа</a></li>
                     </ul>
                 </li>
+
                 <li><a href="news.html">Новости</a></li>
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
@@ -218,25 +219,6 @@
         });
     </script>
 
+    <!-- СКРИПТ МЕНЮ -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var burgerBtn = document.getElementById("burgerBtn");
-            var navMenu = document.querySelector(".nav");
-
-            burgerBtn.addEventListener("click", function(e) {
-                e.stopPropagation();
-                navMenu.classList.toggle("active");
-            });
-
-            document.addEventListener("click", function(e) {
-                if (navMenu.classList.contains("active")) {
-                    if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
-                        navMenu.classList.remove("active");
-                    }
-                }
-            });
-        });
-    </script>
-
-</body>
-</html>
+        document.addEventListener
