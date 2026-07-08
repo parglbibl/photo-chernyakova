@@ -83,18 +83,26 @@
     <section class="section fade-up" style="padding-top: 0px; padding-bottom: 30px;">
         <div class="container">
             <div class="section-title">Другие способы связи</div>
-            <div class="contacts" style="flex-direction: column; align-items: center; gap: 12px;">
-                <a href="tel:+79217803810" style="width: fit-content;"><i class="fa-solid fa-phone" style="margin-right: 8px;"></i> Телефон: +7 (921) 780-38-10</a>
-                <a href="mailto:galyagolowanowa2015@yandex.ru" style="width: fit-content;"><i class="fa-regular fa-envelope" style="margin-right: 8px;"></i> Почта: galyagolowanowa2015@yandex.ru</a>
+            
+            <!-- Используем flex-контейнер с колонкой для ровных плашек -->
+            <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 600px; margin: 0 auto;">
                 
-                <!-- ОБНОВЛЕННАЯ ССЫЛКА НА ГРУППУ ВК -->
-                <a href="https://vk.com/club80083335" target="_blank" style="width: fit-content;">
-                    <i class="fa-solid fa-users" style="margin-right: 8px;"></i> Сообщество ВКонтакте
+                <a href="tel:+79217803810" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 16px 24px; border-radius: 40px; border: 1px solid var(--line); background: var(--bg); color: var(--muted); text-decoration: none; font-size: 17px; transition: 0.3s;">
+                    <i class="fa-solid fa-phone" style="color: var(--accent);"></i> Телефон: +7 (921) 780-38-10
                 </a>
 
-                <div style="color: var(--muted); font-size: 17px; border: 1px solid var(--line); border-radius: 40px; padding: 12px 32px; background: var(--bg);">
-                    <i class="fa-solid fa-location-dot" style="margin-right: 8px;"></i> Адрес: Санкт-Петербург / Сертолово
+                <a href="mailto:galyagolowanowa2015@yandex.ru" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 16px 24px; border-radius: 40px; border: 1px solid var(--line); background: var(--bg); color: var(--muted); text-decoration: none; font-size: 17px; transition: 0.3s;">
+                    <i class="fa-regular fa-envelope" style="color: var(--accent);"></i> Почта: galyagolowanowa2015@yandex.ru
+                </a>
+
+                <a href="https://vk.com/club80083335" target="_blank" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 16px 24px; border-radius: 40px; border: 1px solid var(--line); background: var(--bg); color: var(--muted); text-decoration: none; font-size: 17px; transition: 0.3s;">
+                    <i class="fa-solid fa-users" style="color: var(--accent);"></i> Сообщество ВКонтакте
+                </a>
+
+                <div style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 16px 24px; border-radius: 40px; border: 1px solid var(--line); background: var(--bg); color: var(--muted); font-size: 17px;">
+                    <i class="fa-solid fa-location-dot" style="color: var(--accent);"></i> Адрес: Санкт-Петербург / Сертолово
                 </div>
+
             </div>
         </div>
     </section>
