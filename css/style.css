@@ -381,7 +381,6 @@ h1 span,
     font-weight: 400;
 }
 
-/* ----- АДАПТИВНОСТЬ ГЛАВНОЙ ----- */
 @media (max-width: 900px) {
     .hero-top-v2 {
         display: flex;
@@ -998,17 +997,14 @@ img {
 @media (max-width: 760px) {
     header {
         height: auto !important;
-        min-height: 72px !important;
-        padding: 10px 0 !important;
+        min-height: 54px !important;
+        padding: 6px 0 !important;
     }
     body {
-        padding-top: 72px !important;
-    }
-    body:not(.page-home) {
-        padding-top: 40px !important;
+        padding-top: 54px !important;
     }
     .nav {
-        gap: 6px 14px;
+        gap: 6px 18px;
     }
     .nav a {
         font-size: 17px;
@@ -1031,10 +1027,9 @@ img {
 }
 
 @media (max-width: 480px) {
-    header { height: auto !important; min-height: 62px !important; padding: 8px 0 !important; }
-    body { padding-top: 62px !important; }
-    body:not(.page-home) { padding-top: 40px !important; }
-    .nav { gap: 4px 12px; }
+    header { height: auto !important; min-height: 48px !important; }
+    body { padding-top: 48px !important; }
+    .nav { gap: 4px 14px; }
     .nav a { font-size: 15px; }
     
     .stats { grid-template-columns: 1fr; }
@@ -1116,3 +1111,54 @@ img {
 ::-webkit-scrollbar-thumb:hover { background: #7a624d; }
 
 ::selection { background: #c39a74; color: #111; }
+
+/* ----- ЛАЙТБОКС ДЛЯ ДИПЛОМОВ ----- */
+.lightbox-gallery {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.lightbox-gallery.active {
+    display: flex;
+}
+
+.lightbox-gallery img {
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+    animation: zoomIn 0.25s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.lightbox-gallery .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: #fff;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.2s;
+    z-index: 10000;
+}
+
+.lightbox-gallery .close-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
