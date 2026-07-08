@@ -63,33 +63,26 @@
 
     <section class="section fade-up" style="padding-top: 25px; padding-bottom: 30px;">
         <div class="container">
-            <div class="section-title">Новости</div>
-            <div style="max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
-                <div class="card fade-up" style="width: 100%;">
-                    <div class="emoji">📋</div>
-                    <h3>1 июля 2026</h3>
-                    <p>Поданы заявки на участие в трёх конкурсах:</p>
-                    <ul style="margin-top: 10px; padding-left: 20px; color: var(--muted); font-size: 15px; line-height: 1.8;">
-                        <li>PhotoCasa «Лето в кадре»</li>
-                        <li>«Региональный конкурс природной фотографии «Нижегородская природа»»</li>
-                        <li>«СТИХИЯ НАУКИ-2026»</li>
-                    </ul>
-                </div>
-                <div class="card fade-up" style="width: 100%;">
-                    <div class="emoji">📸</div>
-                    <h3>29 июня 2026</h3>
-                    <p>На сайте появилась отдельная страница с подборкой макро-работ.</p>
-                </div>
-                <div class="card fade-up" style="width: 100%;">
-                    <div class="emoji">🖼️</div>
-                    <h3>2025</h3>
-                    <p>Совместная фотовыставка в Библиотеках Выборгского района.</p>
-                </div>
-                <div class="card fade-up" style="width: 100%;">
-                    <div class="emoji">🎉</div>
-                    <h3>2026</h3>
-                    <p>Персональная фотовыставка в Сортавальской центральной библиотеке.</p>
-                </div>
+            <div class="section-title">Лента ВКонтакте</div>
+            <div class="section-subtitle">Свежие новости из моей группы</div>
+            
+            <!-- ===== КОД ВИДЖЕТА ВКОНТАКТЕ ===== -->
+            <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+            <script type="text/javascript">
+                VK.Widgets.GroupMessages("vk_widget_group_messages", {
+                    group_id: "club_vzglyad_ph", /* ВАШ ID ГРУППЫ */
+                    width: "auto",
+                    height: 500,
+                    theme: 1,
+                    interface: 1
+                });
+            </script>
+            <!-- Блок, куда будет загружаться лента -->
+            <div id="vk_widget_group_messages" style="width: 100%; margin-top: 20px; border-radius: 12px; overflow: hidden;"></div>
+            <!-- ========================================= -->
+
+            <div style="text-align: center; margin-top: 30px; color: var(--muted); font-size: 14px;">
+                <a href="https://vk.com/club_vzglyad_ph" target="_blank" style="color: var(--accent);">Перейти к группе ВКонтакте →</a>
             </div>
         </div>
     </section>
@@ -103,6 +96,7 @@
 
     <script src="js/main.js"></script>
 
+    <!-- Анимация появления блоков -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var observer = new IntersectionObserver(function(entries) {
