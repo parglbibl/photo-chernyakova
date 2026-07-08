@@ -203,7 +203,7 @@ header {
         width: 100%;
         background: rgba(24, 23, 21, 0.96);
         backdrop-filter: blur(12px);
-        padding: 20px;
+        padding: 20px 20px 30px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         z-index: 999;
     }
@@ -213,7 +213,7 @@ header {
         display: flex;
     }
 
-    /* Стили для пунктов внутри бургера */
+    /* Стили для пунктов внутри бургера (компактные) */
     .nav li {
         width: 100%;
         text-align: center;
@@ -221,8 +221,8 @@ header {
 
     .nav a {
         display: block;
-        padding: 14px 0;
-        font-size: 20px;
+        padding: 8px 0;
+        font-size: 18px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         width: 100%;
     }
@@ -234,9 +234,9 @@ header {
     .nav .dropdown-toggle {
         display: block;
         width: 100%;
-        padding: 14px 0;
+        padding: 8px 0;
         pointer-events: auto;
-        font-size: 20px;
+        font-size: 18px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
@@ -259,7 +259,7 @@ header {
 
     .nav .dropdown-content a {
         font-size: 18px;
-        padding: 12px 0;
+        padding: 8px 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         color: var(--small);
     }
@@ -1097,7 +1097,6 @@ img {
     body {
         padding-top: 54px !important;
     }
-    /* В бургере навигация уже переопределена выше */
     
     .section { padding: 50px 0; }
     body { font-size: 16px; }
