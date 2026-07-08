@@ -21,19 +21,21 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
-        /* Стили для страницы новостей */
+        /* Стили для идеального отображения виджета ВК */
         .vk-section {
             scroll-margin-top: 100px;
+            padding-bottom: 40px;
         }
 
         .vk-section-title {
             text-align: center;
-            font-size: clamp(28px, 3.5vw, 42px);
-            font-weight: 600;
+            font-size: clamp(32px, 4vw, 48px);
+            font-weight: 700;
             letter-spacing: -0.5px;
             color: #FFFFFF;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
-            margin-bottom: 6px;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+            margin-bottom: 8px;
+            line-height: 1.2;
         }
 
         .vk-section-subtitle {
@@ -41,65 +43,74 @@
             font-size: 19px;
             color: var(--muted);
             font-style: italic;
-            max-width: 700px;
+            max-width: 720px;
             margin: 0 auto 32px auto;
             line-height: 1.6;
-            opacity: 0.8;
+            opacity: 0.9;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
         }
 
-        /* Виджет ВК - делаем на всю ширину */
+        /* Жёсткое центрирование и растягивание виджета */
         #vk_groups {
             width: 100%;
             display: flex;
             justify-content: center;
+            margin: 0 auto;
+            padding: 0;
         }
 
         #vk_groups iframe {
             width: 100% !important;
             max-width: 100% !important;
-            height: 600px;
+            height: 650px;
             border: none !important;
             border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            background: transparent;
+            display: block;
+            margin: 0;
         }
 
-        /* Ссылка на группу */
+        /* Кнопка перехода в группу */
         .vk-link-wrapper {
             text-align: center;
-            margin-top: 28px;
+            margin-top: 35px;
         }
 
         .vk-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            padding: 14px 32px;
-            min-width: 220px;
-            border-radius: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            gap: 12px;
+            width: 100%;
+            max-width: 400px;
+            padding: 16px 28px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
             color: var(--muted);
             text-decoration: none;
-            font-size: 17px;
+            font-size: 18px;
             font-weight: 500;
             transition: all 0.3s ease;
-            background: rgba(34, 32, 29, 0.60);
-            backdrop-filter: blur(6px);
+            background: rgba(24, 23, 21, 0.85);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         }
 
         .vk-link:hover {
             border-color: var(--accent);
             color: #FFFFFF;
-            transform: translateY(-2px);
-            background: rgba(195, 154, 116, 0.10);
+            transform: translateY(-3px);
+            background: rgba(195, 154, 116, 0.15);
+            box-shadow: 0 12px 35px rgba(195, 154, 116, 0.15);
         }
 
         .vk-link i {
-            font-size: 14px;
             transition: transform 0.3s ease;
         }
 
         .vk-link:hover i {
-            transform: translateX(4px);
+            transform: translateX(6px);
         }
 
         /* Адаптив для мобильных */
@@ -111,9 +122,11 @@
             .vk-section-subtitle {
                 font-size: 17px;
                 margin-bottom: 24px;
+                padding: 0 10px;
             }
             .vk-link {
-                min-width: 100%;
+                max-width: 100%;
+                font-size: 16px;
                 padding: 14px 20px;
             }
         }
@@ -160,7 +173,7 @@
         </div>
     </section>
 
-    <section class="section fade-up vk-section" style="padding-top: 25px; padding-bottom: 30px;">
+    <section class="section fade-up vk-section">
         <div class="container">
             <h2 class="vk-section-title">Мир в деталях</h2>
             <p class="vk-section-subtitle">
@@ -170,7 +183,7 @@
             <!-- Скрипт ВКонтакте -->
             <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
             
-            <!-- Виджет сообщества -->
+            <!-- Виджет сообщества на полную ширину -->
             <div id="vk_groups"></div>
 
             <script type="text/javascript">
@@ -180,7 +193,7 @@
                 VK.Widgets.Group("vk_groups", {
                     mode: 4,
                     wide: 1,
-                    height: 600,
+                    height: 650,
                     color1: "181715",      /* Фон сайта */
                     color2: "D2CBC2",      /* Цвет текста */
                     color3: "C39A74"       /* Акцентный цвет */
