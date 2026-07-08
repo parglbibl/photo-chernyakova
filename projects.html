@@ -279,3 +279,26 @@
                 toggle.addEventListener('click', function(e) {
                     e.preventDefault();
                     var parentDropdown = this.closest('.dropdown');
+                    
+                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                        if (drop !== parentDropdown) {
+                            drop.classList.remove('open');
+                        }
+                    });
+                    
+                    parentDropdown.classList.toggle('open');
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav .dropdown')) {
+                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                        drop.classList.remove('open');
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
