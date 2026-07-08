@@ -1,5 +1,5 @@
 /* ============================================================
-   FINAL STYLE - 100vw WITH HEART VISIBLE + COMPACT BURGER
+   FINAL STYLE - 100vw WITH HEART VISIBLE + BURGER OVERLAY
    ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
@@ -191,29 +191,46 @@ header {
     display: block;
 }
 
-/* ----- МОБИЛЬНЫЙ БУРГЕР (СПРАВА, СУПЕР-КОМПАКТНЫЙ) ----- */
+/* ----- МОБИЛЬНЫЙ БУРГЕР (ПОДНЯТЫЙ + ОВЕРЛЕЙ) ----- */
 @media (max-width: 900px) {
-    /* Затемнение фона */
+    /* Оверлей: тёмный фон позади меню */
+    .menu-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 998;
+        cursor: pointer;
+    }
+
+    /* Когда бургер открыт, показываем оверлей */
+    #burgerToggle:checked ~ .menu-overlay {
+        display: block;
+    }
+    
     #burgerToggle:checked ~ .nav {
         display: flex;
     }
     
-    /* Меню: справа, не на всю ширину */
+    /* Меню: справа, поднято повыше (70px вместо 80px) */
     .nav {
         display: none;
         flex-direction: column;
         position: fixed;
-        top: 80px;
+        top: 70px;
         right: 20px;
-        width: 55%; /* Ширина около половины экрана */
+        width: 55%;
         max-width: 260px;
         background: rgba(24, 23, 21, 0.96);
         backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 20px; /* Мягкие закругленные углы */
+        border-radius: 20px;
         padding: 12px 0 12px 0;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
-        z-index: 1000;
+        z-index: 999;
     }
 
     .nav li {
@@ -223,9 +240,9 @@ header {
 
     .nav a {
         display: block;
-        padding: 3px 0; /* Очень маленький отступ */
+        padding: 3px 0;
         font-size: 16px;
-        line-height: 1.2; /* Жёстко сжимаем межстрочный интервал */
+        line-height: 1.2;
         border-bottom: none;
         width: 100%;
         color: var(--muted);
