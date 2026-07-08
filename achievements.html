@@ -260,4 +260,93 @@
                     <div style="width: 100%;"><img src="images/gallery/gramota22.png" alt="Грамота 22" style="width: 100%; height: auto; border-radius: 12px;"></div>
                     <div style="width: 100%;"><img src="images/gallery/gramota23.png" alt="Грамота 23" style="width: 100%; height: auto; border-radius: 12px;"></div>
                     <div style="width: 100%;"><img src="images/gallery/gramota24.png" alt="Грамота 24" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/gallery/gramota25.png" alt="Грамота 25" style="width: 100%; height: auto; border
+                    <div style="width: 100%;"><img src="images/gallery/gramota25.png" alt="Грамота 25" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/gallery/gramota26.png" alt="Грамота 26" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/gallery/gramota27.png" alt="Грамота 27" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/gallery/gramota28.png" alt="Грамота 28" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/gallery/gramota29.png" alt="Грамота 29" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/gallery/33.PNG" alt="Сертификат 35AWARDS" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/gallery/34.PNG" alt="Диплом 35AWARDS" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/gallery/35.PNG" alt="Награда 35AWARDS" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/gallery/36.PNG" alt="Сертификат Photoshop" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/gallery/37.PNG" alt="Диплом Анны Масловой" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Каждое достижение — это остановленный кадр ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.section, .project-card, .card').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- СКРИПТ МЕНЮ -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var burgerBtn = document.getElementById("burgerBtn");
+            var navMenu = document.querySelector(".nav");
+
+            if (burgerBtn && navMenu) {
+                burgerBtn.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    navMenu.classList.toggle("active");
+                });
+
+                document.addEventListener("click", function(e) {
+                    if (navMenu.classList.contains("active")) {
+                        if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                            navMenu.classList.remove("active");
+                        }
+                    }
+                });
+            }
+
+            var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
+            
+            dropdownToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var parentDropdown = this.closest('.dropdown');
+                    
+                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                        if (drop !== parentDropdown) {
+                            drop.classList.remove('open');
+                        }
+                    });
+                    
+                    parentDropdown.classList.toggle('open');
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav .dropdown')) {
+                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                        drop.classList.remove('open');
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
