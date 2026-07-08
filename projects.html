@@ -26,11 +26,20 @@
 
     <header>
         <div class="header-inner">
+            <!-- Чекбокс и лейбл для бургера -->
+            <input type="checkbox" id="burgerToggle">
+            <label for="burgerToggle" class="burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
             <ul class="nav" id="mainNav">
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="about.html">О себе</a></li>
                 <li><a href="projects.html" class="active">Проекты</a></li>
                 <li><a href="achievements.html">Достижения</a></li>
+                
                 <li class="dropdown">
                     <input type="checkbox" id="galleryToggle" class="dropdown-checkbox">
                     <label for="galleryToggle" class="dropdown-toggle">Галерея</label>
@@ -40,10 +49,14 @@
                         <li><a href="nature.html">Природа</a></li>
                     </ul>
                 </li>
+
                 <li><a href="news.html">Новости</a></li>
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
             </ul>
+
+            <!-- Оверлей для закрытия меню при клике снаружи -->
+            <label for="burgerToggle" class="menu-overlay"></label>
         </div>
     </header>
 
@@ -117,7 +130,7 @@
                     }
                 });
             }, { threshold: 0.1 });
-            document.querySelectorAll('.section, .project-card, .card, .stat-card').forEach(function(el) {
+            document.querySelectorAll('.section, .project-card, .card').forEach(function(el) {
                 el.classList.add('fade-up');
                 observer.observe(el);
             });
