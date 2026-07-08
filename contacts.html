@@ -298,5 +298,26 @@
         });
     </script>
 
+    <!-- ===== JS ДЛЯ БУРГЕРА (ДОБАВЛЕНО СЮДА) ===== -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var burgerBtn = document.getElementById("burgerBtn");
+            var navMenu = document.querySelector(".nav");
+
+            burgerBtn.addEventListener("click", function(e) {
+                e.stopPropagation();
+                navMenu.classList.toggle("active");
+            });
+
+            document.addEventListener("click", function(e) {
+                if (navMenu.classList.contains("active")) {
+                    if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                        navMenu.classList.remove("active");
+                    }
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
