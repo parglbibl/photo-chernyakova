@@ -150,7 +150,6 @@
 
     <header>
         <div class="header-inner">
-            <!-- Кнопка БУРГЕРА (без чекбокса) -->
             <button class="burger-btn" id="burgerBtn">
                 <span></span>
                 <span></span>
@@ -340,26 +339,7 @@
         });
     </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var burgerBtn = document.getElementById("burgerBtn");
-            var navMenu = document.querySelector(".nav");
-
-            burgerBtn.addEventListener("click", function(e) {
-                e.stopPropagation();
-                navMenu.classList.toggle("active");
-            });
-
-            document.addEventListener("click", function(e) {
-                if (navMenu.classList.contains("active")) {
-                    if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
-                        navMenu.classList.remove("active");
-                    }
-                }
-            });
-        });
-    </script>
-
+    <!-- АНИМАЦИЯ ПОЯВЛЕНИЯ БЛОКОВ (ВАЖНО! ВОССТАНОВЛЕНА) -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var observer = new IntersectionObserver(function(entries) {
