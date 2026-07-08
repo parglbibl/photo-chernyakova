@@ -191,7 +191,7 @@ header {
     display: block;
 }
 
-/* ----- МОБИЛЬНЫЙ БУРГЕР (ПОДНЯТЫЙ + ОВЕРЛЕЙ) ----- */
+/* ----- МОБИЛЬНЫЙ БУРГЕР (ИСПРАВЛЕННЫЙ ЧЕКБОКС) ----- */
 @media (max-width: 900px) {
     /* Оверлей: тёмный фон позади меню */
     .menu-overlay {
@@ -202,17 +202,27 @@ header {
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.3);
-        z-index: 1000; /* Исправлено на 1000, чтобы ловить клики */
+        z-index: 1000;
         cursor: pointer;
     }
 
-    /* Когда бургер открыт, показываем оверлей */
     #burgerToggle:checked ~ .menu-overlay {
         display: block;
     }
     
     #burgerToggle:checked ~ .nav {
         display: flex;
+    }
+    
+    /* Скрываем чекбокс без display: none, чтобы он работал */
+    #burgerToggle {
+        position: absolute;
+        width: 0;
+        height: 0;
+        opacity: 0;
+        margin: 0;
+        padding: 0;
+        pointer-events: none; /* Клик проходит на лейбл */
     }
     
     /* Меню: справа, поднято повыше (70px вместо 80px) */
@@ -332,10 +342,6 @@ header {
     }
     #burgerToggle:checked ~ .burger-btn span:nth-child(3) {
         transform: translateY(-6px) rotate(-45deg);
-    }
-
-    #burgerToggle {
-        display: none;
     }
 }
 
