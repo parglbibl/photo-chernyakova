@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // ===== ГЕНЕРАЦИЯ ЗВЕЗДНОГО НЕБА (ЕСЛИ ОНО ЕСТЬ) =====
+    // ===== ГЕНЕРАЦИЯ ЗВЕЗДНОГО НЕБА =====
     function initStars() {
         var container = document.getElementById('starsContainer');
         if (!container) return;
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // ===== ЯНДЕКС.МЕТРИКА (СЧЕТЧИК) =====
+    // ===== ЯНДЕКС.МЕТРИКА =====
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
@@ -145,7 +145,28 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // ===== ИНТЕРАКТИВНОЕ МЕНЮ (ОТКРЫТИЕ И ЗАКРЫТИЕ ПОДМЕНЮ) =====
+    // ===== МЕНЮ (ОТКРЫТИЕ БУРГЕРА И ПОДМЕНЮ) =====
+    
+    // 1. Бургер
+    var burgerBtn = document.getElementById("burgerBtn");
+    var navMenu = document.querySelector(".nav");
+
+    if (burgerBtn && navMenu) {
+        burgerBtn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            navMenu.classList.toggle("active");
+        });
+
+        document.addEventListener("click", function(e) {
+            if (navMenu.classList.contains("active")) {
+                if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                    navMenu.classList.remove("active");
+                }
+            }
+        });
+    }
+
+    // 2. Подменю "Галерея"
     var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
     
     dropdownToggles.forEach(function(toggle) {
@@ -153,19 +174,16 @@ document.addEventListener("DOMContentLoaded", function() {
             e.preventDefault();
             var parentDropdown = this.closest('.dropdown');
             
-            // Закрываем все другие открытые подменю
             document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
                 if (drop !== parentDropdown) {
                     drop.classList.remove('open');
                 }
             });
             
-            // Переключаем текущее
             parentDropdown.classList.toggle('open');
         });
     });
 
-    // Закрываем подменю при клике вне меню
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.nav .dropdown')) {
             document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
@@ -174,7 +192,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Закрываем подменю при скролле (опционально, для удобства)
     window.addEventListener('scroll', function() {
         document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
             drop.classList.remove('open');
