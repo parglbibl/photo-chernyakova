@@ -26,13 +26,12 @@
 
     <header>
         <div class="header-inner">
-            <!-- Чекбокс и лейбл для бургера -->
-            <input type="checkbox" id="burgerToggle">
-            <label for="burgerToggle" class="burger-btn">
+            <!-- Кнопка БУРГЕРА -->
+            <button class="burger-btn" id="burgerBtn">
                 <span></span>
                 <span></span>
                 <span></span>
-            </label>
+            </button>
 
             <ul class="nav" id="mainNav">
                 <li><a href="index.html">Главная</a></li>
@@ -52,9 +51,6 @@
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
             </ul>
-
-            <!-- Оверлей для закрытия меню при клике снаружи -->
-            <label for="burgerToggle" class="menu-overlay"></label>
         </div>
     </header>
 
@@ -119,6 +115,27 @@
             document.querySelectorAll('.section, .card').forEach(function(el) {
                 el.classList.add('fade-up');
                 observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- JS ДЛЯ БУРГЕРА -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var burgerBtn = document.getElementById("burgerBtn");
+            var navMenu = document.querySelector(".nav");
+
+            burgerBtn.addEventListener("click", function(e) {
+                e.stopPropagation();
+                navMenu.classList.toggle("active");
+            });
+
+            document.addEventListener("click", function(e) {
+                if (navMenu.classList.contains("active")) {
+                    if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                        navMenu.classList.remove("active");
+                    }
+                }
             });
         });
     </script>
