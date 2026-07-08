@@ -21,11 +21,7 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
-        /* Стили для выпадающего меню Галереи */
-        .nav .dropdown {
-            position: relative;
-        }
-
+        .nav .dropdown { position: relative; }
         .nav .dropdown-content {
             display: none;
             position: absolute;
@@ -42,11 +38,7 @@
             z-index: 200;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
         }
-
-        .nav .dropdown.open .dropdown-content {
-            display: block;
-        }
-
+        .nav .dropdown.open .dropdown-content { display: block; }
         .nav .dropdown-toggle {
             display: inline-block;
             padding: 6px 0;
@@ -55,11 +47,7 @@
             font-weight: 600;
             font-size: 18px;
         }
-
-        .nav .dropdown-toggle:hover {
-            color: #FFFFFF;
-        }
-
+        .nav .dropdown-toggle:hover { color: #FFFFFF; }
         .nav .dropdown-content a {
             display: block;
             padding: 10px 20px;
@@ -69,17 +57,13 @@
             transition: 0.2s;
             border-radius: 0;
         }
-
         .nav .dropdown-content a:hover {
             color: #FFFFFF;
             background: rgba(195, 154, 116, 0.1);
         }
 
         @media (max-width: 900px) {
-            .nav.active {
-                display: flex !important;
-            }
-            
+            .nav.active { display: flex !important; }
             .nav {
                 display: none;
                 flex-direction: column;
@@ -96,14 +80,8 @@
                 box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
                 z-index: 999;
             }
-
-            .nav li {
-                width: 100%;
-                text-align: center;
-            }
-
-            .nav a,
-            .nav .dropdown-toggle {
+            .nav li { width: 100%; text-align: center; }
+            .nav a, .nav .dropdown-toggle {
                 display: block;
                 padding: 6px 0;
                 font-size: 16px;
@@ -113,16 +91,8 @@
                 transition: 0.2s;
                 cursor: pointer;
             }
-
-            .nav a:hover,
-            .nav .dropdown-toggle:hover {
-                color: #FFFFFF;
-            }
-
-            .nav .dropdown {
-                width: 100%;
-            }
-            
+            .nav a:hover, .nav .dropdown-toggle:hover { color: #FFFFFF; }
+            .nav .dropdown { width: 100%; }
             .nav .dropdown-content {
                 position: static;
                 transform: none;
@@ -135,22 +105,14 @@
                 margin-top: 0;
                 display: none;
             }
-
-            .nav .dropdown.open .dropdown-content {
-                display: block;
-            }
-
+            .nav .dropdown.open .dropdown-content { display: block; }
             .nav .dropdown-content a {
                 font-size: 14px;
                 padding: 4px 0;
                 line-height: 1.2;
                 color: var(--small);
             }
-
-            .nav .dropdown-content a:hover {
-                color: #FFFFFF;
-            }
-
+            .nav .dropdown-content a:hover { color: #FFFFFF; }
             .burger-btn {
                 display: flex;
                 flex-direction: column;
@@ -165,7 +127,6 @@
                 background: transparent;
                 border: none;
             }
-
             .burger-btn span {
                 display: block;
                 width: 22px;
@@ -174,16 +135,9 @@
                 border-radius: 1px;
                 transition: 0.3s;
             }
-
-            .nav.active ~ .burger-btn span:nth-child(1) {
-                transform: translateY(6px) rotate(45deg);
-            }
-            .nav.active ~ .burger-btn span:nth-child(2) {
-                opacity: 0;
-            }
-            .nav.active ~ .burger-btn span:nth-child(3) {
-                transform: translateY(-6px) rotate(-45deg);
-            }
+            .nav.active ~ .burger-btn span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+            .nav.active ~ .burger-btn span:nth-child(2) { opacity: 0; }
+            .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         }
     </style>
 </head>
@@ -268,7 +222,6 @@
         </div>
     </section>
 
-    <!-- ===== ГАЛЕРЕЯ ДИПЛОМОВ ===== -->
     <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">Галерея признания</div>
@@ -307,66 +260,4 @@
                     <div style="width: 100%;"><img src="images/gallery/gramota22.png" alt="Грамота 22" style="width: 100%; height: auto; border-radius: 12px;"></div>
                     <div style="width: 100%;"><img src="images/gallery/gramota23.png" alt="Грамота 23" style="width: 100%; height: auto; border-radius: 12px;"></div>
                     <div style="width: 100%;"><img src="images/gallery/gramota24.png" alt="Грамота 24" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/gallery/gramota25.png" alt="Грамота 25" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/gallery/gramota26.png" alt="Грамота 26" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/gallery/gramota27.png" alt="Грамота 27" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/gallery/gramota28.png" alt="Грамота 28" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/gallery/gramota29.png" alt="Грамота 29" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/gallery/33.PNG" alt="Сертификат 35AWARDS" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/gallery/34.PNG" alt="Диплом 35AWARDS" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/gallery/35.PNG" alt="Награда 35AWARDS" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/gallery/36.PNG" alt="Сертификат Photoshop" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/gallery/37.PNG" alt="Диплом Анны Масловой" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p class="stardust">✦ Каждое достижение — это остановленный кадр ✦</p>
-            <p>© <span id="current-year"></span> Галина Чернякова</p>
-        </div>
-    </footer>
-
-    <script src="js/main.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.section, .project-card, .card').forEach(function(el) {
-                el.classList.add('fade-up');
-                observer.observe(el);
-            });
-        });
-    </script>
-
-    <!-- ===== JS ДЛЯ БУРГЕРА ===== -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var burgerBtn = document.getElementById("burgerBtn");
-            var navMenu = document.querySelector(".nav");
-
-            burgerBtn.addEventListener("click", function(e) {
-                e.stopPropagation();
-                navMenu.classList.toggle("active");
-            });
-
-            document.addEventListener("click", function(e) {
-                if (navMenu.classList.contains("active")) {
-                    if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
-                        navMenu.classList.remove("active");
-                    }
-                }
-            });
-        });
-    </script>
-
-</body>
-</html>
+                    <div style="width: 100%;"><img src="images/gallery/gramota25.png" alt="Грамота 25" style="width: 100%; height: auto; border
