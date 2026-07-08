@@ -66,25 +66,28 @@
             <div class="section-title">Лента ВКонтакте</div>
             <div class="section-subtitle">Свежие новости из моей группы</div>
             
-            <!-- Скрипт ВКонтакте (подключаем API) -->
+            <!-- Скрипт ВКонтакте -->
             <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
             
             <!-- Виджет сообщества -->
             <div id="vk_groups" style="width: 100%; display: flex; justify-content: center; margin-top: 20px;"></div>
 
             <script type="text/javascript">
+                // ЦИФРОВОЙ ID ГРУППЫ ГАЛИНЫ
+                var groupId = 80083335; 
+
                 VK.Widgets.Group("vk_groups", {
                     mode: 4,
                     wide: 1,
                     height: 600,
-                    color1: "181715",      /* Фон (ваш цвет #181715) */
-                    color2: "D2CBC2",      /* Цвет текста (ваш muted #D2CBC2) */
-                    color3: "C39A74"       /* Акцентный цвет (ваш #C39A74) */
-                }, "club_vzglyad_ph");     /* ЗАМЕНИТЕ НА ID ВАШЕЙ ГРУППЫ */
+                    color1: "181715",      /* Фон сайта (темный) */
+                    color2: "D2CBC2",      /* Цвет текста (muted) */
+                    color3: "C39A74"       /* Акцентный цвет */
+                }, groupId);
             </script>
 
             <div style="text-align: center; margin-top: 30px; color: var(--muted); font-size: 14px;">
-                <a href="https://vk.com/club_vzglyad_ph" target="_blank" style="color: var(--accent);">Перейти к группе ВКонтакте →</a>
+                <a href="https://vk.com/vzglyad_ph" target="_blank" style="color: var(--accent);">Перейти к группе ВКонтакте →</a>
             </div>
         </div>
     </section>
