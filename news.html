@@ -19,6 +19,121 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+
+    <style>
+        /* Стили для красивого оформления виджета ВК */
+        .vk-section {
+            scroll-margin-top: 100px;
+        }
+
+        .vk-section-title {
+            font-size: clamp(28px, 3.5vw, 42px);
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #FFFFFF;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+            margin-bottom: 6px;
+        }
+
+        .vk-section-subtitle {
+            font-size: 19px;
+            color: var(--muted);
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            line-height: 1.6;
+            opacity: 0.8;
+        }
+
+        /* Обёртка для красоты */
+        .vk-wrapper {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(34, 32, 29, 0.40);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 32px;
+            padding: 12px 12px 20px 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .vk-wrapper:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            border-color: rgba(195, 154, 116, 0.15);
+        }
+
+        /* Сам iframe ВК */
+        #vk_groups {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        #vk_groups iframe {
+            width: 100% !important;
+            max-width: 100%;
+            height: 600px;
+            border: none !important;
+        }
+
+        /* Ссылка на группу */
+        .vk-link-wrapper {
+            text-align: center;
+            margin-top: 28px;
+        }
+
+        .vk-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            background: rgba(34, 32, 29, 0.60);
+            backdrop-filter: blur(6px);
+        }
+
+        .vk-link:hover {
+            border-color: var(--accent);
+            color: #FFFFFF;
+            transform: translateY(-2px);
+            background: rgba(195, 154, 116, 0.10);
+        }
+
+        .vk-link i {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .vk-link:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Адаптив для мобильных */
+        @media (max-width: 768px) {
+            .vk-wrapper {
+                border-radius: 20px;
+                padding: 6px 6px 16px 6px;
+            }
+            #vk_groups iframe {
+                height: 700px;
+                border-radius: 14px;
+            }
+            .vk-section-subtitle {
+                font-size: 17px;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -61,33 +176,39 @@
         </div>
     </section>
 
-    <section class="section fade-up" style="padding-top: 25px; padding-bottom: 30px;">
+    <section class="section fade-up vk-section" style="padding-top: 25px; padding-bottom: 30px;">
         <div class="container">
-            <div class="section-title">Лента ВКонтакте</div>
-            <div class="section-subtitle">Свежие новости из моей группы</div>
+            <h2 class="vk-section-title" style="text-align: center;">Фотографический дневник</h2>
+            <p class="vk-section-subtitle" style="text-align: center;">
+                Следите за жизнью проекта, новыми кадрами и вдохновением в моём творческом пространстве
+            </p>
             
             <!-- Скрипт ВКонтакте -->
             <script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
             
-            <!-- Виджет сообщества -->
-            <div id="vk_groups" style="width: 100%; display: flex; justify-content: center; margin-top: 20px;"></div>
+            <!-- Виджет сообщества в красивой обёртке -->
+            <div class="vk-wrapper">
+                <div id="vk_groups"></div>
+            </div>
 
             <script type="text/javascript">
-                // ЦИФРОВОЙ ID ГРУППЫ ГАЛИНЫ
+                // ЦИФРОВОЙ ID ГРУППЫ
                 var groupId = 80083335; 
 
                 VK.Widgets.Group("vk_groups", {
                     mode: 4,
                     wide: 1,
                     height: 600,
-                    color1: "181715",      /* Фон сайта (темный) */
-                    color2: "D2CBC2",      /* Цвет текста (muted) */
+                    color1: "181715",      /* Фон сайта */
+                    color2: "D2CBC2",      /* Цвет текста */
                     color3: "C39A74"       /* Акцентный цвет */
                 }, groupId);
             </script>
 
-            <div style="text-align: center; margin-top: 30px; color: var(--muted); font-size: 14px;">
-                <a href="https://vk.com/vzglyad_ph" target="_blank" style="color: var(--accent);">Перейти к группе ВКонтакте →</a>
+            <div class="vk-link-wrapper">
+                <a href="https://vk.com/vzglyad_ph" target="_blank" class="vk-link">
+                    Перейти к группе ВКонтакте <i class="fa-solid fa-arrow-right"></i>
+                </a>
             </div>
         </div>
     </section>
