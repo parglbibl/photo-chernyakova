@@ -21,38 +21,52 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
-        /* Специальные правки для мобильного бургера, чтобы поднять его повыше */
+        /* Специальные правки для мобильного бургера - МАКСИМАЛЬНО КОМПАКТНО */
         @media (max-width: 900px) {
             .nav.active {
                 display: flex !important;
-                top: 50px !important; /* Подняли меню вверх, теперь оно сразу под кнопкой */
+                top: 45px !important; /* Подняли впритык к кнопке */
                 right: 15px;
-                width: 60%;
-                max-width: 240px;
-                padding: 8px 0; /* Сделали чуть компактнее */
-                border-radius: 16px;
+                width: 200px; /* Сделали уже */
+                max-width: 200px;
+                padding: 4px 0; /* Минимальные отступы сверху и снизу */
+                border-radius: 12px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+                background: rgba(24, 23, 21, 0.96);
             }
 
             .nav li {
                 width: 100%;
                 text-align: center;
+                margin: 0;
             }
 
-            .nav a {
-                padding: 6px 0; /* Уменьшили отступы между пунктами */
-                font-size: 15px;
+            .nav a, 
+            .nav .dropdown-toggle {
+                display: block;
+                padding: 4px 0; /* Минимальные отступы между пунктами (буквально по 4px) */
+                font-size: 14px; /* Чуть мельче шрифт */
                 line-height: 1.2;
+                color: var(--muted);
+                text-decoration: none;
+                font-weight: 500;
+                transition: 0.2s;
             }
-            
-            /* Кнопка БУРГЕРА */
+
+            .nav a:hover, 
+            .nav .dropdown-toggle:hover {
+                color: #FFFFFF;
+            }
+
+            /* Кнопка БУРГЕРА (зафиксирована) */
             .burger-btn {
                 display: flex;
                 flex-direction: column;
                 gap: 4px;
                 cursor: pointer;
-                z-index: 1001; /* Подняли z-index, чтобы кнопка всегда перекрывала меню при закрытии */
+                z-index: 1001; 
                 padding: 5px;
-                position: fixed; /* Фиксируем, чтобы не уплывала */
+                position: fixed; 
                 right: 20px;
                 top: 20px;
                 background: transparent;
