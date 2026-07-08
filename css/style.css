@@ -191,41 +191,12 @@ header {
     display: block;
 }
 
-/* ----- МОБИЛЬНЫЙ БУРГЕР (ИСПРАВЛЕННЫЙ ЧЕКБОКС) ----- */
+/* ----- МОБИЛЬНЫЙ БУРГЕР (ПОДДЕРЖКА JS КЛАССА .active) ----- */
 @media (max-width: 900px) {
-    /* Оверлей: тёмный фон позади меню */
-    .menu-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.3);
-        z-index: 1000;
-        cursor: pointer;
-    }
-
-    #burgerToggle:checked ~ .menu-overlay {
-        display: block;
+    .nav.active {
+        display: flex !important;
     }
     
-    #burgerToggle:checked ~ .nav {
-        display: flex;
-    }
-    
-    /* Скрываем чекбокс без display: none, чтобы он работал */
-    #burgerToggle {
-        position: absolute;
-        width: 0;
-        height: 0;
-        opacity: 0;
-        margin: 0;
-        padding: 0;
-        pointer-events: none; /* Клик проходит на лейбл */
-    }
-    
-    /* Меню: справа, поднято повыше (70px вместо 80px) */
     .nav {
         display: none;
         flex-direction: column;
@@ -323,6 +294,8 @@ header {
         right: 20px;
         top: 50%;
         transform: translateY(-50%);
+        background: transparent;
+        border: none;
     }
 
     .burger-btn span {
@@ -334,13 +307,14 @@ header {
         transition: 0.3s;
     }
 
-    #burgerToggle:checked ~ .burger-btn span:nth-child(1) {
+    /* Анимация при открытии */
+    .nav.active ~ .burger-btn span:nth-child(1) {
         transform: translateY(6px) rotate(45deg);
     }
-    #burgerToggle:checked ~ .burger-btn span:nth-child(2) {
+    .nav.active ~ .burger-btn span:nth-child(2) {
         opacity: 0;
     }
-    #burgerToggle:checked ~ .burger-btn span:nth-child(3) {
+    .nav.active ~ .burger-btn span:nth-child(3) {
         transform: translateY(-6px) rotate(-45deg);
     }
 }
