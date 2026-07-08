@@ -29,7 +29,7 @@
 
     <header>
         <div class="header-inner">
-            <!-- Кнопка БУРГЕРА (теперь без чекбокса) -->
+            <!-- Простая кнопка-бургер -->
             <button class="burger-btn" id="burgerBtn">
                 <span></span>
                 <span></span>
@@ -220,19 +220,17 @@
         });
     </script>
 
-    <!-- ИДЕАЛЬНЫЙ СКРИПТ ДЛЯ БУРГЕРА (РАБОТАЕТ НА 100%) -->
+    <!-- ПРОСТОЙ РАБОЧИЙ JS ДЛЯ БУРГЕРА -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var burgerBtn = document.getElementById("burgerBtn");
             var navMenu = document.querySelector(".nav");
 
-            // Открытие и закрытие по кнопке
             burgerBtn.addEventListener("click", function(e) {
                 e.stopPropagation();
                 navMenu.classList.toggle("active");
             });
 
-            // Закрытие по клику в любом месте за пределами меню
             document.addEventListener("click", function(e) {
                 if (navMenu.classList.contains("active")) {
                     if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
