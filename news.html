@@ -201,8 +201,8 @@
             </script>
 
             <div class="vk-link-wrapper">
-                <!-- ИСПРАВЛЕННАЯ ССЫЛКА ЧЕРЕЗ ID ГРУППЫ -->
-                <a href="https://vk.com/club80083335" target="_blank" class="vk-link">
+                <!-- УМНАЯ ССЫЛКА: Сначала пытается открыть приложение ВК, если не вышло — браузер -->
+                <a href="vk://vk.com/club80083335" onclick="window.open('https://vk.com/club80083335', '_blank'); return true;" class="vk-link">
                     Перейти к группе ВКонтакте <i class="fa-solid fa-arrow-right"></i>
                 </a>
             </div>
