@@ -191,7 +191,7 @@ header {
     display: block;
 }
 
-/* ----- МОБИЛЬНЫЙ БУРГЕР (СПРАВА, КОМПАКТНЫЙ) ----- */
+/* ----- МОБИЛЬНЫЙ БУРГЕР (СПРАВА, СУПЕР-КОМПАКТНЫЙ) ----- */
 @media (max-width: 900px) {
     /* Затемнение фона */
     #burgerToggle:checked ~ .nav {
@@ -211,7 +211,7 @@ header {
         backdrop-filter: blur(20px);
         border: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 20px; /* Мягкие закругленные углы */
-        padding: 16px 0 16px 0;
+        padding: 12px 0 12px 0;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
         z-index: 1000;
     }
@@ -223,8 +223,9 @@ header {
 
     .nav a {
         display: block;
-        padding: 4px 0;
+        padding: 3px 0; /* Очень маленький отступ */
         font-size: 16px;
+        line-height: 1.2; /* Жёстко сжимаем межстрочный интервал */
         border-bottom: none;
         width: 100%;
         color: var(--muted);
@@ -242,7 +243,8 @@ header {
     .nav .dropdown-toggle {
         display: block;
         width: 100%;
-        padding: 4px 0;
+        padding: 3px 0;
+        line-height: 1.2;
         pointer-events: auto;
         font-size: 16px;
         border-bottom: none;
@@ -273,6 +275,7 @@ header {
     .nav .dropdown-content a {
         font-size: 14px;
         padding: 2px 0;
+        line-height: 1.2;
         border-bottom: none;
         color: var(--small);
     }
