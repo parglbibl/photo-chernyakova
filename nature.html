@@ -24,6 +24,13 @@
 
     <header>
         <div class="header-inner">
+            <!-- Кнопка БУРГЕРА -->
+            <button class="burger-btn" id="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <ul class="nav" id="mainNav">
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="about.html">О себе</a></li>
@@ -88,6 +95,27 @@
             document.querySelectorAll('.section, .gallery').forEach(function(el) {
                 el.classList.add('fade-up');
                 observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- JS ДЛЯ БУРГЕРА -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var burgerBtn = document.getElementById("burgerBtn");
+            var navMenu = document.querySelector(".nav");
+
+            burgerBtn.addEventListener("click", function(e) {
+                e.stopPropagation();
+                navMenu.classList.toggle("active");
+            });
+
+            document.addEventListener("click", function(e) {
+                if (navMenu.classList.contains("active")) {
+                    if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                        navMenu.classList.remove("active");
+                    }
+                }
             });
         });
     </script>
