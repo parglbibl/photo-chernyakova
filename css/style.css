@@ -40,7 +40,6 @@ body:not(.page-home) {
     padding-top: 40px !important;
 }
 
-/* --- ГЕРБЕРА: НА ВЕСЬ ЭКРАН, СЕРДЦЕВИНА ВИДНА --- */
 #top-layer-gerbera {
     position: fixed;
     top: 0;
@@ -86,7 +85,6 @@ header {
     justify-content: center;
 }
 
-/* ----- НАВИГАЦИЯ И ВЫПАДАЮЩЕЕ МЕНЮ (ЧЕРЕЗ ЧЕКБОКС) ----- */
 .nav {
     display: flex;
     flex-wrap: wrap;
@@ -115,12 +113,10 @@ header {
     color: #FFFFFF;
 }
 
-/* --- ВЫПАДАЮЩЕЕ МЕНЮ ЧЕРЕЗ ЧЕКБОКС --- */
 .nav .dropdown {
     position: relative;
 }
 
-/* Скрываем чекбокс, но оставляем для логики */
 .nav .dropdown-checkbox {
     position: absolute;
     opacity: 0;
@@ -140,7 +136,7 @@ header {
     color: var(--muted);
     font-weight: 600;
     font-size: 18px;
-    pointer-events: none; /* Клик перехватывает чекбокс */
+    pointer-events: none;
 }
 
 .nav .dropdown-content {
@@ -179,12 +175,10 @@ header {
     background: rgba(195, 154, 116, 0.1);
 }
 
-/* Магия: при нажатии на чекбокс открываем/закрываем */
 .nav .dropdown-checkbox:checked ~ .dropdown-content {
     display: block;
 }
 
-/* --- МОБИЛЬНАЯ АДАПТАЦИЯ --- */
 @media (max-width: 900px) {
     .nav .dropdown-content {
         position: absolute;
@@ -220,7 +214,6 @@ h1 span,
     color: var(--accent);
 }
 
-/* ----- ОБЩИЕ СТИЛИ ДЛЯ ЦИТАТЫ (hero-quote) ----- */
 .hero-quote {
     display: inline-block;
     padding: 14px 28px;
@@ -237,7 +230,6 @@ h1 span,
     margin-top: 6px;
 }
 
-/* ----- НОВЫЕ СТИЛИ ДЛЯ ГЛАВНОЙ ----- */
 .hero-top-v2 {
     display: flex;
     align-items: center;
@@ -378,7 +370,6 @@ h1 span,
     font-weight: 400;
 }
 
-/* ----- АДАПТИВНОСТЬ ГЛАВНОЙ ----- */
 @media (max-width: 900px) {
     .hero-top-v2 {
         display: flex;
@@ -465,8 +456,6 @@ h1 span,
         font-size: 14px;
     }
 }
-
-/* ----- ОСТАЛЬНЫЕ СТИЛИ (СТАРЫЕ) ----- */
 
 .hero {
     text-align: center;
@@ -611,16 +600,16 @@ h1 {
     opacity: 0.9;
 }
 
+.grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
 .grid-2 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 28px;
-}
-
-.grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
 }
 
 .project-card {
