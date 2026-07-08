@@ -19,6 +19,56 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
+
+    <style>
+        /* Специальные правки для мобильного бургера, чтобы поднять его повыше */
+        @media (max-width: 900px) {
+            .nav.active {
+                display: flex !important;
+                top: 50px !important; /* Подняли меню вверх, теперь оно сразу под кнопкой */
+                right: 15px;
+                width: 60%;
+                max-width: 240px;
+                padding: 8px 0; /* Сделали чуть компактнее */
+                border-radius: 16px;
+            }
+
+            .nav li {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav a {
+                padding: 6px 0; /* Уменьшили отступы между пунктами */
+                font-size: 15px;
+                line-height: 1.2;
+            }
+            
+            /* Кнопка БУРГЕРА */
+            .burger-btn {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                cursor: pointer;
+                z-index: 1001; /* Подняли z-index, чтобы кнопка всегда перекрывала меню при закрытии */
+                padding: 5px;
+                position: fixed; /* Фиксируем, чтобы не уплывала */
+                right: 20px;
+                top: 20px;
+                background: transparent;
+                border: none;
+            }
+
+            .burger-btn span {
+                display: block;
+                width: 22px;
+                height: 2px;
+                background-color: var(--muted);
+                border-radius: 1px;
+                transition: 0.3s;
+            }
+        }
+    </style>
 </head>
 <body>
 
@@ -84,7 +134,6 @@
         <div class="container">
             <div class="section-title">Другие способы связи</div>
             
-            <!-- Используем flex-контейнер с колонкой для ровных плашек -->
             <div style="display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 600px; margin: 0 auto;">
                 
                 <a href="tel:+79217803810" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 12px; padding: 16px 24px; border-radius: 40px; border: 1px solid var(--line); background: var(--bg); color: var(--muted); text-decoration: none; font-size: 17px; transition: 0.3s;">
