@@ -164,6 +164,7 @@
                         <li><a href="nature.html">Природа</a></li>
                     </ul>
                 </li>
+
                 <li><a href="news.html">Новости</a></li>
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
@@ -232,21 +233,49 @@
         });
     </script>
 
+    <!-- СКРИПТ МЕНЮ -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var burgerBtn = document.getElementById("burgerBtn");
             var navMenu = document.querySelector(".nav");
 
-            burgerBtn.addEventListener("click", function(e) {
-                e.stopPropagation();
-                navMenu.classList.toggle("active");
+            if (burgerBtn && navMenu) {
+                burgerBtn.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    navMenu.classList.toggle("active");
+                });
+
+                document.addEventListener("click", function(e) {
+                    if (navMenu.classList.contains("active")) {
+                        if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                            navMenu.classList.remove("active");
+                        }
+                    }
+                });
+            }
+
+            var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
+            
+            dropdownToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var parentDropdown = this.closest('.dropdown');
+                    
+                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                        if (drop !== parentDropdown) {
+                            drop.classList.remove('open');
+                        }
+                    });
+                    
+                    parentDropdown.classList.toggle('open');
+                });
             });
 
-            document.addEventListener("click", function(e) {
-                if (navMenu.classList.contains("active")) {
-                    if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
-                        navMenu.classList.remove("active");
-                    }
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav .dropdown')) {
+                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                        drop.classList.remove('open');
+                    });
                 }
             });
         });
