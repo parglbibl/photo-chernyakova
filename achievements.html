@@ -15,18 +15,10 @@
     <meta name="twitter:card" content="summary_large_image" />
     
     <link rel="stylesheet" href="css/style.css" />
-
-    <!-- ФАВИКОНКИ -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#A8613D">
-    <meta name="msapplication-TileColor" content="#FDFBF7">
-    <meta name="theme-color" content="#FDFBF7">
-
 </head>
 <body>
+
+    <img id="top-layer-gerbera" src="images/bg.webp">
 
     <header>
         <div class="header-inner">
@@ -37,6 +29,7 @@
                 <li><a href="achievements.html" class="active">Достижения</a></li>
                 <li><a href="gallery.html">Галерея</a></li>
                 <li><a href="news.html">Новости</a></li>
+                <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
             </ul>
         </div>
@@ -50,43 +43,184 @@
         </div>
     </section>
 
-    <!-- Секция "Награды и премии" -->
     <section class="section fade-up" style="padding-top: 25px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Награды и премии</div>
             <div class="section-subtitle">Каждый диплом — это остановленное мгновение.</div>
-            <ul class="achievement-list">
-                <li><strong>35AWARDS</strong> — Участница 10-й ежегодной международной фотопремии. <span class="accent-text">Топ 5%</span> в номинации «Макромир цветов».</li>
-                <li><strong>35AWARDS</strong> — <span class="accent-text">Топ 16%</span> в номинации «Концептуальный кадр без обработки».</li>
-                <li><strong>ФотоПризер</strong> — <span class="accent-text">III место</span> в международном конкурсе «Мир макрофотографии» (2025).</li>
-                <li><strong>Осень в объективе</strong> — <span class="accent-text">III место</span> в открытом молодежном фестивале-конкурсе, номинация «Городская осень» (Санкт-Петербург).</li>
-                <li><strong>RUSSIAN PHOTO AWARDS</strong> — Участница главной всероссийской фотопремии (2025).</li>
-                <li><strong>Самая красивая страна</strong> — Успешное прохождение первого этапа конкурса Русского географического общества.</li>
-            </ul>
-        </div>
-    </section>
 
-    <!-- Секция "В цифрах" -->
-    <section class="section fade-up" style="padding-top: 20px; padding-bottom: 25px;">
-        <div class="container">
-            <div class="section-title">В цифрах</div>
-            <div class="stats" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));">
-                <div class="stat-card">
-                    <div class="stat-number">10+</div>
-                    <div class="stat-label">лет в фотографии</div>
-                    <div class="stat-desc">с 2014 года</div>
+            <!-- БЛОК 1. 🏆 Международное признание -->
+            <h3 style="text-align: center; font-size: 24px; margin-top: 30px; margin-bottom: 15px; color: var(--accent);">🏆 Международное признание</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; max-width: 1000px; margin: 0 auto;">
+                
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota20.png" alt="35AWARDS: Макромир цветов" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Топ 5% (Макромир цветов)</p>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">2</div>
-                    <div class="stat-label">персональные выставки</div>
-                    <div class="stat-desc">в Сортавале и СПб</div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota19.png" alt="35AWARDS: 10-я ежегодная премия" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">10-я премия (2 этап)</p>
                 </div>
-                <div class="stat-card">
-                    <div class="stat-number">12+</div>
-                    <div class="stat-label">дипломов и грамот</div>
-                    <div class="stat-desc">международных и российских</div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota1.png" alt="35AWARDS: Цветы" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Топ 11% (Цветы)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota2.png" alt="35AWARDS: Капли" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Топ 12% (Капли)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota8.png" alt="35AWARDS: Адаптивный спорт" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Топ 15% (Адаптивный спорт)</p>
                 </div>
             </div>
+
+            <hr style="border: none; border-top: 1px solid var(--line); max-width: 1000px; margin: 30px auto;">
+
+            <!-- БЛОК 2. 🥇 Призовые места -->
+            <h3 style="text-align: center; font-size: 24px; margin-bottom: 15px; color: var(--accent);">🥇 Призовые места</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; max-width: 1000px; margin: 0 auto;">
+                
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota21.png" alt="ФотоПризер: III место" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">III место (Мир макрофотографии)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota24.png" alt="Осень в объективе: III место" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">III место (Осень в объективе)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota28.png" alt="ФотоПризер: Специальная грамота жюри" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Грамота жюри (Светотень)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota23.png" alt="ФотоПризер: III место" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">III место (Грамота)</p>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid var(--line); max-width: 1000px; margin: 30px auto;">
+
+            <!-- БЛОК 3. 📜 Участие и сертификаты -->
+            <h3 style="text-align: center; font-size: 24px; margin-bottom: 15px; color: var(--accent);">📜 Участие и сертификаты</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; max-width: 1000px; margin: 0 auto;">
+                
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota12.png" alt="Russian Photo Awards" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Russian Photo Awards</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota22.png" alt="ФотоПризер: Сертификат участника" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Сертификат участника</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota27.png" alt="ФотоПризер: Сертификат участника" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Сертификат (Весенняя макросъемка)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota9.png" alt="Adobe Photoshop" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Adobe Photoshop (27 ак. часов)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota6.png" alt="restore:mobile photo awards" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">restore:mobile photo awards</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota3.png" alt="35AWARDS: Желтый + Зеленый" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Топ 31% (Желтый + Зеленый)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota5.png" alt="35AWARDS: Свадьба" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Топ 34% (Свадьба)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota11.png" alt="35AWARDS: Капли" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Топ 16% (Капли)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota13.png" alt="35AWARDS: Монохромный пейзаж" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Топ 23% (Монохромный пейзаж)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota15.png" alt="35AWARDS: Концептуальный минимализм" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Топ 19% (Концептуальный минимализм)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota16.png" alt="35AWARDS: Черно-белый мобильный снимок" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Топ 34% (Черно-белый мобильный снимок)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota20.png" alt="35AWARDS: Любовная история" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Топ 24% (Любовная история)</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota25.png" alt="35AWARDS: Концептуальный кадр без обработки" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Топ 16% (Концептуальный кадр без обработки)</p>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid var(--line); max-width: 1000px; margin: 30px auto;">
+
+            <!-- БЛОК 4. 🎨 Творческие конкурсы -->
+            <h3 style="text-align: center; font-size: 24px; margin-bottom: 15px; color: var(--accent);">🎨 Творческие конкурсы</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; max-width: 1000px; margin: 0 auto;">
+                
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota14.png" alt="Фотошкола Анны Масловой" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Анна Маслова — Чёрно-белое фото</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota17.png" alt="Фотошкола Анны Масловой" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Анна Маслова — конкурс «Арт»</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota18.png" alt="РГО: Самая красивая страна" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">РГО — Самая красивая страна</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota4.png" alt="ДК Парголовский" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">ДК Парголовский — Осень в моменте</p>
+                </div>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid var(--line); max-width: 1000px; margin: 30px auto;">
+
+            <!-- БЛОК 5. 🤝 Благодарности за выставки -->
+            <h3 style="text-align: center; font-size: 24px; margin-bottom: 15px; color: var(--accent);">🤝 Благодарности за выставки</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; max-width: 1000px; margin: 0 auto;">
+                
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota7.png" alt="Благодарность: Две линзы, один сюжет" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Выборгский р-н — Две линзы, один сюжет</p>
+                </div>
+
+                <div class="card" style="padding: 8px;">
+                    <img src="images/diplomas/gramota26.png" alt="Благодарность: Крупным планом" style="width: 100%; border-radius: 10px; display: block;">
+                    <p style="text-align: center; margin-top: 6px; font-weight: 600; font-size: 13px; color: var(--text);">Сортавала — Крупным планом</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -99,7 +233,6 @@
 
     <script src="js/main.js"></script>
 
-    <!-- Анимация появления блоков при скролле -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var observer = new IntersectionObserver(function(entries) {
@@ -112,7 +245,7 @@
                 threshold: 0.1
             });
 
-            document.querySelectorAll('.section, .project-card, .card, .stat-card').forEach(function(el) {
+            document.querySelectorAll('.section, .card').forEach(function(el) {
                 el.classList.add('fade-up');
                 observer.observe(el);
             });
