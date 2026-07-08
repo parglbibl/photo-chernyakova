@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         year.textContent = new Date().getFullYear();
     }
 
-    // ===== ПЛАВНЫЙ СКРОЛЛ ДЛЯ ЯКОРНЫХ ССЫЛОК =====
+    // ===== ПЛАВНЫЙ СКРОЛЛ =====
     var anchors = document.querySelectorAll('a[href^="#"]');
     for (var i = 0; i < anchors.length; i++) {
         anchors[i].addEventListener("click", function(e) {
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // ===== ГЕНЕРАЦИЯ ЗВЕЗДНОГО НЕБА =====
+    // ===== ГЕНЕРАЦИЯ ЗВЕЗД =====
     function initStars() {
         var container = document.getElementById('starsContainer');
         if (!container) return;
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     initStars();
 
-    // ===== КНОПКА "НАВЕРХ" =====
+    // ===== КНОПКА НАВЕРХ =====
     var backToTopBtn = document.createElement('div');
     backToTopBtn.innerHTML = '↑';
     backToTopBtn.style.cssText = `
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
         ecommerce:"dataLayer"
     });
 
-    // ===== ЗАЩИТА ФОТОГРАФИЙ ОТ ВОРОВСТВА =====
+    // ===== ЗАЩИТА ФОТОГРАФИЙ =====
     function safeClosest(e, selector) {
         try {
             return e.target.closest(selector);
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // ===== МЕНЮ (ОТКРЫТИЕ БУРГЕРА И ПОДМЕНЮ) =====
+    // ===== МЕНЮ (ЕДИНЫЙ СКРИПТ ДЛЯ ВСЕХ СТРАНИЦ) =====
     
     // 1. Бургер
     var burgerBtn = document.getElementById("burgerBtn");
