@@ -224,5 +224,25 @@
         });
     </script>
 
+    <!-- СКРИПТ ДЛЯ ЗАКРЫТИЯ МЕНЮ ПО КЛИКУ ВНЕ ЕГО -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var burgerToggle = document.getElementById("burgerToggle");
+            var navMenu = document.querySelector(".nav");
+            var burgerBtn = document.querySelector(".burger-btn");
+
+            document.addEventListener("click", function(e) {
+                if (burgerToggle.checked) {
+                    var isClickInsideMenu = navMenu.contains(e.target);
+                    var isClickOnBurger = burgerBtn.contains(e.target);
+                    
+                    if (!isClickInsideMenu && !isClickOnBurger) {
+                        burgerToggle.checked = false;
+                    }
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
