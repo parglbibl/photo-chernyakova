@@ -29,7 +29,7 @@
 
     <header>
         <div class="header-inner">
-            <!-- Простая кнопка-бургер -->
+            <!-- Кнопка БУРГЕРА (без чекбокса) -->
             <button class="burger-btn" id="burgerBtn">
                 <span></span>
                 <span></span>
@@ -237,6 +237,24 @@
                         navMenu.classList.remove("active");
                     }
                 }
+            });
+        });
+    </script>
+
+    <!-- АНИМАЦИЯ ПОЯВЛЕНИЯ БЛОКОВ (ВАЖНО! ВОССТАНОВЛЕНА) -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.section, .project-card, .card, .stat-card').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
             });
         });
     </script>
