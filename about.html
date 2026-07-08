@@ -26,11 +26,20 @@
 
     <header>
         <div class="header-inner">
+            <!-- Чекбокс и лейбл для бургера -->
+            <input type="checkbox" id="burgerToggle">
+            <label for="burgerToggle" class="burger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
             <ul class="nav" id="mainNav">
                 <li><a href="index.html">Главная</a></li>
                 <li><a href="about.html" class="active">О себе</a></li>
                 <li><a href="projects.html">Проекты</a></li>
                 <li><a href="achievements.html">Достижения</a></li>
+                
                 <li class="dropdown">
                     <input type="checkbox" id="galleryToggle" class="dropdown-checkbox">
                     <label for="galleryToggle" class="dropdown-toggle">Галерея</label>
@@ -40,10 +49,14 @@
                         <li><a href="nature.html">Природа</a></li>
                     </ul>
                 </li>
+
                 <li><a href="news.html">Новости</a></li>
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
             </ul>
+
+            <!-- Оверлей для закрытия меню при клике снаружи -->
+            <label for="burgerToggle" class="menu-overlay"></label>
         </div>
     </header>
 
@@ -57,11 +70,9 @@
 
     <section class="section fade-up" style="padding-top: 15px; padding-bottom: 20px;">
         <div class="container">
-            <!-- Убираем section-title и section-subtitle, начинаем сразу с текста -->
-            <div class="section-text" style="margin-top: 0;">
-                <p style="text-align: center; font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 20px;">33 года. Фотография с 2014.</p>
-                
-                <p>Мой основной жанр — макросъемка. Но я также люблю снимать повседневную жизнь, природу, архитектуру и заниматься творческой съемкой. Фотография — это мой способ говорить с миром без слов.</p>
+            <div class="section-title">О себе</div>
+            <div class="section-text">
+                <p>Мне 33 года. Я занимаюсь фотографией с 2014 года. Мой основной жанр — макросъемка. Но я также люблю снимать повседневную жизнь, природу, архитектуру и заниматься творческой съемкой. Фотография — это мой способ говорить с миром без слов.</p>
                 <p style="margin-top: 20px;">Мои работы были представлены на персональной выставке «Крупным планом» в Сортавала и совместной выставке «Две линзы, один сюжет» в Санкт-Петербурге.</p>
             </div>
         </div>
