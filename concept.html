@@ -258,4 +258,285 @@
 
         .gallery-item {
             cursor: pointer;
-            transition:
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+
+        /* ===== ХЛЕБНЫЕ КРОШКИ ===== */
+        .breadcrumbs {
+            max-width: 1120px;
+            margin: 0 auto 16px auto;
+            padding: 0 16px;
+            color: var(--muted);
+            font-size: 15px;
+            letter-spacing: 0.3px;
+        }
+        .breadcrumbs a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .breadcrumbs a:hover {
+            color: #fff;
+        }
+        .breadcrumbs .sep {
+            color: var(--small);
+            margin: 0 6px;
+        }
+        .breadcrumbs .current {
+            color: var(--muted);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <button class="burger-btn" id="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                
+                <li class="dropdown">
+                    <span class="dropdown-toggle">Галерея</span>
+                    <ul class="dropdown-content">
+                        <li><a href="macro.html">Макромир</a></li>
+                        <li><a href="concept.html" class="active">Концепт</a></li>
+                        <li><a href="nature.html">Природа</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="faq.html">Вопросы и ответы</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
+    <div class="breadcrumbs">
+        <a href="index.html">Главная</a>
+        <span class="sep">›</span>
+        <a href="gallery.html">Галерея</a>
+        <span class="sep">›</span>
+        <span class="current">Концепт</span>
+    </div>
+
+    <section class="hero" style="padding-top: 20px; padding-bottom: 10px;">
+        <div class="container">
+            <h1>Концепт</h1>
+            <p class="hero-lead">Идея, форма и минимализм</p>
+            <div class="hero-quote">✨ «Самое главное — это то, что невозможно увидеть глазами» ✨</div>
+        </div>
+    </section>
+
+    <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
+        <div class="container">
+            <div class="section-title">Концептуальные работы</div>
+            <div class="section-subtitle">Фотографии-идеи</div>
+            <div class="gallery" id="conceptGallery">
+                <div class="gallery-item" onclick="openLightbox(0, conceptImages, conceptCaptions)"><img src="images/gallery/concept/1.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(1, conceptImages, conceptCaptions)"><img src="images/gallery/concept/2.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(2, conceptImages, conceptCaptions)"><img src="images/gallery/concept/4.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(3, conceptImages, conceptCaptions)"><img src="images/gallery/concept/5.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(4, conceptImages, conceptCaptions)"><img src="images/gallery/concept/6.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(5, conceptImages, conceptCaptions)"><img src="images/gallery/concept/7.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(6, conceptImages, conceptCaptions)"><img src="images/gallery/concept/8.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(7, conceptImages, conceptCaptions)"><img src="images/gallery/concept/9.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(8, conceptImages, conceptCaptions)"><img src="images/gallery/concept/11.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(9, conceptImages, conceptCaptions)"><img src="images/gallery/concept/12.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(10, conceptImages, conceptCaptions)"><img src="images/gallery/concept/13.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(11, conceptImages, conceptCaptions)"><img src="images/gallery/concept/14.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(12, conceptImages, conceptCaptions)"><img src="images/gallery/concept/15.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(13, conceptImages, conceptCaptions)"><img src="images/gallery/concept/16.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(14, conceptImages, conceptCaptions)"><img src="images/gallery/concept/17.webp" alt="" loading="lazy" /></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Каждое фото — это застывшая эмоция ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.section, .gallery').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- СКРИПТ МЕНЮ -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var burgerBtn = document.getElementById("burgerBtn");
+            var navMenu = document.querySelector(".nav");
+
+            if (burgerBtn && navMenu) {
+                burgerBtn.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    navMenu.classList.toggle("active");
+                });
+
+                document.addEventListener("click", function(e) {
+                    if (navMenu.classList.contains("active")) {
+                        if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                            navMenu.classList.remove("active");
+                        }
+                    }
+                });
+            }
+
+            var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
+            
+            dropdownToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var parentDropdown = this.closest('.dropdown');
+                    
+                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                        if (drop !== parentDropdown) {
+                            drop.classList.remove('open');
+                        }
+                    });
+                    
+                    parentDropdown.classList.toggle('open');
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav .dropdown')) {
+                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                        drop.classList.remove('open');
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- ===== ЛАЙТБОКС ДАННЫЕ ===== -->
+    <script>
+        var conceptImages = [
+            'images/gallery/concept/1.webp',
+            'images/gallery/concept/2.webp',
+            'images/gallery/concept/4.webp',
+            'images/gallery/concept/5.webp',
+            'images/gallery/concept/6.webp',
+            'images/gallery/concept/7.webp',
+            'images/gallery/concept/8.webp',
+            'images/gallery/concept/9.webp',
+            'images/gallery/concept/11.webp',
+            'images/gallery/concept/12.webp',
+            'images/gallery/concept/13.webp',
+            'images/gallery/concept/14.webp',
+            'images/gallery/concept/15.webp',
+            'images/gallery/concept/16.webp',
+            'images/gallery/concept/17.webp'
+        ];
+        var conceptCaptions = [
+            'Капля в пустыне',
+            'На грани',
+            'Золотая сердцевина',
+            'Чай с вдохновением',
+            'Неоновый дождь',
+            'Геометрия теней',
+            'Закат в паутине',
+            'Осеннее зеркало',
+            'Увядание',
+            'Персиковое утро',
+            'Лимонный дождь',
+            'Яйцо на вилке',
+            'Тёплые огни',
+            'Золотая снежинка',
+            'Капля на лепестке'
+        ];
+    </script>
+
+    <!-- ===== ЛАЙТБОКС HTML ===== -->
+    <div id="lightbox" style="display: none;">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="image-wrapper">
+            <img id="lightboxImage" src="" alt="" />
+            <span class="nav-btn nav-prev" onclick="changeImage(-1)">‹</span>
+            <span class="nav-btn nav-next" onclick="changeImage(1)">›</span>
+        </div>
+        <div class="caption" id="lightboxCaption"></div>
+        <div class="counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- ===== ЛАЙТБОКС JS ===== -->
+    <script>
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImage = document.getElementById('lightboxImage');
+        var lightboxCaption = document.getElementById('lightboxCaption');
+        var lightboxCounter = document.getElementById('lightboxCounter');
+        var currentIndex = 0;
+        var currentImages = [];
+        var currentCaptions = [];
+
+        function openLightbox(index, images, captions) {
+            if (!images || !images.length) return;
+            currentImages = images;
+            currentCaptions = captions || [];
+            currentIndex = index;
+            renderLightbox();
+        }
+
+        function renderLightbox() {
+            if (!currentImages.length) return;
+            lightboxImage.src = currentImages[currentIndex];
+            lightboxCaption.textContent = currentCaptions[currentIndex] || '';
+            lightboxCounter.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function changeImage(direction) {
+            if (!currentImages.length) return;
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = currentImages.length - 1;
+            if (currentIndex >= currentImages.length) currentIndex = 0;
+            renderLightbox();
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.style.display === 'none') return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+        });
+    </script>
+
+</body>
+</html>
