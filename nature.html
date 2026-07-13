@@ -15,13 +15,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css" />
 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
-        /* ===== ВАШ ЛАЙТБОКС ===== */
+        /* ===== ЛАЙТБОКС ===== */
         #lightbox {
             position: fixed;
             top: 0;
@@ -135,7 +136,7 @@
             }
         }
 
-        /* ===== ОСТАЛЬНЫЕ СТИЛИ САЙТА ГАЛИНЫ ===== */
+        /* ===== ОСТАЛЬНЫЕ СТИЛИ ===== */
         .nav .dropdown { position: relative; }
         .nav .dropdown-content {
             display: none;
@@ -262,6 +263,31 @@
         .gallery-item:hover {
             transform: scale(1.02);
         }
+
+        /* ===== ХЛЕБНЫЕ КРОШКИ ===== */
+        .breadcrumbs {
+            max-width: 1120px;
+            margin: 0 auto 16px auto;
+            padding: 0 16px;
+            color: var(--muted);
+            font-size: 15px;
+            letter-spacing: 0.3px;
+        }
+        .breadcrumbs a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .breadcrumbs a:hover {
+            color: #fff;
+        }
+        .breadcrumbs .sep {
+            color: var(--small);
+            margin: 0 6px;
+        }
+        .breadcrumbs .current {
+            color: var(--muted);
+        }
     </style>
 </head>
 <body>
@@ -296,7 +322,16 @@
         </div>
     </header>
 
-    <section class="hero" style="padding-top: 60px; padding-bottom: 10px;">
+    <!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
+    <div class="breadcrumbs">
+        <a href="index.html">Главная</a>
+        <span class="sep">›</span>
+        <a href="gallery.html">Галерея</a>
+        <span class="sep">›</span>
+        <span class="current">Природа</span>
+    </div>
+
+    <section class="hero" style="padding-top: 20px; padding-bottom: 10px;">
         <div class="container">
             <h1>Природа</h1>
             <p class="hero-lead">Атмосфера и пространство</p>
@@ -304,20 +339,15 @@
         </div>
     </section>
 
-    <section class="section fade-up" style="padding-top: 25px; padding-bottom: 25px;">
+    <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">Пейзажи</div>
             <div class="section-subtitle">Сакура, лёд и закаты</div>
             <div class="gallery" id="natureGallery">
-                <!-- 1. Осенняя лужа -->
                 <div class="gallery-item" onclick="openLightbox(0, natureImages, natureCaptions)"><img src="images/gallery/nature/1.webp" alt="" loading="lazy" /></div>
-                <!-- 2. Сакура в синих сумерках -->
                 <div class="gallery-item" onclick="openLightbox(1, natureImages, natureCaptions)"><img src="images/gallery/nature/2.webp" alt="" loading="lazy" /></div>
-                <!-- 3. Сакура крупным планом (голубое небо) -->
                 <div class="gallery-item" onclick="openLightbox(2, natureImages, natureCaptions)"><img src="images/gallery/nature/3.webp" alt="" loading="lazy" /></div>
-                <!-- 4. Сакура в тёплом свете -->
                 <div class="gallery-item" onclick="openLightbox(3, natureImages, natureCaptions)"><img src="images/gallery/nature/4.webp" alt="" loading="lazy" /></div>
-                <!-- 5. Замёрзшая сосна -->
                 <div class="gallery-item" onclick="openLightbox(4, natureImages, natureCaptions)"><img src="images/gallery/nature/5.webp" alt="" loading="lazy" /></div>
             </div>
         </div>
@@ -396,7 +426,7 @@
         });
     </script>
 
-    <!-- ===== ЛАЙТБОКС ДАННЫЕ И ФУНКЦИИ ===== -->
+    <!-- ===== ЛАЙТБОКС ДАННЫЕ ===== -->
     <script>
         var natureImages = [
             'images/gallery/nature/1.webp',
@@ -407,10 +437,10 @@
         ];
         var natureCaptions = [
             'Осенняя лужа — отражения и листья',
-            'Весеннее цветение — сакура в синих сумерках',
+            'Сакура в синих сумерках',
             'Весеннее цветение — ближе к небу',
-            'Ветка сакуры в тёплом свете',
-            'Застывшая сосна на зимнем рассвете'
+            'Морозный рассвет — сосна в инее',
+            'Ветка сакуры в тёплом свете'
         ];
     </script>
 
