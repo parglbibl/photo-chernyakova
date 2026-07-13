@@ -15,12 +15,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css" />
 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
+        /* ===== ОСТАЛЬНЫЕ СТИЛИ ===== */
         .nav .dropdown { position: relative; }
         .nav .dropdown-content {
             display: none;
@@ -139,6 +141,31 @@
             .nav.active ~ .burger-btn span:nth-child(2) { opacity: 0; }
             .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         }
+
+        /* ===== ХЛЕБНЫЕ КРОШКИ ===== */
+        .breadcrumbs {
+            max-width: 1120px;
+            margin: 0 auto 16px auto;
+            padding: 0 16px;
+            color: var(--muted);
+            font-size: 15px;
+            letter-spacing: 0.3px;
+        }
+        .breadcrumbs a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .breadcrumbs a:hover {
+            color: #fff;
+        }
+        .breadcrumbs .sep {
+            color: var(--small);
+            margin: 0 6px;
+        }
+        .breadcrumbs .current {
+            color: var(--muted);
+        }
     </style>
 </head>
 <body>
@@ -168,14 +195,21 @@
                     </ul>
                 </li>
 
-                <li><a href="news.html">Новости</a></li>
-                <li><a href="faq.html" class="active">Вопросы и ответы</a></li>
+                <li><a href="news.html" class="active">Новости</a></li>
+                <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
             </ul>
         </div>
     </header>
 
-    <section class="hero" style="padding-top: 60px; padding-bottom: 10px;">
+    <!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
+    <div class="breadcrumbs">
+        <a href="index.html">Главная</a>
+        <span class="sep">›</span>
+        <span class="current">Вопросы и ответы</span>
+    </div>
+
+    <section class="hero" style="padding-top: 20px; padding-bottom: 10px;">
         <div class="container">
             <h1>Творческий <span>диалог</span></h1>
             <p class="hero-lead">Несколько вопросов и ответов о том, как я вижу фотографию</p>
