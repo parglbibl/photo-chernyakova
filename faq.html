@@ -22,6 +22,28 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
+        /* ===== ЛОГОТИП В ЛЕВОМ ВЕРХНЕМ УГЛУ ===== */
+        .site-logo {
+            position: fixed;
+            top: 18px;
+            left: 20px;
+            z-index: 101;
+            height: 48px;
+            width: auto;
+            pointer-events: none;
+        }
+        @media (max-width: 900px) {
+            .site-logo {
+                height: 32px;
+                top: 14px;
+                left: 16px;
+            }
+        }
+        .nav.active ~ .site-logo {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
         /* ===== ОСТАЛЬНЫЕ СТИЛИ ===== */
         .nav .dropdown { position: relative; }
         .nav .dropdown-content {
@@ -170,6 +192,9 @@
 </head>
 <body>
 
+    <!-- ===== ЛОГОТИП ===== -->
+    <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
+
     <img id="top-layer-gerbera" src="images/bg.webp">
 
     <header>
@@ -195,8 +220,8 @@
                     </ul>
                 </li>
 
-                <li><a href="news.html" class="active">Новости</a></li>
-                <li><a href="faq.html">Вопросы и ответы</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="faq.html" class="active">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
             </ul>
         </div>
