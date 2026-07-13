@@ -21,6 +21,121 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
+        /* ===== ВАШ ЛАЙТБОКС (вставка без удаления старых стилей) ===== */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(4px);
+        }
+
+        #lightbox .image-wrapper {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        #lightbox .caption {
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+            padding: 8px 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        #lightbox .close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+            line-height: 1;
+            z-index: 10;
+        }
+        #lightbox .close:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        #lightbox .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.4);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 5;
+        }
+        #lightbox .nav-btn:hover {
+            background: var(--accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+        #lightbox .nav-prev {
+            left: -70px;
+        }
+        #lightbox .nav-next {
+            right: -70px;
+        }
+
+        #lightbox .counter {
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            margin-top: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            #lightbox .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+            #lightbox .nav-prev {
+                left: 10px;
+            }
+            #lightbox .nav-next {
+                right: 10px;
+            }
+            #lightbox .close {
+                top: -40px;
+                font-size: 32px;
+            }
+        }
+
+        /* ===== ОСТАЛЬНЫЕ СТИЛИ САЙТА ГАЛИНЫ ===== */
         .nav .dropdown { position: relative; }
         .nav .dropdown-content {
             display: none;
@@ -140,13 +255,18 @@
             .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         }
 
-        .section.fade-up.visible-bottom {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+        .gallery-item {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
         }
     </style>
 </head>
 <body>
+
+    <img id="top-layer-gerbera" src="images/bg.webp">
 
     <header>
         <div class="header-inner">
@@ -161,6 +281,7 @@
                 <li><a href="about.html">О себе</a></li>
                 <li><a href="projects.html">Проекты</a></li>
                 <li><a href="achievements.html">Достижения</a></li>
+                
                 <li class="dropdown">
                     <span class="dropdown-toggle">Галерея</span>
                     <ul class="dropdown-content">
@@ -169,6 +290,7 @@
                         <li><a href="nature.html">Природа</a></li>
                     </ul>
                 </li>
+
                 <li><a href="news.html">Новости</a></li>
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
@@ -189,29 +311,30 @@
             <div class="section-title">Макро-работы</div>
             <div class="section-subtitle">Мир в деталях</div>
             <div class="gallery" id="macroGallery">
-                <div class="gallery-item"><img src="images/gallery/macro/1.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/2.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/3.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/4.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/5.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/6.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/7.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/8.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/9.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/10.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/11.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/12.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/13.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/14.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/15.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/16.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/17.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/18.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/19.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/20.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/21.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/22.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/macro/23.webp" alt="" loading="lazy" /></div>
+                <!-- Оборачиваем каждую картинку в кликабельный элемент -->
+                <div class="gallery-item" onclick="openLightbox(0, macroImages, macroCaptions)"><img src="images/gallery/macro/1.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(1, macroImages, macroCaptions)"><img src="images/gallery/macro/2.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(2, macroImages, macroCaptions)"><img src="images/gallery/macro/3.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(3, macroImages, macroCaptions)"><img src="images/gallery/macro/4.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(4, macroImages, macroCaptions)"><img src="images/gallery/macro/5.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(5, macroImages, macroCaptions)"><img src="images/gallery/macro/6.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(6, macroImages, macroCaptions)"><img src="images/gallery/macro/7.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(7, macroImages, macroCaptions)"><img src="images/gallery/macro/8.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(8, macroImages, macroCaptions)"><img src="images/gallery/macro/9.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(9, macroImages, macroCaptions)"><img src="images/gallery/macro/10.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(10, macroImages, macroCaptions)"><img src="images/gallery/macro/11.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(11, macroImages, macroCaptions)"><img src="images/gallery/macro/12.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(12, macroImages, macroCaptions)"><img src="images/gallery/macro/13.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(13, macroImages, macroCaptions)"><img src="images/gallery/macro/14.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(14, macroImages, macroCaptions)"><img src="images/gallery/macro/15.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(15, macroImages, macroCaptions)"><img src="images/gallery/macro/16.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(16, macroImages, macroCaptions)"><img src="images/gallery/macro/17.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(17, macroImages, macroCaptions)"><img src="images/gallery/macro/18.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(18, macroImages, macroCaptions)"><img src="images/gallery/macro/19.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(19, macroImages, macroCaptions)"><img src="images/gallery/macro/20.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(20, macroImages, macroCaptions)"><img src="images/gallery/macro/21.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(21, macroImages, macroCaptions)"><img src="images/gallery/macro/22.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(22, macroImages, macroCaptions)"><img src="images/gallery/macro/23.webp" alt="" loading="lazy" /></div>
             </div>
         </div>
     </section>
@@ -238,15 +361,10 @@
                 el.classList.add('fade-up');
                 observer.observe(el);
             });
-
-            setTimeout(function() {
-                document.querySelectorAll('.section.fade-up').forEach(function(el) {
-                    el.classList.add('visible-bottom');
-                });
-            }, 1000);
         });
     </script>
 
+    <!-- СКРИПТ МЕНЮ -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var burgerBtn = document.getElementById("burgerBtn");
@@ -291,6 +409,125 @@
                     });
                 }
             });
+        });
+    </script>
+
+    <!-- ===== ЛАЙТБОКС ДАННЫЕ И ФУНКЦИИ ===== -->
+    <script>
+        // Массивы данных для макро
+        var macroImages = [
+            'images/gallery/macro/1.webp',
+            'images/gallery/macro/2.webp',
+            'images/gallery/macro/3.webp',
+            'images/gallery/macro/4.webp',
+            'images/gallery/macro/5.webp',
+            'images/gallery/macro/6.webp',
+            'images/gallery/macro/7.webp',
+            'images/gallery/macro/8.webp',
+            'images/gallery/macro/9.webp',
+            'images/gallery/macro/10.webp',
+            'images/gallery/macro/11.webp',
+            'images/gallery/macro/12.webp',
+            'images/gallery/macro/13.webp',
+            'images/gallery/macro/14.webp',
+            'images/gallery/macro/15.webp',
+            'images/gallery/macro/16.webp',
+            'images/gallery/macro/17.webp',
+            'images/gallery/macro/18.webp',
+            'images/gallery/macro/19.webp',
+            'images/gallery/macro/20.webp',
+            'images/gallery/macro/21.webp',
+            'images/gallery/macro/22.webp',
+            'images/gallery/macro/23.webp'
+        ];
+        var macroCaptions = [
+            'Макро 1',
+            'Макро 2',
+            'Макро 3',
+            'Макро 4',
+            'Макро 5',
+            'Макро 6',
+            'Макро 7',
+            'Макро 8',
+            'Макро 9',
+            'Макро 10',
+            'Макро 11',
+            'Макро 12',
+            'Макро 13',
+            'Макро 14',
+            'Макро 15',
+            'Макро 16',
+            'Макро 17',
+            'Макро 18',
+            'Макро 19',
+            'Макро 20',
+            'Макро 21',
+            'Макро 22',
+            'Макро 23'
+        ];
+    </script>
+
+    <!-- ===== УНИВЕРСАЛЬНЫЙ ЛАЙТБОКС HTML ===== -->
+    <div id="lightbox" style="display: none;">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="image-wrapper">
+            <img id="lightboxImage" src="" alt="" />
+            <span class="nav-btn nav-prev" onclick="changeImage(-1)">‹</span>
+            <span class="nav-btn nav-next" onclick="changeImage(1)">›</span>
+        </div>
+        <div class="caption" id="lightboxCaption"></div>
+        <div class="counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- ===== УНИВЕРСАЛЬНЫЙ ЛАЙТБОКС JS ===== -->
+    <script>
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImage = document.getElementById('lightboxImage');
+        var lightboxCaption = document.getElementById('lightboxCaption');
+        var lightboxCounter = document.getElementById('lightboxCounter');
+        var currentIndex = 0;
+        var currentImages = [];
+        var currentCaptions = [];
+
+        function openLightbox(index, images, captions) {
+            if (!images || !images.length) return;
+            currentImages = images;
+            currentCaptions = captions || [];
+            currentIndex = index;
+            renderLightbox();
+        }
+
+        function renderLightbox() {
+            if (!currentImages.length) return;
+            lightboxImage.src = currentImages[currentIndex];
+            lightboxCaption.textContent = currentCaptions[currentIndex] || '';
+            lightboxCounter.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function changeImage(direction) {
+            if (!currentImages.length) return;
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = currentImages.length - 1;
+            if (currentIndex >= currentImages.length) currentIndex = 0;
+            renderLightbox();
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.style.display === 'none') return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
         });
     </script>
 
