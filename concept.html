@@ -22,6 +22,28 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
+        /* ===== ЛОГОТИП В ЛЕВОМ ВЕРХНЕМ УГЛУ ===== */
+        .site-logo {
+            position: fixed;
+            top: 18px;
+            left: 20px;
+            z-index: 101;
+            height: 48px;
+            width: auto;
+            pointer-events: none;
+        }
+        @media (max-width: 900px) {
+            .site-logo {
+                height: 32px;
+                top: 14px;
+                left: 16px;
+            }
+        }
+        .nav.active ~ .site-logo {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
         /* ===== ЛАЙТБОКС ===== */
         #lightbox {
             position: fixed;
@@ -291,6 +313,9 @@
     </style>
 </head>
 <body>
+
+    <!-- ===== ЛОГОТИП ===== -->
+    <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
 
     <header>
         <div class="header-inner">
