@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css" />
 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -135,7 +136,7 @@
             }
         }
 
-        /* ===== ОСТАЛЬНЫЕ СТИЛИ САЙТА ГАЛИНЫ ===== */
+        /* ===== ОСТАЛЬНЫЕ СТИЛИ ===== */
         .nav .dropdown { position: relative; }
         .nav .dropdown-content {
             display: none;
@@ -262,6 +263,31 @@
         .gallery-item:hover {
             transform: scale(1.02);
         }
+
+        /* ===== ХЛЕБНЫЕ КРОШКИ ===== */
+        .breadcrumbs {
+            max-width: 1120px;
+            margin: 0 auto 16px auto;
+            padding: 0 16px;
+            color: var(--muted);
+            font-size: 15px;
+            letter-spacing: 0.3px;
+        }
+        .breadcrumbs a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .breadcrumbs a:hover {
+            color: #fff;
+        }
+        .breadcrumbs .sep {
+            color: var(--small);
+            margin: 0 6px;
+        }
+        .breadcrumbs .current {
+            color: var(--muted);
+        }
     </style>
 </head>
 <body>
@@ -296,7 +322,16 @@
         </div>
     </header>
 
-    <section class="hero" style="padding-top: 60px; padding-bottom: 10px;">
+    <!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
+    <div class="breadcrumbs">
+        <a href="index.html">Главная</a>
+        <span class="sep">›</span>
+        <a href="gallery.html">Галерея</a>
+        <span class="sep">›</span>
+        <span class="current">Макромир</span>
+    </div>
+
+    <section class="hero" style="padding-top: 20px; padding-bottom: 10px;">
         <div class="container">
             <h1>Макро<span>мир</span></h1>
             <p class="hero-lead">Классическая макросъемка. Капли, цветы, текстуры.</p>
@@ -304,7 +339,7 @@
         </div>
     </section>
 
-    <section class="section fade-up" style="padding-top: 25px; padding-bottom: 25px;">
+    <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">Макро-работы</div>
             <div class="section-subtitle">Мир в деталях</div>
