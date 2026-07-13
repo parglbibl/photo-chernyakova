@@ -309,11 +309,16 @@
             <div class="section-title">Пейзажи</div>
             <div class="section-subtitle">Сакура, лёд и закаты</div>
             <div class="gallery" id="natureGallery">
-                <div class="gallery-item" onclick="openLightbox(0, natureImages, natureCaptions)"><img src="images/gallery/nature/2.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item" onclick="openLightbox(1, natureImages, natureCaptions)"><img src="images/gallery/nature/1.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item" onclick="openLightbox(2, natureImages, natureCaptions)"><img src="images/gallery/nature/5.webp" alt="" loading="lazy" /></div>
+                <!-- 1. Осенняя лужа -->
+                <div class="gallery-item" onclick="openLightbox(0, natureImages, natureCaptions)"><img src="images/gallery/nature/1.webp" alt="" loading="lazy" /></div>
+                <!-- 2. Сакура в синих сумерках -->
+                <div class="gallery-item" onclick="openLightbox(1, natureImages, natureCaptions)"><img src="images/gallery/nature/2.webp" alt="" loading="lazy" /></div>
+                <!-- 3. Сакура крупным планом (голубое небо) -->
+                <div class="gallery-item" onclick="openLightbox(2, natureImages, natureCaptions)"><img src="images/gallery/nature/3.webp" alt="" loading="lazy" /></div>
+                <!-- 4. Замёрзшая сосна -->
                 <div class="gallery-item" onclick="openLightbox(3, natureImages, natureCaptions)"><img src="images/gallery/nature/4.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item" onclick="openLightbox(4, natureImages, natureCaptions)"><img src="images/gallery/nature/3.webp" alt="" loading="lazy" /></div>
+                <!-- 5. Сакура в тёплом свете -->
+                <div class="gallery-item" onclick="openLightbox(4, natureImages, natureCaptions)"><img src="images/gallery/nature/5.webp" alt="" loading="lazy" /></div>
             </div>
         </div>
     </section>
@@ -394,18 +399,18 @@
     <!-- ===== ЛАЙТБОКС ДАННЫЕ И ФУНКЦИИ ===== -->
     <script>
         var natureImages = [
-            'images/gallery/nature/2.webp',
             'images/gallery/nature/1.webp',
-            'images/gallery/nature/5.webp',
+            'images/gallery/nature/2.webp',
+            'images/gallery/nature/3.webp',
             'images/gallery/nature/4.webp',
-            'images/gallery/nature/3.webp'
+            'images/gallery/nature/5.webp'
         ];
         var natureCaptions = [
-            'Весеннее цветение — сакура в синих сумерках',
             'Осенняя лужа — отражения и листья',
-            'Ветка сакуры в тёплом свете',
+            'Весеннее цветение — сакура в синих сумерках',
+            'Весеннее цветение — ближе к небу',
             'Застывшая сосна на зимнем рассвете',
-            'Весеннее цветение — ближе к небу'
+            'Ветка сакуры в тёплом свете'
         ];
     </script>
 
