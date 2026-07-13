@@ -143,9 +143,138 @@
             .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         }
 
-        .section.fade-up.visible-bottom {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+        /* ===== ЛАЙТБОКС ДЛЯ ГЛАВНОЙ ===== */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(4px);
+        }
+
+        #lightbox .image-wrapper {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        #lightbox .caption {
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+            padding: 8px 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        #lightbox .close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+            line-height: 1;
+            z-index: 10;
+        }
+        #lightbox .close:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        #lightbox .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.4);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 5;
+        }
+        #lightbox .nav-btn:hover {
+            background: var(--accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+        #lightbox .nav-prev {
+            left: -70px;
+        }
+        #lightbox .nav-next {
+            right: -70px;
+        }
+
+        #lightbox .counter {
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            margin-top: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            #lightbox .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+            #lightbox .nav-prev {
+                left: 10px;
+            }
+            #lightbox .nav-next {
+                right: 10px;
+            }
+            #lightbox .close {
+                top: -40px;
+                font-size: 32px;
+            }
+        }
+
+        /* Анимация появления блоков */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Для кликабельности фото на главной */
+        .hero-photo-card {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .hero-photo-card:hover {
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -198,11 +327,12 @@
                 </div>
             </div>
 
-            <div class="hero-gallery-v2">
-                <div class="hero-photo-card"><img src="images/gallery/macro/5.webp" alt="Макро 1"></div>
-                <div class="hero-photo-card"><img src="images/gallery/macro/14.webp" alt="Макро 2"></div>
-                <div class="hero-photo-card"><img src="images/gallery/macro/3.webp" alt="Макро 3"></div>
-                <div class="hero-photo-card"><img src="images/gallery/macro/13.webp" alt="Макро 4"></div>
+            <!-- 4 ФОТО НА ГЛАВНОЙ С ЛАЙТБОКСОМ -->
+            <div class="hero-gallery-v2" id="heroGallery">
+                <div class="hero-photo-card" onclick="openLightbox(0, heroImages, heroCaptions)"><img src="images/gallery/macro/5.webp" alt="Макро 1"></div>
+                <div class="hero-photo-card" onclick="openLightbox(1, heroImages, heroCaptions)"><img src="images/gallery/macro/14.webp" alt="Макро 2"></div>
+                <div class="hero-photo-card" onclick="openLightbox(2, heroImages, heroCaptions)"><img src="images/gallery/macro/3.webp" alt="Макро 3"></div>
+                <div class="hero-photo-card" onclick="openLightbox(3, heroImages, heroCaptions)"><img src="images/gallery/macro/13.webp" alt="Макро 4"></div>
             </div>
 
             <div class="hero-stats-v2">
@@ -240,6 +370,7 @@
         </div>
     </section>
 
+    <!-- ОСТАЛЬНОЙ КОНТЕНТ СТРАНИЦЫ -->
     <section class="section fade-up" style="padding-top: 25px; padding-bottom: 15px;">
         <div class="container">
             <div class="card" style="text-align: center; max-width: 760px; margin: 0 auto;">
@@ -335,8 +466,6 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var year = document.getElementById("current-year");
@@ -346,6 +475,7 @@
         });
     </script>
 
+    <!-- АНИМАЦИЯ ПОЯВЛЕНИЯ БЛОКОВ -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var observer = new IntersectionObserver(function(entries) {
@@ -362,8 +492,8 @@
             });
 
             setTimeout(function() {
-                document.querySelectorAll('.section.fade-up').forEach(function(el) {
-                    el.classList.add('visible-bottom');
+                document.querySelectorAll('.fade-up').forEach(function(el) {
+                    el.classList.add('visible');
                 });
             }, 1000);
         });
@@ -417,50 +547,83 @@
         });
     </script>
 
-    <!-- ГЕНЕРАЦИЯ КНОПКИ "НАВЕРХ" -->
+    <!-- ===== ЛАЙТБОКС ДАННЫЕ (4 ФОТО НА ГЛАВНОЙ) ===== -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var backToTopBtn = document.createElement('div');
-            backToTopBtn.innerHTML = '↑';
-            backToTopBtn.style.cssText = `
-                position: fixed;
-                bottom: 30px;
-                right: 30px;
-                width: 50px;
-                height: 50px;
-                background-color: var(--accent, #8B6B54);
-                color: #fff;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 24px;
-                font-weight: bold;
-                cursor: pointer;
-                opacity: 0;
-                visibility: hidden;
-                transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-                z-index: 9999;
-                user-select: none;
-            `;
-            document.body.appendChild(backToTopBtn);
+        var heroImages = [
+            'images/gallery/macro/5.webp',
+            'images/gallery/macro/14.webp',
+            'images/gallery/macro/3.webp',
+            'images/gallery/macro/13.webp'
+        ];
+        var heroCaptions = [
+            'Макро 1',
+            'Макро 2',
+            'Макро 3',
+            'Макро 4'
+        ];
+    </script>
 
-            backToTopBtn.addEventListener('click', function() {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
+    <!-- ===== ЛАЙТБОКС HTML ===== -->
+    <div id="lightbox" style="display: none;">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="image-wrapper">
+            <img id="lightboxImage" src="" alt="" />
+            <span class="nav-btn nav-prev" onclick="changeImage(-1)">‹</span>
+            <span class="nav-btn nav-next" onclick="changeImage(1)">›</span>
+        </div>
+        <div class="caption" id="lightboxCaption"></div>
+        <div class="counter" id="lightboxCounter"></div>
+    </div>
 
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 300) {
-                    backToTopBtn.style.opacity = '1';
-                    backToTopBtn.style.visibility = 'visible';
-                    backToTopBtn.style.transform = 'scale(1)';
-                } else {
-                    backToTopBtn.style.opacity = '0';
-                    backToTopBtn.style.visibility = 'hidden';
-                    backToTopBtn.style.transform = 'scale(0.8)';
-                }
-            });
+    <!-- ===== ЛАЙТБОКС JS ===== -->
+    <script>
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImage = document.getElementById('lightboxImage');
+        var lightboxCaption = document.getElementById('lightboxCaption');
+        var lightboxCounter = document.getElementById('lightboxCounter');
+        var currentIndex = 0;
+        var currentImages = [];
+        var currentCaptions = [];
+
+        function openLightbox(index, images, captions) {
+            if (!images || !images.length) return;
+            currentImages = images;
+            currentCaptions = captions || [];
+            currentIndex = index;
+            renderLightbox();
+        }
+
+        function renderLightbox() {
+            if (!currentImages.length) return;
+            lightboxImage.src = currentImages[currentIndex];
+            lightboxCaption.textContent = currentCaptions[currentIndex] || '';
+            lightboxCounter.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function changeImage(direction) {
+            if (!currentImages.length) return;
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = currentImages.length - 1;
+            if (currentIndex >= currentImages.length) currentIndex = 0;
+            renderLightbox();
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.style.display === 'none') return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
         });
     </script>
 
