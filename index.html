@@ -18,12 +18,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css" />
 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
+        /* ===== ЛОГОТИП В ЛЕВОМ ВЕРХНЕМ УГЛУ ===== */
+        .site-logo {
+            position: fixed;
+            top: 18px;
+            left: 20px;
+            z-index: 101;
+            height: 48px;
+            width: auto;
+            pointer-events: none; /* Чтобы не мешал кликам по меню */
+        }
+        /* На мобильных логотип становится меньше и чуть ниже, чтобы не мешать бургеру */
+        @media (max-width: 900px) {
+            .site-logo {
+                height: 32px;
+                top: 14px;
+                left: 16px;
+            }
+        }
+        /* Скрываем логотип, когда открыто меню, чтобы не перекрывать текст */
+        .nav.active ~ .site-logo {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
         .nav .dropdown { position: relative; }
         .nav .dropdown-content {
             display: none;
@@ -280,6 +305,9 @@
 </head>
 <body>
 
+    <!-- ===== ЛОГОТИП ===== -->
+    <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
+
     <img id="top-layer-gerbera" src="images/bg.webp">
 
     <header>
@@ -466,7 +494,7 @@
         </div>
     </footer>
 
-    <!-- ===== ЯНДЕКС.МЕТРИКА (СЧЁТЧИК) ===== -->
+    <!-- ЯНДЕКС МЕТРИКА -->
     <script>
         (function(m,e,t,r,i,k,a){
             m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -484,7 +512,6 @@
         });
     </script>
 
-    <!-- ===== ЯНДЕКС.МЕТРИКА (ИНФОРМЕР В ПОДВАЛЕ) ===== -->
     <div style="margin-top: 20px; display: flex; justify-content: center;">
         <a href="https://metrika.yandex.ru/stat/?id=110292534&amp;from=informer" target="_blank" rel="nofollow">
             <img src="https://informer.yandex.ru/informer/110292534/3_1_FFFFFFFF_EFEFEFFF_0_pageviews" style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer" data-cid="110292534" data-lang="ru" />
@@ -653,7 +680,7 @@
         });
     </script>
 
-    <!-- ===== КНОПКА «НАВЕРХ» ===== -->
+    <!-- КНОПКА «НАВЕРХ» -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var backToTopBtn = document.createElement('div');
