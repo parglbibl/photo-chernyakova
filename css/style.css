@@ -1,6 +1,3 @@
-/* ============================================================
-   FINAL STYLE - 100vw WITH HEART VISIBLE + BURGER OVERLAY FIX
-   ============================================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
@@ -83,6 +80,32 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* ===== ЛОГОТИП В ЛЕВОМ ВЕРХНЕМ УГЛУ ===== */
+.site-logo {
+    position: fixed;
+    top: 18px;
+    left: 20px;
+    z-index: 101;
+    height: 48px;
+    width: auto;
+    pointer-events: none;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+    transition: opacity 0.2s;
+}
+
+@media (max-width: 900px) {
+    .site-logo {
+        height: 48px;
+        top: 12px;
+        left: 16px;
+    }
+}
+
+.nav.active ~ .site-logo {
+    opacity: 0;
+    transition: opacity 0.2s;
 }
 
 /* ----- СТИЛИ ДЛЯ ПК (ГОРИЗОНТАЛЬНОЕ МЕНЮ) ----- */
