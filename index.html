@@ -142,6 +142,11 @@
             .nav.active ~ .burger-btn span:nth-child(2) { opacity: 0; }
             .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         }
+
+        .section.fade-up.visible-bottom {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
     </style>
 </head>
 <body>
@@ -194,10 +199,10 @@
             </div>
 
             <div class="hero-gallery-v2">
-                <div class="hero-photo-card"><img src="images/gallery/5.png" alt="Макро 1"></div>
-                <div class="hero-photo-card"><img src="images/gallery/14.png" alt="Макро 2"></div>
-                <div class="hero-photo-card"><img src="images/gallery/3.png" alt="Макро 3"></div>
-                <div class="hero-photo-card"><img src="images/gallery/13.png" alt="Макро 4"></div>
+                <div class="hero-photo-card"><img src="images/gallery/macro/5.webp" alt="Макро 1"></div>
+                <div class="hero-photo-card"><img src="images/gallery/macro/14.webp" alt="Макро 2"></div>
+                <div class="hero-photo-card"><img src="images/gallery/macro/3.webp" alt="Макро 3"></div>
+                <div class="hero-photo-card"><img src="images/gallery/macro/13.webp" alt="Макро 4"></div>
             </div>
 
             <div class="hero-stats-v2">
@@ -339,7 +344,6 @@
         });
     </script>
 
-    <!-- АНИМАЦИЯ ПОЯВЛЕНИЯ БЛОКОВ -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var observer = new IntersectionObserver(function(entries) {
@@ -354,56 +358,12 @@
                 el.classList.add('fade-up');
                 observer.observe(el);
             });
-        });
-    </script>
 
-    <!-- ЕДИНСТВЕННЫЙ СКРИПТ МЕНЮ, ВСТРОЕННЫЙ В СТРАНИЦУ -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // 1. Обработка бургера
-            var burgerBtn = document.getElementById("burgerBtn");
-            var navMenu = document.querySelector(".nav");
-
-            if (burgerBtn && navMenu) {
-                burgerBtn.addEventListener("click", function(e) {
-                    e.stopPropagation();
-                    navMenu.classList.toggle("active");
+            setTimeout(function() {
+                document.querySelectorAll('.section.fade-up').forEach(function(el) {
+                    el.classList.add('visible-bottom');
                 });
-
-                document.addEventListener("click", function(e) {
-                    if (navMenu.classList.contains("active")) {
-                        if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
-                            navMenu.classList.remove("active");
-                        }
-                    }
-                });
-            }
-
-            // 2. Обработка подменю "Галерея"
-            var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
-            
-            dropdownToggles.forEach(function(toggle) {
-                toggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var parentDropdown = this.closest('.dropdown');
-                    
-                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
-                        if (drop !== parentDropdown) {
-                            drop.classList.remove('open');
-                        }
-                    });
-                    
-                    parentDropdown.classList.toggle('open');
-                });
-            });
-
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.nav .dropdown')) {
-                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
-                        drop.classList.remove('open');
-                    });
-                }
-            });
+            }, 1000);
         });
     </script>
 
