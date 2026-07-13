@@ -15,12 +15,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/style.css" />
 
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
+        /* ===== ОСТАЛЬНЫЕ СТИЛИ ===== */
         .nav .dropdown { position: relative; }
         .nav .dropdown-content {
             display: none;
@@ -140,26 +142,98 @@
             .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         }
 
-        .section.fade-up.visible-bottom {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
+        .achievement-list {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 0;
+            list-style: none;
+        }
+        .achievement-list li {
+            padding: 16px 22px;
+            margin-bottom: 10px;
+            border-radius: 12px;
+            background: rgba(34, 32, 29, 0.80) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(18px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.7;
+            transition: 0.3s;
+        }
+        .achievement-list li:hover {
+            border-color: var(--accent) !important;
+        }
+        .achievement-list li strong {
+            color: var(--text);
         }
 
-        .year-header {
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        .stat-card {
+            background: rgba(34, 32, 29, 0.80) !important;
+            border: 1px solid rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(18px);
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+            border-radius: 16px;
+            padding: 28px 20px;
+            transition: 0.3s;
+        }
+        .stat-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent) !important;
+        }
+        .stat-number {
+            font-size: 42px;
+            font-weight: 800;
             color: var(--text);
-            text-align: center;
-            font-size: 28px;
-            font-weight: 700;
-            border-bottom: 1px solid rgba(255,255,255,0.15);
-            padding-bottom: 12px;
-            margin-bottom: 20px;
-            margin-top: 30px;
+            letter-spacing: -1px;
+        }
+        .stat-label {
+            color: var(--muted);
+            font-size: 16px;
+            font-weight: 500;
+            margin-top: 2px;
+            opacity: 0.9;
+        }
+        .stat-desc {
+            color: var(--small);
+            font-size: 14px;
+            opacity: 0.6;
+            margin-top: 2px;
+        }
+
+        /* ===== ХЛЕБНЫЕ КРОШКИ ===== */
+        .breadcrumbs {
+            max-width: 1120px;
+            margin: 0 auto 16px auto;
+            padding: 0 16px;
+            color: var(--muted);
+            font-size: 15px;
+            letter-spacing: 0.3px;
+        }
+        .breadcrumbs a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .breadcrumbs a:hover {
+            color: #fff;
+        }
+        .breadcrumbs .sep {
+            color: var(--small);
+            margin: 0 6px;
+        }
+        .breadcrumbs .current {
+            color: var(--muted);
         }
     </style>
 </head>
 <body>
-
-    <img id="top-layer-gerbera" src="images/bg.webp">
 
     <header>
         <div class="header-inner">
@@ -191,7 +265,14 @@
         </div>
     </header>
 
-    <section class="hero" style="padding-top: 60px; padding-bottom: 10px;">
+    <!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
+    <div class="breadcrumbs">
+        <a href="index.html">Главная</a>
+        <span class="sep">›</span>
+        <span class="current">Достижения</span>
+    </div>
+
+    <section class="hero" style="padding-top: 20px; padding-bottom: 10px;">
         <div class="container">
             <h1>Мои <span>достижения</span></h1>
             <p class="hero-lead">Признание на международном и российском уровне</p>
@@ -263,16 +344,16 @@
                     <div style="width: 100%;"><img src="images/diploms/gramota15.webp" alt="35AWARDS Концептуальный минимализм 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
                     <div style="width: 100%;"><img src="images/diploms/gramota19.webp" alt="35AWARDS 10-я премия 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
                     <div style="width: 100%;"><img src="images/diploms/gramota20.webp" alt="35AWARDS Любовная история 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota21.webp" alt="Мир макрофотографии III место 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota22.webp" alt="Мир макрофотографии Сертификат 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota23.webp" alt="Мир макрофотографии Грамота III место 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota1.webp" alt="35AWARDS Цветы 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota2.webp" alt="35AWARDS Капли 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota3.webp" alt="35AWARDS Жёлтый+Зелёный 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota5.webp" alt="35AWARDS Свадьба 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
                     <div style="width: 100%;"><img src="images/diploms/gramota24.webp" alt="Осень в объективе III место 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
                     <div style="width: 100%;"><img src="images/diploms/gramota7.webp" alt="Благодарность Две линзы 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
                     <div style="width: 100%;"><img src="images/diploms/gramota4.webp" alt="Осень в моменте 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/diploms/gramota3.webp" alt="35AWARDS Жёлтый+Зелёный 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/diploms/gramota1.webp" alt="35AWARDS Цветы 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/diploms/gramota2.webp" alt="35AWARDS Капли 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/diploms/gramota5.webp" alt="35AWARDS Свадьба 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/diploms/gramota21.webp" alt="Мир макрофотографии III место 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/diploms/gramota22.webp" alt="Мир макрофотографии Сертификат 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                    <div style="width: 100%;"><img src="images/diploms/gramota23.webp" alt="Мир макрофотографии Грамота III место 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
                     <div style="width: 100%;"><img src="images/diploms/gramota18.webp" alt="Самая красивая страна 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
                     <div style="width: 100%;"><img src="images/diploms/gramota14.webp" alt="Анна Маслова Чёрно-белое фото" style="width: 100%; height: auto; border-radius: 12px;"></div>
                     <div style="width: 100%;"><img src="images/diploms/gramota17.webp" alt="Анна Маслова Арт" style="width: 100%; height: auto; border-radius: 12px;"></div>
@@ -318,15 +399,10 @@
                 el.classList.add('fade-up');
                 observer.observe(el);
             });
-
-            setTimeout(function() {
-                document.querySelectorAll('.section.fade-up').forEach(function(el) {
-                    el.classList.add('visible-bottom');
-                });
-            }, 1000);
         });
     </script>
 
+    <!-- СКРИПТ МЕНЮ -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var burgerBtn = document.getElementById("burgerBtn");
