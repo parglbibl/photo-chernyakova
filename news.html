@@ -22,6 +22,28 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
+        /* ===== ЛОГОТИП В ЛЕВОМ ВЕРХНЕМ УГЛУ ===== */
+        .site-logo {
+            position: fixed;
+            top: 18px;
+            left: 20px;
+            z-index: 101;
+            height: 48px;
+            width: auto;
+            pointer-events: none;
+        }
+        @media (max-width: 900px) {
+            .site-logo {
+                height: 32px;
+                top: 14px;
+                left: 16px;
+            }
+        }
+        .nav.active ~ .site-logo {
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
         /* ===== ОСТАЛЬНЫЕ СТИЛИ ===== */
         .nav .dropdown { position: relative; }
         .nav .dropdown-content {
@@ -166,35 +188,12 @@
         .breadcrumbs .current {
             color: var(--muted);
         }
-
-        /* ===== ЖЁСТКОЕ ЦЕНТРИРОВАНИЕ ВИДЖЕТА ВК ===== */
-        #vk_groups {
-            width: 100%;
-            display: flex !important;
-            justify-content: center !important;
-            margin: 0 auto !important;
-            padding: 0 !important;
-        }
-
-        #vk_groups iframe {
-            width: 100% !important;
-            max-width: 900px !important;
-            height: 600px !important;
-            border-radius: 16px !important;
-            border: none !important;
-            margin: 0 auto !important;
-            display: block !important;
-        }
-
-        @media (max-width: 768px) {
-            #vk_groups iframe {
-                height: 700px !important;
-                max-width: 100% !important;
-            }
-        }
     </style>
 </head>
 <body>
+
+    <!-- ===== ЛОГОТИП ===== -->
+    <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
 
     <img id="top-layer-gerbera" src="images/bg.webp">
 
