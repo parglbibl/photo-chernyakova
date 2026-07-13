@@ -139,6 +139,11 @@
             .nav.active ~ .burger-btn span:nth-child(2) { opacity: 0; }
             .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         }
+
+        .section.fade-up.visible-bottom {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
     </style>
 </head>
 <body>
@@ -164,7 +169,6 @@
                         <li><a href="nature.html">Природа</a></li>
                     </ul>
                 </li>
-
                 <li><a href="news.html">Новости</a></li>
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
@@ -185,25 +189,29 @@
             <div class="section-title">Макро-работы</div>
             <div class="section-subtitle">Мир в деталях</div>
             <div class="gallery" id="macroGallery">
-                <div class="gallery-item"><img src="images/gallery/5.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/1.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/2.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/3.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/7.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/8.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/9.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/10.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/11.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/12.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/13.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/14.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/19.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/20.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/21.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/22.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/30.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/31.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/34.PNG" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/1.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/2.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/3.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/4.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/5.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/6.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/7.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/8.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/9.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/10.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/11.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/12.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/13.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/14.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/15.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/16.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/17.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/18.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/19.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/20.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/21.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/22.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/macro/23.webp" alt="" loading="lazy" /></div>
             </div>
         </div>
     </section>
@@ -230,10 +238,15 @@
                 el.classList.add('fade-up');
                 observer.observe(el);
             });
+
+            setTimeout(function() {
+                document.querySelectorAll('.section.fade-up').forEach(function(el) {
+                    el.classList.add('visible-bottom');
+                });
+            }, 1000);
         });
     </script>
 
-    <!-- СКРИПТ МЕНЮ -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var burgerBtn = document.getElementById("burgerBtn");
