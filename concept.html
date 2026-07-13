@@ -139,6 +139,11 @@
             .nav.active ~ .burger-btn span:nth-child(2) { opacity: 0; }
             .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         }
+
+        .section.fade-up.visible-bottom {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
     </style>
 </head>
 <body>
@@ -164,7 +169,6 @@
                         <li><a href="nature.html">Природа</a></li>
                     </ul>
                 </li>
-
                 <li><a href="news.html">Новости</a></li>
                 <li><a href="faq.html">Вопросы и ответы</a></li>
                 <li><a href="contacts.html">Контакты</a></li>
@@ -185,18 +189,21 @@
             <div class="section-title">Концептуальные работы</div>
             <div class="section-subtitle">Фотографии-идеи</div>
             <div class="gallery" id="conceptGallery">
-                <div class="gallery-item"><img src="images/gallery/4.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/6.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/16.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/17.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/18.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/25.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/26.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/27.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/28.png" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/35.PNG" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/36.PNG" alt="" loading="lazy" /></div>
-                <div class="gallery-item"><img src="images/gallery/37.PNG" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/1.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/2.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/3.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/4.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/5.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/6.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/7.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/8.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/9.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/10.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/11.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/12.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/13.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/14.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item"><img src="images/gallery/concept/15.webp" alt="" loading="lazy" /></div>
             </div>
         </div>
     </section>
@@ -223,10 +230,15 @@
                 el.classList.add('fade-up');
                 observer.observe(el);
             });
+
+            setTimeout(function() {
+                document.querySelectorAll('.section.fade-up').forEach(function(el) {
+                    el.classList.add('visible-bottom');
+                });
+            }, 1000);
         });
     </script>
 
-    <!-- СКРИПТ МЕНЮ -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var burgerBtn = document.getElementById("burgerBtn");
