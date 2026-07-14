@@ -32,12 +32,13 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            min-width: 180px;
+            min-width: 160px;
+            width: auto;
             background: rgba(24, 23, 21, 0.92);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
-            padding: 8px 0;
+            padding: 6px 0;
             list-style: none;
             z-index: 200;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
@@ -54,12 +55,14 @@
         .nav .dropdown-toggle:hover { color: #FFFFFF; }
         .nav .dropdown-content a {
             display: block;
-            padding: 10px 20px;
+            width: 100%;
+            padding: 8px 20px;
             font-size: 17px;
             color: var(--muted);
             text-decoration: none;
             transition: 0.2s;
             border-radius: 0;
+            box-sizing: border-box;
         }
         .nav .dropdown-content a:hover {
             color: #FFFFFF;
@@ -148,6 +151,16 @@
         @media (min-width: 901px) {
             .burger-btn {
                 display: none !important;
+            }
+        }
+
+        /* Опускаем аватарку только на ПК */
+        @media (min-width: 901px) {
+            .hero {
+                padding-top: 80px !important;
+            }
+            .hero-avatar-v2 {
+                margin-top: 10px;
             }
         }
 
@@ -275,16 +288,6 @@
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Опускаем аватарку только на ПК */
-        @media (min-width: 901px) {
-            .hero {
-                padding-top: 80px !important;
-            }
-            .hero-avatar-v2 {
-                margin-top: 10px;
-            }
-        }
         
         /* Для кликабельности и размера фото на главной */
         .hero-photo-card {
@@ -323,7 +326,7 @@
                 <li><a href="achievements.html">Достижения</a></li>
                 
                 <li class="dropdown">
-                    <span class="dropdown-toggle">Галерея</span>
+                    <a href="#" class="dropdown-toggle" onclick="return false;">Галерея</a>
                     <ul class="dropdown-content">
                         <li><a href="macro.html">Макромир</a></li>
                         <li><a href="concept.html">Концепт</a></li>
@@ -696,6 +699,30 @@
             });
         });
     </script>
+
+    <!-- ЯНДЕКС МЕТРИКА -->
+    <script>
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110292534', 'ym');
+
+        ym(110292534, 'init', {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true,
+            ecommerce:"dataLayer"
+        });
+    </script>
+
+    <div style="margin-top: 20px; display: flex; justify-content: center;">
+        <a href="https://metrika.yandex.ru/stat/?id=110292534&amp;from=informer" target="_blank" rel="nofollow">
+            <img src="https://informer.yandex.ru/informer/110292534/3_1_FFFFFFFF_EFEFEFFF_0_pageviews" style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer" data-cid="110292534" data-lang="ru" />
+        </a>
+    </div>
 
 </body>
 </html>
