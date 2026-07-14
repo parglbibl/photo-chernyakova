@@ -98,7 +98,7 @@ header {
 
 @media (max-width: 900px) {
     .site-logo {
-        height: 50px;      /* Вписывается в плашку */
+        height: 44px;      /* Вписывается в плашку */
         top: 2px;          /* Чуть выше, чтобы не давил на текст */
         left: 10px;
     }
