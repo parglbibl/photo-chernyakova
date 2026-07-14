@@ -1310,8 +1310,8 @@ img {
 }
 
 .flip-3d-back {
-    /* Приглушённый тёплый серо-бежевый — крафтовая бумага */
-    background: #cbc3b6;
+    /* Мягкий тёплый кремовый — идеальный цвет дорогой открытки */
+    background: #e3dcd0;
     border: 1px solid rgba(0, 0, 0, 0.06);
     transform: rotateY(180deg);
     display: flex;
