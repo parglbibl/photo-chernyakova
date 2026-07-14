@@ -144,6 +144,13 @@
             .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         }
 
+        /* Скрываем кнопку бургера на ПК */
+        @media (min-width: 901px) {
+            .burger-btn {
+                display: none !important;
+            }
+        }
+
         /* ===== ЛАЙТБОКС ДЛЯ ГЛАВНОЙ ===== */
         #lightbox {
             position: fixed;
@@ -288,6 +295,12 @@
 
     <header>
         <div class="header-inner">
+            <button class="burger-btn" id="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
             <ul class="nav" id="mainNav">
                 <li><a href="index.html" class="active">Главная</a></li>
                 <li><a href="about.html">О себе</a></li>
