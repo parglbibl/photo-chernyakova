@@ -281,22 +281,10 @@
 </head>
 <body>
 
-    <!-- ===== ЛОГОТИП (ОБНОВЛЁННЫЙ, С ДВИЖЕНИЕМ ВПРАВО) ===== -->
-    <a href="index.html" class="site-logo-link">
-        <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
-    </a>
-
     <img id="top-layer-gerbera" src="images/bg.webp">
 
     <header>
         <div class="header-inner">
-            <!-- ДОБАВИЛИ КЛАСС hidden-on-pc -->
-            <button class="burger-btn hidden-on-pc" id="burgerBtn">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
             <ul class="nav" id="mainNav">
                 <li><a href="index.html" class="active">Главная</a></li>
                 <li><a href="about.html">О себе</a></li>
@@ -334,12 +322,11 @@
                 </div>
             </div>
 
-            <!-- 4 ФОТО НА ГЛАВНОЙ С ЛАЙТБОКСОМ -->
-            <div class="hero-gallery-v2" id="heroGallery">
-                <div class="hero-photo-card" onclick="openLightbox(0, heroImages, heroCaptions)"><img src="images/gallery/macro/5.webp" alt="Золотой глаз"></div>
-                <div class="hero-photo-card" onclick="openLightbox(1, heroImages, heroCaptions)"><img src="images/gallery/macro/14.webp" alt="Утренний бархат"></div>
-                <div class="hero-photo-card" onclick="openLightbox(2, heroImages, heroCaptions)"><img src="images/gallery/macro/3.webp" alt="Орхидея с росой"></div>
-                <div class="hero-photo-card" onclick="openLightbox(3, heroImages, heroCaptions)"><img src="images/gallery/macro/13.webp" alt="Капля на игле"></div>
+            <div class="hero-gallery-v2">
+                <div class="hero-photo-card"><img src="images/gallery/macro/5.webp" alt="Макро 1"></div>
+                <div class="hero-photo-card"><img src="images/gallery/macro/14.webp" alt="Макро 2"></div>
+                <div class="hero-photo-card"><img src="images/gallery/macro/3.webp" alt="Макро 3"></div>
+                <div class="hero-photo-card"><img src="images/gallery/macro/13.webp" alt="Макро 4"></div>
             </div>
 
             <div class="hero-stats-v2">
@@ -377,7 +364,6 @@
         </div>
     </section>
 
-    <!-- ОСТАЛЬНОЙ КОНТЕНТ СТРАНИЦЫ -->
     <section class="section fade-up" style="padding-top: 25px; padding-bottom: 15px;">
         <div class="container">
             <div class="card" style="text-align: center; max-width: 760px; margin: 0 auto;">
@@ -473,31 +459,6 @@
         </div>
     </footer>
 
-    <!-- ЯНДЕКС МЕТРИКА -->
-    <script>
-        (function(m,e,t,r,i,k,a){
-            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();
-            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110292534', 'ym');
-
-        ym(110292534, 'init', {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true,
-            ecommerce:"dataLayer"
-        });
-    </script>
-
-    <div style="margin-top: 20px; display: flex; justify-content: center;">
-        <a href="https://metrika.yandex.ru/stat/?id=110292534&amp;from=informer" target="_blank" rel="nofollow">
-            <img src="https://informer.yandex.ru/informer/110292534/3_1_FFFFFFFF_EFEFEFFF_0_pageviews" style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer" data-cid="110292534" data-lang="ru" />
-        </a>
-    </div>
-
-    <!-- УСТАНОВКА ГОДА В ФУТЕРЕ -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var year = document.getElementById("current-year");
@@ -507,7 +468,6 @@
         });
     </script>
 
-    <!-- АНИМАЦИЯ ПОЯВЛЕНИЯ БЛОКОВ -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var observer = new IntersectionObserver(function(entries) {
@@ -705,6 +665,30 @@
             });
         });
     </script>
+
+    <!-- ЯНДЕКС МЕТРИКА -->
+    <script>
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110292534', 'ym');
+
+        ym(110292534, 'init', {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true,
+            ecommerce:"dataLayer"
+        });
+    </script>
+
+    <div style="margin-top: 20px; display: flex; justify-content: center;">
+        <a href="https://metrika.yandex.ru/stat/?id=110292534&amp;from=informer" target="_blank" rel="nofollow">
+            <img src="https://informer.yandex.ru/informer/110292534/3_1_FFFFFFFF_EFEFEFFF_0_pageviews" style="width:88px; height:31px; border:0;" alt="Яндекс.Метрика" title="Яндекс.Метрика: данные за сегодня (просмотры, визиты и уникальные посетители)" class="ym-advanced-informer" data-cid="110292534" data-lang="ru" />
+        </a>
+    </div>
 
 </body>
 </html>
