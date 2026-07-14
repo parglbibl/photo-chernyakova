@@ -246,10 +246,8 @@
 </head>
 <body>
 
-    <!-- ===== ФОН ===== -->
     <img id="top-layer-gerbera" src="images/bg.webp">
 
-    <!-- ===== ЛОГОТИП ===== -->
     <a href="index.html">
         <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
     </a>
@@ -339,15 +337,12 @@
         </div>
     </section>
 
-    <!-- ===== ГАЛЕРЕЯ ДИПЛОМОВ ===== -->
     <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">Галерея признания</div>
             <div class="section-subtitle">Официальные дипломы и сертификаты</div>
 
             <div style="margin: 0 auto; max-width: 700px;">
-                
-                <!-- ===== 2024 ГОД ===== -->
                 <h3 class="year-header">2024</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
                     <div style="width: 100%;"><img src="images/diploms/gramota9.webp" alt="Сертификат Photoshop 2024" style="width: 100%; height: auto; border-radius: 12px;"></div>
@@ -355,7 +350,6 @@
                     <div style="width: 100%;"><img src="images/diploms/gramota11.webp" alt="35AWARDS Капли 2024" style="width: 100%; height: auto; border-radius: 12px;"></div>
                 </div>
 
-                <!-- ===== 2025 ГОД ===== -->
                 <h3 class="year-header">2025</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
                     <div style="width: 100%;"><img src="images/diploms/gramota12.webp" alt="Russian Photo Awards 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
@@ -380,7 +374,6 @@
                     <div style="width: 100%;"><img src="images/diploms/gramota6.webp" alt="Restore mobile photo 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
                 </div>
 
-                <!-- ===== 2026 ГОД ===== -->
                 <h3 class="year-header">2026</h3>
                 <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
                     <div style="width: 100%;"><img src="images/diploms/gramota8.webp" alt="35AWARDS Adaptive Sports 2026" style="width: 100%; height: auto; border-radius: 12px;"></div>
@@ -421,54 +414,5 @@
             });
         });
     </script>
-
-    <!-- СКРИПТ МЕНЮ -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var burgerBtn = document.getElementById("burgerBtn");
-            var navMenu = document.querySelector(".nav");
-
-            if (burgerBtn && navMenu) {
-                burgerBtn.addEventListener("click", function(e) {
-                    e.stopPropagation();
-                    navMenu.classList.toggle("active");
-                });
-
-                document.addEventListener("click", function(e) {
-                    if (navMenu.classList.contains("active")) {
-                        if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
-                            navMenu.classList.remove("active");
-                        }
-                    }
-                });
-            }
-
-            var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
-            
-            dropdownToggles.forEach(function(toggle) {
-                toggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var parentDropdown = this.closest('.dropdown');
-                    
-                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
-                        if (drop !== parentDropdown) {
-                            drop.classList.remove('open');
-                        }
-                    });
-                    
-                    parentDropdown.classList.toggle('open');
-                });
-            });
-
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.nav .dropdown')) {
-                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
-                        drop.classList.remove('open');
-                    });
-                }
-            });
-        });
-    </script>
-
 </body>
 </html>
