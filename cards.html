@@ -10,12 +10,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- Цвета и база --- */
         :root {
             --bg: #11100e;
             --text: #F7F3EE;
             --accent: #C39A74;
-            --accent-glow: rgba(195, 154, 116, 0.25);
+            --paper-bg: #1a1816;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
@@ -46,7 +45,7 @@
         }
         .header-section h1 {
             font-size: clamp(32px, 4vw, 56px);
-            font-weight: 300; /* Тонкий шрифт для элегантности */
+            font-weight: 300;
             letter-spacing: -0.5px;
             color: #fff;
         }
@@ -75,59 +74,62 @@
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
+            gap: 40px 30px;
         }
 
-        /* --- Карточка --- */
-        .flip-card {
-            background-color: transparent;
-            aspect-ratio: 4 / 5; /* Более вытянутый, эстетичный формат */
-            perspective: 1200px;
+        /* --- Карточка-открытка --- */
+        .postcard {
+            perspective: 1500px;
             cursor: pointer;
+            aspect-ratio: 4 / 5;
+            background: transparent;
+            border-radius: 4px; /* Уголки как у бумаги */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .flip-card-inner {
+        .postcard-inner {
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             transform-style: preserve-3d;
-            border-radius: 12px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
         }
 
-        /* Поворот */
-        .flip-card.flipped .flip-card-inner {
-            transform: rotateY(180deg);
+        /* Когда открытка раскрыта */
+        .postcard.opened .postcard-inner {
+            transform: rotateY(-180deg);
         }
 
-        .flip-card-front, .flip-card-back {
+        /* Левая и правая "страницы" открытки */
+        .postcard-front, .postcard-back {
             position: absolute;
             width: 100%;
             height: 100%;
-            -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            border-radius: 12px;
+            -webkit-backface-visibility: hidden;
+            border-radius: 4px;
             overflow: hidden;
+            background: #151311;
         }
 
-        /* Фото (перед) */
-        .flip-card-front img {
+        /* Левая страница (сгиб) - ФОТО */
+        .postcard-front {
+            transform-origin: left center;
+            transform: rotateY(0deg); /* Лежит перед нами */
+            box-shadow: inset -10px 0 20px rgba(0,0,0,0.3); /* Тень от сгиба */
+        }
+        .postcard-front img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
-            transition: transform 0.5s ease;
-        }
-        /* Легкое увеличение при наведении, если не перевернуто */
-        .flip-card:not(.flipped):hover .flip-card-front img {
-            transform: scale(1.05);
         }
 
-        /* Задняя сторона (текст) */
-        .flip-card-back {
-            background: linear-gradient(145deg, #1a1816, #0f0e0d);
-            transform: rotateY(180deg);
+        /* Правая страница (сгиб) - ТЕКСТ */
+        .postcard-back {
+            transform-origin: left center;
+            transform: rotateY(180deg); /* Скрыта за фото */
+            background: var(--paper-bg);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -135,29 +137,31 @@
             padding: 30px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: inset 10px 0 20px rgba(0,0,0,0.5); /* Тень от сгиба внутри */
         }
 
-        .flip-card-back h3 {
+        /* Текст на внутренней стороне */
+        .postcard-back h3 {
             color: var(--accent);
             font-size: 24px;
             font-weight: 500;
             margin-bottom: 12px;
             letter-spacing: -0.3px;
         }
-        .flip-card-back p {
+        .postcard-back p {
             font-size: 15px;
             color: rgba(255,255,255,0.6);
             line-height: 1.6;
             font-weight: 300;
             max-width: 80%;
         }
-        .flip-card-back .icon-deco {
+        .postcard-back .icon-deco {
             font-size: 32px;
             margin-bottom: 15px;
             opacity: 0.5;
         }
 
-        /* --- Эффект капель --- */
+        /* --- Эффект капель (Тряска) --- */
         .shake-rain {
             position: fixed;
             top: 0; left: 0;
@@ -180,7 +184,6 @@
             100% { transform: translateY(110vh); opacity: 0; }
         }
 
-        /* --- Адаптив для мобилок --- */
         @media (max-width: 700px) {
             .header-section {
                 flex-direction: column;
@@ -188,54 +191,52 @@
             }
             .card-grid {
                 grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 15px;
+                gap: 20px 15px;
             }
-            .flip-card-back h3 { font-size: 18px; }
-            .flip-card-back p { font-size: 13px; max-width: 90%; }
+            .postcard-back h3 { font-size: 18px; }
+            .postcard-back p { font-size: 13px; max-width: 90%; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Красивый шапка -->
         <div class="header-section">
             <div>
                 <h1>Открытки <span>от Галины</span></h1>
-                <div class="sub">Нажми или коснись, чтобы прочитать</div>
+                <div class="sub">Коснись или кликни, чтобы раскрыть</div>
             </div>
             <a href="index.html" class="back-link">Вернуться на главную →</a>
         </div>
         
         <div class="card-grid" id="cardGrid">
-            <!-- JS сюда вставит карточки -->
+            <!-- JS сюда вставит открытки -->
         </div>
     </div>
 
     <script>
-        // Данные для карточек
         const cardsData = [
             { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Мир, который мы не замечаем." },
             { img: "images/gallery/macro/5.webp", title: "Золотой глаз", desc: "Капля как зеркало души." },
             { img: "images/gallery/macro/14.webp", title: "Утренний бархат", desc: "Тишина на кончиках листьев." },
             { img: "images/gallery/macro/13.webp", title: "Капля на игле", desc: "Баланс на грани." },
             { img: "images/gallery/macro/3.webp", title: "Орхидея с росой", desc: "Красота в деталях." },
-            // Добавляй сколько хочешь. Чтобы не менять все, просто создай новые строки { img: "...", title: "...", desc: "..." },
+            // Добавь новые строки для каждой новой открытки
         ];
 
         const grid = document.getElementById('cardGrid');
 
-        // Генерация
+        // Генерация открыток
         cardsData.forEach(item => {
             const card = document.createElement('div');
-            card.className = 'flip-card';
+            card.className = 'postcard';
 
             card.innerHTML = `
-                <div class="flip-card-inner">
-                    <div class="flip-card-front">
+                <div class="postcard-inner">
+                    <div class="postcard-front">
                         <img src="${item.img}" alt="${item.title}" loading="lazy">
                     </div>
-                    <div class="flip-card-back">
+                    <div class="postcard-back">
                         <div class="icon-deco">✦</div>
                         <h3>${item.title}</h3>
                         <p>${item.desc}</p>
@@ -243,15 +244,15 @@
                 </div>
             `;
 
-            // Клик/тап для переворота
+            // Клик/тап для раскрытия
             card.addEventListener('click', function() {
-                this.classList.toggle('flipped');
+                this.classList.toggle('opened');
             });
 
             grid.appendChild(card);
         });
 
-        // Тряска (Шейкер)
+        // Тряска для телефона (Шейкер)
         if (window.DeviceMotionEvent) {
             let lastShakeTime = 0;
             const SHAKE_THRESHOLD = 15;
@@ -264,9 +265,9 @@
                 if (totalAcc > SHAKE_THRESHOLD && (now - lastShakeTime > 1500)) {
                     lastShakeTime = now;
 
-                    document.querySelectorAll('.flip-card').forEach(el => {
-                        if (Math.random() > 0.5) el.classList.add('flipped');
-                        else el.classList.remove('flipped');
+                    document.querySelectorAll('.postcard').forEach(el => {
+                        if (Math.random() > 0.5) el.classList.add('opened');
+                        else el.classList.remove('opened');
                     });
 
                     const rainContainer = document.createElement('div');
