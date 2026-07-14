@@ -82,28 +82,41 @@ header {
     justify-content: center;
 }
 
-/* ===== ЛОГОТИП В ЛЕВОМ ВЕРХНЕМ УГЛУ ===== */
-.site-logo {
+/* ===== ЛОГОТИП В ЛЕВОМ ВЕРХНЕМ УГЛУ (КЛИКАБЕЛЬНЫЙ) ===== */
+.site-logo-link {
     position: fixed;
     top: 14px;
-    left: 40px;       /* Сдвинули от края экрана */
+    left: 40px;
     z-index: 101;
     height: 64px;
     width: auto;
-    pointer-events: none;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+    max-width: 200px;
+    overflow: hidden;
+    pointer-events: auto;
+    display: block;
+    text-decoration: none;
+    border: none;
+    outline: none;
     transition: opacity 0.2s;
 }
 
+.site-logo-link img {
+    height: 100%;
+    width: auto;
+    display: block;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+    pointer-events: none;
+}
+
 @media (max-width: 900px) {
-    .site-logo {
+    .site-logo-link {
         height: 44px;
         top: 2px;
         left: 10px;
     }
 }
 
-.nav.active ~ .site-logo {
+.nav.active ~ .site-logo-link {
     opacity: 0;
 }
 
@@ -116,7 +129,7 @@ header {
     gap: 10px 20px;
     list-style: none;
     padding: 0;
-    padding-left: 100px;  /* Отодвинули меню от логотипа ещё дальше */
+    padding-left: 100px;
     margin: 0;
 }
 
@@ -606,7 +619,7 @@ h1 span,
 .hero {
     text-align: center;
     padding: 48px 0 90px;
-    padding-top: 60px !important; /* ДОБАВИЛИ ОТСТУП СВЕРХУ ДЛЯ ПК */
+    padding-top: 60px !important;
 }
 
 @media (max-width: 900px) {
