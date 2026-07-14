@@ -29,12 +29,13 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            min-width: 180px;
+            min-width: 160px;
+            width: auto;
             background: rgba(24, 23, 21, 0.92);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 12px;
-            padding: 8px 0;
+            padding: 6px 0;
             list-style: none;
             z-index: 200;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
@@ -47,16 +48,21 @@
             color: var(--muted);
             font-weight: 600;
             font-size: 18px;
+            display: flex;
+            align-items: center;
+            line-height: 1;
         }
         .nav .dropdown-toggle:hover { color: #FFFFFF; }
         .nav .dropdown-content a {
             display: block;
-            padding: 10px 20px;
+            width: 100%;
+            padding: 8px 20px;
             font-size: 17px;
             color: var(--muted);
             text-decoration: none;
             transition: 0.2s;
             border-radius: 0;
+            box-sizing: border-box;
         }
         .nav .dropdown-content a:hover {
             color: #FFFFFF;
@@ -141,6 +147,13 @@
             .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         }
 
+        /* Скрываем кнопку бургера на ПК */
+        @media (min-width: 901px) {
+            .burger-btn {
+                display: none !important;
+            }
+        }
+
         .project-card {
             background: rgba(34, 32, 29, 0.80) !important;
             border: 1px solid rgba(255, 255, 255, 0.08) !important;
@@ -206,11 +219,10 @@
 </head>
 <body>
 
-    <!-- ===== ФОН ===== -->
-    <img id="top-layer-gerbera" src="images/bg.webp">
-
-    <!-- ===== ЛОГОТИП (ПРОСТО КАРТИНКА) ===== -->
-    <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
+    <!-- ===== ЛОГОТИП ===== -->
+    <a href="index.html">
+        <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
+    </a>
 
     <header>
         <div class="header-inner">
