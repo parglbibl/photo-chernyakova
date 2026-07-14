@@ -15,6 +15,7 @@
             --text: #F7F3EE;
             --accent: #C39A74;
             --paper-bg: #1a1816;
+            --shadow: 0 20px 60px rgba(0,0,0,0.7);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
@@ -73,18 +74,19 @@
         /* --- Сетка карточек --- */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 40px 30px;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 50px 30px;
         }
 
-        /* --- Карточка-открытка --- */
+        /* --- Сама открытка (Горизонтальный конверт) --- */
         .postcard {
-            perspective: 1500px;
+            perspective: 2000px;
             cursor: pointer;
-            aspect-ratio: 4 / 5;
+            aspect-ratio: 3 / 2; /* Альбомный формат как у реальной открытки */
             background: transparent;
-            border-radius: 4px; /* Уголки как у бумаги */
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-radius: 6px; /* Легкое скругление углов */
+            box-shadow: var(--shadow);
+            position: relative;
         }
 
         .postcard-inner {
@@ -95,73 +97,98 @@
             transform-style: preserve-3d;
         }
 
-        /* Когда открытка раскрыта */
+        /* Раскрытие */
         .postcard.opened .postcard-inner {
             transform: rotateY(-180deg);
         }
 
-        /* Левая и правая "страницы" открытки */
+        /* "Страницы" */
         .postcard-front, .postcard-back {
             position: absolute;
             width: 100%;
             height: 100%;
             backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
-            border-radius: 4px;
+            border-radius: 6px;
             overflow: hidden;
             background: #151311;
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Левая страница (сгиб) - ФОТО */
+        /* Левая часть (сгиб) - ФОТО */
         .postcard-front {
             transform-origin: left center;
-            transform: rotateY(0deg); /* Лежит перед нами */
-            box-shadow: inset -10px 0 20px rgba(0,0,0,0.3); /* Тень от сгиба */
+            transform: rotateY(0deg);
+            box-shadow: inset -20px 0 30px rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #1a1816;
+            padding: 12px; /* Отступы как у бумажной открытки */
         }
         .postcard-front img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            border-radius: 4px;
             display: block;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        /* Правая страница (сгиб) - ТЕКСТ */
+        /* Правая часть - ТЕКСТ (Внутренность открытки) */
         .postcard-back {
             transform-origin: left center;
-            transform: rotateY(180deg); /* Скрыта за фото */
-            background: var(--paper-bg);
+            transform: rotateY(180deg);
+            background: linear-gradient(160deg, #1f1c19, #131210);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 30px;
+            padding: 40px;
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: inset 10px 0 20px rgba(0,0,0,0.5); /* Тень от сгиба внутри */
+            box-shadow: inset 20px 0 30px rgba(0,0,0,0.6);
         }
 
-        /* Текст на внутренней стороне */
         .postcard-back h3 {
             color: var(--accent);
-            font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 12px;
-            letter-spacing: -0.3px;
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
         }
         .postcard-back p {
-            font-size: 15px;
+            font-size: 17px;
             color: rgba(255,255,255,0.6);
-            line-height: 1.6;
+            line-height: 1.7;
             font-weight: 300;
             max-width: 80%;
         }
         .postcard-back .icon-deco {
-            font-size: 32px;
-            margin-bottom: 15px;
-            opacity: 0.5;
+            font-size: 40px;
+            margin-bottom: 20px;
+            opacity: 0.4;
+            color: var(--accent);
         }
 
-        /* --- Эффект капель (Тряска) --- */
+        /* --- Адаптив --- */
+        @media (max-width: 700px) {
+            .header-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .card-grid {
+                grid-template-columns: 1fr; /* Одна открытка в ряд на телефоне */
+                gap: 30px;
+            }
+            .postcard {
+                aspect-ratio: 4 / 3; /* Чуть выше на мобиле */
+            }
+            .postcard-back h3 { font-size: 22px; }
+            .postcard-back p { font-size: 15px; max-width: 90%; }
+            .postcard-front { padding: 8px; }
+        }
+
+        /* --- Дождь для тряски --- */
         .shake-rain {
             position: fixed;
             top: 0; left: 0;
@@ -173,28 +200,15 @@
         .drop {
             position: absolute;
             width: 2px;
-            height: 30px;
-            background: linear-gradient(to bottom, rgba(195, 154, 116, 0), rgba(195, 154, 116, 0.6));
+            height: 25px;
+            background: linear-gradient(to bottom, rgba(195, 154, 116, 0), rgba(195, 154, 116, 0.5));
             border-radius: 20px;
-            animation: fall 0.9s linear forwards;
+            animation: fall 0.8s linear forwards;
             opacity: 0;
         }
         @keyframes fall {
             0% { transform: translateY(-10vh); opacity: 1; }
             100% { transform: translateY(110vh); opacity: 0; }
-        }
-
-        @media (max-width: 700px) {
-            .header-section {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            .card-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 20px 15px;
-            }
-            .postcard-back h3 { font-size: 18px; }
-            .postcard-back p { font-size: 13px; max-width: 90%; }
         }
     </style>
 </head>
@@ -204,7 +218,7 @@
         <div class="header-section">
             <div>
                 <h1>Открытки <span>от Галины</span></h1>
-                <div class="sub">Коснись или кликни, чтобы раскрыть</div>
+                <div class="sub">Коснись, чтобы раскрыть</div>
             </div>
             <a href="index.html" class="back-link">Вернуться на главную →</a>
         </div>
@@ -216,17 +230,16 @@
 
     <script>
         const cardsData = [
-            { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Мир, который мы не замечаем." },
             { img: "images/gallery/macro/5.webp", title: "Золотой глаз", desc: "Капля как зеркало души." },
             { img: "images/gallery/macro/14.webp", title: "Утренний бархат", desc: "Тишина на кончиках листьев." },
+            { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Мир, который мы не замечаем." },
             { img: "images/gallery/macro/13.webp", title: "Капля на игле", desc: "Баланс на грани." },
-            { img: "images/gallery/macro/3.webp", title: "Орхидея с росой", desc: "Красота в деталях." },
-            // Добавь новые строки для каждой новой открытки
+            // Добавляй свои строки:
+            // { img: "путь_к_фото", title: "Заголовок", desc: "Текст" },
         ];
 
         const grid = document.getElementById('cardGrid');
 
-        // Генерация открыток
         cardsData.forEach(item => {
             const card = document.createElement('div');
             card.className = 'postcard';
@@ -244,7 +257,6 @@
                 </div>
             `;
 
-            // Клик/тап для раскрытия
             card.addEventListener('click', function() {
                 this.classList.toggle('opened');
             });
@@ -252,7 +264,7 @@
             grid.appendChild(card);
         });
 
-        // Тряска для телефона (Шейкер)
+        // Тряска
         if (window.DeviceMotionEvent) {
             let lastShakeTime = 0;
             const SHAKE_THRESHOLD = 15;
