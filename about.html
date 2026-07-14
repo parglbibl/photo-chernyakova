@@ -256,6 +256,13 @@
         .breadcrumbs .current {
             color: var(--muted);
         }
+
+        /* МОБИЛЬНЫЙ ФИКС: карточки в одну колонку */
+        @media (max-width: 760px) {
+            .grid-2 {
+                grid-template-columns: 1fr !important;
+            }
+        }
     </style>
 </head>
 <body>
