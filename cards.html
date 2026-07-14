@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3D Открытки | Галина Чернякова</title>
+    <title>Карточки настроения | Галина Чернякова</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* --- Цвета и база --- */
         :root {
-            --bg: #11100e;
+            --bg: #181715;
             --text: #F7F3EE;
+            --muted: #D2CBC2;
             --accent: #C39A74;
+            --line: rgba(255, 255, 255, 0.08);
             --shadow: 0 30px 70px rgba(0,0,0,0.9);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,17 +27,55 @@
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
             padding: 40px 20px;
-            background-image: radial-gradient(circle at 10% 20%, rgba(195, 154, 116, 0.05) 0%, transparent 50%);
+            position: relative;
         }
 
-        .container { max-width: 1400px; margin: 0 auto; }
+        /* --- ТВОЙ РОДНОЙ ФОН (как на всех страницах) --- */
+        #top-layer-gerbera {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            object-position: 43% center;
+            opacity: 0.65;
+            filter: blur(0px);
+            pointer-events: none;
+            z-index: 0;
+        }
 
+        /* --- ЛОГОТИП --- */
+        .site-logo {
+            position: fixed;
+            top: 5px;
+            left: 30px;
+            z-index: 101;
+            height: 70px;
+            width: auto;
+            max-width: 240px;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+            transition: opacity 0.2s;
+            object-fit: contain;
+        }
+        @media (max-width: 900px) {
+            .site-logo { height: 44px; top: 2px; left: 10px; max-width: 200px; }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- ЗАГОЛОВОК И ЛЕГЕНДА --- */
         .header-section {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-            margin-bottom: 60px;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            margin-bottom: 50px;
+            border-bottom: 1px solid var(--line);
             padding-bottom: 20px;
             flex-wrap: wrap;
             gap: 20px;
@@ -63,13 +104,14 @@
         }
         .back-link:hover { color: var(--accent); }
 
+        /* --- СЕТКА --- */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 40px;
         }
 
-        /* === МЕДЛЕННАЯ 3D КАРТОЧКА === */
+        /* --- 3D КАРТОЧКА (Справа налево, 1.8с) --- */
         .flip-3d-card {
             perspective: 2500px; 
             perspective-origin: right center; 
@@ -77,6 +119,7 @@
             aspect-ratio: 3 / 2;
             border-radius: 16px;
             box-shadow: var(--shadow);
+            position: relative;
         }
 
         .flip-3d-inner {
@@ -102,13 +145,14 @@
             overflow: hidden;
         }
 
+        /* --- ПЕРЕДНЯЯ СТОРОНА (ФОТО) --- */
         .flip-3d-front {
             background: #1a1816;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
+            border: 1px solid var(--line);
         }
         .flip-3d-front img {
             width: 100%;
@@ -118,39 +162,34 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
+        /* --- ЗАДНЯЯ СТОРОНА (ТЕКСТ) --- */
         .flip-3d-back {
-            background: linear-gradient(160deg, #1f1c19, #0a0908);
+            background: rgba(24, 23, 21, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--line);
             transform: rotateY(180deg);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 50px;
+            padding: 40px;
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.05);
         }
         .flip-3d-back h3 {
             color: var(--accent);
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 400;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .flip-3d-back p {
-            font-size: 17px;
-            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            color: var(--muted);
             line-height: 1.6;
             font-weight: 300;
-            max-width: 80%;
-        }
-        .flip-3d-back .icon-deco {
-            font-size: 40px;
-            margin-bottom: 15px;
-            opacity: 0.4;
-            color: var(--accent);
+            max-width: 85%;
         }
 
         @media (max-width: 700px) {
-            .header-section { flex-direction: column; align-items: flex-start; }
             .card-grid { grid-template-columns: 1fr; gap: 30px; }
             .flip-3d-card { aspect-ratio: 4 / 3; }
             .flip-3d-back { padding: 30px; }
@@ -158,6 +197,7 @@
             .flip-3d-back p { font-size: 15px; max-width: 90%; }
         }
 
+        /* --- ТРЯСКА (КАПЛИ) --- */
         .shake-rain {
             position: fixed;
             top: 0; left: 0;
@@ -183,24 +223,82 @@
 </head>
 <body>
 
+    <!-- ФОН И ЛОГО -->
+    <img id="top-layer-gerbera" src="images/bg.webp">
+    <a href="index.html">
+        <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
+    </a>
+
     <div class="container">
         <div class="header-section">
             <div>
-                <h1>Открытки <span>Галины</span></h1>
-                <div class="sub">Нажми, чтобы раскрыть</div>
+                <h1>Карточки <span>настроения</span></h1>
+                <div class="sub">Нажми, чтобы перевернуть и прочитать</div>
             </div>
-            <a href="index.html" class="back-link">Вернуться →</a>
+            <a href="index.html" class="back-link">Вернуться на главную →</a>
         </div>
         
         <div class="card-grid" id="cardGrid"></div>
     </div>
 
     <script>
+        // === 10 ОТКРЫТОК С РАЗНЫХ ПАПОК И ДУШЕВНЫМИ ТЕКСТАМИ ===
         const cardsData = [
-            { img: "images/gallery/macro/5.webp", title: "Золотой глаз", desc: "Капля как зеркало души." },
-            { img: "images/gallery/macro/14.webp", title: "Утренний бархат", desc: "Тишина на кончиках листьев." },
-            { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Мир, который мы не замечаем." },
-            { img: "images/gallery/macro/13.webp", title: "Капля на игле", desc: "Баланс на грани." },
+            // --- МАКРО (5 шт) ---
+            { 
+                img: "images/gallery/macro/5.webp", 
+                title: "Золотой глаз", 
+                desc: "Капля — это зеркало, в котором отражается бесконечность. Остановись и увидь." 
+            },
+            { 
+                img: "images/gallery/macro/14.webp", 
+                title: "Утренний бархат", 
+                desc: "Тишина, которая оседает на лепестках. Момент, когда мир только просыпается." 
+            },
+            { 
+                img: "images/gallery/macro/1.webp", 
+                title: "Алые капли", 
+                desc: "Иногда красота — это просто капля, упавшая в нужный момент в нужном свете." 
+            },
+            { 
+                img: "images/gallery/macro/13.webp", 
+                title: "Капля на игле", 
+                desc: "Баланс на грани. Мир держится на таких моментах." 
+            },
+            { 
+                img: "images/gallery/macro/3.webp", 
+                title: "Орхидея с росой", 
+                desc: "Природа не терпит суеты. Она создаёт шедевры в тишине." 
+            },
+
+            // --- ПРИРОДА (3 шт) ---
+            { 
+                img: "images/gallery/nature/4.webp", 
+                title: "Сакура в сумерках", 
+                desc: "Цветы, которые цветут лишь для того, чтобы напомнить нам о быстротечности прекрасного." 
+            },
+            { 
+                img: "images/gallery/nature/2.webp", 
+                title: "Морозный рассвет", 
+                desc: "Зима — это не холод. Это время, когда мир становится графичным и чистым." 
+            },
+            { 
+                img: "images/gallery/nature/1.webp", 
+                title: "Осеннее отражение", 
+                desc: "Листья падают не потому, что умирают. Они просто меняют свой путь." 
+            },
+
+            // --- КОНЦЕПТ (2 шт) ---
+            { 
+                img: "images/gallery/concept/14.webp", 
+                title: "Яйцо на вилке", 
+                desc: "Тонкий баланс. Концепт, который держится на одном движении." 
+            },
+            { 
+                img: "images/gallery/concept/13.webp", 
+                title: "Лимонный дождь", 
+                desc: "Когда свет проходит сквозь воду, рождается настроение." 
+            }
         ];
 
         const grid = document.getElementById('cardGrid');
@@ -214,7 +312,6 @@
                         <img src="${item.img}" alt="${item.title}" loading="lazy">
                     </div>
                     <div class="flip-3d-back">
-                        <div class="icon-deco">✦</div>
                         <h3>${item.title}</h3>
                         <p>${item.desc}</p>
                     </div>
@@ -224,6 +321,7 @@
             grid.appendChild(card);
         });
 
+        // === ТРЯСКА ДЛЯ ТЕЛЕФОНА ===
         if (window.DeviceMotionEvent) {
             let lastShakeTime = 0;
             const SHAKE_THRESHOLD = 15;
