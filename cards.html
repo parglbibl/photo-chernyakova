@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Фото-открытки | Галина Чернякова</title>
+    
+    <!-- Подключаем шрифт (твой стандартный) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Базовый фон и цвета в стиле твоего сайта */
+        body {
+            background: #181715;
+            color: #D2CBC2;
+            font-family: 'Inter', Arial, sans-serif;
+            margin: 0;
+            padding: 30px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Заголовок страницы */
+        h1 {
+            text-align: center;
+            font-size: clamp(32px, 5vw, 48px);
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #F7F3EE;
+        }
+        h1 span { color: #C39A74; }
+
+        /* Кнопка назад */
+        .btn-back {
+            display: inline-block;
+            margin-top: 40px;
+            color: #C39A74;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            text-align: center;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .btn-back:hover { color: #fff; }
+
+        /* Сетка карточек */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 24px;
+        }
+
+        /* Карточка-контейнер */
+        .flip-card {
+            background-color: transparent;
+            aspect-ratio: 1 / 1; /* Квадрат */
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        /* Внутренняя оболочка (вращается) */
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+            transform-style: preserve-3d;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+        }
+
+        /* Класс переворота */
+        .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        /* Лицевая и задняя стороны */
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        /* Фото спереди */
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Текст сзади */
+        .flip-card-back {
+            background: rgba(24, 23, 21, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #fff;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .flip-card-back h3 {
+            color: #C39A74;
+            margin: 0 0 6px 0;
+            font-size: 22px;
+        }
+        .flip-card-back p {
+            font-size: 15px;
+            color: #D2CBC2;
+            line-height: 1.4;
+            margin: 0;
+        }
+
+        /* Анимация для капель при тряске */
+        .shake-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            overflow: hidden;
+        }
+        .drop {
+            position: absolute;
+            width: 4px;
+            height: 20px;
+            background: rgba(195, 154, 116, 0.4);
+            border-radius: 20px;
+            animation: fall 0.8s linear forwards;
+            opacity: 0;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh); opacity: 1; }
+            100% { transform: translateY(110vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Открытки <span>от Галины</span></h1>
+        
+        <div class="card-grid" id="cardGrid">
+            <!-- Карточки вставит JS -->
+        </div>
+
+        <a href="index.html" class="btn-back">← Вернуться на главную</a>
+    </div>
+
+    <script>
+        // ================= ДАННЫЕ ================= 
+        // ВСТАВЬ СЮДА СВОИ КАРТИНКИ, ЗАГОЛОВКИ И ТЕКСТЫ
+        // ----------------------------------------------------
+        const cardsData = [
+            { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Мир, который мы не замечаем." },
+            { img: "images/gallery/macro/5.webp", title: "Золотой глаз", desc: "Капля как зеркало души." },
+            { img: "images/gallery/macro/14.webp", title: "Утренний бархат", desc: "Тишина на кончиках листьев." },
+            { img: "images/gallery/macro/13.webp", title: "Капля на игле", desc: "Баланс на грани." },
+            { img: "images/gallery/macro/3.webp", title: "Орхидея с росой", desc: "Красота в деталях." },
+            // Добавь сколько хочешь!
+        ];
+
+        const grid = document.getElementById('cardGrid');
+
+        // ================= ГЕНЕРАЦИЯ ================= 
+        cardsData.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'flip-card';
+
+            card.innerHTML = `
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="${item.img}" alt="${item.title}" loading="lazy">
+                    </div>
+                    <div class="flip-card-back">
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                    </div>
+                </div>
+            `;
+
+            // Переворот по клику/тапу
+            card.addEventListener('click', function() {
+                this.classList.toggle('flipped');
+            });
+
+            grid.appendChild(card);
+        });
+
+        // ================= ТРЯСКА (ШЕЙКЕР) ================= 
+        // Фишка для мобилы: встряхни телефон, и все перевернутся, еще и капли пойдут
+        if (window.DeviceMotionEvent) {
+            let lastShakeTime = 0;
+            const SHAKE_THRESHOLD = 15; // Чувствительность тряски
+
+            window.addEventListener('devicemotion', function(event) {
+                const acc = event.accelerationIncludingGravity;
+                const totalAcc = Math.sqrt(acc.x * acc.x + acc.y * acc.y + acc.z * acc.z);
+                const now = Date.now();
+
+                // Если тряска сильная и прошло больше 1,5 секунд с последнего раза
+                if (totalAcc > SHAKE_THRESHOLD && (now - lastShakeTime > 1500)) {
+                    lastShakeTime = now;
+
+                    // 1. Переворачиваем все карточки рандомно
+                    document.querySelectorAll('.flip-card').forEach(el => {
+                        if (Math.random() > 0.5) {
+                            el.classList.add('flipped');
+                        } else {
+                            el.classList.remove('flipped');
+                        }
+                    });
+
+                    // 2. Эффект капель дождя на экране
+                    const rainContainer = document.createElement('div');
+                    rainContainer.className = 'shake-rain';
+                    document.body.appendChild(rainContainer);
+
+                    for (let i = 0; i < 30; i++) {
+                        const drop = document.createElement('div');
+                        drop.className = 'drop';
+                        drop.style.left = Math.random() * 100 + '%';
+                        drop.style.animationDuration = (0.5 + Math.random() * 0.5) + 's';
+                        drop.style.animationDelay = Math.random() * 0.8 + 's';
+                        rainContainer.appendChild(drop);
+                    }
+
+                    // Удаляем капли через 2 секунды, чтобы не засорять DOM
+                    setTimeout(() => {
+                        rainContainer.remove();
+                    }, 2000);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
