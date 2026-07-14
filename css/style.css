@@ -174,7 +174,7 @@ header {
     display: block;
 }
 
-/* ===== ВЫПАДАЮЩЕЕ МЕНЮ (ИСПРАВЛЕННОЕ) ===== */
+/* ===== ВЫПАДАЮЩЕЕ МЕНЮ ===== */
 .nav .dropdown-content {
     display: none;
     position: absolute;
