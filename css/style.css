@@ -82,11 +82,11 @@ header {
     justify-content: center;
 }
 
-/* ===== ЛОГОТИП В ЛЕВОМ ВЕРХНЕМ УГЛУ (КЛИКАБЕЛЬНЫЙ) ===== */
+/* ===== ЛОГОТИП В ЛЕВОМ ВЕРХНЕМ УГЛУ ===== */
 .site-logo-link {
     position: fixed;
     top: 14px;
-    left: 40px;
+    left: 60px;            /* Сдвинул ещё правее (было 40px) */
     z-index: 101;
     height: 64px;
     width: auto;
@@ -112,7 +112,7 @@ header {
     .site-logo-link {
         height: 44px;
         top: 2px;
-        left: 10px;
+        left: 10px;          /* На мобилке осталось строго 10px */
     }
 }
 
@@ -129,7 +129,7 @@ header {
     gap: 10px 20px;
     list-style: none;
     padding: 0;
-    padding-left: 100px;
+    padding-left: 140px;     /* Отодвинул меню ещё дальше от логотипа */
     margin: 0;
 }
 
@@ -147,10 +147,18 @@ header {
     font-size: 18px;
     transition: 0.3s;
     padding: 6px 0;
+    border-bottom: 2px solid transparent;  /* Убрали квадрат, теперь это полоска */
+    transition: border-color 0.3s, color 0.3s;
 }
 
 .nav a:hover {
     color: #FFFFFF;
+}
+
+.nav .active,
+.nav a.active {
+    color: #FFFFFF;
+    border-bottom: 2px solid var(--accent); /* Золотая полоска под активным пунктом */
 }
 
 .nav .dropdown {
