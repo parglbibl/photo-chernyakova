@@ -23,29 +23,6 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
-        /* ===== ЛОГОТИП В ЛЕВОМ ВЕРХНЕМ УГЛУ ===== */
-        .site-logo {
-            position: fixed;
-            top: 18px;
-            left: 20px;
-            z-index: 101;
-            height: 48px;
-            width: auto;
-            pointer-events: none;
-        }
-        @media (max-width: 900px) {
-            .site-logo {
-                height: 32px;
-                top: 14px;
-                left: 16px;
-            }
-        }
-        .nav.active ~ .site-logo {
-            opacity: 0;
-            transition: opacity 0.2s;
-        }
-
-        /* ===== ОСТАЛЬНЫЕ СТИЛИ ===== */
         .nav .dropdown { position: relative; }
         .nav .dropdown-content {
             display: none;
@@ -165,7 +142,6 @@
             .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         }
 
-        /* ===== ХЛЕБНЫЕ КРОШКИ ===== */
         .breadcrumbs {
             max-width: 1120px;
             margin: 0 auto 16px auto;
@@ -228,7 +204,6 @@
         </div>
     </header>
 
-    <!-- ===== ХЛЕБНЫЕ КРОШКИ ===== -->
     <div class="breadcrumbs">
         <a href="index.html">Главная</a>
         <span class="sep">›</span>
