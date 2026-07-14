@@ -69,23 +69,21 @@
             gap: 40px;
         }
 
-        /* === САМАЯ ПЛАВНАЯ 3D КАРТОЧКА === */
+        /* === МЕДЛЕННАЯ 3D КАРТОЧКА === */
         .flip-3d-card {
-            perspective: 2500px; /* Максимальная глубина */
-            perspective-origin: right center; /* Точка обзора справа */
+            perspective: 2500px; 
+            perspective-origin: right center; 
             cursor: pointer;
             aspect-ratio: 3 / 2;
             border-radius: 16px;
             box-shadow: var(--shadow);
-            position: relative;
         }
 
         .flip-3d-inner {
             position: relative;
             width: 100%;
             height: 100%;
-            /* МАГИЯ ПЛАВНОСТИ: cubic-bezier с перелётом и пружиной */
-            transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: transform 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             transform-style: preserve-3d;
             border-radius: 16px;
         }
@@ -118,10 +116,6 @@
             object-fit: cover;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            transition: transform 0.5s ease;
-        }
-        .flip-3d-card:not(.flipped):hover .flip-3d-front img {
-            transform: scale(1.02);
         }
 
         .flip-3d-back {
@@ -230,7 +224,6 @@
             grid.appendChild(card);
         });
 
-        // Тряска
         if (window.DeviceMotionEvent) {
             let lastShakeTime = 0;
             const SHAKE_THRESHOLD = 15;
