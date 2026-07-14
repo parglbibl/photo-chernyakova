@@ -146,3 +146,39 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
 });
+
+// === СКРИПТ ДЛЯ CARDS.HTML ===
+document.addEventListener("DOMContentLoaded", function() {
+    // Проверяем, есть ли на странице контейнер с карточками
+    const grid = document.getElementById('cardGrid');
+    if (!grid) return; // Если страница не cards.html, просто выходим
+
+    // Данные для открыток (Можно добавить свои)
+    const cardsData = [
+        { img: "images/gallery/macro/5.webp", title: "Золотой глаз", desc: "Капля как зеркало души." },
+        { img: "images/gallery/macro/14.webp", title: "Утренний бархат", desc: "Тишина на кончиках листьев." },
+        { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Мир, который мы не замечаем." },
+        { img: "images/gallery/macro/13.webp", title: "Капля на игле", desc: "Баланс на грани." },
+        { img: "images/gallery/concept/14.webp", title: "Яйцо на вилке", desc: "Тонкий баланс." },
+        { img: "images/gallery/nature/4.webp", title: "Сакура в сумерках", desc: "Цветы, которые цветут лишь для того, чтобы напомнить о быстротечности." },
+    ];
+
+    // Генерация карточек
+    cardsData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'flip-3d-card';
+        card.innerHTML = `
+            <div class="flip-3d-inner">
+                <div class="flip-3d-front">
+                    <img src="${item.img}" alt="${item.title}" loading="lazy">
+                </div>
+                <div class="flip-3d-back">
+                    <h3>${item.title}</h3>
+                    <p>${item.desc}</p>
+                </div>
+            </div>
+        `;
+        card.addEventListener('click', function() { this.classList.toggle('flipped'); });
+        grid.appendChild(card);
+    });
+});
