@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-        /* --- Базовые цвета --- */
         :root {
             --bg: #11100e;
             --text: #F7F3EE;
@@ -25,6 +24,7 @@
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
             padding: 40px 20px;
+            /* Мягкий свет из угла */
             background-image: radial-gradient(circle at 10% 20%, rgba(195, 154, 116, 0.05) 0%, transparent 50%);
         }
 
@@ -72,36 +72,39 @@
             gap: 40px;
         }
 
-        /* --- 3D КОНТЕЙНЕР (Самая важная часть) --- */
+        /* --- 3D КОНТЕЙНЕР --- */
         .flip-3d-card {
-            perspective: 2000px; /* Глубина 3D сцены */
+            /* Главный секрет плавности и направления */
+            perspective: 2000px; 
+            /* Смещаем точку обзора вправо, чтобы казалось, что карточка улетает налево */
+            perspective-origin: right center; 
+            
             cursor: pointer;
-            aspect-ratio: 3 / 2; /* Альбомный формат открытки */
+            aspect-ratio: 3 / 2;
             border-radius: 12px;
             box-shadow: var(--shadow);
         }
 
-        /* Внутренний контейнер - вращается целиком */
         .flip-3d-inner {
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); /* Плавный выход */
+            /* ОЧЕНЬ ПЛАВНАЯ АНИМАЦИЯ. Cubic-bezier создает ощущение пружины/физики */
+            transition: transform 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
             transform-style: preserve-3d;
             border-radius: 12px;
         }
 
-        /* Состояние переворота */
+        /* Состояние переворота: справа налево */
         .flip-3d-card.flipped .flip-3d-inner {
-            transform: rotateY(180deg);
+            transform: rotateY(-180deg);
         }
 
-        /* Лицевая и задняя стороны */
         .flip-3d-front, .flip-3d-back {
             position: absolute;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden; /* Скрываем обратную сторону */
+            backface-visibility: hidden;
             -webkit-backface-visibility: hidden;
             border-radius: 12px;
             overflow: hidden;
@@ -113,7 +116,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 10px; /* Рамка вокруг фото */
+            padding: 10px;
             border: 1px solid rgba(255,255,255,0.05);
         }
         .flip-3d-front img {
@@ -124,10 +127,11 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
-        /* --- Задняя сторона (Текст) --- */
+        /* --- Задняя сторона --- */
         .flip-3d-back {
             background: linear-gradient(160deg, #1f1c19, #0f0e0d);
-            transform: rotateY(180deg); /* Изначально повернута задом */
+            /* Важно: здесь минус 180, чтобы компенсировать поворот */
+            transform: rotateY(180deg); 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -160,7 +164,7 @@
         @media (max-width: 700px) {
             .header-section { flex-direction: column; align-items: flex-start; }
             .card-grid {
-                grid-template-columns: 1fr; /* Одна колонка на телефоне */
+                grid-template-columns: 1fr;
                 gap: 30px;
             }
             .flip-3d-card { aspect-ratio: 4 / 3; }
@@ -169,7 +173,7 @@
             .flip-3d-back p { font-size: 15px; max-width: 90%; }
         }
 
-        /* --- Эффект дождя для тряски (Красивая мелочь) --- */
+        /* --- Дождь --- */
         .shake-rain {
             position: fixed;
             top: 0; left: 0;
@@ -198,30 +202,27 @@
     <div class="container">
         <div class="header-section">
             <div>
-                <h1>3D Открытки <span>от Галины</span></h1>
-                <div class="sub">Нажми, чтобы перевернуть</div>
+                <h1>Открытки <span>Галины</span></h1>
+                <div class="sub">Нажми, чтобы раскрыть</div>
             </div>
             <a href="index.html" class="back-link">Вернуться →</a>
         </div>
         
         <div class="card-grid" id="cardGrid">
-            <!-- JS сюда вставит карточки -->
+            <!-- JS -->
         </div>
     </div>
 
     <script>
-        // === ДАННЫЕ ДЛЯ ОТКРЫТОК ===
         const cardsData = [
             { img: "images/gallery/macro/5.webp", title: "Золотой глаз", desc: "Капля как зеркало души." },
             { img: "images/gallery/macro/14.webp", title: "Утренний бархат", desc: "Тишина на кончиках листьев." },
             { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Мир, который мы не замечаем." },
             { img: "images/gallery/macro/13.webp", title: "Капля на игле", desc: "Баланс на грани." },
-            // Добавь свои фотки, если нужно
         ];
 
         const grid = document.getElementById('cardGrid');
 
-        // === ГЕНЕРАЦИЯ КАРТОЧЕК ===
         cardsData.forEach(item => {
             const card = document.createElement('div');
             card.className = 'flip-3d-card';
@@ -239,7 +240,6 @@
                 </div>
             `;
 
-            // При клике добавляем класс переворота
             card.addEventListener('click', function() {
                 this.classList.toggle('flipped');
             });
@@ -247,7 +247,7 @@
             grid.appendChild(card);
         });
 
-        // === ТРЯСКА ДЛЯ ТЕЛЕФОНА (Шейкер) ===
+        // === ТРЯСКА ===
         if (window.DeviceMotionEvent) {
             let lastShakeTime = 0;
             const SHAKE_THRESHOLD = 15;
@@ -260,13 +260,11 @@
                 if (totalAcc > SHAKE_THRESHOLD && (now - lastShakeTime > 1500)) {
                     lastShakeTime = now;
 
-                    // Встряхнул телефон - открытки переворачиваются рандомно
                     document.querySelectorAll('.flip-3d-card').forEach(el => {
                         if (Math.random() > 0.5) el.classList.add('flipped');
                         else el.classList.remove('flipped');
                     });
 
-                    // Эффект капель для красоты
                     const rainContainer = document.createElement('div');
                     rainContainer.className = 'shake-rain';
                     document.body.appendChild(rainContainer);
