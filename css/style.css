@@ -148,7 +148,6 @@ header {
 }
 
 .nav .dropdown-toggle {
-    display: inline-block;
     padding: 6px 0;
     cursor: pointer;
     color: var(--muted);
