@@ -26,11 +26,11 @@
             color: var(--text);
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
-            padding: 40px 20px;
+            padding-top: 80px !important; /* Отступ под хедер */
             position: relative;
         }
 
-        /* --- ТВОЙ РОДНОЙ ФОН (как на всех страницах) --- */
+        /* --- ФОН --- */
         #top-layer-gerbera {
             position: fixed;
             top: 0;
@@ -62,14 +62,113 @@
             .site-logo { height: 44px; top: 2px; left: 10px; max-width: 200px; }
         }
 
+        /* --- ХЕДЕР И МЕНЮ (Твой стандартный) --- */
+        header {
+            position: fixed;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            z-index: 100 !important;
+            background: rgba(18, 18, 18, 0.58) !important;
+            backdrop-filter: blur(22px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .header-inner {
+            width: 100%;
+            max-width: 1400px;
+            padding: 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px 20px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .nav li { position: relative; list-style: none; }
+        .nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: 0.3s;
+            padding: 6px 0;
+        }
+        .nav a:hover { color: #FFFFFF; }
+        .nav a.active { color: var(--accent); }
+
+        .burger-btn {
+            display: none;
+        }
+
+        @media (max-width: 900px) {
+            .nav.active { display: flex !important; }
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 70px;
+                right: 20px;
+                width: 55%;
+                max-width: 260px;
+                background: rgba(24, 23, 21, 0.96);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 20px;
+                padding: 12px 0;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+                z-index: 999;
+            }
+            .nav li { width: 100%; text-align: center; }
+            .nav a { display: block; padding: 6px 0; font-size: 16px; color: var(--muted); }
+            .nav a:hover { color: #FFFFFF; }
+            .burger-btn {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                cursor: pointer;
+                z-index: 1000;
+                padding: 5px;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: transparent;
+                border: none;
+            }
+            .burger-btn span {
+                display: block;
+                width: 22px;
+                height: 2px;
+                background-color: var(--muted);
+                border-radius: 1px;
+                transition: 0.3s;
+            }
+            .nav.active ~ .burger-btn span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+            .nav.active ~ .burger-btn span:nth-child(2) { opacity: 0; }
+            .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        }
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
+            padding: 0 20px;
             position: relative;
             z-index: 1;
         }
 
-        /* --- ЗАГОЛОВОК И ЛЕГЕНДА --- */
+        /* --- ЗАГОЛОВОК --- */
         .header-section {
             display: flex;
             justify-content: space-between;
@@ -94,15 +193,6 @@
             font-weight: 300;
             text-transform: uppercase;
         }
-        .back-link {
-            color: rgba(255,255,255,0.3);
-            text-decoration: none;
-            transition: 0.3s;
-            font-size: 14px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-        .back-link:hover { color: var(--accent); }
 
         /* --- СЕТКА --- */
         .card-grid {
@@ -111,7 +201,7 @@
             gap: 40px;
         }
 
-        /* --- 3D КАРТОЧКА (Справа налево, 1.8с) --- */
+        /* --- 3D КАРТОЧКА --- */
         .flip-3d-card {
             perspective: 2500px; 
             perspective-origin: right center; 
@@ -119,7 +209,6 @@
             aspect-ratio: 3 / 2;
             border-radius: 16px;
             box-shadow: var(--shadow);
-            position: relative;
         }
 
         .flip-3d-inner {
@@ -145,7 +234,6 @@
             overflow: hidden;
         }
 
-        /* --- ПЕРЕДНЯЯ СТОРОНА (ФОТО) --- */
         .flip-3d-front {
             background: #1a1816;
             display: flex;
@@ -162,7 +250,6 @@
             box-shadow: 0 4px 20px rgba(0,0,0,0.5);
         }
 
-        /* --- ЗАДНЯЯ СТОРОНА (ТЕКСТ) --- */
         .flip-3d-back {
             background: rgba(24, 23, 21, 0.95);
             backdrop-filter: blur(12px);
@@ -197,7 +284,7 @@
             .flip-3d-back p { font-size: 15px; max-width: 90%; }
         }
 
-        /* --- ТРЯСКА (КАПЛИ) --- */
+        /* --- ТРЯСКА --- */
         .shake-rain {
             position: fixed;
             top: 0; left: 0;
@@ -223,28 +310,60 @@
 </head>
 <body>
 
-    <!-- ФОН И ЛОГО -->
+    <!-- ФОН -->
     <img id="top-layer-gerbera" src="images/bg.webp">
+
+    <!-- ЛОГО -->
     <a href="index.html">
         <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
     </a>
 
+    <!-- ХЕДЕР + МЕНЮ -->
+    <header>
+        <div class="header-inner">
+            <button class="burger-btn" id="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                
+                <li class="dropdown">
+                    <span class="dropdown-toggle">Галерея</span>
+                    <ul class="dropdown-content">
+                        <li><a href="macro.html">Макромир</a></li>
+                        <li><a href="concept.html">Концепт</a></li>
+                        <li><a href="nature.html">Природа</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="faq.html">Вопросы и ответы</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="cards.html" class="active">Карточки</a></li> <!-- ДОБАВЛЕНО -->
+            </ul>
+        </div>
+    </header>
+
+    <!-- КОНТЕНТ -->
     <div class="container">
         <div class="header-section">
             <div>
                 <h1>Карточки <span>настроения</span></h1>
                 <div class="sub">Нажми, чтобы перевернуть и прочитать</div>
             </div>
-            <a href="index.html" class="back-link">Вернуться на главную →</a>
         </div>
         
         <div class="card-grid" id="cardGrid"></div>
     </div>
 
     <script>
-        // === 10 ОТКРЫТОК С РАЗНЫХ ПАПОК И ДУШЕВНЫМИ ТЕКСТАМИ ===
+        // === 10 ОТКРЫТОК ===
         const cardsData = [
-            // --- МАКРО (5 шт) ---
             { 
                 img: "images/gallery/macro/5.webp", 
                 title: "Золотой глаз", 
@@ -270,8 +389,6 @@
                 title: "Орхидея с росой", 
                 desc: "Природа не терпит суеты. Она создаёт шедевры в тишине." 
             },
-
-            // --- ПРИРОДА (3 шт) ---
             { 
                 img: "images/gallery/nature/4.webp", 
                 title: "Сакура в сумерках", 
@@ -287,8 +404,6 @@
                 title: "Осеннее отражение", 
                 desc: "Листья падают не потому, что умирают. Они просто меняют свой путь." 
             },
-
-            // --- КОНЦЕПТ (2 шт) ---
             { 
                 img: "images/gallery/concept/14.webp", 
                 title: "Яйцо на вилке", 
@@ -321,28 +436,42 @@
             grid.appendChild(card);
         });
 
-        // === ТРЯСКА ДЛЯ ТЕЛЕФОНА ===
+        // === МЕНЮ БУРГЕР ===
+        document.addEventListener("DOMContentLoaded", function() {
+            var burgerBtn = document.getElementById("burgerBtn");
+            var navMenu = document.querySelector(".nav");
+            if (burgerBtn && navMenu) {
+                burgerBtn.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    navMenu.classList.toggle("active");
+                });
+                document.addEventListener("click", function(e) {
+                    if (navMenu.classList.contains("active")) {
+                        if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                            navMenu.classList.remove("active");
+                        }
+                    }
+                });
+            }
+        });
+
+        // === ТРЯСКА ===
         if (window.DeviceMotionEvent) {
             let lastShakeTime = 0;
             const SHAKE_THRESHOLD = 15;
-
             window.addEventListener('devicemotion', function(event) {
                 const acc = event.accelerationIncludingGravity;
                 const totalAcc = Math.sqrt(acc.x * acc.x + acc.y * acc.y + acc.z * acc.z);
                 const now = Date.now();
-
                 if (totalAcc > SHAKE_THRESHOLD && (now - lastShakeTime > 1500)) {
                     lastShakeTime = now;
-
                     document.querySelectorAll('.flip-3d-card').forEach(el => {
                         if (Math.random() > 0.5) el.classList.add('flipped');
                         else el.classList.remove('flipped');
                     });
-
                     const rainContainer = document.createElement('div');
                     rainContainer.className = 'shake-rain';
                     document.body.appendChild(rainContainer);
-
                     for (let i = 0; i < 25; i++) {
                         const drop = document.createElement('div');
                         drop.className = 'drop';
@@ -351,7 +480,6 @@
                         drop.style.animationDelay = Math.random() * 0.8 + 's';
                         rainContainer.appendChild(drop);
                     }
-
                     setTimeout(() => rainContainer.remove(), 2000);
                 }
             });
