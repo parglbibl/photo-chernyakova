@@ -86,7 +86,7 @@ header {
 .site-logo {
     position: fixed;
     top: 14px;
-    left: 20px;
+    left: 40px;       /* Сдвинули от края экрана */
     z-index: 101;
     height: 64px;
     width: auto;
@@ -116,7 +116,7 @@ header {
     gap: 10px 20px;
     list-style: none;
     padding: 0;
-    padding-left: 80px;
+    padding-left: 100px;  /* Отодвинули меню от логотипа ещё дальше */
     margin: 0;
 }
 
@@ -606,6 +606,7 @@ h1 span,
 .hero {
     text-align: center;
     padding: 48px 0 90px;
+    padding-top: 60px !important; /* ДОБАВИЛИ ОТСТУП СВЕРХУ ДЛЯ ПК */
 }
 
 @media (max-width: 900px) {
