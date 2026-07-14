@@ -82,7 +82,7 @@ header {
     justify-content: center;
 }
 
-/* ===== ЛОГОТИП В ЛЕВОМ ВЕРХНЕМ УГЛУ (УВЕЛИЧЕННЫЙ) ===== */
+/* ===== ЛОГОТИП В ЛЕВОМ ВЕРХНЕМ УГЛУ ===== */
 .site-logo {
     position: fixed;
     top: 5px;
@@ -95,6 +95,14 @@ header {
     filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
     transition: opacity 0.2s;
     object-fit: contain;
+}
+
+a[href="index.html"] {
+    text-decoration: none;
+    border: none;
+    outline: none;
+    display: inline-block;
+    width: auto;
 }
 
 @media (max-width: 900px) {
@@ -173,7 +181,6 @@ header {
     display: block;
 }
 
-/* ===== ВЫПАДАЮЩЕЕ МЕНЮ ===== */
 .nav .dropdown-content {
     display: none;
     position: absolute;
