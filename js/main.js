@@ -1,3 +1,7 @@
+// =========================================================
+// === ОСНОВНОЙ JS ДЛЯ ВСЕГО САЙТА (БУРГЕР РАБОТАЕТ ВЕЗДЕ) ===
+// =========================================================
+
 document.addEventListener("DOMContentLoaded", function() {
 
     // ===== УСТАНОВКА ГОДА В ФУТЕРЕ =====
@@ -145,7 +149,13 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // ===== БУРГЕР-МЕНЮ ДЛЯ МОБИЛЬНЫХ (работает на всех страницах) =====
+});
+
+// ====================================================
+// === БУРГЕР И ВЫПАДАЮЩЕЕ МЕНЮ (ПРЯМАЯ ЛОГИКА) ===
+// ====================================================
+(function() {
+    // Ищем кнопку и меню на странице
     var burgerBtn = document.getElementById("burgerBtn");
     var navMenu = document.querySelector(".nav");
 
@@ -164,7 +174,7 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // ===== ВЫПАДАЮЩЕЕ МЕНЮ "ГАЛЕРЕЯ" =====
+    // Выпадающее меню "Галерея"
     var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
     
     dropdownToggles.forEach(function(toggle) {
@@ -189,8 +199,7 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         }
     });
-
-});
+})();
 
 // ====================================================
 // === СКРИПТ ДЛЯ CARDS.HTML (Генерация открыток) ===
