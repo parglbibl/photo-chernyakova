@@ -1310,7 +1310,7 @@ img {
 }
 
 .flip-3d-back {
-    /* Мягкий, тёплый бежевый — цвет дорогой бумаги для открыток */
+    /* Светлый, тёплый бежевый — цвет дорогой бумаги */
     background: #e8e2d8;
     border: 1px solid rgba(0, 0, 0, 0.06);
     transform: rotateY(180deg);
@@ -1322,14 +1322,14 @@ img {
     text-align: center;
 }
 .flip-3d-back h3 {
-    color: var(--accent, #C39A74);
+    color: #2d2926; /* Тёмный коричневый для заголовка */
     font-size: 26px;
     font-weight: 400;
     margin-bottom: 12px;
 }
 .flip-3d-back p {
+    color: #5a5450; /* Мягкий тёмно-серый/коричневый для текста */
     font-size: 16px;
-    color: var(--muted, #D2CBC2);
     line-height: 1.6;
     font-weight: 300;
     max-width: 85%;
