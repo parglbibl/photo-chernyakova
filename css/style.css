@@ -133,6 +133,9 @@ header {
     font-size: 18px;
     transition: 0.3s;
     padding: 6px 0;
+    display: flex;
+    align-items: center;
+    line-height: 1;
 }
 
 .nav a:hover {
@@ -163,6 +166,9 @@ header {
     font-weight: 600;
     font-size: 18px;
     pointer-events: none;
+    display: flex;
+    align-items: center;
+    line-height: 1;
 }
 
 .nav .dropdown-toggle .arrow {
@@ -215,6 +221,7 @@ header {
 .nav .dropdown-checkbox:checked ~ .dropdown-content {
     display: block;
 }
+
 
 /* ----- МОБИЛЬНЫЙ БУРГЕР (ПОДДЕРЖКА JS КЛАССА .active) ----- */
 @media (max-width: 900px) {
