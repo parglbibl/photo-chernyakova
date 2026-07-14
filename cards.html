@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Открытки | Галина Чернякова</title>
+    <title>3D Открытки | Галина Чернякова</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* --- Базовые цвета --- */
         :root {
             --bg: #11100e;
             --text: #F7F3EE;
             --accent: #C39A74;
-            --paper-bg: #1a1816;
-            --shadow: 0 20px 60px rgba(0,0,0,0.7);
+            --shadow: 0 25px 60px rgba(0,0,0,0.8);
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
@@ -28,10 +28,7 @@
             background-image: radial-gradient(circle at 10% 20%, rgba(195, 154, 116, 0.05) 0%, transparent 50%);
         }
 
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+        .container { max-width: 1400px; margin: 0 auto; }
 
         /* --- Заголовок --- */
         .header-section {
@@ -50,10 +47,7 @@
             letter-spacing: -0.5px;
             color: #fff;
         }
-        .header-section h1 span {
-            color: var(--accent);
-            font-weight: 600;
-        }
+        .header-section h1 span { color: var(--accent); font-weight: 600; }
         .header-section .sub {
             color: rgba(255,255,255,0.4);
             font-size: 16px;
@@ -71,124 +65,111 @@
         }
         .back-link:hover { color: var(--accent); }
 
-        /* --- Сетка карточек --- */
+        /* --- Сетка --- */
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-            gap: 50px 30px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
         }
 
-        /* --- Сама открытка (Горизонтальный конверт) --- */
-        .postcard {
-            perspective: 2000px;
+        /* --- 3D КОНТЕЙНЕР (Самая важная часть) --- */
+        .flip-3d-card {
+            perspective: 2000px; /* Глубина 3D сцены */
             cursor: pointer;
-            aspect-ratio: 3 / 2; /* Альбомный формат как у реальной открытки */
-            background: transparent;
-            border-radius: 6px; /* Легкое скругление углов */
+            aspect-ratio: 3 / 2; /* Альбомный формат открытки */
+            border-radius: 12px;
             box-shadow: var(--shadow);
-            position: relative;
         }
 
-        .postcard-inner {
+        /* Внутренний контейнер - вращается целиком */
+        .flip-3d-inner {
             position: relative;
             width: 100%;
             height: 100%;
-            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); /* Плавный выход */
             transform-style: preserve-3d;
+            border-radius: 12px;
         }
 
-        /* Раскрытие */
-        .postcard.opened .postcard-inner {
-            transform: rotateY(-180deg);
+        /* Состояние переворота */
+        .flip-3d-card.flipped .flip-3d-inner {
+            transform: rotateY(180deg);
         }
 
-        /* "Страницы" */
-        .postcard-front, .postcard-back {
+        /* Лицевая и задняя стороны */
+        .flip-3d-front, .flip-3d-back {
             position: absolute;
             width: 100%;
             height: 100%;
-            backface-visibility: hidden;
+            backface-visibility: hidden; /* Скрываем обратную сторону */
             -webkit-backface-visibility: hidden;
-            border-radius: 6px;
+            border-radius: 12px;
             overflow: hidden;
-            background: #151311;
-            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Левая часть (сгиб) - ФОТО */
-        .postcard-front {
-            transform-origin: left center;
-            transform: rotateY(0deg);
-            box-shadow: inset -20px 0 30px rgba(0,0,0,0.4);
+        /* --- Передняя сторона (Фото) --- */
+        .flip-3d-front {
+            background: #1a1816;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #1a1816;
-            padding: 12px; /* Отступы как у бумажной открытки */
+            padding: 10px; /* Рамка вокруг фото */
+            border: 1px solid rgba(255,255,255,0.05);
         }
-        .postcard-front img {
+        .flip-3d-front img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 4px;
-            display: block;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border-radius: 6px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.4);
         }
 
-        /* Правая часть - ТЕКСТ (Внутренность открытки) */
-        .postcard-back {
-            transform-origin: left center;
-            transform: rotateY(180deg);
-            background: linear-gradient(160deg, #1f1c19, #131210);
+        /* --- Задняя сторона (Текст) --- */
+        .flip-3d-back {
+            background: linear-gradient(160deg, #1f1c19, #0f0e0d);
+            transform: rotateY(180deg); /* Изначально повернута задом */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 40px;
             text-align: center;
-            box-shadow: inset 20px 0 30px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.05);
         }
-
-        .postcard-back h3 {
+        .flip-3d-back h3 {
             color: var(--accent);
             font-size: 28px;
             font-weight: 400;
             margin-bottom: 15px;
-            letter-spacing: -0.5px;
         }
-        .postcard-back p {
+        .flip-3d-back p {
             font-size: 17px;
             color: rgba(255,255,255,0.6);
-            line-height: 1.7;
+            line-height: 1.6;
             font-weight: 300;
             max-width: 80%;
         }
-        .postcard-back .icon-deco {
+        .flip-3d-back .icon-deco {
             font-size: 40px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             opacity: 0.4;
             color: var(--accent);
         }
 
-        /* --- Адаптив --- */
+        /* --- Мобильная адаптация --- */
         @media (max-width: 700px) {
-            .header-section {
-                flex-direction: column;
-                align-items: flex-start;
-            }
+            .header-section { flex-direction: column; align-items: flex-start; }
             .card-grid {
-                grid-template-columns: 1fr; /* Одна открытка в ряд на телефоне */
+                grid-template-columns: 1fr; /* Одна колонка на телефоне */
                 gap: 30px;
             }
-            .postcard {
-                aspect-ratio: 4 / 3; /* Чуть выше на мобиле */
-            }
-            .postcard-back h3 { font-size: 22px; }
-            .postcard-back p { font-size: 15px; max-width: 90%; }
-            .postcard-front { padding: 8px; }
+            .flip-3d-card { aspect-ratio: 4 / 3; }
+            .flip-3d-back { padding: 30px; }
+            .flip-3d-back h3 { font-size: 22px; }
+            .flip-3d-back p { font-size: 15px; max-width: 90%; }
         }
 
-        /* --- Дождь для тряски --- */
+        /* --- Эффект дождя для тряски (Красивая мелочь) --- */
         .shake-rain {
             position: fixed;
             top: 0; left: 0;
@@ -200,7 +181,7 @@
         .drop {
             position: absolute;
             width: 2px;
-            height: 25px;
+            height: 20px;
             background: linear-gradient(to bottom, rgba(195, 154, 116, 0), rgba(195, 154, 116, 0.5));
             border-radius: 20px;
             animation: fall 0.8s linear forwards;
@@ -217,39 +198,40 @@
     <div class="container">
         <div class="header-section">
             <div>
-                <h1>Открытки <span>от Галины</span></h1>
-                <div class="sub">Коснись, чтобы раскрыть</div>
+                <h1>3D Открытки <span>от Галины</span></h1>
+                <div class="sub">Нажми, чтобы перевернуть</div>
             </div>
-            <a href="index.html" class="back-link">Вернуться на главную →</a>
+            <a href="index.html" class="back-link">Вернуться →</a>
         </div>
         
         <div class="card-grid" id="cardGrid">
-            <!-- JS сюда вставит открытки -->
+            <!-- JS сюда вставит карточки -->
         </div>
     </div>
 
     <script>
+        // === ДАННЫЕ ДЛЯ ОТКРЫТОК ===
         const cardsData = [
             { img: "images/gallery/macro/5.webp", title: "Золотой глаз", desc: "Капля как зеркало души." },
             { img: "images/gallery/macro/14.webp", title: "Утренний бархат", desc: "Тишина на кончиках листьев." },
             { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Мир, который мы не замечаем." },
             { img: "images/gallery/macro/13.webp", title: "Капля на игле", desc: "Баланс на грани." },
-            // Добавляй свои строки:
-            // { img: "путь_к_фото", title: "Заголовок", desc: "Текст" },
+            // Добавь свои фотки, если нужно
         ];
 
         const grid = document.getElementById('cardGrid');
 
+        // === ГЕНЕРАЦИЯ КАРТОЧЕК ===
         cardsData.forEach(item => {
             const card = document.createElement('div');
-            card.className = 'postcard';
+            card.className = 'flip-3d-card';
 
             card.innerHTML = `
-                <div class="postcard-inner">
-                    <div class="postcard-front">
+                <div class="flip-3d-inner">
+                    <div class="flip-3d-front">
                         <img src="${item.img}" alt="${item.title}" loading="lazy">
                     </div>
-                    <div class="postcard-back">
+                    <div class="flip-3d-back">
                         <div class="icon-deco">✦</div>
                         <h3>${item.title}</h3>
                         <p>${item.desc}</p>
@@ -257,14 +239,15 @@
                 </div>
             `;
 
+            // При клике добавляем класс переворота
             card.addEventListener('click', function() {
-                this.classList.toggle('opened');
+                this.classList.toggle('flipped');
             });
 
             grid.appendChild(card);
         });
 
-        // Тряска
+        // === ТРЯСКА ДЛЯ ТЕЛЕФОНА (Шейкер) ===
         if (window.DeviceMotionEvent) {
             let lastShakeTime = 0;
             const SHAKE_THRESHOLD = 15;
@@ -277,11 +260,13 @@
                 if (totalAcc > SHAKE_THRESHOLD && (now - lastShakeTime > 1500)) {
                     lastShakeTime = now;
 
-                    document.querySelectorAll('.postcard').forEach(el => {
-                        if (Math.random() > 0.5) el.classList.add('opened');
-                        else el.classList.remove('opened');
+                    // Встряхнул телефон - открытки переворачиваются рандомно
+                    document.querySelectorAll('.flip-3d-card').forEach(el => {
+                        if (Math.random() > 0.5) el.classList.add('flipped');
+                        else el.classList.remove('flipped');
                     });
 
+                    // Эффект капель для красоты
                     const rainContainer = document.createElement('div');
                     rainContainer.className = 'shake-rain';
                     document.body.appendChild(rainContainer);
