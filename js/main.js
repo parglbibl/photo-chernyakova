@@ -145,15 +145,62 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+    // ===== БУРГЕР-МЕНЮ ДЛЯ МОБИЛЬНЫХ (Добавлено) =====
+    var burgerBtn = document.getElementById("burgerBtn");
+    var navMenu = document.querySelector(".nav");
+
+    if (burgerBtn && navMenu) {
+        burgerBtn.addEventListener("click", function(e) {
+            e.stopPropagation();
+            navMenu.classList.toggle("active");
+        });
+
+        document.addEventListener("click", function(e) {
+            if (navMenu.classList.contains("active")) {
+                if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                    navMenu.classList.remove("active");
+                }
+            }
+        });
+    }
+
+    // ===== ВЫПАДАЮЩЕЕ МЕНЮ "ГАЛЕРЕЯ" =====
+    var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
+    
+    dropdownToggles.forEach(function(toggle) {
+        toggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            var parentDropdown = this.closest('.dropdown');
+            
+            document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                if (drop !== parentDropdown) {
+                    drop.classList.remove('open');
+                }
+            });
+            
+            parentDropdown.classList.toggle('open');
+        });
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.nav .dropdown')) {
+            document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                drop.classList.remove('open');
+            });
+        }
+    });
+
 });
 
-// === СКРИПТ ДЛЯ CARDS.HTML ===
+// ====================================================
+// === СКРИПТ ДЛЯ CARDS.HTML (Генерация открыток) ===
+// ====================================================
 document.addEventListener("DOMContentLoaded", function() {
     // Проверяем, есть ли на странице контейнер с карточками
     const grid = document.getElementById('cardGrid');
     if (!grid) return; // Если страница не cards.html, просто выходим
 
-    // Данные для открыток (Можно добавить свои)
+    // Данные для открыток
     const cardsData = [
         { img: "images/gallery/macro/5.webp", title: "Золотой глаз", desc: "Капля как зеркало души." },
         { img: "images/gallery/macro/14.webp", title: "Утренний бархат", desc: "Тишина на кончиках листьев." },
