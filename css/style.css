@@ -1345,7 +1345,27 @@ img {
     .flip-3d-back p { font-size: 15px; max-width: 90%; }
 }
 
-/* ===== ФИКС ХЛЕБНЫХ КРОШЕК НА МОБИЛЬНЫХ ===== */
+/* ===== ЖЁСТКИЙ ФИКС ЦВЕТА ССЫЛОК В ХЛЕБНЫХ КРОШКАХ ===== */
+.breadcrumbs a {
+    color: var(--muted) !important;
+    text-decoration: none !important;
+    transition: color 0.3s;
+}
+
+.breadcrumbs a:hover {
+    color: #FFFFFF !important;
+}
+
+.breadcrumbs .sep {
+    color: var(--small) !important;
+    margin: 0 6px;
+}
+
+.breadcrumbs .current {
+    color: var(--muted) !important;
+}
+
+/* ===== ОТСТУП ДЛЯ КРОШЕК НА МОБИЛЬНЫХ ===== */
 @media (max-width: 900px) {
     .breadcrumbs {
         padding-left: 16px !important;
