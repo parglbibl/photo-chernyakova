@@ -211,7 +211,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }, { threshold: 0.1 });
 
-    // Следим за всеми блоками с классом fade-up на всех страницах
     document.querySelectorAll('.section.fade-up, .card, .project-card, .stat-card').forEach(function(el) {
         el.classList.add('fade-up');
         observer.observe(el);
@@ -249,7 +248,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 </div>
             </div>
         `;
-        card.addEventListener('click', function() { this.classList.toggle('flipped'); });
+        
+        // === ДОБАВЛЕНО: при клике закрываем все остальные открытки ===
+        card.addEventListener('click', function() {
+            // Сначала находим все открытки и убираем у них класс flipped
+            document.querySelectorAll('.flip-3d-card').forEach(function(el) {
+                if (el !== card) { // если это не текущая открытка
+                    el.classList.remove('flipped');
+                }
+            });
+            // Затем переворачиваем текущую
+            this.classList.toggle('flipped');
+        });
+
         grid.appendChild(card);
     });
 });
