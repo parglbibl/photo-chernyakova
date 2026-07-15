@@ -290,10 +290,10 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="flip-3d-inner">
                 <div class="flip-3d-front">
                     <img src="${item.img}" alt="${item.title}" loading="lazy">
-                    <!-- КНОПКА ПОДЕЛИТЬСЯ ВК -->
+                    <!-- КНОПКА ПОДЕЛИТЬСЯ -->
                     <div class="share-wrapper">
                         <button class="share-btn" data-title="${item.title}" data-img="${item.img}" data-desc="${item.desc}">
-                            <i class="fa-brands fa-vk"></i>
+                            <i class="fa-solid fa-share-nodes"></i>
                         </button>
                     </div>
                 </div>
@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function() {
         grid.appendChild(card);
     });
 
-    // ===== КНОПКА VK (работает и на телефонах, и на ПК) =====
+    // ===== ЛОГИКА КНОПКИ «ПОДЕЛИТЬСЯ» (Share API) =====
     document.querySelectorAll('.share-btn').forEach(function(btn) {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -327,31 +327,40 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const shareText = `✨ ${title}\n\n${desc}\n\nПосмотреть открытку: ${pageUrl}`;
 
-            // Формируем ссылку для VK
-            const vkShareUrl = `https://vk.com/share.php?title=${encodeURIComponent(title)}&description=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}&noparse=true`;
-
-            // Определяем мобильное устройство
-            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-
-            if (isMobile) {
-                // На телефонах: пробуем открыть через схему vk://
-                // Если приложение не установлено, откроется в браузере
-                const vkAppUrl = `vk://vk.com/share?title=${encodeURIComponent(title)}&description=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`;
-                
-                // Создаём временную ссылку и кликаем по ней
-                const link = document.createElement('a');
-                link.href = vkAppUrl;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                
-                // Если приложение не открылось (тайм-аут), открываем веб-версию
-                setTimeout(function() {
-                    window.open(vkShareUrl, '_blank');
-                }, 500);
+            // Проверяем, поддерживает ли браузер нативное меню "Поделиться"
+            if (navigator.share) {
+                // На телефонах (iOS/Android) — открываем родное меню
+                navigator.share({
+                    title: title,
+                    text: shareText,
+                    url: pageUrl
+                }).catch(function(err) {
+                    if (err.name !== 'AbortError') {
+                        console.log('Ошибка при шеринге:', err);
+                    }
+                });
             } else {
-                // На ПК: просто открываем окно
-                window.open(vkShareUrl, '_blank', 'width=600,height=500');
+                // На ПК — просто копируем текст в буфер обмена
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(shareText).then(function() {
+                        alert('Ссылка на открытку скопирована в буфер обмена!');
+                    }).catch(function(err) {
+                        console.error('Не удалось скопировать текст: ', err);
+                    });
+                } else {
+                    // Запасной вариант для старых браузеров
+                    var textarea = document.createElement('textarea');
+                    textarea.value = shareText;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    try {
+                        document.execCommand('copy');
+                        alert('Ссылка на открытку скопирована в буфер обмена!');
+                    } catch (err) {
+                        console.error('Не удалось скопировать текст: ', err);
+                    }
+                    document.body.removeChild(textarea);
+                }
             }
         });
     });
