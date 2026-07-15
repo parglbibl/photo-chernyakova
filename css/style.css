@@ -1349,6 +1349,9 @@ img {
 .breadcrumbs a {
     color: var(--muted) !important;
     text-decoration: none !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
     transition: color 0.3s;
 }
 
@@ -1363,6 +1366,9 @@ img {
 
 .breadcrumbs .current {
     color: var(--muted) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
 }
 
 /* ===== ОТСТУП ДЛЯ КРОШЕК НА МОБИЛЬНЫХ ===== */
