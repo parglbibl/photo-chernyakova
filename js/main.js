@@ -381,7 +381,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Твой файл из папки music
             audio = new Audio('music/fon.mp3');
             audio.loop = true;
-            audio.volume = 0.08;
+            audio.volume = 0.02;
         }
 
         if (isPlaying) {
