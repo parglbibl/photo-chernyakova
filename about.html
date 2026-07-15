@@ -267,8 +267,10 @@
 </head>
 <body>
 
+    <!-- ===== ФОН ===== -->
     <img id="top-layer-gerbera" src="images/bg.webp">
 
+    <!-- ===== ЛОГОТИП ===== -->
     <a href="index.html">
         <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
     </a>
@@ -321,7 +323,6 @@
 
     <section class="section fade-up" style="padding-top: 15px; padding-bottom: 20px;">
         <div class="container">
-            <div class="section-title">О себе</div>
             <div class="section-text">
                 <p>Мне 33 года. Я занимаюсь фотографией с 2014 года. Мой основной жанр — макросъемка. Но я также люблю снимать повседневную жизнь, природу, архитектуру и заниматься творческой съемкой. Фотография — это мой способ говорить с миром без слов.</p>
                 <p style="margin-top: 20px;">Мои работы были представлены на персональной выставке «Крупным планом» в Сортавала и совместной выставке «Две линзы, один сюжет» в Санкт-Петербурге.</p>
@@ -441,5 +442,54 @@
             });
         });
     </script>
+
+    <!-- СКРИПТ МЕНЮ -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var burgerBtn = document.getElementById("burgerBtn");
+            var navMenu = document.querySelector(".nav");
+
+            if (burgerBtn && navMenu) {
+                burgerBtn.addEventListener("click", function(e) {
+                    e.stopPropagation();
+                    navMenu.classList.toggle("active");
+                });
+
+                document.addEventListener("click", function(e) {
+                    if (navMenu.classList.contains("active")) {
+                        if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
+                            navMenu.classList.remove("active");
+                        }
+                    }
+                });
+            }
+
+            var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
+            
+            dropdownToggles.forEach(function(toggle) {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    var parentDropdown = this.closest('.dropdown');
+                    
+                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                        if (drop !== parentDropdown) {
+                            drop.classList.remove('open');
+                        }
+                    });
+                    
+                    parentDropdown.classList.toggle('open');
+                });
+            });
+
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.nav .dropdown')) {
+                    document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
+                        drop.classList.remove('open');
+                    });
+                }
+            });
+        });
+    </script>
+
 </body>
 </html>
