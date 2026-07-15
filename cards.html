@@ -55,34 +55,40 @@
         </div>
     </header>
 
-    <!-- ===== ХЛЕБНЫЕ КРОШКИ (ИСПРАВЛЕННЫЕ) ===== -->
+    <!-- ХЛЕБНЫЕ КРОШКИ (ТЕПЕРЬ НА СВОЁМ МЕСТЕ) -->
     <div class="breadcrumbs">
         <a href="index.html">Главная</a>
         <span class="sep">›</span>
         <span class="current">Открытки настроения</span>
     </div>
 
-    <div class="container">
-        <div class="cards-wrapper">
+    <!-- СЕКЦИЯ HERO (как на всех страницах) -->
+    <section class="hero" style="padding-top: 20px; padding-bottom: 10px;">
+        <div class="container">
+            <h1>Открытки <span>настроения</span></h1>
             
-            <div class="cards-header">
-                <h1>Открытки <span>настроения</span></h1>
-                
-                <div style="margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 12px; color: rgba(255,255,255,0.5); font-size: 14px; letter-spacing: 1px;">
-                    <i class="fa-regular fa-hand-pointer" style="font-size: 20px; color: var(--accent);"></i>
-                    <span>Нажми на любую открытку, чтобы раскрыть её</span>
-                </div>
+            <div style="margin-top: 10px; display: flex; justify-content: center; align-items: center; gap: 12px; color: rgba(255,255,255,0.6); font-size: 16px; letter-spacing: 1px;">
+                <i class="fa-regular fa-hand-pointer" style="font-size: 20px; color: var(--accent);"></i>
+                <span>Нажми на любую открытку, чтобы раскрыть её</span>
             </div>
+        </div>
+    </section>
 
-            <div style="text-align: center; max-width: 600px; margin: 0 auto 40px auto; color: var(--muted); font-size: 17px; line-height: 1.6; opacity: 0.8;">
+    <!-- СЕКЦИЯ С ОТКРЫТКАМИ -->
+    <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
+        <div class="container">
+            
+            <!-- Короткое описание -->
+            <div style="text-align: center; max-width: 650px; margin: 0 auto 40px auto; color: var(--muted); font-size: 17px; line-height: 1.7; opacity: 0.8;">
                 Здесь фотографии становятся не просто картинками, а историями. 
                 Каждая открытка хранит в себе кадр, слово и настроение. 
                 Прикоснись, чтобы перевернуть страницу.
             </div>
 
+            <!-- Сетка открыток -->
             <div class="card-grid" id="cardGrid"></div>
         </div>
-    </div>
+    </section>
 
     <footer>
         <div class="container">
