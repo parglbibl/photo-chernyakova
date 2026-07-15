@@ -1,5 +1,5 @@
 // =========================================================
-// === ОСНОВНОЙ JS ДЛЯ ВСЕГО САЙТА (БУРГЕР РАБОТАЕТ ВЕЗДЕ) ===
+// === ОСНОВНОЙ JS ДЛЯ ВСЕГО САЙТА ===
 // =========================================================
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -152,10 +152,9 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // ====================================================
-// === БУРГЕР И ВЫПАДАЮЩЕЕ МЕНЮ (ПРЯМАЯ ЛОГИКА) ===
+// === БУРГЕР И ВЫПАДАЮЩЕЕ МЕНЮ ===
 // ====================================================
 (function() {
-    // Ищем кнопку и меню на странице
     var burgerBtn = document.getElementById("burgerBtn");
     var navMenu = document.querySelector(".nav");
 
@@ -174,7 +173,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Выпадающее меню "Галерея"
     var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
     
     dropdownToggles.forEach(function(toggle) {
@@ -202,138 +200,41 @@ document.addEventListener("DOMContentLoaded", function() {
 })();
 
 // ====================================================
-// === СКРИПТ ДЛЯ CARDS.HTML (КРАСИВЫЕ ОТКРЫТКИ) ===
+// === АНИМАЦИЯ ПРИ СКРОЛЛЕ (ДЛЯ ВСЕХ СТРАНИЦ) ===
 // ====================================================
 document.addEventListener("DOMContentLoaded", function() {
-    // Проверяем, есть ли на странице контейнер с карточками
+    var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    // Следим за всеми блоками с классом fade-up на всех страницах
+    document.querySelectorAll('.section.fade-up, .card, .project-card, .stat-card').forEach(function(el) {
+        el.classList.add('fade-up');
+        observer.observe(el);
+    });
+});
+
+// ====================================================
+// === СКРИПТ ДЛЯ CARDS.HTML (Генерация открыток) ===
+// ====================================================
+document.addEventListener("DOMContentLoaded", function() {
     const grid = document.getElementById('cardGrid');
-    if (!grid) return; // Если страница не cards.html, просто выходим
+    if (!grid) return;
 
-    // Данные для открыток (ТЕПЕРЬ С КРАСИВЫМИ ТЕКСТАМИ)
     const cardsData = [
-        // —————— МАКРОМИР ——————
-        { 
-            img: "images/gallery/macro/5.webp", 
-            title: "Золотой глаз", 
-            desc: "Капля, в которой отражается целый мир. Секунда, остановленная навсегда." 
-        },
-        { 
-            img: "images/gallery/macro/14.webp", 
-            title: "Утренний бархат", 
-            desc: "Тишина, застывшая на лепестках. Момент, когда природа только просыпается." 
-        },
-        { 
-            img: "images/gallery/macro/1.webp", 
-            title: "Алые капли", 
-            desc: "Красота — это просто капля, упавшая в нужный момент в правильном свете." 
-        },
-        { 
-            img: "images/gallery/macro/13.webp", 
-            title: "Капля на игле", 
-            desc: "Тонкий баланс между падением и полётом. Мир держится на таких моментах." 
-        },
-        { 
-            img: "images/gallery/macro/3.webp", 
-            title: "Орхидея с росой", 
-            desc: "Природа не терпит суеты. Она создаёт шедевры в абсолютной тишине." 
-        },
-        { 
-            img: "images/gallery/macro/4.webp", 
-            title: "Миг в тишине", 
-            desc: "Иногда достаточно просто замереть, чтобы увидеть самое важное." 
-        },
-        { 
-            img: "images/gallery/macro/22.webp", 
-            title: "Искра в жёлтом", 
-            desc: "Свет, пробивающийся сквозь форму. Это не просто цвет, это эмоция." 
-        },
-        { 
-            img: "images/gallery/macro/20.webp", 
-            title: "Синий бриллиант", 
-            desc: "Когда капля становится драгоценностью. Вода умеет сиять." 
-        },
-        { 
-            img: "images/gallery/macro/17.webp", 
-            title: "Розовая капля", 
-            desc: "Нежность, сконцентрированная в одной точке. Природа знает, как тронуть душу." 
-        },
-        { 
-            img: "images/gallery/macro/19.webp", 
-            title: "Тёплые капли", 
-            desc: "Уют, разлитый по листу. В такие моменты хочется просто дышать." 
-        },
-        { 
-            img: "images/gallery/macro/23.webp", 
-            title: "Тишина", 
-            desc: "Мир, который говорит без слов. Достаточно просто посмотреть." 
-        },
-        { 
-            img: "images/gallery/macro/16.webp", 
-            title: "В капле — мир", 
-            desc: "Если присмотреться, в каждой капле живёт своя вселенная." 
-        },
-
-        // —————— ПРИРОДА ——————
-        { 
-            img: "images/gallery/nature/4.webp", 
-            title: "Сакура в сумерках", 
-            desc: "Цветы, которые цветут лишь для того, чтобы напомнить нам о быстротечности прекрасного." 
-        },
-        { 
-            img: "images/gallery/nature/2.webp", 
-            title: "Морозный рассвет", 
-            desc: "Зима — это не холод. Это время, когда мир становится графичным и чистым." 
-        },
-        { 
-            img: "images/gallery/nature/1.webp", 
-            title: "Осеннее отражение", 
-            desc: "Листья падают не потому, что умирают. Они просто меняют свой путь." 
-        },
-        { 
-            img: "images/gallery/nature/5.webp", 
-            title: "Тёплый свет", 
-            desc: "Солнце, пробивающееся сквозь листву. Это и есть счастье." 
-        },
-        { 
-            img: "images/gallery/nature/3.webp", 
-            title: "Весеннее цветение", 
-            desc: "Природа просыпается, чтобы напомнить: всё начинается заново." 
-        },
-
-        // —————— КОНЦЕПТ ——————
-        { 
-            img: "images/gallery/concept/14.webp", 
-            title: "Яйцо на вилке", 
-            desc: "Тонкий баланс. Концепт, который держится на одном движении." 
-        },
-        { 
-            img: "images/gallery/concept/13.webp", 
-            title: "Лимонный дождь", 
-            desc: "Когда свет проходит сквозь воду, рождается не просто настроение, а состояние." 
-        },
-        { 
-            img: "images/gallery/concept/12.webp", 
-            title: "Чай с вдохновением", 
-            desc: "Иногда идеи приходят не из ниоткуда, а из чашки горячего чая." 
-        },
-        { 
-            img: "images/gallery/concept/6.webp", 
-            title: "Неоновый дождь", 
-            desc: "Город, который никогда не спит. Свет, превращающий воду в магию." 
-        },
-        { 
-            img: "images/gallery/concept/8.webp", 
-            title: "Закат в паутине", 
-            desc: "Последние лучи солнца, запутавшиеся в тонких нитях." 
-        },
-        { 
-            img: "images/gallery/concept/17.webp", 
-            title: "Капля на лепестке", 
-            desc: "Невесомость, застывшая в одном мгновении. Тишина, которую можно увидеть." 
-        },
+        { img: "images/gallery/macro/5.webp", title: "Золотой глаз", desc: "Капля, в которой отражается целый мир. Секунда, остановленная навсегда." },
+        { img: "images/gallery/macro/14.webp", title: "Утренний бархат", desc: "Тишина, застывшая на лепестках. Момент, когда природа только просыпается." },
+        { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Красота — это просто капля, упавшая в нужный момент в правильном свете." },
+        { img: "images/gallery/macro/13.webp", title: "Капля на игле", desc: "Тонкий баланс между падением и полётом. Мир держится на таких моментах." },
+        { img: "images/gallery/macro/3.webp", title: "Орхидея с росой", desc: "Природа не терпит суеты. Она создаёт шедевры в абсолютной тишине." },
+        { img: "images/gallery/concept/14.webp", title: "Яйцо на вилке", desc: "Тонкий баланс. Концепт, который держится на одном движении." },
+        { img: "images/gallery/nature/4.webp", title: "Сакура в сумерках", desc: "Цветы, которые цветут лишь для того, чтобы напомнить нам о быстротечности прекрасного." },
     ];
 
-    // Генерация карточек
     cardsData.forEach(item => {
         const card = document.createElement('div');
         card.className = 'flip-3d-card';
