@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 
 :root {
     --bg: #181715;
@@ -1322,12 +1322,14 @@ img {
     text-align: center;
 }
 .flip-3d-back h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
     color: #2d2926;
     font-size: 26px;
-    font-weight: 400;
     margin-bottom: 12px;
 }
 .flip-3d-back p {
+    font-family: 'Inter', sans-serif;
     color: #4a4540;
     font-size: 16px;
     line-height: 1.6;
