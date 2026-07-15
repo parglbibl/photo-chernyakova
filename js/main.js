@@ -316,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function() {
         grid.appendChild(card);
     });
 
-    // ===== ЛОГИКА КНОПКИ VK (ПК → браузер, телефон → приложение) =====
+    // ===== КНОПКА VK (работает и на телефонах, и на ПК) =====
     document.querySelectorAll('.share-btn').forEach(function(btn) {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -327,17 +327,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
             const shareText = `✨ ${title}\n\n${desc}\n\nПосмотреть открытку: ${pageUrl}`;
 
-            // Определяем, телефон это или ПК
+            // Формируем ссылку для VK
+            const vkShareUrl = `https://vk.com/share.php?title=${encodeURIComponent(title)}&description=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}&noparse=true`;
+
+            // Определяем мобильное устройство
             const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
             if (isMobile) {
-                // Мобилка → пытаемся открыть приложение VK
+                // На телефонах: пробуем открыть через схему vk://
+                // Если приложение не установлено, откроется в браузере
                 const vkAppUrl = `vk://vk.com/share?title=${encodeURIComponent(title)}&description=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`;
-                window.location.href = vkAppUrl;
+                
+                // Создаём временную ссылку и кликаем по ней
+                const link = document.createElement('a');
+                link.href = vkAppUrl;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                
+                // Если приложение не открылось (тайм-аут), открываем веб-версию
+                setTimeout(function() {
+                    window.open(vkShareUrl, '_blank');
+                }, 500);
             } else {
-                // ПК → стандартное окно браузера
-                const vkWebUrl = `https://vk.com/share.php?title=${encodeURIComponent(title)}&description=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`;
-                window.open(vkWebUrl, '_blank', 'width=600,height=500');
+                // На ПК: просто открываем окно
+                window.open(vkShareUrl, '_blank', 'width=600,height=500');
             }
         });
     });
