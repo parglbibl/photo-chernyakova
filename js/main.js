@@ -370,19 +370,18 @@ document.addEventListener("DOMContentLoaded", function() {
 // === АТМОСФЕРНЫЙ ЗВУК (Только для cards.html) ===
 // ====================================================
 document.addEventListener("DOMContentLoaded", function() {
-    // Проверяем, есть ли кнопка звука ИМЕННО на этой странице
     const soundBtn = document.getElementById('soundToggle');
-    if (!soundBtn) return; // Если кнопки нет (другие страницы) — просто выходим
+    if (!soundBtn) return;
 
     let audio = null;
     let isPlaying = false;
 
     soundBtn.addEventListener('click', function() {
         if (!audio) {
-            // Создаём аудио-элемент с очень тихим звуком природы (лес/ветер)
-            audio = new Audio('https://assets.mixkit.co/active_storage/sfx/2000/2000-preview.mp3');
+            // Твой файл из папки music
+            audio = new Audio('music/fon.mp3');
             audio.loop = true;
-            audio.volume = 0.08; // Жёсткий лимит громкости — 8%
+            audio.volume = 0.08;
         }
 
         if (isPlaying) {
