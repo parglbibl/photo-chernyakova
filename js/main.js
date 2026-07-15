@@ -218,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // ====================================================
-// === СКРИПТ ДЛЯ CARDS.HTML (43 фото, но показываем 7) ===
+// === СКРИПТ ДЛЯ CARDS.HTML (43 фото, показываем 7) ===
 // ====================================================
 document.addEventListener("DOMContentLoaded", function() {
     const grid = document.getElementById('cardGrid');
@@ -226,7 +226,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // ===== ПОЛНЫЙ МАССИВ ВСЕХ 43 ФОТОГРАФИЙ =====
     const allCards = [
-        // —————— МАКРОМИР ——————
         { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Красота — это просто капля, упавшая в нужный момент в правильном свете." },
         { img: "images/gallery/macro/2.webp", title: "Ветка в янтаре", desc: "Солнечный свет, застывший в капле. Природа умеет создавать драгоценности." },
         { img: "images/gallery/macro/3.webp", title: "Орхидея с росой", desc: "Природа не терпит суеты. Она создаёт шедевры в абсолютной тишине." },
@@ -251,7 +250,6 @@ document.addEventListener("DOMContentLoaded", function() {
         { img: "images/gallery/macro/22.webp", title: "Искра в жёлтом", desc: "Свет, пробивающийся сквозь форму. Это не просто цвет, это эмоция." },
         { img: "images/gallery/macro/23.webp", title: "Тишина", desc: "Мир, который говорит без слов. Достаточно просто посмотреть." },
 
-        // —————— КОНЦЕПТ ——————
         { img: "images/gallery/concept/1.webp", title: "Капля в пустыне", desc: "Одинокая капля, которая хранит в себе целую историю." },
         { img: "images/gallery/concept/2.webp", title: "На грани", desc: "Там, где заканчивается реальность, начинается искусство." },
         { img: "images/gallery/concept/4.webp", title: "Золотая сердцевина", desc: "Свет, рождающийся из глубины. Тёплое сияние в центре всего." },
@@ -268,7 +266,6 @@ document.addEventListener("DOMContentLoaded", function() {
         { img: "images/gallery/concept/16.webp", title: "Золотая снежинка", desc: "Зима — это не холод. Это время, когда мир становится графичным и чистым." },
         { img: "images/gallery/concept/17.webp", title: "Капля на лепестке", desc: "Невесомость, застывшая в одном мгновении. Тишина, которую можно увидеть." },
 
-        // —————— ПРИРОДА ——————
         { img: "images/gallery/nature/1.webp", title: "Осеннее отражение", desc: "Листья падают не потому, что умирают. Они просто меняют свой путь." },
         { img: "images/gallery/nature/2.webp", title: "Морозный рассвет", desc: "Зима — это не холод. Это время, когда мир становится графичным и чистым." },
         { img: "images/gallery/nature/3.webp", title: "Весеннее цветение", desc: "Природа просыпается, чтобы напомнить: всё начинается заново." },
@@ -285,13 +282,9 @@ document.addEventListener("DOMContentLoaded", function() {
         return array;
     }
 
-    // Перемешиваем весь массив
     const shuffledAll = shuffleArray([...allCards]);
-    
-    // Берём ТОЛЬКО ПЕРВЫЕ 7 элементов из перемешанного массива
     const cardsToShow = shuffledAll.slice(0, 7);
 
-    // Генерируем карточки из отобранных 7
     cardsToShow.forEach(item => {
         const card = document.createElement('div');
         card.className = 'flip-3d-card';
@@ -299,6 +292,12 @@ document.addEventListener("DOMContentLoaded", function() {
             <div class="flip-3d-inner">
                 <div class="flip-3d-front">
                     <img src="${item.img}" alt="${item.title}" loading="lazy">
+                    <!-- КНОПКА ПОДЕЛИТЬСЯ ВК -->
+                    <div class="share-wrapper">
+                        <button class="share-btn" data-title="${item.title}" data-img="${item.img}" data-desc="${item.desc}">
+                            <i class="fa-brands fa-vk"></i>
+                        </button>
+                    </div>
                 </div>
                 <div class="flip-3d-back">
                     <h3>${item.title}</h3>
@@ -317,5 +316,21 @@ document.addEventListener("DOMContentLoaded", function() {
         });
 
         grid.appendChild(card);
+    });
+
+    // ===== КНОПКА VK ПОДЕЛИТЬСЯ =====
+    document.querySelectorAll('.share-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+
+            const title = this.dataset.title;
+            const desc = this.dataset.desc;
+            const pageUrl = window.location.href;
+
+            const shareText = `✨ ${title}\n\n${desc}\n\nПосмотреть открытку: ${pageUrl}`;
+            const vkUrl = `https://vk.com/share.php?title=${encodeURIComponent(title)}&description=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`;
+
+            window.open(vkUrl, '_blank', 'width=600,height=500');
+        });
     });
 });
