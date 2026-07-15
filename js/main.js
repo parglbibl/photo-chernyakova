@@ -216,3 +216,51 @@ document.addEventListener("DOMContentLoaded", function() {
         observer.observe(el);
     });
 });
+
+// ====================================================
+// === СКРИПТ ДЛЯ CARDS.HTML (Генерация открыток) ===
+// ====================================================
+document.addEventListener("DOMContentLoaded", function() {
+    const grid = document.getElementById('cardGrid');
+    if (!grid) return;
+
+    const cardsData = [
+        { img: "images/gallery/macro/5.webp", title: "Золотой глаз", desc: "Капля, в которой отражается целый мир. Секунда, остановленная навсегда." },
+        { img: "images/gallery/macro/14.webp", title: "Утренний бархат", desc: "Тишина, застывшая на лепестках. Момент, когда природа только просыпается." },
+        { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Красота — это просто капля, упавшая в нужный момент в правильном свете." },
+        { img: "images/gallery/macro/13.webp", title: "Капля на игле", desc: "Тонкий баланс между падением и полётом. Мир держится на таких моментах." },
+        { img: "images/gallery/macro/3.webp", title: "Орхидея с росой", desc: "Природа не терпит суеты. Она создаёт шедевры в абсолютной тишине." },
+        { img: "images/gallery/concept/14.webp", title: "Яйцо на вилке", desc: "Тонкий баланс. Концепт, который держится на одном движении." },
+        { img: "images/gallery/nature/4.webp", title: "Сакура в сумерках", desc: "Цветы, которые цветут лишь для того, чтобы напомнить нам о быстротечности прекрасного." },
+    ];
+
+    cardsData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'flip-3d-card';
+        card.innerHTML = `
+            <div class="flip-3d-inner">
+                <div class="flip-3d-front">
+                    <img src="${item.img}" alt="${item.title}" loading="lazy">
+                </div>
+                <div class="flip-3d-back">
+                    <h3>${item.title}</h3>
+                    <p>${item.desc}</p>
+                </div>
+            </div>
+        `;
+        
+        // === ДОБАВЛЕНО: при клике закрываем все остальные открытки ===
+        card.addEventListener('click', function() {
+            // Сначала находим все открытки и убираем у них класс flipped
+            document.querySelectorAll('.flip-3d-card').forEach(function(el) {
+                if (el !== card) { // если это не текущая открытка
+                    el.classList.remove('flipped');
+                }
+            });
+            // Затем переворачиваем текущую
+            this.classList.toggle('flipped');
+        });
+
+        grid.appendChild(card);
+    });
+});
