@@ -275,7 +275,6 @@
 
     <header>
         <div class="header-inner">
-            <!-- Здесь id="burgerBtn" стоит и будет работать -->
             <button class="burger-btn" id="burgerBtn">
                 <span></span>
                 <span></span>
@@ -399,6 +398,58 @@
         </div>
     </section>
 
+    <!-- ===== БЛОК НАСТАВНИКИ ===== -->
+    <section class="section fade-up" style="padding-top: 20px; padding-bottom: 25px;">
+        <div class="container">
+            <div class="section-title">Наставники</div>
+            <div class="section-subtitle">Люди и места, которые научили меня видеть иначе</div>
+            
+            <div class="grid-3">
+                <!-- 1. 6х9 -->
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">📸</div>
+                    <h3>Фотоклуб «6х9»</h3>
+                    <p style="color: var(--muted); font-size: 16px; line-height: 1.7;">
+                        Это было моё первое знакомство с фотографией. Здесь я поняла, что камера — это не просто инструмент, а способ говорить с миром без слов. Спасибо клубу за то, что дал мне смелость нажать на спуск.
+                    </p>
+                </div>
+                
+                <!-- 2. Екатерина Васильевна Басина -->
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">🔍</div>
+                    <h3>Екатерина Васильевна Басина</h3>
+                    <p style="color: var(--muted); font-size: 16px; line-height: 1.7;">
+                        Член Союза фотохудожников России. Именно она открыла мне макромир. 
+                        Её уроки про свет и внимание к деталям стали моим фундаментом. 
+                        Она научила меня смотреть на капли и лепестки не как на «мелкие детали», 
+                        а как на целые вселенные. Если сегодня я вижу красоту в самом маленьком — 
+                        это благодаря её мудрости.
+                        <br><br>
+                        <a href="http://www.photounion.ru/Show_User_Info.php?unum=224" target="_blank" style="color: var(--accent); text-decoration: underline;">Профиль на сайте Союза →</a>
+                    </p>
+                </div>
+                
+                <!-- 3. Творческая фотомастерская -->
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">🎨</div>
+                    <h3>Творческая фотомастерская</h3>
+                    <p style="color: var(--muted); font-size: 16px; line-height: 1.7;">
+                        Санкт-Петербург. Это место стало моим вторым домом. Здесь я научилась смотреть вглубь и видеть то, что скрыто от глаз. Именно в этой мастерской я поняла, что макромир — это не просто картинки, а целая вселенная, которая ждёт, чтобы её заметили.
+                    </p>
+                </div>
+
+                <!-- 4. Природа и тишина -->
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 48px; margin-bottom: 12px;">🌿</div>
+                    <h3>Природа и тишина</h3>
+                    <p style="color: var(--muted); font-size: 16px; line-height: 1.7;">
+                        Мой самый главный и самый молчаливый наставник. Каждый раз, когда я выхожу с камерой на улицу, я слушаю тишину. Именно в ней рождаются мои любимые кадры. Природа никогда не учит громко, но её уроки — самые честные.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section class="section fade-up" style="padding-top: 20px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">Ещё немного обо мне</div>
@@ -425,5 +476,21 @@
     </footer>
 
     <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.section, .project-card, .card').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
+            });
+        });
+    </script>
 </body>
 </html>
