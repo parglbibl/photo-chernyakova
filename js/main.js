@@ -224,7 +224,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const grid = document.getElementById('cardGrid');
     if (!grid) return;
 
-    // ===== ПОЛНЫЙ МАССИВ ВСЕХ 43 ФОТОГРАФИЙ =====
     const allCards = [
         { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Красота — это просто капля, упавшая в нужный момент в правильном свете." },
         { img: "images/gallery/macro/2.webp", title: "Ветка в янтаре", desc: "Солнечный свет, застывший в капле. Природа умеет создавать драгоценности." },
@@ -273,7 +272,6 @@ document.addEventListener("DOMContentLoaded", function() {
         { img: "images/gallery/nature/5.webp", title: "Тёплый свет", desc: "Солнце, пробивающееся сквозь листву. Это и есть счастье." },
     ];
 
-    // ===== ФУНКЦИЯ ПЕРЕМЕШИВАНИЯ (РАНДОМ) =====
     function shuffleArray(array) {
         for (let i = array.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
@@ -318,7 +316,7 @@ document.addEventListener("DOMContentLoaded", function() {
         grid.appendChild(card);
     });
 
-    // ===== КНОПКА VK ПОДЕЛИТЬСЯ =====
+    // ===== ЛОГИКА КНОПКИ VK (ПК → браузер, телефон → приложение) =====
     document.querySelectorAll('.share-btn').forEach(function(btn) {
         btn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -328,9 +326,19 @@ document.addEventListener("DOMContentLoaded", function() {
             const pageUrl = window.location.href;
 
             const shareText = `✨ ${title}\n\n${desc}\n\nПосмотреть открытку: ${pageUrl}`;
-            const vkUrl = `https://vk.com/share.php?title=${encodeURIComponent(title)}&description=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`;
 
-            window.open(vkUrl, '_blank', 'width=600,height=500');
+            // Определяем, телефон это или ПК
+            const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // Мобилка → пытаемся открыть приложение VK
+                const vkAppUrl = `vk://vk.com/share?title=${encodeURIComponent(title)}&description=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`;
+                window.location.href = vkAppUrl;
+            } else {
+                // ПК → стандартное окно браузера
+                const vkWebUrl = `https://vk.com/share.php?title=${encodeURIComponent(title)}&description=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}`;
+                window.open(vkWebUrl, '_blank', 'width=600,height=500');
+            }
         });
     });
 });
