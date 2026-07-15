@@ -1344,3 +1344,12 @@ img {
     .flip-3d-back h3 { font-size: 22px; }
     .flip-3d-back p { font-size: 15px; max-width: 90%; }
 }
+
+/* ===== ФИКС ХЛЕБНЫХ КРОШЕК НА МОБИЛЬНЫХ ===== */
+@media (max-width: 900px) {
+    .breadcrumbs {
+        padding-left: 16px !important;
+        margin-top: 10px !important;
+        margin-bottom: -20px !important;
+    }
+}
