@@ -218,23 +218,250 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // ====================================================
-// === СКРИПТ ДЛЯ CARDS.HTML (Генерация открыток) ===
+// === СКРИПТ ДЛЯ CARDS.HTML (ВСЕ ФОТО + РАНДОМ) ===
 // ====================================================
 document.addEventListener("DOMContentLoaded", function() {
     const grid = document.getElementById('cardGrid');
     if (!grid) return;
 
-    const cardsData = [
-        { img: "images/gallery/macro/5.webp", title: "Золотой глаз", desc: "Капля, в которой отражается целый мир. Секунда, остановленная навсегда." },
-        { img: "images/gallery/macro/14.webp", title: "Утренний бархат", desc: "Тишина, застывшая на лепестках. Момент, когда природа только просыпается." },
-        { img: "images/gallery/macro/1.webp", title: "Алые капли", desc: "Красота — это просто капля, упавшая в нужный момент в правильном свете." },
-        { img: "images/gallery/macro/13.webp", title: "Капля на игле", desc: "Тонкий баланс между падением и полётом. Мир держится на таких моментах." },
-        { img: "images/gallery/macro/3.webp", title: "Орхидея с росой", desc: "Природа не терпит суеты. Она создаёт шедевры в абсолютной тишине." },
-        { img: "images/gallery/concept/14.webp", title: "Яйцо на вилке", desc: "Тонкий баланс. Концепт, который держится на одном движении." },
-        { img: "images/gallery/nature/4.webp", title: "Сакура в сумерках", desc: "Цветы, которые цветут лишь для того, чтобы напомнить нам о быстротечности прекрасного." },
+    // ===== ПОЛНЫЙ МАССИВ ВСЕХ ФОТОГРАФИЙ С КРАСИВЫМИ ПОДПИСЯМИ =====
+    const allCards = [
+        // —————— МАКРОМИР ——————
+        { 
+            img: "images/gallery/macro/1.webp", 
+            title: "Алые капли", 
+            desc: "Красота — это просто капля, упавшая в нужный момент в правильном свете." 
+        },
+        { 
+            img: "images/gallery/macro/2.webp", 
+            title: "Ветка в янтаре", 
+            desc: "Солнечный свет, застывший в капле. Природа умеет создавать драгоценности." 
+        },
+        { 
+            img: "images/gallery/macro/3.webp", 
+            title: "Орхидея с росой", 
+            desc: "Природа не терпит суеты. Она создаёт шедевры в абсолютной тишине." 
+        },
+        { 
+            img: "images/gallery/macro/4.webp", 
+            title: "Миг в тишине", 
+            desc: "Иногда достаточно просто замереть, чтобы увидеть самое важное." 
+        },
+        { 
+            img: "images/gallery/macro/5.webp", 
+            title: "Золотой глаз", 
+            desc: "Капля, в которой отражается целый мир. Секунда, остановленная навсегда." 
+        },
+        { 
+            img: "images/gallery/macro/6.webp", 
+            title: "Медленный путь", 
+            desc: "Время течёт по-другому, когда смотришь на мир через макрообъектив." 
+        },
+        { 
+            img: "images/gallery/macro/7.webp", 
+            title: "Край листа", 
+            desc: "Граница между светом и тенью, жизнью и тишиной." 
+        },
+        { 
+            img: "images/gallery/macro/8.webp", 
+            title: "Взгляд вперёд", 
+            desc: "Иногда нужно просто смотреть вперёд, не оглядываясь назад." 
+        },
+        { 
+            img: "images/gallery/macro/9.webp", 
+            title: "Ветка и небо", 
+            desc: "Тонкая линия между землёй и облаками. Гармония в простом." 
+        },
+        { 
+            img: "images/gallery/macro/10.webp", 
+            title: "Дорога домой", 
+            desc: "Каждый путь начинается с первого шага. Даже самый маленький." 
+        },
+        { 
+            img: "images/gallery/macro/11.webp", 
+            title: "Росток", 
+            desc: "Новая жизнь всегда начинается с малого. И это прекрасно." 
+        },
+        { 
+            img: "images/gallery/macro/12.webp", 
+            title: "Капля на солнце", 
+            desc: "Свет, проходящий сквозь воду, превращается в магию." 
+        },
+        { 
+            img: "images/gallery/macro/13.webp", 
+            title: "Капля на игле", 
+            desc: "Тонкий баланс между падением и полётом. Мир держится на таких моментах." 
+        },
+        { 
+            img: "images/gallery/macro/14.webp", 
+            title: "Утренний бархат", 
+            desc: "Тишина, застывшая на лепестках. Момент, когда природа только просыпается." 
+        },
+        { 
+            img: "images/gallery/macro/15.webp", 
+            title: "Капля на краю", 
+            desc: "Иногда самый важный момент происходит прямо на границе." 
+        },
+        { 
+            img: "images/gallery/macro/16.webp", 
+            title: "В капле — мир", 
+            desc: "Если присмотреться, в каждой капле живёт своя вселенная." 
+        },
+        { 
+            img: "images/gallery/macro/17.webp", 
+            title: "Розовая капля", 
+            desc: "Нежность, сконцентрированная в одной точке. Природа знает, как тронуть душу." 
+        },
+        { 
+            img: "images/gallery/macro/18.webp", 
+            title: "Капля-линза", 
+            desc: "Маленькая линза, в которой умещается целый мир." 
+        },
+        { 
+            img: "images/gallery/macro/19.webp", 
+            title: "Тёплые капли", 
+            desc: "Уют, разлитый по листу. В такие моменты хочется просто дышать." 
+        },
+        { 
+            img: "images/gallery/macro/20.webp", 
+            title: "Синий бриллиант", 
+            desc: "Когда капля становится драгоценностью. Вода умеет сиять." 
+        },
+        { 
+            img: "images/gallery/macro/21.webp", 
+            title: "Искра в жёлтом", 
+            desc: "Свет, пробивающийся сквозь форму. Это не просто цвет, это эмоция." 
+        },
+        { 
+            img: "images/gallery/macro/22.webp", 
+            title: "Искра в жёлтом", 
+            desc: "Свет, пробивающийся сквозь форму. Это не просто цвет, это эмоция." 
+        },
+        { 
+            img: "images/gallery/macro/23.webp", 
+            title: "Тишина", 
+            desc: "Мир, который говорит без слов. Достаточно просто посмотреть." 
+        },
+
+        // —————— КОНЦЕПТ ——————
+        { 
+            img: "images/gallery/concept/1.webp", 
+            title: "Капля в пустыне", 
+            desc: "Одинокая капля, которая хранит в себе целую историю." 
+        },
+        { 
+            img: "images/gallery/concept/2.webp", 
+            title: "На грани", 
+            desc: "Там, где заканчивается реальность, начинается искусство." 
+        },
+        { 
+            img: "images/gallery/concept/4.webp", 
+            title: "Золотая сердцевина", 
+            desc: "Свет, рождающийся из глубины. Тёплое сияние в центре всего." 
+        },
+        { 
+            img: "images/gallery/concept/5.webp", 
+            title: "Чай с вдохновением", 
+            desc: "Иногда идеи приходят не из ниоткуда, а из чашки горячего чая." 
+        },
+        { 
+            img: "images/gallery/concept/6.webp", 
+            title: "Неоновый дождь", 
+            desc: "Город, который никогда не спит. Свет, превращающий воду в магию." 
+        },
+        { 
+            img: "images/gallery/concept/7.webp", 
+            title: "Геометрия теней", 
+            desc: "Когда свет встречается с формой, рождается искусство." 
+        },
+        { 
+            img: "images/gallery/concept/8.webp", 
+            title: "Закат в паутине", 
+            desc: "Последние лучи солнца, запутавшиеся в тонких нитях." 
+        },
+        { 
+            img: "images/gallery/concept/9.webp", 
+            title: "Осеннее зеркало", 
+            desc: "Лужа, в которой отражается всё: небо, деревья и прощание с летом." 
+        },
+        { 
+            img: "images/gallery/concept/11.webp", 
+            title: "Увядание", 
+            desc: "Красота увядания. Есть что-то завораживающее в том, что уходит." 
+        },
+        { 
+            img: "images/gallery/concept/12.webp", 
+            title: "Персиковое утро", 
+            desc: "Тёплые лучи утреннего солнца, проходящие сквозь фруктовый сок." 
+        },
+        { 
+            img: "images/gallery/concept/13.webp", 
+            title: "Лимонный дождь", 
+            desc: "Когда свет проходит сквозь воду, рождается не просто настроение, а состояние." 
+        },
+        { 
+            img: "images/gallery/concept/14.webp", 
+            title: "Яйцо на вилке", 
+            desc: "Тонкий баланс. Концепт, который держится на одном движении." 
+        },
+        { 
+            img: "images/gallery/concept/15.webp", 
+            title: "Тёплые огни", 
+            desc: "Огоньки, которые согревают душу даже в самую холодную ночь." 
+        },
+        { 
+            img: "images/gallery/concept/16.webp", 
+            title: "Золотая снежинка", 
+            desc: "Зима — это не холод. Это время, когда мир становится графичным и чистым." 
+        },
+        { 
+            img: "images/gallery/concept/17.webp", 
+            title: "Капля на лепестке", 
+            desc: "Невесомость, застывшая в одном мгновении. Тишина, которую можно увидеть." 
+        },
+
+        // —————— ПРИРОДА ——————
+        { 
+            img: "images/gallery/nature/1.webp", 
+            title: "Осеннее отражение", 
+            desc: "Листья падают не потому, что умирают. Они просто меняют свой путь." 
+        },
+        { 
+            img: "images/gallery/nature/2.webp", 
+            title: "Морозный рассвет", 
+            desc: "Зима — это не холод. Это время, когда мир становится графичным и чистым." 
+        },
+        { 
+            img: "images/gallery/nature/3.webp", 
+            title: "Весеннее цветение", 
+            desc: "Природа просыпается, чтобы напомнить: всё начинается заново." 
+        },
+        { 
+            img: "images/gallery/nature/4.webp", 
+            title: "Сакура в сумерках", 
+            desc: "Цветы, которые цветут лишь для того, чтобы напомнить нам о быстротечности прекрасного." 
+        },
+        { 
+            img: "images/gallery/nature/5.webp", 
+            title: "Тёплый свет", 
+            desc: "Солнце, пробивающееся сквозь листву. Это и есть счастье." 
+        },
     ];
 
-    cardsData.forEach(item => {
+    // ===== ФУНКЦИЯ ПЕРЕМЕШИВАНИЯ (РАНДОМ) =====
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
+
+    // Перемешиваем массив при каждой загрузке
+    const shuffledCards = shuffleArray([...allCards]);
+
+    // Генерируем карточки в случайном порядке
+    shuffledCards.forEach(item => {
         const card = document.createElement('div');
         card.className = 'flip-3d-card';
         card.innerHTML = `
@@ -249,15 +476,14 @@ document.addEventListener("DOMContentLoaded", function() {
             </div>
         `;
         
-        // === ДОБАВЛЕНО: при клике закрываем все остальные открытки ===
         card.addEventListener('click', function() {
-            // Сначала находим все открытки и убираем у них класс flipped
+            // Закрываем все остальные открытки
             document.querySelectorAll('.flip-3d-card').forEach(function(el) {
-                if (el !== card) { // если это не текущая открытка
+                if (el !== card) {
                     el.classList.remove('flipped');
                 }
             });
-            // Затем переворачиваем текущую
+            // Переворачиваем текущую
             this.classList.toggle('flipped');
         });
 
