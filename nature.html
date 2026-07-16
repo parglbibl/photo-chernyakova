@@ -328,7 +328,7 @@
                     <ul class="dropdown-content">
                         <li><a href="macro.html">Макромир</a></li>
                         <li><a href="concept.html">Концепт</a></li>
-                        <li><a href="nature.html" class="active">Природа</a></li>
+                        <li><a href="nature.html">Природа</a></li>
                     </ul>
                 </li>
 
@@ -359,41 +359,4 @@
 
     <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
         <div class="container">
-            <div class="section-title">Пейзажи</div>
-            <div class="section-subtitle">Сакура, лёд и закаты</div>
-            <div class="gallery" id="natureGallery">
-                <div class="gallery-item" onclick="openLightbox(0, natureImages, natureCaptions)"><img src="images/gallery/nature/1.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item" onclick="openLightbox(1, natureImages, natureCaptions)"><img src="images/gallery/nature/2.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item" onclick="openLightbox(2, natureImages, natureCaptions)"><img src="images/gallery/nature/3.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item" onclick="openLightbox(3, natureImages, natureCaptions)"><img src="images/gallery/nature/4.webp" alt="" loading="lazy" /></div>
-                <div class="gallery-item" onclick="openLightbox(4, natureImages, natureCaptions)"><img src="images/gallery/nature/5.webp" alt="" loading="lazy" /></div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p class="stardust">✦ Каждое фото — это застывшая эмоция ✦</p>
-            <p>© <span id="current-year"></span> Галина Чернякова</p>
-        </div>
-    </footer>
-
-    <script src="js/main.js"></script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            var observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            document.querySelectorAll('.section, .gallery').forEach(function(el) {
-                el.classList.add('fade-up');
-                observer.observe(el);
-            });
-        });
-    </script>
-</body>
-</html>
+            <
