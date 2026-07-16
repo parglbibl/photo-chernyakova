@@ -335,7 +335,6 @@
         <span class="current">Крупным планом</span>
     </div>
 
-    <!-- ===== HERO ===== -->
     <section class="hero" style="padding-top: 20px; padding-bottom: 10px;">
         <div class="container">
             <h1>Крупным <span>планом</span></h1>
@@ -344,7 +343,6 @@
         </div>
     </section>
 
-    <!-- ===== О ПРОЕКТЕ ===== -->
     <section class="section fade-up" style="padding-top: 10px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">О проекте</div>
@@ -392,7 +390,6 @@
         </div>
     </section>
 
-    <!-- ===== ГАЛЕРЕЯ ===== -->
     <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">Атмосфера события</div>
@@ -410,7 +407,6 @@
                 <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(9, projectImages, projectCaptions)"><img src="images/krupnym_planom/10.webp" alt="Фото 10" style="width: 100%; height: auto; display: block;"></div>
                 <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(10, projectImages, projectCaptions)"><img src="images/krupnym_planom/11.webp" alt="Фото 11" style="width: 100%; height: auto; display: block;"></div>
                 <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(11, projectImages, projectCaptions)"><img src="images/krupnym_planom/12.webp" alt="Фото 12" style="width: 100%; height: auto; display: block;"></div>
-                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(12, projectImages, projectCaptions)"><img src="images/krupnym_planom/13.webp" alt="Фото 13" style="width: 100%; height: auto; display: block;"></div>
             </div>
         </div>
     </section>
@@ -440,25 +436,37 @@
         });
     </script>
 
-    <!-- ===== ЛАЙТБОКС ДАННЫЕ ===== -->
     <script>
         var projectImages = [
-            'images/krupnym_planom/1.webp', 'images/krupnym_planom/2.webp', 'images/krupnym_planom/3.webp',
-            'images/krupnym_planom/4.webp', 'images/krupnym_planom/5.webp', 'images/krupnym_planom/6.webp',
-            'images/krupnym_planom/7.webp', 'images/krupnym_planom/8.webp', 'images/krupnym_planom/9.webp',
-            'images/krupnym_planom/10.webp', 'images/krupnym_planom/11.webp', 'images/krupnym_planom/12.webp',
-            'images/krupnym_planom/13.webp'
+            'images/krupnym_planom/1.webp',
+            'images/krupnym_planom/2.webp',
+            'images/krupnym_planom/3.webp',
+            'images/krupnym_planom/4.webp',
+            'images/krupnym_planom/5.webp',
+            'images/krupnym_planom/6.webp',
+            'images/krupnym_planom/7.webp',
+            'images/krupnym_planom/8.webp',
+            'images/krupnym_planom/9.webp',
+            'images/krupnym_planom/10.webp',
+            'images/krupnym_planom/11.webp',
+            'images/krupnym_planom/12.webp'
         ];
         var projectCaptions = [
-            'Разговор о фотографии', 'Афиша и диплом', 'Зрители изучают работы',
-            'Авторская экскурсия', 'Фотографии в фокусе', 'Цветы от гостей',
-            'Экспозиция', 'Галина и зрители', 'Обсуждение деталей',
-            'Выставка в деталях', 'Разговор о творчестве', 'Атмосфера мероприятия',
-            'Финальный кадр'
+            'Разговор о фотографии',
+            'Афиша и диплом',
+            'Зрители изучают работы',
+            'Авторская экскурсия',
+            'Фотографии в фокусе',
+            'Цветы от гостей',
+            'Экспозиция',
+            'Галина и зрители',
+            'Обсуждение деталей',
+            'Выставка в деталях',
+            'Разговор о творчестве',
+            'Атмосфера мероприятия'
         ];
     </script>
 
-    <!-- ===== ЛАЙТБОКС HTML ===== -->
     <div id="lightbox" style="display: none;">
         <span class="close" onclick="closeLightbox()">&times;</span>
         <div class="image-wrapper">
@@ -470,7 +478,6 @@
         <div class="counter" id="lightboxCounter"></div>
     </div>
 
-    <!-- ===== ЛАЙТБОКС JS ===== -->
     <script>
         var lightbox = document.getElementById('lightbox');
         var lightboxImage = document.getElementById('lightboxImage');
