@@ -594,7 +594,7 @@ h1 span,
 
 @media (max-width: 900px) {
     .hero {
-        padding-top: 12px !important; /* Уменьшил отступ с 30px до 12px */
+        padding-top: 30px !important;
     }
 }
 
@@ -1310,7 +1310,6 @@ img {
 }
 
 .flip-3d-back {
-    /* Мягкий тёплый кремовый — идеальный цвет дорогой открытки */
     background: #e3dcd0;
     border: 1px solid rgba(0, 0, 0, 0.06);
     transform: rotateY(180deg);
@@ -1378,8 +1377,9 @@ img {
         margin-top: 10px !important;
         margin-bottom: -20px !important;
     }
-    
-/* ===== КНОПКА ПОДЕЛИТЬСЯ ВК НА ОТКРЫТКАХ ===== */
+}
+
+/* ===== КНОПКА ПОДЕЛИТЬСЯ НА ОТКРЫТКАХ ===== */
 .share-wrapper {
     position: absolute;
     bottom: 12px;
@@ -1407,7 +1407,7 @@ img {
 }
 
 .share-btn:hover {
-    background: #4a76a8; /* Цвет VK */
+    background: rgba(195, 154, 116, 0.8);
     transform: scale(1.05);
 }
 
@@ -1465,5 +1465,4 @@ img {
         height: 44px;
         font-size: 18px;
     }
-}
 }
