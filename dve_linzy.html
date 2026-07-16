@@ -171,6 +171,120 @@
         .breadcrumbs .current {
             color: var(--muted);
         }
+
+        /* ===== ЛАЙТБОКС ===== */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(4px);
+        }
+
+        #lightbox .image-wrapper {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        #lightbox .caption {
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+            padding: 8px 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        #lightbox .close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+            line-height: 1;
+            z-index: 10;
+        }
+        #lightbox .close:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        #lightbox .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.4);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 5;
+        }
+        #lightbox .nav-btn:hover {
+            background: var(--accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+        #lightbox .nav-prev {
+            left: -70px;
+        }
+        #lightbox .nav-next {
+            right: -70px;
+        }
+
+        #lightbox .counter {
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            margin-top: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            #lightbox .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+            #lightbox .nav-prev {
+                left: 10px;
+            }
+            #lightbox .nav-next {
+                right: 10px;
+            }
+            #lightbox .close {
+                top: -40px;
+                font-size: 32px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -272,22 +386,22 @@
         </div>
     </section>
 
-    <!-- ===== ГАЛЕРЕЯ ===== -->
+    <!-- ===== ГАЛЕРЕЯ (КЛИКАБЕЛЬНАЯ) ===== -->
     <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">Атмосфера события</div>
             <div class="section-subtitle">Как это было</div>
             <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; max-width: 900px; margin: 0 auto;">
-                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3);"><img src="images/dve_linzy/1.webp" alt="Фото 1" style="width: 100%; height: auto; display: block;"></div>
-                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3);"><img src="images/dve_linzy/2.webp" alt="Фото 2" style="width: 100%; height: auto; display: block;"></div>
-                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3);"><img src="images/dve_linzy/3.webp" alt="Фото 3" style="width: 100%; height: auto; display: block;"></div>
-                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3);"><img src="images/dve_linzy/4.webp" alt="Фото 4" style="width: 100%; height: auto; display: block;"></div>
-                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3);"><img src="images/dve_linzy/5.webp" alt="Фото 5" style="width: 100%; height: auto; display: block;"></div>
-                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3);"><img src="images/dve_linzy/6.webp" alt="Фото 6" style="width: 100%; height: auto; display: block;"></div>
-                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3);"><img src="images/dve_linzy/7.webp" alt="Фото 7" style="width: 100%; height: auto; display: block;"></div>
-                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3);"><img src="images/dve_linzy/8.webp" alt="Фото 8" style="width: 100%; height: auto; display: block;"></div>
-                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3);"><img src="images/dve_linzy/9.webp" alt="Фото 9" style="width: 100%; height: auto; display: block;"></div>
-                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3);"><img src="images/dve_linzy/10.webp" alt="Фото 10" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(0, projectImages, projectCaptions)"><img src="images/dve_linzy/1.webp" alt="Фото 1" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(1, projectImages, projectCaptions)"><img src="images/dve_linzy/2.webp" alt="Фото 2" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(2, projectImages, projectCaptions)"><img src="images/dve_linzy/3.webp" alt="Фото 3" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(3, projectImages, projectCaptions)"><img src="images/dve_linzy/4.webp" alt="Фото 4" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(4, projectImages, projectCaptions)"><img src="images/dve_linzy/5.webp" alt="Фото 5" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(5, projectImages, projectCaptions)"><img src="images/dve_linzy/6.webp" alt="Фото 6" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(6, projectImages, projectCaptions)"><img src="images/dve_linzy/7.webp" alt="Фото 7" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(7, projectImages, projectCaptions)"><img src="images/dve_linzy/8.webp" alt="Фото 8" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(8, projectImages, projectCaptions)"><img src="images/dve_linzy/9.webp" alt="Фото 9" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(9, projectImages, projectCaptions)"><img src="images/dve_linzy/10.webp" alt="Фото 10" style="width: 100%; height: auto; display: block;"></div>
             </div>
         </div>
     </section>
@@ -314,6 +428,98 @@
                 el.classList.add('fade-up');
                 observer.observe(el);
             });
+        });
+    </script>
+
+    <!-- ===== ЛАЙТБОКС ДАННЫЕ ===== -->
+    <script>
+        var projectImages = [
+            'images/dve_linzy/1.webp',
+            'images/dve_linzy/2.webp',
+            'images/dve_linzy/3.webp',
+            'images/dve_linzy/4.webp',
+            'images/dve_linzy/5.webp',
+            'images/dve_linzy/6.webp',
+            'images/dve_linzy/7.webp',
+            'images/dve_linzy/8.webp',
+            'images/dve_linzy/9.webp',
+            'images/dve_linzy/10.webp'
+        ];
+        var projectCaptions = [
+            'Момент открытия выставки',
+            'Встреча с гостями',
+            'Обсуждение работ',
+            'Знакомство с проектом',
+            'Разговор о творчестве',
+            'Живая атмосфера',
+            'Фотографии в фокусе',
+            'Взгляд на детали',
+            'Творческий диалог',
+            'Дружеское фото на память'
+        ];
+    </script>
+
+    <!-- ===== ЛАЙТБОКС HTML ===== -->
+    <div id="lightbox" style="display: none;">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="image-wrapper">
+            <img id="lightboxImage" src="" alt="" />
+            <span class="nav-btn nav-prev" onclick="changeImage(-1)">‹</span>
+            <span class="nav-btn nav-next" onclick="changeImage(1)">›</span>
+        </div>
+        <div class="caption" id="lightboxCaption"></div>
+        <div class="counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- ===== ЛАЙТБОКС JS ===== -->
+    <script>
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImage = document.getElementById('lightboxImage');
+        var lightboxCaption = document.getElementById('lightboxCaption');
+        var lightboxCounter = document.getElementById('lightboxCounter');
+        var currentIndex = 0;
+        var currentImages = [];
+        var currentCaptions = [];
+
+        function openLightbox(index, images, captions) {
+            if (!images || !images.length) return;
+            currentImages = images;
+            currentCaptions = captions || [];
+            currentIndex = index;
+            renderLightbox();
+        }
+
+        function renderLightbox() {
+            if (!currentImages.length) return;
+            lightboxImage.src = currentImages[currentIndex];
+            lightboxCaption.textContent = currentCaptions[currentIndex] || '';
+            lightboxCounter.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function changeImage(direction) {
+            if (!currentImages.length) return;
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = currentImages.length - 1;
+            if (currentIndex >= currentImages.length) currentIndex = 0;
+            renderLightbox();
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.style.display === 'none') return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
         });
     </script>
 </body>
