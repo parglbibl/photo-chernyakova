@@ -304,18 +304,26 @@
         <div class="container">
             <div class="section-title">Крупным планом</div>
             <div class="section-subtitle">Персональная фотовыставка в Сортавальской центральной библиотеке</div>
-            <div class="project-card">
-                <h3>«Крупным планом»</h3>
-                <p>Проект, посвящённый макромиру и концептуальной фотографии. Зрители увидели привычные вещи в новом свете, через призму деталей.</p>
-                <p style="margin-top: 12px;">Выставка работала с <strong>17 апреля по 17 мая 2026 года</strong> в Сортавальской центральной библиотеке (г. Сортавала, ул. Гагарина, 14).</p>
+            <div class="project-card" style="position: relative; overflow: hidden;">
                 
-                <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; margin-top: 10px;">
-                    <div class="badge">📍 Сортавала</div>
-                    <div class="badge">📸 Персональная выставка</div>
-                    <div class="badge">📅 17 апреля – 17 мая 2026</div>
+                <!-- ФОНОВОЕ ФОТО: АФИША И ДИПЛОМ -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;">
+                    <img src="images/krupnym_planom/2.webp" alt="Фон выставки" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.15; filter: blur(2px);">
                 </div>
 
-                <a href="krupnym_planom.html" class="btn">Подробнее →</a>
+                <div style="position: relative; z-index: 1;">
+                    <h3>«Крупным планом»</h3>
+                    <p>Проект, посвящённый макромиру и концептуальной фотографии. Зрители увидели привычные вещи в новом свете, через призму деталей.</p>
+                    <p style="margin-top: 12px;">Выставка работала с <strong>17 апреля по 17 мая 2026 года</strong> в Сортавальской центральной библиотеке (г. Сортавала, ул. Гагарина, 14).</p>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; margin-top: 10px;">
+                        <div class="badge">📍 Сортавала</div>
+                        <div class="badge">📸 Персональная выставка</div>
+                        <div class="badge">📅 17 апреля – 17 мая 2026</div>
+                    </div>
+
+                    <a href="krupnym_planom.html" class="btn">Подробнее →</a>
+                </div>
             </div>
         </div>
     </section>
