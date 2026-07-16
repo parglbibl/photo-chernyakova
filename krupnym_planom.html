@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Крупным планом — Галина Чернякова</title>
+    <meta name="description" content="Персональная фотовыставка Галины Черняковой «Крупным планом» в Сортавальской центральной библиотеке." />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <style>
+        .nav .dropdown { position: relative; }
+        .nav .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 160px;
+            width: auto;
+            background: rgba(24, 23, 21, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 6px 0;
+            list-style: none;
+            z-index: 200;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+        .nav .dropdown.open .dropdown-content { display: block; }
+        .nav .dropdown-toggle {
+            display: inline-block;
+            padding: 6px 0;
+            cursor: pointer;
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            line-height: 1;
+        }
+        .nav .dropdown-toggle:hover { color: #FFFFFF; }
+        .nav .dropdown-content a {
+            display: block;
+            width: 100%;
+            padding: 8px 20px;
+            font-size: 17px;
+            color: var(--muted);
+            text-decoration: none;
+            transition: 0.2s;
+            border-radius: 0;
+            box-sizing: border-box;
+        }
+        .nav .dropdown-content a:hover {
+            color: #FFFFFF;
+            background: rgba(195, 154, 116, 0.1);
+        }
+
+        @media (max-width: 900px) {
+            .nav.active { display: flex !important; }
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 70px;
+                right: 20px;
+                width: 55%;
+                max-width: 260px;
+                background: rgba(24, 23, 21, 0.96);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 20px;
+                padding: 12px 0 12px 0;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+                z-index: 999;
+            }
+            .nav li { width: 100%; text-align: center; }
+            .nav a, .nav .dropdown-toggle {
+                display: block;
+                padding: 6px 0;
+                font-size: 16px;
+                line-height: 1.2;
+                width: 100%;
+                color: var(--muted);
+                transition: 0.2s;
+                cursor: pointer;
+            }
+            .nav a:hover, .nav .dropdown-toggle:hover { color: #FFFFFF; }
+            .nav .dropdown { width: 100%; }
+            .nav .dropdown-content {
+                position: static;
+                transform: none;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+                background: rgba(0, 0, 0, 0.2);
+                border-radius: 0;
+                padding: 0;
+                margin-top: 0;
+                display: none;
+            }
+            .nav .dropdown.open .dropdown-content { display: block; }
+            .nav .dropdown-content a {
+                font-size: 14px;
+                padding: 4px 0;
+                line-height: 1.2;
+                color: var(--small);
+            }
+            .nav .dropdown-content a:hover { color: #FFFFFF; }
+            .burger-btn {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                cursor: pointer;
+                z-index: 1000;
+                padding: 5px;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: transparent;
+                border: none;
+            }
+            .burger-btn span {
+                display: block;
+                width: 22px;
+                height: 2px;
+                background-color: var(--muted);
+                border-radius: 1px;
+                transition: 0.3s;
+            }
+            .nav.active ~ .burger-btn span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+            .nav.active ~ .burger-btn span:nth-child(2) { opacity: 0; }
+            .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        }
+
+        /* Скрываем кнопку бургера на ПК */
+        @media (min-width: 901px) {
+            .burger-btn {
+                display: none !important;
+            }
+        }
+
+        .breadcrumbs {
+            max-width: 1120px;
+            margin: 0 auto 16px auto;
+            padding: 0 16px;
+            color: var(--muted);
+            font-size: 15px;
+            letter-spacing: 0.3px;
+        }
+        .breadcrumbs a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .breadcrumbs a:hover {
+            color: #fff;
+        }
+        .breadcrumbs .sep {
+            color: var(--small);
+            margin: 0 6px;
+        }
+        .breadcrumbs .current {
+            color: var(--muted);
+        }
+
+        /* ===== ЛАЙТБОКС ===== */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(4px);
+        }
+
+        #lightbox .image-wrapper {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        #lightbox .caption {
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+            padding: 8px 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        #lightbox .close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+            line-height: 1;
+            z-index: 10;
+        }
+        #lightbox .close:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        #lightbox .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.4);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 5;
+        }
+        #lightbox .nav-btn:hover {
+            background: var(--accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+        #lightbox .nav-prev {
+            left: -70px;
+        }
+        #lightbox .nav-next {
+            right: -70px;
+        }
+
+        #lightbox .counter {
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            margin-top: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            #lightbox .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+            #lightbox .nav-prev {
+                left: 10px;
+            }
+            #lightbox .nav-next {
+                right: 10px;
+            }
+            #lightbox .close {
+                top: -40px;
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <img id="top-layer-gerbera" src="images/bg.webp">
+
+    <a href="index.html">
+        <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
+    </a>
+
+    <header>
+        <div class="header-inner">
+            <button class="burger-btn" id="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                
+                <li class="dropdown">
+                    <span class="dropdown-toggle">Галерея</span>
+                    <ul class="dropdown-content">
+                        <li><a href="macro.html">Макромир</a></li>
+                        <li><a href="concept.html">Концепт</a></li>
+                        <li><a href="nature.html">Природа</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="cards.html">Открытки настроения</a></li>
+
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="faq.html">Вопросы и ответы</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="breadcrumbs">
+        <a href="index.html">Главная</a>
+        <span class="sep">›</span>
+        <a href="projects.html">Проекты</a>
+        <span class="sep">›</span>
+        <span class="current">Крупным планом</span>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" style="padding-top: 20px; padding-bottom: 10px;">
+        <div class="container">
+            <h1>Крупным <span>планом</span></h1>
+            <p class="hero-lead">Персональная выставка в Сортавальской центральной библиотеке</p>
+            <div class="hero-quote">✨ «Рассмотреть то, мимо чего мы проходим каждый день» ✨</div>
+        </div>
+    </section>
+
+    <!-- ===== О ПРОЕКТЕ ===== -->
+    <section class="section fade-up" style="padding-top: 10px; padding-bottom: 20px;">
+        <div class="container">
+            <div class="section-title">О проекте</div>
+            <div class="section-text" style="text-align: left; max-width: 800px;">
+                
+                <p>
+                    <strong>17 апреля 2026 года</strong> в Сортавальской центральной библиотеке 
+                    состоялось открытие моей персональной фотовыставки «Крупным планом».
+                </p>
+
+                <p style="margin-top: 20px;">
+                    Это было особенно волнительное событие для меня, потому что Сортавала — 
+                    моя малая родина. Именно здесь, в фотоклубе «6х9», начался мой путь 
+                    в фотографию. Показать свои лучшие работы здесь, на родной земле, 
+                    было для меня очень важно.
+                </p>
+
+                <p style="margin-top: 20px;">
+                    Я благодарна моему учителю, <strong>Екатерине Васильевне Басиной</strong>, 
+                    которая была специальным гостем церемонии. Для меня её присутствие 
+                    было особенно ценным — именно она когда-то открыла для меня макромир 
+                    и верила в меня все эти годы.
+                </p>
+
+                <p style="margin-top: 20px;">
+                    Мы много говорили с гостями на открытии: я отвечала на вопросы, 
+                    делилась секретами макросъемки, рассказывала о том, как рождалась каждая работа. 
+                    Макро для меня — это способ увидеть прекрасное в любое время года. 
+                    Когда за окном снег, дождь или слякоть, я беру камеру, нахожу крошечный сюжет 
+                    и рассматриваю целый мир.
+                </p>
+
+                <p style="margin-top: 20px;">
+                    Выставка прошла в тёплой, живой атмосфере. Зрители задавали вопросы, 
+                    рассматривали детали, делились эмоциями. Это был именно тот диалог, 
+                    ради которого я и занимаюсь фотографией.
+                </p>
+
+                <p style="margin-top: 20px;">
+                    Выставка работала в конференц-зале библиотеки по адресу: 
+                    <strong>ул. Гагарина, 14 (1 этаж)</strong> до <strong>17 мая 2026 года</strong>. 
+                    Вход был свободным.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ГАЛЕРЕЯ ===== -->
+    <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
+        <div class="container">
+            <div class="section-title">Атмосфера события</div>
+            <div class="section-subtitle">Как это было</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; max-width: 900px; margin: 0 auto;">
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(0, projectImages, projectCaptions)"><img src="images/krupnym_planom/1.webp" alt="Фото 1" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(1, projectImages, projectCaptions)"><img src="images/krupnym_planom/2.webp" alt="Фото 2" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(2, projectImages, projectCaptions)"><img src="images/krupnym_planom/3.webp" alt="Фото 3" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(3, projectImages, projectCaptions)"><img src="images/krupnym_planom/4.webp" alt="Фото 4" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(4, projectImages, projectCaptions)"><img src="images/krupnym_planom/5.webp" alt="Фото 5" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(5, projectImages, projectCaptions)"><img src="images/krupnym_planom/6.webp" alt="Фото 6" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(6, projectImages, projectCaptions)"><img src="images/krupnym_planom/7.webp" alt="Фото 7" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(7, projectImages, projectCaptions)"><img src="images/krupnym_planom/8.webp" alt="Фото 8" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(8, projectImages, projectCaptions)"><img src="images/krupnym_planom/9.webp" alt="Фото 9" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(9, projectImages, projectCaptions)"><img src="images/krupnym_planom/10.webp" alt="Фото 10" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(10, projectImages, projectCaptions)"><img src="images/krupnym_planom/11.webp" alt="Фото 11" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(11, projectImages, projectCaptions)"><img src="images/krupnym_planom/12.webp" alt="Фото 12" style="width: 100%; height: auto; display: block;"></div>
+                <div style="border-radius: 12px; overflow: hidden; border: 1px solid rgba(255,255,255,0.08); box-shadow: 0 4px 15px rgba(0,0,0,0.3); cursor: pointer;" onclick="openLightbox(12, projectImages, projectCaptions)"><img src="images/krupnym_planom/13.webp" alt="Фото 13" style="width: 100%; height: auto; display: block;"></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Каждое фото — это застывшая эмоция ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.section').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
+            });
+        });
+    </script>
+
+    <!-- ===== ЛАЙТБОКС ДАННЫЕ ===== -->
+    <script>
+        var projectImages = [
+            'images/krupnym_planom/1.webp', 'images/krupnym_planom/2.webp', 'images/krupnym_planom/3.webp',
+            'images/krupnym_planom/4.webp', 'images/krupnym_planom/5.webp', 'images/krupnym_planom/6.webp',
+            'images/krupnym_planom/7.webp', 'images/krupnym_planom/8.webp', 'images/krupnym_planom/9.webp',
+            'images/krupnym_planom/10.webp', 'images/krupnym_planom/11.webp', 'images/krupnym_planom/12.webp',
+            'images/krupnym_planom/13.webp'
+        ];
+        var projectCaptions = [
+            'Разговор о фотографии', 'Афиша и диплом', 'Зрители изучают работы',
+            'Авторская экскурсия', 'Фотографии в фокусе', 'Цветы от гостей',
+            'Экспозиция', 'Галина и зрители', 'Обсуждение деталей',
+            'Выставка в деталях', 'Разговор о творчестве', 'Атмосфера мероприятия',
+            'Финальный кадр'
+        ];
+    </script>
+
+    <!-- ===== ЛАЙТБОКС HTML ===== -->
+    <div id="lightbox" style="display: none;">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="image-wrapper">
+            <img id="lightboxImage" src="" alt="" />
+            <span class="nav-btn nav-prev" onclick="changeImage(-1)">‹</span>
+            <span class="nav-btn nav-next" onclick="changeImage(1)">›</span>
+        </div>
+        <div class="caption" id="lightboxCaption"></div>
+        <div class="counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- ===== ЛАЙТБОКС JS ===== -->
+    <script>
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImage = document.getElementById('lightboxImage');
+        var lightboxCaption = document.getElementById('lightboxCaption');
+        var lightboxCounter = document.getElementById('lightboxCounter');
+        var currentIndex = 0;
+        var currentImages = [];
+        var currentCaptions = [];
+
+        function openLightbox(index, images, captions) {
+            if (!images || !images.length) return;
+            currentImages = images;
+            currentCaptions = captions || [];
+            currentIndex = index;
+            renderLightbox();
+        }
+
+        function renderLightbox() {
+            if (!currentImages.length) return;
+            lightboxImage.src = currentImages[currentIndex];
+            lightboxCaption.textContent = currentCaptions[currentIndex] || '';
+            lightboxCounter.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function changeImage(direction) {
+            if (!currentImages.length) return;
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = currentImages.length - 1;
+            if (currentIndex >= currentImages.length) currentIndex = 0;
+            renderLightbox();
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.style.display === 'none') return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+        });
+    </script>
+</body>
+</html>
