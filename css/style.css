@@ -12,8 +12,6 @@
 }
 
 * {
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -922,7 +920,7 @@ h1 {
     filter: brightness(0.96);
 }
 
-/* ===== ЛАЙТБОКС (ИСПРАВЛЕННЫЙ, КОМПАКТНЫЙ) ===== */
+/* ===== ЛАЙТБОКС ===== */
 #lightbox {
     position: fixed;
     top: 0;
