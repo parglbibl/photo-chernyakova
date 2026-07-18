@@ -333,14 +333,22 @@
         <div class="container">
             <div class="section-title">Фотосушка</div>
             <div class="section-subtitle">Уличная выставка на Дне города в Сертолово</div>
-            <div class="project-card">
-                <h3>Фотосушка в Сертолово</h3>
-                <p>24 августа 2024 года в рамках мероприятий, посвященных Дню города Сертолово. На выставке было представлено 14 работ: городской пейзаж и макро.</p>
-                <div style="margin-top: 16px;">
-                    <a href="photosushka.html" class="btn" style="font-size: 15px;">Перейти →</a>
+            <div class="project-card" style="position: relative; overflow: hidden;">
+                
+                <!-- ФОНОВОЕ ФОТО: Атмосферный кадр с девушкой (фото 9) -->
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none;">
+                    <img src="images/photosushka/9.webp" alt="Фон фотосушки" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.15; filter: blur(2px);">
                 </div>
-                <div class="badge">📍 Сертолово</div>
-                <div class="badge">📸 Уличная выставка</div>
+
+                <div style="position: relative; z-index: 1;">
+                    <h3>Фотосушка в Сертолово</h3>
+                    <p>24 августа 2024 года в рамках мероприятий, посвященных Дню города Сертолово. На выставке было представлено 14 работ: городской пейзаж и макро.</p>
+                    <div style="margin-top: 16px;">
+                        <a href="photosushka.html" class="btn" style="font-size: 15px;">Подробнее →</a>
+                    </div>
+                    <div class="badge">📍 Сертолово</div>
+                    <div class="badge">📸 Уличная выставка</div>
+                </div>
             </div>
         </div>
     </section>
