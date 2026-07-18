@@ -30,7 +30,7 @@ body {
     line-height: 1.8;
     min-height: 100vh;
     font-size: 18px;
-    padding-top: 70px !important;
+    padding-top: 80px !important; /* Чуть увеличил отступ, чтобы меню не наезжало */
 }
 
 body:not(.page-home) {
@@ -176,14 +176,12 @@ a[href="index.html"] {
     transition: transform 0.3s;
 }
 
-/* ===== ИЗМЕНЕНИЕ: ДРОПДАУН ПО НАВЕДЕНИЮ НА ПК ===== */
 @media (min-width: 901px) {
     .nav .dropdown:hover .dropdown-content {
         display: block;
     }
 }
 
-/* Оставляем open для мобильной версии и работы скрипта */
 .nav .dropdown.open .dropdown-content {
     display: block;
 }
@@ -381,7 +379,6 @@ h1 span,
     flex-shrink: 0;
 }
 
-/* ===== ИЗМЕНЕНИЕ ФОРМЫ ФОТО НА ПК (ПРЯМОУГОЛЬНИК 3:4) ===== */
 .hero-avatar-v2 img {
     width: 200px;
     height: 260px;
