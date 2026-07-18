@@ -308,6 +308,120 @@
             }
             .year-header { font-size: 20px; }
         }
+
+        /* ===== ЛАЙТБОКС (КАК НА ГЛАВНОЙ) ===== */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(4px);
+        }
+
+        #lightbox .image-wrapper {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+
+        #lightbox .caption {
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+            padding: 8px 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        #lightbox .close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+            line-height: 1;
+            z-index: 10;
+        }
+        #lightbox .close:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        #lightbox .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.4);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 5;
+        }
+        #lightbox .nav-btn:hover {
+            background: var(--accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+        #lightbox .nav-prev {
+            left: -70px;
+        }
+        #lightbox .nav-next {
+            right: -70px;
+        }
+
+        #lightbox .counter {
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            margin-top: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            #lightbox .nav-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 30px;
+            }
+            #lightbox .nav-prev {
+                left: 10px;
+            }
+            #lightbox .nav-next {
+                right: 10px;
+            }
+            #lightbox .close {
+                top: -40px;
+                font-size: 32px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -487,7 +601,7 @@
         });
     </script>
 
-    <!-- ===== ЛАЙТБОКС ДАННЫЕ (ДИПЛОМЫ) ===== -->
+    <!-- ===== ЛАЙТБОКС ДАННЫЕ ===== -->
     <script>
         var diplomaImages = [
             'images/diploms/gramota9.webp',
@@ -571,7 +685,7 @@
         <div class="counter" id="lightboxCounter"></div>
     </div>
 
-    <!-- ===== ЛАЙТБОКС JS ===== -->
+    <!-- ===== ЛАЙТБОКС JS (ТОЧНО КАК НА ГЛАВНОЙ) ===== -->
     <script>
         var lightbox = document.getElementById('lightbox');
         var lightboxImage = document.getElementById('lightboxImage');
