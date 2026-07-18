@@ -23,6 +23,7 @@
     <link rel="manifest" href="/site.webmanifest">
 
     <style>
+        /* === СТИЛИ БУРГЕРА И МЕНЮ === */
         .nav .dropdown { position: relative; }
         .nav .dropdown-content {
             display: none;
@@ -148,11 +149,8 @@
             .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
         }
 
-        /* Скрываем кнопку бургера на ПК */
         @media (min-width: 901px) {
-            .burger-btn {
-                display: none !important;
-            }
+            .burger-btn { display: none !important; }
         }
 
         .breadcrumbs {
@@ -168,15 +166,119 @@
             text-decoration: none;
             transition: color 0.2s;
         }
-        .breadcrumbs a:hover {
-            color: #fff;
-        }
+        .breadcrumbs a:hover { color: #fff; }
         .breadcrumbs .sep {
             color: var(--small);
             margin: 0 6px;
         }
-        .breadcrumbs .current {
-            color: var(--muted);
+        .breadcrumbs .current { color: var(--muted); }
+
+        /* === СТИЛИ ГАЛЕРЕИ И ФОТО === */
+        .gallery-item {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .gallery-item:hover { transform: scale(1.02); }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* === ЛАЙТБОКС === */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(4px);
+        }
+        #lightbox .image-wrapper {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #lightbox img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+        }
+        #lightbox .caption {
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+            padding: 8px 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            font-weight: 500;
+        }
+        #lightbox .close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+            line-height: 1;
+            z-index: 10;
+        }
+        #lightbox .close:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+        #lightbox .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.4);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 5;
+        }
+        #lightbox .nav-btn:hover {
+            background: var(--accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+        #lightbox .nav-prev { left: -70px; }
+        #lightbox .nav-next { right: -70px; }
+        #lightbox .counter {
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            margin-top: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+        @media (max-width: 768px) {
+            #lightbox .nav-btn { width: 40px; height: 40px; font-size: 30px; }
+            #lightbox .nav-prev { left: 10px; }
+            #lightbox .nav-next { right: 10px; }
+            #lightbox .close { top: -40px; font-size: 32px; }
         }
     </style>
 </head>
@@ -247,29 +349,29 @@
         </div>
     </section>
 
-    <section class="section fade-up" style="padding-top: 10px; padding-bottom: 20px;">
+    <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">Мгновения</div>
             <div class="section-subtitle">Кадры с мероприятия</div>
-            <div class="gallery">
-                <div class="gallery-item"><img src="images/gallery/macro/5.webp" alt="Фотосушка 1"></div>
-                <div class="gallery-item"><img src="images/gallery/macro/14.webp" alt="Фотосушка 2"></div>
-                <div class="gallery-item"><img src="images/gallery/macro/3.webp" alt="Фотосушка 3"></div>
-                <div class="gallery-item"><img src="images/gallery/macro/13.webp" alt="Фотосушка 4"></div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
-        <div class="container">
-            <div class="section-title">Впечатления</div>
-            <div class="section-subtitle">От участника до зрителя</div>
-            <div class="card" style="max-width: 760px; margin: 0 auto; text-align: center;">
-                <p style="font-size: 17px; line-height: 1.8; color: var(--muted);">
-                    «Фотосушка — это не просто выставка. Это диалог между фотографом и зрителем, который происходит вживую. Я очень рада, что стала инициатором этого события и смогла показать людям свои работы прямо на улицах нашего города.»
-                    <br><br>
-                    <span class="accent-text" style="font-weight: 500;">— Галина Чернякова</span>
-                </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; max-width: 1000px; margin: 0 auto;">
+                
+                <div class="gallery-item" onclick="openLightbox(0, projectImages, projectCaptions)"><img src="images/photosushka/1.webp" alt="Фотосушка 1"></div>
+                <div class="gallery-item" onclick="openLightbox(1, projectImages, projectCaptions)"><img src="images/photosushka/2.webp" alt="Фотосушка 2"></div>
+                <div class="gallery-item" onclick="openLightbox(2, projectImages, projectCaptions)"><img src="images/photosushka/3.webp" alt="Фотосушка 3"></div>
+                <div class="gallery-item" onclick="openLightbox(3, projectImages, projectCaptions)"><img src="images/photosushka/4.webp" alt="Фотосушка 4"></div>
+                <div class="gallery-item" onclick="openLightbox(4, projectImages, projectCaptions)"><img src="images/photosushka/5.webp" alt="Фотосушка 5"></div>
+                <div class="gallery-item" onclick="openLightbox(5, projectImages, projectCaptions)"><img src="images/photosushka/6.webp" alt="Фотосушка 6"></div>
+                <div class="gallery-item" onclick="openLightbox(6, projectImages, projectCaptions)"><img src="images/photosushka/7.webp" alt="Фотосушка 7"></div>
+                <div class="gallery-item" onclick="openLightbox(7, projectImages, projectCaptions)"><img src="images/photosushka/8.webp" alt="Фотосушка 8"></div>
+                <div class="gallery-item" onclick="openLightbox(8, projectImages, projectCaptions)"><img src="images/photosushka/9.webp" alt="Фотосушка 9"></div>
+                <div class="gallery-item" onclick="openLightbox(9, projectImages, projectCaptions)"><img src="images/photosushka/10.webp" alt="Фотосушка 10"></div>
+                <div class="gallery-item" onclick="openLightbox(10, projectImages, projectCaptions)"><img src="images/photosushka/11.webp" alt="Фотосушка 11"></div>
+                <div class="gallery-item" onclick="openLightbox(11, projectImages, projectCaptions)"><img src="images/photosushka/12.webp" alt="Фотосушка 12"></div>
+                <div class="gallery-item" onclick="openLightbox(12, projectImages, projectCaptions)"><img src="images/photosushka/13.webp" alt="Фотосушка 13"></div>
+                <div class="gallery-item" onclick="openLightbox(13, projectImages, projectCaptions)"><img src="images/photosushka/14.webp" alt="Фотосушка 14"></div>
+                <div class="gallery-item" onclick="openLightbox(14, projectImages, projectCaptions)"><img src="images/photosushka/15.webp" alt="Фотосушка 15"></div>
+                <div class="gallery-item" onclick="openLightbox(15, projectImages, projectCaptions)"><img src="images/photosushka/16.webp" alt="Фотосушка 16"></div>
+                
             </div>
         </div>
     </section>
@@ -298,5 +400,100 @@
             });
         });
     </script>
+
+    <!-- ===== ЛАЙТБОКС ДАННЫЕ ===== -->
+    <script>
+        var projectImages = [
+            'images/photosushka/1.webp', 'images/photosushka/2.webp', 'images/photosushka/3.webp',
+            'images/photosushka/4.webp', 'images/photosushka/5.webp', 'images/photosushka/6.webp',
+            'images/photosushka/7.webp', 'images/photosushka/8.webp', 'images/photosushka/9.webp',
+            'images/photosushka/10.webp', 'images/photosushka/11.webp', 'images/photosushka/12.webp',
+            'images/photosushka/13.webp', 'images/photosushka/14.webp', 'images/photosushka/15.webp',
+            'images/photosushka/16.webp'
+        ];
+        var projectCaptions = [
+            'С чего всё начинается — табличка моей сушки',
+            'Ветер, город и наши кадры на заборе',
+            'Уличная галерея, которую мы создали вместе',
+            'Прищепки и нити, соединяющие людей',
+            'Макромир и городские моменты на одной верёвке',
+            'Мой снимок на фоне праздничного Сертолово',
+            'Главное слово, объединившее всех',
+            'Летнее настроение в маленьком кадре',
+            'Гостья, задержавшаяся у моей работы',
+            'Моя красная гербера, улыбающаяся прохожим',
+            'Волонтёр бережно развешивает общие снимки',
+            'Маленькая зрительница у моего макрокадра',
+            'Праздничный город, застывший на бельевой верёвке',
+            'Рассматривать детали через лупу',
+            'Городские зарисовки, подаренные нашему празднику',
+            'Мгновение, которое я запомнила навсегда'
+        ];
+    </script>
+
+    <!-- ===== ЛАЙТБОКС HTML ===== -->
+    <div id="lightbox" style="display: none;">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="image-wrapper">
+            <img id="lightboxImage" src="" alt="" />
+            <span class="nav-btn nav-prev" onclick="changeImage(-1)">‹</span>
+            <span class="nav-btn nav-next" onclick="changeImage(1)">›</span>
+        </div>
+        <div class="caption" id="lightboxCaption"></div>
+        <div class="counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- ===== ЛАЙТБОКС JS ===== -->
+    <script>
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImage = document.getElementById('lightboxImage');
+        var lightboxCaption = document.getElementById('lightboxCaption');
+        var lightboxCounter = document.getElementById('lightboxCounter');
+        var currentIndex = 0;
+        var currentImages = [];
+        var currentCaptions = [];
+
+        function openLightbox(index, images, captions) {
+            if (!images || !images.length) return;
+            currentImages = images;
+            currentCaptions = captions || [];
+            currentIndex = index;
+            renderLightbox();
+        }
+
+        function renderLightbox() {
+            if (!currentImages.length) return;
+            lightboxImage.src = currentImages[currentIndex];
+            lightboxCaption.textContent = currentCaptions[currentIndex] || '';
+            lightboxCounter.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function changeImage(direction) {
+            if (!currentImages.length) return;
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = currentImages.length - 1;
+            if (currentIndex >= currentImages.length) currentIndex = 0;
+            renderLightbox();
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.style.display === 'none') return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+        });
+    </script>
+
 </body>
 </html>
