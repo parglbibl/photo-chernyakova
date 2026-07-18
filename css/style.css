@@ -176,6 +176,14 @@ a[href="index.html"] {
     transition: transform 0.3s;
 }
 
+/* ===== ИЗМЕНЕНИЕ: ДРОПДАУН ПО НАВЕДЕНИЮ НА ПК ===== */
+@media (min-width: 901px) {
+    .nav .dropdown:hover .dropdown-content {
+        display: block;
+    }
+}
+
+/* Оставляем open для мобильной версии и работы скрипта */
 .nav .dropdown.open .dropdown-content {
     display: block;
 }
