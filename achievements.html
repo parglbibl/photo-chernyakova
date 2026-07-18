@@ -271,6 +271,11 @@
             margin-bottom: 30px;
         }
 
+        /* ===== СПЕЦИАЛЬНЫЙ КЛАСС ДЛЯ 2024 ГОДА ===== */
+        .diploma-grid-2024 {
+            align-items: center; /* Выравнивает все карточки по вертикали по центру */
+        }
+
         .diploma-item {
             border-radius: 16px;
             overflow: hidden;
@@ -278,6 +283,7 @@
             transition: transform 0.3s ease, border-color 0.3s ease;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
             cursor: pointer;
+            width: 100%; /* По умолчанию все карточки растягиваются на всю ширину ячейки */
         }
         .diploma-item:hover {
             transform: translateY(-6px);
@@ -294,6 +300,12 @@
             transform: scale(1.03);
         }
 
+        /* ===== УМЕНЬШАЕМ И ЦЕНТРИРУЕМ ТОЛЬКО СЕРТИФИКАТ PHOTOSHOP ===== */
+        .diploma-item-photoshop {
+            width: 220px;           /* Уменьшаем ширину контейнера */
+            justify-self: center;   /* Центрируем его по горизонтали */
+        }
+
         @media (max-width: 900px) {
             .diploma-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -307,6 +319,9 @@
                 gap: 12px;
             }
             .year-header { font-size: 20px; }
+            .diploma-item-photoshop {
+                width: 160px; /* На мобилках тоже уменьшаем, но чуть меньше */
+            }
         }
 
         /* ===== ЛАЙТБОКС (КАК НА ГЛАВНОЙ) ===== */
@@ -527,8 +542,8 @@
                 
                 <!-- 2024 -->
                 <h3 class="year-header">2024</h3>
-                <div class="diploma-grid">
-                    <div class="diploma-item" onclick="openLightbox(0, diplomaImages, diplomaCaptions)"><img src="images/diploms/gramota9.webp" alt="Сертификат Photoshop 2024"></div>
+                <div class="diploma-grid diploma-grid-2024">
+                    <div class="diploma-item diploma-item-photoshop" onclick="openLightbox(0, diplomaImages, diplomaCaptions)"><img src="images/diploms/gramota9.webp" alt="Сертификат Photoshop 2024"></div>
                     <div class="diploma-item" onclick="openLightbox(1, diplomaImages, diplomaCaptions)"><img src="images/diploms/gramota10.webp" alt="35AWARDS Макромир цветов 2024"></div>
                     <div class="diploma-item" onclick="openLightbox(2, diplomaImages, diplomaCaptions)"><img src="images/diploms/gramota11.webp" alt="35AWARDS Капли 2024"></div>
                 </div>
