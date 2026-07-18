@@ -242,6 +242,72 @@
         .breadcrumbs .current {
             color: var(--muted);
         }
+
+        /* ===== СТИЛИ ДЛЯ ТАБЛИЦЫ ДИПЛОМОВ ===== */
+        .year-header {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 24px;
+            margin-top: 40px;
+            position: relative;
+        }
+        .year-header::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 10px auto 0;
+            opacity: 0.6;
+            border-radius: 4px;
+        }
+
+        .diploma-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+
+        .diploma-item {
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+            cursor: pointer;
+        }
+        .diploma-item:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+        }
+        .diploma-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .diploma-item:hover img {
+            transform: scale(1.03);
+        }
+
+        @media (max-width: 900px) {
+            .diploma-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .year-header { font-size: 24px; }
+        }
+        @media (max-width: 480px) {
+            .diploma-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .year-header { font-size: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -337,55 +403,61 @@
         </div>
     </section>
 
+    <!-- ===== ГАЛЕРЕЯ ДИПЛОМОВ (ТЕПЕРЬ С ГОДАМИ) ===== -->
     <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
         <div class="container">
             <div class="section-title">Галерея признания</div>
             <div class="section-subtitle">Официальные дипломы и сертификаты</div>
 
-            <div style="margin: 0 auto; max-width: 700px;">
+            <div style="margin: 0 auto; max-width: 900px;">
+                
+                <!-- 2024 -->
                 <h3 class="year-header">2024</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
-                    <div style="width: 100%;"><img src="images/diploms/gramota9.webp" alt="Сертификат Photoshop 2024" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota10.webp" alt="35AWARDS Макромир цветов 2024" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota11.webp" alt="35AWARDS Капли 2024" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                <div class="diploma-grid">
+                    <div class="diploma-item"><img src="images/diploms/gramota9.webp" alt="Сертификат Photoshop 2024"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota10.webp" alt="35AWARDS Макромир цветов 2024"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota11.webp" alt="35AWARDS Капли 2024"></div>
                 </div>
 
+                <!-- 2025 -->
                 <h3 class="year-header">2025</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
-                    <div style="width: 100%;"><img src="images/diploms/gramota12.webp" alt="Russian Photo Awards 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota13.webp" alt="35AWARDS Монохромный пейзаж 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota16.webp" alt="35AWARDS Чёрно-белый мобильный снимок 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota15.webp" alt="35AWARDS Концептуальный минимализм 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota19.webp" alt="35AWARDS 10-я премия 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota20.webp" alt="35AWARDS Любовная история 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota24.webp" alt="Осень в объективе III место 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota7.webp" alt="Благодарность Две линзы 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota4.webp" alt="Осень в моменте 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota3.webp" alt="35AWARDS Жёлтый+Зелёный 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota1.webp" alt="35AWARDS Цветы 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota2.webp" alt="35AWARDS Капли 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota5.webp" alt="35AWARDS Свадьба 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota21.webp" alt="Мир макрофотографии III место 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota22.webp" alt="Мир макрофотографии Сертификат 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota23.webp" alt="Мир макрофотографии Грамота III место 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota18.webp" alt="Самая красивая страна 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota14.webp" alt="Анна Маслова Чёрно-белое фото" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota17.webp" alt="Анна Маслова Арт" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota6.webp" alt="Restore mobile photo 2025" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                <div class="diploma-grid">
+                    <div class="diploma-item"><img src="images/diploms/gramota12.webp" alt="Russian Photo Awards 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota13.webp" alt="35AWARDS Монохромный пейзаж 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota16.webp" alt="35AWARDS Чёрно-белый мобильный снимок 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota15.webp" alt="35AWARDS Концептуальный минимализм 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota19.webp" alt="35AWARDS 10-я премия 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota20.webp" alt="35AWARDS Любовная история 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota24.webp" alt="Осень в объективе III место 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota7.webp" alt="Благодарность Две линзы 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota4.webp" alt="Осень в моменте 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota3.webp" alt="35AWARDS Жёлтый+Зелёный 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota1.webp" alt="35AWARDS Цветы 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota2.webp" alt="35AWARDS Капли 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota5.webp" alt="35AWARDS Свадьба 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota21.webp" alt="Мир макрофотографии III место 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota22.webp" alt="Мир макрофотографии Сертификат 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota23.webp" alt="Мир макрофотографии Грамота III место 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota18.webp" alt="Самая красивая страна 2025"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota14.webp" alt="Анна Маслова Чёрно-белое фото"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota17.webp" alt="Анна Маслова Арт"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota6.webp" alt="Restore mobile photo 2025"></div>
                 </div>
 
+                <!-- 2026 -->
                 <h3 class="year-header">2026</h3>
-                <div style="display: flex; flex-direction: column; gap: 16px; margin-bottom: 30px;">
-                    <div style="width: 100%;"><img src="images/diploms/gramota8.webp" alt="35AWARDS Adaptive Sports 2026" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota25.webp" alt="Минимализм в яйце 2026" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota26.webp" alt="Благодарность Крупным планом 2026" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota31.webp" alt="ФотоПризер Вода и капли 2026" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota32.webp" alt="ФотоПризер Диплом победителя 2026" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota30.webp" alt="Russian Photo Awards 2026" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota27.webp" alt="ФотоПризер Весенняя макросъемка 2026" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota28.webp" alt="ФотоПризер Светотень 2026" style="width: 100%; height: auto; border-radius: 12px;"></div>
-                    <div style="width: 100%;"><img src="images/diploms/gramota29.webp" alt="ФотоПризер Письмо Светотень 2026" style="width: 100%; height: auto; border-radius: 12px;"></div>
+                <div class="diploma-grid">
+                    <div class="diploma-item"><img src="images/diploms/gramota8.webp" alt="35AWARDS Adaptive Sports 2026"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota25.webp" alt="Минимализм в яйце 2026"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota26.webp" alt="Благодарность Крупным планом 2026"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota31.webp" alt="ФотоПризер Вода и капли 2026"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota32.webp" alt="ФотоПризер Диплом победителя 2026"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota30.webp" alt="Russian Photo Awards 2026"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota27.webp" alt="ФотоПризер Весенняя макросъемка 2026"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota28.webp" alt="ФотоПризер Светотень 2026"></div>
+                    <div class="diploma-item"><img src="images/diploms/gramota29.webp" alt="ФотоПризер Письмо Светотень 2026"></div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -408,7 +480,7 @@
                     }
                 });
             }, { threshold: 0.1 });
-            document.querySelectorAll('.section, .project-card, .card').forEach(function(el) {
+            document.querySelectorAll('.section, .project-card, .card, .stat-card, .diploma-item').forEach(function(el) {
                 el.classList.add('fade-up');
                 observer.observe(el);
             });
