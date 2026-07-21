@@ -265,11 +265,11 @@ document.addEventListener("DOMContentLoaded", function() {
         { img: "images/gallery/concept/16.webp", title: "Золотой холод", desc: "Зима — это не холод. Это время, когда мир становится графичным и чистым." },
         { img: "images/gallery/concept/17.webp", title: "Синий жемчуг", desc: "Невесомость, застывшая в одном мгновении. Тишина, которую можно увидеть." },
 
-        { img: "images/gallery/nature/1.webp", title: "Вторая реальность", desc: "Лужа, в которой отражается всё: небо, деревья и прощание с летом." },
-        { img: "images/gallery/nature/2.webp", title: "Последний свет", desc: "Солнце, уходящее за горизонт, оставляет на небе последний отблеск дня." },
-        { img: "images/gallery/nature/3.webp", title: "Вечернее", desc: "Нежный свет заката, разливающийся по всему вокруг. Время замедляется." },
-        { img: "images/gallery/nature/4.webp", title: "Сакура днём", desc: "Яркие лучи солнца, пробивающиеся сквозь розовые облака цветов." },
-        { img: "images/gallery/nature/5.webp", title: "Утро на хвое", desc: "Первый свет нового дня, запутавшийся в тонких иголках сосны." },
+        { img: "images/gallery/nature/1.webp", title: "Вторая реальность", desc: "Лужа, в которой отражается небо, и мир становится на мгновение другим." },
+        { img: "images/gallery/nature/2.webp", title: "Последний свет", desc: "Солнце прощается с днём, оставляя на небе золотой отблеск." },
+        { img: "images/gallery/nature/3.webp", title: "Вечернее", desc: "Нежный закат разливается по всему вокруг, заставляя время замедлиться." },
+        { img: "images/gallery/nature/4.webp", title: "Сакура днём", desc: "Солнечные лучи играют в лепестках, превращая ветки в розовые облака." },
+        { img: "images/gallery/nature/5.webp", title: "Утро на хвое", desc: "Первый свет нового дня запутался в иголках, даря тишину и свежесть." },
     ];
 
     function shuffleArray(array) {
