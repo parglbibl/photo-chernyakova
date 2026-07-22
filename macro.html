@@ -13,7 +13,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css?v=20260721" />
+    <link rel="stylesheet" href="css/style.css" />
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -188,7 +188,7 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.6);
             width: auto;
             height: auto;
-            display: none; /* скрыты по умолчанию, JS переключает */
+            display: none;
         }
 
         #lightbox img.active-media, #lightbox video.active-media {
@@ -244,8 +244,12 @@
             background: var(--accent);
             transform: translateY(-50%) scale(1.1);
         }
-        #lightbox .nav-prev { left: -70px; }
-        #lightbox .nav-next { right: -70px; }
+        #lightbox .nav-prev {
+            left: -70px;
+        }
+        #lightbox .nav-next {
+            right: -70px;
+        }
 
         #lightbox .counter {
             color: rgba(255,255,255,0.6);
@@ -382,7 +386,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js?v=20260721"></script>
+    <script src="js/main.js"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -470,7 +474,7 @@
         <div class="counter" id="lightboxCounter"></div>
     </div>
 
-    <!-- ===== ЛАЙТБОКС JS (ОБНОВЛЁННЫЙ) ===== -->
+    <!-- ===== ЛАЙТБОКС JS ===== -->
     <script>
         var lightbox = document.getElementById('lightbox');
         var lightboxImage = document.getElementById('lightboxImage');
