@@ -13,7 +13,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/style.css?v=20260721" />
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -177,14 +177,22 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            flex-direction: column;
         }
 
-        #lightbox img {
+        #lightbox img, #lightbox video {
             max-width: 90vw;
-            max-height: 90vh;
+            max-height: 85vh;
             object-fit: contain;
             border-radius: 8px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            width: auto;
+            height: auto;
+            display: none; /* скрыты по умолчанию, JS переключает */
+        }
+
+        #lightbox img.active-media, #lightbox video.active-media {
+            display: block;
         }
 
         #lightbox .caption {
@@ -236,12 +244,8 @@
             background: var(--accent);
             transform: translateY(-50%) scale(1.1);
         }
-        #lightbox .nav-prev {
-            left: -70px;
-        }
-        #lightbox .nav-next {
-            right: -70px;
-        }
+        #lightbox .nav-prev { left: -70px; }
+        #lightbox .nav-next { right: -70px; }
 
         #lightbox .counter {
             color: rgba(255,255,255,0.6);
@@ -250,54 +254,36 @@
             font-family: 'Inter', sans-serif;
         }
 
-        @media (max-width: 768px) {
-            #lightbox .nav-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 30px;
-            }
-            #lightbox .nav-prev {
-                left: 10px;
-            }
-            #lightbox .nav-next {
-                right: 10px;
-            }
-            #lightbox .close {
-                top: -40px;
-                font-size: 32px;
-            }
-        }
-
-        .gallery-item {
+        /* ===== КНОПКА ОЖИВИТЬ ===== */
+        #lightbox .alive-btn {
+            margin-top: 12px;
+            padding: 8px 24px;
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-size: 16px;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: 0.3s;
+            font-family: 'Inter', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            visibility: hidden;
         }
-        .gallery-item:hover {
+        #lightbox .alive-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
             transform: scale(1.02);
         }
 
-        .breadcrumbs {
-            max-width: 1120px;
-            margin: 0 auto 16px auto;
-            padding: 0 16px;
-            color: var(--muted);
-            font-size: 15px;
-            letter-spacing: 0.3px;
-        }
-        .breadcrumbs a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .breadcrumbs a:hover {
-            color: #fff;
-        }
-        .breadcrumbs .sep {
-            color: var(--small);
-            margin: 0 6px;
-        }
-        .breadcrumbs .current {
-            color: var(--muted);
+        @media (max-width: 768px) {
+            #lightbox .nav-btn { width: 40px; height: 40px; font-size: 30px; }
+            #lightbox .nav-prev { left: 10px; }
+            #lightbox .nav-next { right: 10px; }
+            #lightbox .close { top: -40px; font-size: 32px; }
+            #lightbox .alive-btn { font-size: 14px; padding: 6px 18px; }
         }
     </style>
 </head>
@@ -396,7 +382,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=20260721"></script>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -473,6 +459,10 @@
         <span class="close" onclick="closeLightbox()">&times;</span>
         <div class="image-wrapper">
             <img id="lightboxImage" src="" alt="" />
+            <video id="lightboxVideo" src="images/gallery/macro/1.mp4" muted loop playsinline></video>
+            <button class="alive-btn" id="aliveBtn" onclick="toggleAlive()">
+                <i class="fa-solid fa-play"></i> Оживить фото
+            </button>
             <span class="nav-btn nav-prev" onclick="changeImage(-1)">‹</span>
             <span class="nav-btn nav-next" onclick="changeImage(1)">›</span>
         </div>
@@ -480,12 +470,14 @@
         <div class="counter" id="lightboxCounter"></div>
     </div>
 
-    <!-- ===== ЛАЙТБОКС JS ===== -->
+    <!-- ===== ЛАЙТБОКС JS (ОБНОВЛЁННЫЙ) ===== -->
     <script>
         var lightbox = document.getElementById('lightbox');
         var lightboxImage = document.getElementById('lightboxImage');
+        var lightboxVideo = document.getElementById('lightboxVideo');
         var lightboxCaption = document.getElementById('lightboxCaption');
         var lightboxCounter = document.getElementById('lightboxCounter');
+        var aliveBtn = document.getElementById('aliveBtn');
         var currentIndex = 0;
         var currentImages = [];
         var currentCaptions = [];
@@ -495,6 +487,15 @@
             currentImages = images;
             currentCaptions = captions || [];
             currentIndex = index;
+            
+            // Сброс видео и кнопки при открытии
+            lightboxVideo.pause();
+            lightboxVideo.currentTime = 0;
+            lightboxImage.classList.remove('active-media');
+            lightboxVideo.classList.remove('active-media');
+            aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
+            aliveBtn.style.display = 'none';
+
             renderLightbox();
         }
 
@@ -503,9 +504,47 @@
             lightboxImage.src = currentImages[currentIndex];
             lightboxCaption.textContent = currentCaptions[currentIndex] || '';
             lightboxCounter.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+            
+            // Показываем картинку, скрываем видео
+            lightboxImage.classList.add('active-media');
+            lightboxVideo.classList.remove('active-media');
+            lightboxVideo.pause();
+            
+            // Показываем кнопку только для первого фото (индекс 0)
+            if (currentIndex === 0) {
+                aliveBtn.style.display = 'inline-flex';
+            } else {
+                aliveBtn.style.display = 'none';
+            }
+
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
+
+        function toggleAlive() {
+            if (lightboxImage.classList.contains('active-media')) {
+                // Переключаем на видео
+                lightboxImage.classList.remove('active-media');
+                lightboxVideo.classList.add('active-media');
+                lightboxVideo.load();
+                lightboxVideo.play();
+                aliveBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Свернуть';
+            } else {
+                // Возвращаем картинку
+                lightboxVideo.pause();
+                lightboxVideo.currentTime = 0;
+                lightboxVideo.classList.remove('active-media');
+                lightboxImage.classList.add('active-media');
+                aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
+            }
+        }
+
+        // Автоматический возврат к картинке после окончания видео
+        lightboxVideo.addEventListener('ended', function() {
+            lightboxVideo.classList.remove('active-media');
+            lightboxImage.classList.add('active-media');
+            aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
+        });
 
         function changeImage(direction) {
             if (!currentImages.length) return;
@@ -518,6 +557,11 @@
         function closeLightbox() {
             lightbox.style.display = 'none';
             document.body.style.overflow = '';
+            lightboxVideo.pause();
+            lightboxVideo.currentTime = 0;
+            lightboxVideo.classList.remove('active-media');
+            lightboxImage.classList.add('active-media');
+            aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
         }
 
         lightbox.addEventListener('click', function(e) {
