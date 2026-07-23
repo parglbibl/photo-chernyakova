@@ -486,18 +486,18 @@
             'Безмолвие'
         ];
 
-        // ===== ТОЧНОЕ СООТВЕТСТВИЕ ВИДЕО И ИНДЕКСОВ ПО ВАШЕМУ СПИСКУ =====
+        // ===== ТОЧНОЕ СООТВЕТСТВИЕ ПО ВАШЕМУ СПИСКУ =====
         var macroVideos = {
-            0: 'images/gallery/macro/1.mp4',   // Грёзы любви
-            2: 'images/gallery/macro/3.mp4',   // Янтарная слеза
-            3: 'images/gallery/macro/4.mp4',   // Точка опоры
-            5: 'images/gallery/macro/6.mp4',   // Нежность
-            8: 'images/gallery/macro/10.mp4',  // Путь
-            9: 'images/gallery/macro/11.mp4',  // Начало
-            10: 'images/gallery/macro/12.mp4', // Искра
-            11: 'images/gallery/macro/13.mp4', // Застывшее движение
-            14: 'images/gallery/macro/16.mp4', // Головоломка
-            20: 'images/gallery/macro/22.mp4'  // Линия и бесконечность
+            0: 'images/gallery/macro/1.mp4',
+            2: 'images/gallery/macro/3.mp4',
+            3: 'images/gallery/macro/4.mp4',
+            5: 'images/gallery/macro/6.mp4',
+            9: 'images/gallery/macro/10.mp4',
+            10: 'images/gallery/macro/11.mp4',
+            11: 'images/gallery/macro/12.mp4',
+            12: 'images/gallery/macro/13.mp4',
+            15: 'images/gallery/macro/16.mp4',
+            21: 'images/gallery/macro/22.mp4'
         };
     </script>
 
@@ -541,7 +541,7 @@
             lightboxImage.classList.remove('active-media');
             lightboxVideo.classList.remove('active-media');
             
-            // ===== ПРОВЕРЯЕМ ПО ТОЧНОМУ СПИСКУ =====
+            // ===== ПОКАЗЫВАЕМ КНОПКУ ТОЛЬКО ПО СПИСКУ =====
             if (macroVideos.hasOwnProperty(currentIndex)) {
                 aliveBtn.style.display = 'inline-flex';
                 aliveBtn.dataset.videoPath = macroVideos[currentIndex];
@@ -602,7 +602,7 @@
             lightboxVideo.currentTime = 0;
             lightboxVideo.removeAttribute('src');
             
-            // ===== СНОВА ПРОВЕРЯЕМ ПО СПИСКУ ПРИ ПЕРЕЛИСТЫВАНИИ =====
+            // ===== ОБНОВЛЯЕМ КНОПКУ ПРИ ЛИСТАНИИ =====
             if (macroVideos.hasOwnProperty(currentIndex)) {
                 aliveBtn.style.display = 'inline-flex';
                 aliveBtn.dataset.videoPath = macroVideos[currentIndex];
