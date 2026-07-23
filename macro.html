@@ -168,12 +168,16 @@
             flex-direction: column;
             background: rgba(0,0,0,0.92);
             backdrop-filter: blur(4px);
+            /* ===== ИЗМЕНЕНО: верхний отступ, чтобы фото не прилипало к потолку ===== */
+            padding: 5vh 5vw 3vh 5vw;
+            box-sizing: border-box;
         }
 
         #lightbox .image-wrapper {
             position: relative;
             max-width: 90vw;
-            max-height: 90vh;
+            max-height: 75vh; /* ===== ИЗМЕНЕНО: уменьшили высоту, чтобы поместились кнопки и текст ===== */
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -181,13 +185,13 @@
         }
 
         #lightbox img, #lightbox video {
-            max-width: 90vw;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-            width: auto;
+            width: 100%;
             height: auto;
+            max-height: 100%;
+            max-width: 100%;   
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
             display: none;
         }
 
@@ -198,9 +202,9 @@
         #lightbox .caption {
             color: #fff;
             font-size: 18px;
-            margin-top: 20px;
+            margin-top: 16px;
             text-align: center;
-            padding: 8px 20px;
+            padding: 6px 16px;
             background: rgba(0,0,0,0.5);
             border-radius: 8px;
             font-weight: 500;
@@ -208,18 +212,20 @@
 
         #lightbox .close {
             position: absolute;
-            top: -50px;
-            right: 0;
+            top: 0px;
+            right: -40px;
             color: #fff;
-            font-size: 40px;
+            font-size: 28px;
             cursor: pointer;
             transition: 0.3s;
             line-height: 1;
             z-index: 10;
+            opacity: 0.8;
         }
         #lightbox .close:hover {
             color: var(--accent);
             transform: scale(1.1);
+            opacity: 1;
         }
 
         #lightbox .nav-btn {
@@ -227,34 +233,36 @@
             top: 50%;
             transform: translateY(-50%);
             color: #fff;
-            font-size: 40px;
+            font-size: 28px;
             cursor: pointer;
             background: rgba(0,0,0,0.4);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: 0.3s;
             user-select: none;
             z-index: 5;
+            border: 1px solid rgba(255,255,255,0.1);
         }
         #lightbox .nav-btn:hover {
             background: var(--accent);
-            transform: translateY(-50%) scale(1.1);
+            transform: translateY(-50%) scale(1.05);
+            border-color: var(--accent);
         }
-        #lightbox .nav-prev { left: -70px; }
-        #lightbox .nav-next { right: -70px; }
+        #lightbox .nav-prev { left: -60px; }
+        #lightbox .nav-next { right: -60px; }
 
         #lightbox .counter {
             color: rgba(255,255,255,0.6);
-            font-size: 16px;
-            margin-top: 10px;
+            font-size: 14px;
+            margin-top: 8px;
             font-family: 'Inter', sans-serif;
         }
 
-        /* ===== ИСПРАВЛЕННАЯ КНОПКА ОЖИВИТЬ ===== */
+        /* ===== КНОПКА ОЖИВИТЬ ===== */
         #lightbox .alive-btn {
             margin-top: 12px;
             padding: 8px 24px;
@@ -269,7 +277,6 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            /* ===== ИЗМЕНЕНО: убрали скрытие, теперь кнопка видна всегда ===== */
             opacity: 1;
             visibility: visible;
         }
@@ -279,11 +286,42 @@
             transform: scale(1.02);
         }
 
-        @media (max-width: 768px) {
-            #lightbox .nav-btn { width: 40px; height: 40px; font-size: 30px; }
+        /* ===== АДАПТИВ ДЛЯ ПЛАНШЕТОВ И МОБИЛЬНЫХ ===== */
+        @media (max-width: 900px) {
+            #lightbox {
+                padding: 3vh 3vw 2vh 3vw;
+            }
+            #lightbox .image-wrapper {
+                max-height: 70vh;
+                max-width: 95%;
+            }
+            #lightbox .close {
+                right: 0px;
+                top: -35px;
+            }
             #lightbox .nav-prev { left: 10px; }
             #lightbox .nav-next { right: 10px; }
-            #lightbox .close { top: -40px; font-size: 32px; }
+            #lightbox .nav-btn { width: 36px; height: 36px; font-size: 20px; }
+        }
+
+        @media (max-width: 480px) {
+            #lightbox {
+                padding: 2vh 2vw 2vh 2vw;
+            }
+            #lightbox .image-wrapper {
+                max-height: 55vh;
+                max-width: 100%;
+            }
+            #lightbox img, #lightbox video {
+                border-radius: 8px;
+            }
+            #lightbox .close {
+                right: 0px;
+                top: -30px;
+                font-size: 22px;
+            }
+            #lightbox .nav-btn { width: 32px; height: 32px; font-size: 18px; }
+            #lightbox .caption { font-size: 13px; padding: 4px 12px; }
             #lightbox .alive-btn { font-size: 14px; padding: 6px 18px; }
         }
     </style>
@@ -382,8 +420,6 @@
             <p>© <span id="current-year"></span> Галина Чернякова</p>
         </div>
     </footer>
-
-    <!-- ===== УДАЛЕН ДУБЛИРУЮЩИЙ ВЫЗОВ main.js ===== -->
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -489,7 +525,6 @@
             currentCaptions = captions || [];
             currentIndex = index;
             
-            // Сброс видео и кнопки при открытии
             lightboxVideo.pause();
             lightboxVideo.currentTime = 0;
             lightboxImage.classList.remove('active-media');
@@ -505,7 +540,6 @@
             lightboxCaption.textContent = currentCaptions[currentIndex] || '';
             lightboxCounter.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
             
-            // Показываем картинку, скрываем видео
             lightboxImage.classList.add('active-media');
             lightboxVideo.classList.remove('active-media');
             lightboxVideo.pause();
@@ -516,14 +550,12 @@
 
         function toggleAlive() {
             if (lightboxImage.classList.contains('active-media')) {
-                // Переключаем на видео
                 lightboxImage.classList.remove('active-media');
                 lightboxVideo.classList.add('active-media');
                 lightboxVideo.load();
                 lightboxVideo.play();
                 aliveBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Свернуть';
             } else {
-                // Возвращаем картинку
                 lightboxVideo.pause();
                 lightboxVideo.currentTime = 0;
                 lightboxVideo.classList.remove('active-media');
@@ -532,7 +564,6 @@
             }
         }
 
-        // Автоматический возврат к картинке после окончания видео
         lightboxVideo.addEventListener('ended', function() {
             lightboxVideo.classList.remove('active-media');
             lightboxImage.classList.add('active-media');
