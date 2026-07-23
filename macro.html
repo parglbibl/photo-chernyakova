@@ -273,7 +273,7 @@
             cursor: pointer;
             transition: 0.3s;
             font-family: 'Inter', sans-serif;
-            display: none;
+            display: none; /* скрыта, пока не проверим наличие видео */
             align-items: center;
             gap: 8px;
         }
@@ -485,21 +485,6 @@
             'Линия и бесконечность',
             'Безмолвие'
         ];
-        
-        // ===== НОВЫЙ МАССИВ: какие индексы имеют видео =====
-        // Индексы соответствуют macroImages: 0 = 1.webp, 1 = 6.webp, 2 = 2.webp и т.д.
-        var macroVideos = {
-            0: 'images/gallery/macro/1.mp4',
-            2: 'images/gallery/macro/3.mp4',
-            3: 'images/gallery/macro/4.mp4',
-            4: 'images/gallery/macro/6.mp4',
-            5: 'images/gallery/macro/10.mp4',
-            6: 'images/gallery/macro/11.mp4',
-            7: 'images/gallery/macro/12.mp4',
-            8: 'images/gallery/macro/13.mp4',
-            14: 'images/gallery/macro/16.mp4',
-            15: 'images/gallery/macro/22.mp4'
-        };
     </script>
 
     <!-- ===== ЛАЙТБОКС HTML ===== -->
@@ -542,13 +527,27 @@
             lightboxImage.classList.remove('active-media');
             lightboxVideo.classList.remove('active-media');
             
-            // ===== ИЗМЕНЕНО: проверяем, есть ли видео для этого индекса =====
-            if (macroVideos.hasOwnProperty(currentIndex)) {
+            // ===== ИЗМЕНЕНО: строим путь к видео по имени текущего фото =====
+            var currentImagePath = currentImages[currentIndex];
+            var videoPath = currentImagePath.replace('.webp', '.mp4').replace('.png', '.mp4');
+
+            // ===== ПЫТАЕМСЯ ЗАГРУЗИТЬ ВИДЕО =====
+            var testVideo = document.createElement('video');
+            testVideo.src = videoPath;
+            
+            testVideo.oncanplaythrough = function() {
+                // Если видео загрузилось — показываем кнопку
                 aliveBtn.style.display = 'inline-flex';
+                aliveBtn.dataset.videoPath = videoPath;
                 aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
-            } else {
+                testVideo.remove();
+            };
+            
+            testVideo.onerror = function() {
+                // Если видео не найдено — скрываем кнопку
                 aliveBtn.style.display = 'none';
-            }
+                testVideo.remove();
+            };
 
             renderLightbox();
         }
@@ -568,16 +567,15 @@
         }
 
         function toggleAlive() {
-            if (lightboxImage.classList.contains('active-media')) {
-                // Загружаем видео, если оно есть для этого индекса
-                if (macroVideos.hasOwnProperty(currentIndex)) {
-                    lightboxVideo.src = macroVideos[currentIndex];
-                    lightboxImage.classList.remove('active-media');
-                    lightboxVideo.classList.add('active-media');
-                    lightboxVideo.load();
-                    lightboxVideo.play();
-                    aliveBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Свернуть';
-                }
+            var videoPath = aliveBtn.dataset.videoPath;
+
+            if (lightboxImage.classList.contains('active-media') && videoPath) {
+                lightboxVideo.src = videoPath;
+                lightboxImage.classList.remove('active-media');
+                lightboxVideo.classList.add('active-media');
+                lightboxVideo.load();
+                lightboxVideo.play();
+                aliveBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Свернуть';
             } else {
                 lightboxVideo.pause();
                 lightboxVideo.currentTime = 0;
@@ -603,14 +601,25 @@
             lightboxVideo.currentTime = 0;
             lightboxVideo.removeAttribute('src');
             
-            // ===== ИЗМЕНЕНО: обновляем кнопку при перелистывании =====
-            if (macroVideos.hasOwnProperty(currentIndex)) {
-                aliveBtn.style.display = 'inline-flex';
-                aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
-            } else {
-                aliveBtn.style.display = 'none';
-            }
+            // ===== ПРИ ПЕРЕЛИСТЫВАНИИ СНОВА ПРОВЕРЯЕМ НАЛИЧИЕ ВИДЕО =====
+            var currentImagePath = currentImages[currentIndex];
+            var videoPath = currentImagePath.replace('.webp', '.mp4').replace('.png', '.mp4');
+
+            var testVideo = document.createElement('video');
+            testVideo.src = videoPath;
             
+            testVideo.oncanplaythrough = function() {
+                aliveBtn.style.display = 'inline-flex';
+                aliveBtn.dataset.videoPath = videoPath;
+                aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
+                testVideo.remove();
+            };
+            
+            testVideo.onerror = function() {
+                aliveBtn.style.display = 'none';
+                testVideo.remove();
+            };
+
             renderLightbox();
         }
 
