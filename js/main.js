@@ -1,401 +1,580 @@
-// =========================================================
-// === ОСНОВНОЙ JS ДЛЯ ВСЕГО САЙТА ===
-// =========================================================
-
-document.addEventListener("DOMContentLoaded", function() {
-
-    // ===== УСТАНОВКА ГОДА В ФУТЕРЕ =====
-    var year = document.getElementById("current-year");
-    if (year) {
-        year.textContent = new Date().getFullYear();
-    }
-
-    // ===== ПЛАВНЫЙ СКРОЛЛ =====
-    var anchors = document.querySelectorAll('a[href^="#"]');
-    for (var i = 0; i < anchors.length; i++) {
-        anchors[i].addEventListener("click", function(e) {
-            var target = document.querySelector(this.getAttribute("href"));
-            if (target) {
-                e.preventDefault();
-                target.scrollIntoView({ behavior: "smooth", block: "start" });
-            }
-        });
-    }
-
-    // ===== ГЕНЕРАЦИЯ ЗВЕЗД =====
-    function initStars() {
-        var container = document.getElementById('starsContainer');
-        if (!container) return;
-        if (container.children.length > 0) return;
-        var starCount = 400;
-        var fragment = document.createDocumentFragment();
-        for (var i = 0; i < starCount; i++) {
-            var star = document.createElement('div');
-            star.className = 'star-dot';
-            var x = Math.random() * 100;
-            var y = Math.random() * 100;
-            var size = Math.random() * 2.5 + 0.5;
-            var opacity = Math.random() * 0.6 + 0.2;
-            star.style.cssText = 'left:' + x + '%;top:' + y + '%;width:' + size + 'px;height:' + size + 'px;opacity:' + opacity + ';';
-            fragment.appendChild(star);
-        }
-        container.appendChild(fragment);
-    }
-    initStars();
-
-    // ===== КНОПКА НАВЕРХ =====
-    var backToTopBtn = document.createElement('div');
-    backToTopBtn.innerHTML = '↑';
-    backToTopBtn.style.cssText = `
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        background-color: var(--accent, #8B6B54);
-        color: #fff;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        font-weight: bold;
-        cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        z-index: 9999;
-        user-select: none;
-    `;
-    document.body.appendChild(backToTopBtn);
-
-    backToTopBtn.addEventListener('click', function() {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            backToTopBtn.style.opacity = '1';
-            backToTopBtn.style.visibility = 'visible';
-            backToTopBtn.style.transform = 'scale(1)';
-        } else {
-            backToTopBtn.style.opacity = '0';
-            backToTopBtn.style.visibility = 'hidden';
-            backToTopBtn.style.transform = 'scale(0.8)';
-        }
-    });
-
-    // ===== ЯНДЕКС.МЕТРИКА =====
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110292534', 'ym');
-
-    ym(110292534, 'init', {
-        clickmap:true,
-        trackLinks:true,
-        accurateTrackBounce:true,
-        webvisor:true,
-        ecommerce:"dataLayer"
-    });
-
-    // ===== ЗАЩИТА ФОТОГРАФИЙ =====
-    function safeClosest(e, selector) {
-        try {
-            return e.target.closest(selector);
-        } catch (err) {
-            return null;
-        }
-    }
-
-    document.addEventListener('contextmenu', function(e) {
-        if (safeClosest(e, '.gallery-item img') || safeClosest(e, '.home-photo img') || safeClosest(e, '.hero-avatar img')) {
-            e.preventDefault();
-            return false;
-        }
-    });
-
-    document.addEventListener('mousedown', function(e) {
-        if (safeClosest(e, '.gallery-item img') || safeClosest(e, '.home-photo img') || safeClosest(e, '.hero-avatar img')) {
-            if (e.button === 2) {
-                e.preventDefault();
-                return false;
-            }
-        }
-    });
-
-    document.addEventListener('dragstart', function(e) {
-        if (safeClosest(e, '.gallery-item img') || safeClosest(e, '.home-photo img') || safeClosest(e, '.hero-avatar img')) {
-            e.preventDefault();
-        }
-    });
-
-    document.addEventListener('selectstart', function(e) {
-        if (safeClosest(e, '.gallery-item img') || safeClosest(e, '.home-photo img') || safeClosest(e, '.hero-avatar img')) {
-            e.preventDefault();
-        }
-    });
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Макромир — Галина Чернякова | Фотограф</title>
+    <meta name="description" content="Макрофотографии Галины Черняковой: капли, цветы, текстуры, природа в деталях." />
+    <meta name="keywords" content="макросъемка, макрофотография, капли росы, макромир, Галина Чернякова" />
+    <meta property="og:title" content="Макромир — Галина Чернякова" />
+    <meta property="og:description" content="Классическая макросъемка Галины Черняковой." />
+    <meta property="og:image" content="https://photo-chernyakova.ru/images/photo.jpg" />
+    <meta property="og:url" content="https://photo-chernyakova.ru/macro.html" />
+    <meta name="twitter:card" content="summary_large_image" />
     
-    document.addEventListener('keydown', function(e) {
-        if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
-            var target = e.target;
-            if (safeClosest(e, '.gallery-item img') || safeClosest(e, '.home-photo img') || safeClosest(e, '.hero-avatar img')) {
-                e.preventDefault();
-                return false;
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <style>
+        .nav .dropdown { position: relative; }
+        .nav .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 160px;
+            width: auto;
+            background: rgba(24, 23, 21, 0.92);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 6px 0;
+            list-style: none;
+            z-index: 200;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+        .nav .dropdown.open .dropdown-content { display: block; }
+        .nav .dropdown-toggle {
+            display: inline-block;
+            padding: 6px 0;
+            cursor: pointer;
+            color: var(--muted);
+            font-weight: 600;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            line-height: 1;
+        }
+        .nav .dropdown-toggle:hover { color: #FFFFFF; }
+        .nav .dropdown-content a {
+            display: block;
+            width: 100%;
+            padding: 8px 20px;
+            font-size: 17px;
+            color: var(--muted);
+            text-decoration: none;
+            transition: 0.2s;
+            border-radius: 0;
+            box-sizing: border-box;
+        }
+        .nav .dropdown-content a:hover {
+            color: #FFFFFF;
+            background: rgba(195, 154, 116, 0.1);
+        }
+
+        @media (max-width: 900px) {
+            .nav.active { display: flex !important; }
+            .nav {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 70px;
+                right: 20px;
+                width: 55%;
+                max-width: 260px;
+                background: rgba(24, 23, 21, 0.96);
+                backdrop-filter: blur(20px);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                border-radius: 20px;
+                padding: 12px 0 12px 0;
+                box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+                z-index: 999;
+            }
+            .nav li { width: 100%; text-align: center; }
+            .nav a, .nav .dropdown-toggle {
+                display: block;
+                padding: 6px 0;
+                font-size: 16px;
+                line-height: 1.2;
+                width: 100%;
+                color: var(--muted);
+                transition: 0.2s;
+                cursor: pointer;
+            }
+            .nav a:hover, .nav .dropdown-toggle:hover { color: #FFFFFF; }
+            .nav .dropdown { width: 100%; }
+            .nav .dropdown-content {
+                position: static;
+                transform: none;
+                width: 100%;
+                box-shadow: none;
+                border: none;
+                background: rgba(0, 0, 0, 0.2);
+                border-radius: 0;
+                padding: 0;
+                margin-top: 0;
+                display: none;
+            }
+            .nav .dropdown.open .dropdown-content { display: block; }
+            .nav .dropdown-content a {
+                font-size: 14px;
+                padding: 4px 0;
+                line-height: 1.2;
+                color: var(--small);
+            }
+            .nav .dropdown-content a:hover { color: #FFFFFF; }
+            .burger-btn {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+                cursor: pointer;
+                z-index: 1000;
+                padding: 5px;
+                position: absolute;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: transparent;
+                border: none;
+            }
+            .burger-btn span {
+                display: block;
+                width: 22px;
+                height: 2px;
+                background-color: var(--muted);
+                border-radius: 1px;
+                transition: 0.3s;
+            }
+            .nav.active ~ .burger-btn span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+            .nav.active ~ .burger-btn span:nth-child(2) { opacity: 0; }
+            .nav.active ~ .burger-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+        }
+
+        /* Скрываем кнопку бургера на ПК */
+        @media (min-width: 901px) {
+            .burger-btn {
+                display: none !important;
             }
         }
-    });
 
-});
-
-// ====================================================
-// === БУРГЕР И ВЫПАДАЮЩЕЕ МЕНЮ ===
-// ====================================================
-(function() {
-    var burgerBtn = document.getElementById("burgerBtn");
-    var navMenu = document.querySelector(".nav");
-
-    if (burgerBtn && navMenu) {
-        burgerBtn.addEventListener("click", function(e) {
-            e.stopPropagation();
-            navMenu.classList.toggle("active");
-        });
-
-        document.addEventListener("click", function(e) {
-            if (navMenu.classList.contains("active")) {
-                if (!navMenu.contains(e.target) && !burgerBtn.contains(e.target)) {
-                    navMenu.classList.remove("active");
-                }
-            }
-        });
-    }
-
-    var dropdownToggles = document.querySelectorAll('.nav .dropdown-toggle');
-    
-    dropdownToggles.forEach(function(toggle) {
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            var parentDropdown = this.closest('.dropdown');
-            
-            document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
-                if (drop !== parentDropdown) {
-                    drop.classList.remove('open');
-                }
-            });
-            
-            parentDropdown.classList.toggle('open');
-        });
-    });
-
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.nav .dropdown')) {
-            document.querySelectorAll('.nav .dropdown.open').forEach(function(drop) {
-                drop.classList.remove('open');
-            });
+        /* ===== ЛАЙТБОКС ===== */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            background: rgba(0,0,0,0.92);
+            backdrop-filter: blur(4px);
         }
-    });
-})();
 
-// ====================================================
-// === АНИМАЦИЯ ПРИ СКРОЛЛЕ (ДЛЯ ВСЕХ СТРАНИЦ) ===
-// ====================================================
-document.addEventListener("DOMContentLoaded", function() {
-    var observer = new IntersectionObserver(function(entries) {
-        entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.section.fade-up, .card, .project-card, .stat-card').forEach(function(el) {
-        el.classList.add('fade-up');
-        observer.observe(el);
-    });
-});
-
-// ====================================================
-// === СКРИПТ ДЛЯ CARDS.HTML (43 фото, показываем 7) ===
-// ====================================================
-document.addEventListener("DOMContentLoaded", function() {
-    const grid = document.getElementById('cardGrid');
-    if (!grid) return;
-
-    const allCards = [
-        { img: "images/gallery/macro/1.webp", title: "Грёзы любви", desc: "Когда мир замирает, чтобы подарить тебе самый нежный сон." },
-        { img: "images/gallery/macro/2.webp", title: "Янтарная слеза", desc: "Застывшая капля времени, в которой заперт целый мир." },
-        { img: "images/gallery/macro/3.webp", title: "Точка опоры", desc: "Иногда достаточно одного прикосновения, чтобы удержать равновесие." },
-        { img: "images/gallery/macro/4.webp", title: "Остановка", desc: "Мгновение, когда тишина становится громче слов." },
-        { img: "images/gallery/macro/5.webp", title: "Нежность", desc: "Свет, проходящий сквозь лепестки, превращается в ласку." },
-        { img: "images/gallery/macro/6.webp", title: "Медленный путь", desc: "Время течёт по-другому, когда смотришь на мир через макрообъектив." },
-        { img: "images/gallery/macro/7.webp", title: "Прикосновение", desc: "Граница между светом и тенью, жизнью и тишиной." },
-        { img: "images/gallery/macro/8.webp", title: "Встреча", desc: "Иногда нужно просто смотреть вперёд, не оглядываясь назад." },
-        { img: "images/gallery/macro/9.webp", title: "Линия и бесконечность", desc: "Тонкая линия между землёй и облаками. Гармония в простом." },
-        { img: "images/gallery/macro/10.webp", title: "Путь", desc: "Каждый путь начинается с первого шага. Даже самый маленький." },
-        { img: "images/gallery/macro/11.webp", title: "Начало", desc: "Новая жизнь всегда начинается с малого. И это прекрасно." },
-        { img: "images/gallery/macro/12.webp", title: "Искра", desc: "Свет, проходящий сквозь воду, превращается в магию." },
-        { img: "images/gallery/macro/13.webp", title: "Застывшее движение", desc: "Тонкий баланс между падением и полётом. Мир держится на таких моментах." },
-        { img: "images/gallery/macro/14.webp", title: "Бархат", desc: "Тишина, застывшая на лепестках. Момент, когда природа только просыпается." },
-        { img: "images/gallery/macro/15.webp", title: "На краю", desc: "Иногда самый важный момент происходит прямо на границе." },
-        { img: "images/gallery/macro/16.webp", title: "Головоломка", desc: "Если присмотреться, в каждой капле живёт своя вселенная." },
-        { img: "images/gallery/macro/17.webp", title: "Розовая капля", desc: "Нежность, сконцентрированная в одной точке. Природа знает, как тронуть душу." },
-        { img: "images/gallery/macro/18.webp", title: "Свет на изгибе", desc: "Маленькая линза, в которой умещается целый мир." },
-        { img: "images/gallery/macro/19.webp", title: "Тихий свет", desc: "Уют, разлитый по листу. В такие моменты хочется просто дышать." },
-        { img: "images/gallery/macro/20.webp", title: "Глубина", desc: "Когда капля становится драгоценностью. Вода умеет сиять." },
-        { img: "images/gallery/macro/21.webp", title: "Жёлтый свет", desc: "Свет, пробивающийся сквозь форму. Это не просто цвет, это эмоция." },
-        { img: "images/gallery/macro/22.webp", title: "Тёплый отблеск", desc: "Мягкое сияние, рождающееся на изгибе. Свет, который согревает взгляд." },
-        { img: "images/gallery/macro/23.webp", title: "Безмолвие", desc: "Мир, который говорит без слов. Достаточно просто посмотреть." },
-
-        { img: "images/gallery/concept/1.webp", title: "Холодная тишина", desc: "Иногда тишина — это самый громкий ответ. Она не требует слов, чтобы быть услышанной." },
-        { img: "images/gallery/concept/2.webp", title: "Мгновение «до»", desc: "Секунда перед тем, как всё изменится. В ней живёт целый мир ожиданий." },
-        { img: "images/gallery/concept/4.webp", title: "Внутреннее солнце", desc: "Свет не всегда снаружи. Иногда он живёт внутри, согревая даже в самые холодные дни." },
-        { img: "images/gallery/concept/5.webp", title: "Стол художника", desc: "Место, где рождаются идеи. Где обычный предмет становится искусством." },
-        { img: "images/gallery/concept/6.webp", title: "Розовый дождь", desc: "Город, который никогда не спит. Свет, превращающий воду в магию." },
-        { img: "images/gallery/concept/7.webp", title: "Ритм", desc: "Когда свет встречается с формой, рождается танец. У каждой тени есть свой ритм." },
-        { img: "images/gallery/concept/8.webp", title: "Золотое кружево", desc: "Последние лучи солнца, запутавшиеся в тонких нитях. Хрупкость, застывшая во времени." },
-        { img: "images/gallery/concept/9.webp", title: "Вторая реальность", desc: "Лужа, в которой отражается всё: небо, деревья и прощание с летом." },
-        { img: "images/gallery/concept/11.webp", title: "Лепестки памяти", desc: "Красота увядания. Есть что-то завораживающее в том, что уходит." },
-        { img: "images/gallery/concept/12.webp", title: "Дыхание утра", desc: "Тёплые лучи утреннего солнца, проходящие сквозь фруктовый сок. Пробуждение." },
-        { img: "images/gallery/concept/13.webp", title: "Облако", desc: "Когда свет проходит сквозь форму, рождается не просто настроение, а состояние." },
-        { img: "images/gallery/concept/14.webp", title: "Удерживая тишину", desc: "Тонкий баланс. Концепт, который держится на одном движении." },
-        { img: "images/gallery/concept/15.webp", title: "Свет, который не гаснет", desc: "Огоньки, которые согревают душу даже в самую холодную ночь." },
-        { img: "images/gallery/concept/16.webp", title: "Золотой холод", desc: "Зима — это не холод. Это время, когда мир становится графичным и чистым." },
-        { img: "images/gallery/concept/17.webp", title: "Синий жемчуг", desc: "Невесомость, застывшая в одном мгновении. Тишина, которую можно увидеть." },
-
-        { img: "images/gallery/nature/1.webp", title: "Вторая реальность", desc: "Лужа, в которой отражается небо, и мир становится на мгновение другим." },
-        { img: "images/gallery/nature/2.webp", title: "Последний свет", desc: "Солнце прощается с днём, оставляя на небе золотой отблеск." },
-        { img: "images/gallery/nature/3.webp", title: "Вечернее", desc: "Нежный закат разливается по всему вокруг, заставляя время замедлиться." },
-        { img: "images/gallery/nature/4.webp", title: "Сакура днём", desc: "Солнечные лучи играют в лепестках, превращая ветки в розовые облака." },
-        { img: "images/gallery/nature/5.webp", title: "Утро на хвое", desc: "Первый свет нового дня запутался в иголках, даря тишину и свежесть." },
-    ];
-
-    function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
+        #lightbox .image-wrapper {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
-        return array;
-    }
 
-    const shuffledAll = shuffleArray([...allCards]);
-    const cardsToShow = shuffledAll.slice(0, 7);
+        #lightbox img, #lightbox video {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            width: auto;
+            height: auto;
+            display: none; /* скрыты по умолчанию, JS переключает */
+        }
 
-    cardsToShow.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'flip-3d-card';
-        card.innerHTML = `
-            <div class="flip-3d-inner">
-                <div class="flip-3d-front">
-                    <img src="${item.img}" alt="${item.title}" loading="lazy">
-                    <!-- КНОПКА ПОДЕЛИТЬСЯ -->
-                    <div class="share-wrapper">
-                        <button class="share-btn" data-title="${item.title}" data-img="${item.img}" data-desc="${item.desc}">
-                            <i class="fa-solid fa-share-nodes"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="flip-3d-back">
-                    <h3>${item.title}</h3>
-                    <p>${item.desc}</p>
-                </div>
+        #lightbox img.active-media, #lightbox video.active-media {
+            display: block;
+        }
+
+        #lightbox .caption {
+            color: #fff;
+            font-size: 18px;
+            margin-top: 20px;
+            text-align: center;
+            padding: 8px 20px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        #lightbox .close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+            line-height: 1;
+            z-index: 10;
+        }
+        #lightbox .close:hover {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+
+        #lightbox .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            background: rgba(0,0,0,0.4);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            user-select: none;
+            z-index: 5;
+        }
+        #lightbox .nav-btn:hover {
+            background: var(--accent);
+            transform: translateY(-50%) scale(1.1);
+        }
+        #lightbox .nav-prev { left: -70px; }
+        #lightbox .nav-next { right: -70px; }
+
+        #lightbox .counter {
+            color: rgba(255,255,255,0.6);
+            font-size: 16px;
+            margin-top: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* ===== КНОПКА ОЖИВИТЬ ===== */
+        #lightbox .alive-btn {
+            margin-top: 12px;
+            padding: 8px 24px;
+            border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: 'Inter', sans-serif;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+            visibility: hidden;
+        }
+        #lightbox .alive-btn:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            #lightbox .nav-btn { width: 40px; height: 40px; font-size: 30px; }
+            #lightbox .nav-prev { left: 10px; }
+            #lightbox .nav-next { right: 10px; }
+            #lightbox .close { top: -40px; font-size: 32px; }
+            #lightbox .alive-btn { font-size: 14px; padding: 6px 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <img id="top-layer-gerbera" src="images/bg.webp">
+
+    <a href="index.html">
+        <img src="images/logo.png" alt="Галина Чернякова Photography" class="site-logo">
+    </a>
+
+    <header>
+        <div class="header-inner">
+            <button class="burger-btn" id="burgerBtn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav" id="mainNav">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about.html">О себе</a></li>
+                <li><a href="projects.html">Проекты</a></li>
+                <li><a href="achievements.html">Достижения</a></li>
+                
+                <li class="dropdown">
+                    <span class="dropdown-toggle">Галерея</span>
+                    <ul class="dropdown-content">
+                        <li><a href="macro.html">Макромир</a></li>
+                        <li><a href="concept.html">Концепт</a></li>
+                        <li><a href="nature.html">Природа</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="cards.html">Открытки настроения</a></li>
+
+                <li><a href="news.html">Новости</a></li>
+                <li><a href="faq.html">Вопросы и ответы</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="breadcrumbs">
+        <a href="index.html">Главная</a>
+        <span class="sep">›</span>
+        <a href="gallery.html">Галерея</a>
+        <span class="sep">›</span>
+        <span class="current">Макромир</span>
+    </div>
+
+    <section class="hero" style="padding-top: 20px; padding-bottom: 10px;">
+        <div class="container">
+            <h1>Макро<span>мир</span></h1>
+            <p class="hero-lead">Классическая макросъемка. Капли, цветы, текстуры.</p>
+            <div class="hero-quote">✨ «Рассмотреть то, мимо чего мы проходим каждый день» ✨</div>
+        </div>
+    </section>
+
+    <section class="section fade-up" style="padding-top: 10px; padding-bottom: 25px;">
+        <div class="container">
+            <div class="section-title">Макро-работы</div>
+            <div class="section-subtitle">Мир в деталях</div>
+            <div class="gallery" id="macroGallery">
+                <div class="gallery-item" onclick="openLightbox(0, macroImages, macroCaptions)"><img src="images/gallery/macro/1.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(1, macroImages, macroCaptions)"><img src="images/gallery/macro/6.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(2, macroImages, macroCaptions)"><img src="images/gallery/macro/2.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(3, macroImages, macroCaptions)"><img src="images/gallery/macro/3.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(4, macroImages, macroCaptions)"><img src="images/gallery/macro/4.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(5, macroImages, macroCaptions)"><img src="images/gallery/macro/5.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(6, macroImages, macroCaptions)"><img src="images/gallery/macro/7.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(7, macroImages, macroCaptions)"><img src="images/gallery/macro/8.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(8, macroImages, macroCaptions)"><img src="images/gallery/macro/10.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(9, macroImages, macroCaptions)"><img src="images/gallery/macro/11.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(10, macroImages, macroCaptions)"><img src="images/gallery/macro/12.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(11, macroImages, macroCaptions)"><img src="images/gallery/macro/13.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(12, macroImages, macroCaptions)"><img src="images/gallery/macro/14.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(13, macroImages, macroCaptions)"><img src="images/gallery/macro/15.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(14, macroImages, macroCaptions)"><img src="images/gallery/macro/16.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(15, macroImages, macroCaptions)"><img src="images/gallery/macro/17.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(16, macroImages, macroCaptions)"><img src="images/gallery/macro/18.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(17, macroImages, macroCaptions)"><img src="images/gallery/macro/19.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(18, macroImages, macroCaptions)"><img src="images/gallery/macro/20.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(19, macroImages, macroCaptions)"><img src="images/gallery/macro/21.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(20, macroImages, macroCaptions)"><img src="images/gallery/macro/22.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(21, macroImages, macroCaptions)"><img src="images/gallery/macro/9.webp" alt="" loading="lazy" /></div>
+                <div class="gallery-item" onclick="openLightbox(22, macroImages, macroCaptions)"><img src="images/gallery/macro/23.webp" alt="" loading="lazy" /></div>
             </div>
-        `;
-        
-        card.addEventListener('click', function() {
-            document.querySelectorAll('.flip-3d-card').forEach(function(el) {
-                if (el !== card) {
-                    el.classList.remove('flipped');
-                }
-            });
-            this.classList.toggle('flipped');
-        });
+        </div>
+    </section>
 
-        grid.appendChild(card);
-    });
+    <footer>
+        <div class="container">
+            <p class="stardust">✦ Каждое фото — это застывшая эмоция ✦</p>
+            <p>© <span id="current-year"></span> Галина Чернякова</p>
+        </div>
+    </footer>
 
-    // ===== ЛОГИКА КНОПКИ «ПОДЕЛИТЬСЯ» (Share API) =====
-    document.querySelectorAll('.share-btn').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
+    <!-- ===== УДАЛЕН ДУБЛИРУЮЩИЙ ВЫЗОВ main.js ===== -->
 
-            const title = this.dataset.title;
-            const desc = this.dataset.desc;
-            const pageUrl = window.location.href;
-
-            const shareText = `✨ ${title}\n\n${desc}\n\nПосмотреть открытку: ${pageUrl}`;
-
-            // Проверяем, поддерживает ли браузер нативное меню "Поделиться"
-            if (navigator.share) {
-                // На телефонах (iOS/Android) — открываем родное меню
-                navigator.share({
-                    title: title,
-                    text: shareText,
-                    url: pageUrl
-                }).catch(function(err) {
-                    if (err.name !== 'AbortError') {
-                        console.log('Ошибка при шеринге:', err);
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
                     }
                 });
-            } else {
-                // На ПК — просто копируем текст в буфер обмена
-                if (navigator.clipboard) {
-                    navigator.clipboard.writeText(shareText).then(function() {
-                        alert('Ссылка на открытку скопирована в буфер обмена!');
-                    }).catch(function(err) {
-                        console.error('Не удалось скопировать текст: ', err);
-                    });
-                } else {
-                    // Запасной вариант для старых браузеров
-                    var textarea = document.createElement('textarea');
-                    textarea.value = shareText;
-                    document.body.appendChild(textarea);
-                    textarea.select();
-                    try {
-                        document.execCommand('copy');
-                        alert('Ссылка на открытку скопирована в буфер обмена!');
-                    } catch (err) {
-                        console.error('Не удалось скопировать текст: ', err);
-                    }
-                    document.body.removeChild(textarea);
-                }
-            }
-        });
-    });
-});
-
-// ====================================================
-// === АТМОСФЕРНЫЙ ЗВУК (Только для cards.html) ===
-// ====================================================
-document.addEventListener("DOMContentLoaded", function() {
-    const soundBtn = document.getElementById('soundToggle');
-    if (!soundBtn) return;
-
-    let audio = null;
-    let isPlaying = false;
-
-    soundBtn.addEventListener('click', function() {
-        if (!audio) {
-            // Твой файл из папки music
-            audio = new Audio('music/fon.mp3');
-            audio.loop = true;
-            audio.volume = 0.02;
-        }
-
-        if (isPlaying) {
-            audio.pause();
-            isPlaying = false;
-            soundBtn.classList.remove('active');
-            soundBtn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
-        } else {
-            audio.play().catch(function(err) {
-                console.log('Звук заблокирован браузером или пользователем');
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.section, .gallery').forEach(function(el) {
+                el.classList.add('fade-up');
+                observer.observe(el);
             });
-            isPlaying = true;
-            soundBtn.classList.add('active');
-            soundBtn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+        });
+    </script>
+
+    <!-- ===== ЛАЙТБОКС ДАННЫЕ ===== -->
+    <script>
+        var macroImages = [
+            'images/gallery/macro/1.webp',
+            'images/gallery/macro/6.webp',
+            'images/gallery/macro/2.webp',
+            'images/gallery/macro/3.webp',
+            'images/gallery/macro/4.webp',
+            'images/gallery/macro/5.webp',
+            'images/gallery/macro/7.webp',
+            'images/gallery/macro/8.webp',
+            'images/gallery/macro/10.webp',
+            'images/gallery/macro/11.webp',
+            'images/gallery/macro/12.webp',
+            'images/gallery/macro/13.webp',
+            'images/gallery/macro/14.webp',
+            'images/gallery/macro/15.webp',
+            'images/gallery/macro/16.webp',
+            'images/gallery/macro/17.webp',
+            'images/gallery/macro/18.webp',
+            'images/gallery/macro/19.webp',
+            'images/gallery/macro/20.webp',
+            'images/gallery/macro/21.webp',
+            'images/gallery/macro/22.webp',
+            'images/gallery/macro/9.webp',
+            'images/gallery/macro/23.webp'
+        ];
+        var macroCaptions = [
+            'Грёзы любви',
+            'Медленный путь',
+            'Янтарная слеза',
+            'Точка опоры',
+            'Остановка',
+            'Нежность',
+            'Прикосновение',
+            'Встреча',
+            'Путь',
+            'Начало',
+            'Искра',
+            'Застывшее движение',
+            'Бархат',
+            'На краю',
+            'Лёгкость',
+            'Головоломка',
+            'Розовая капля',
+            'Свет на изгибе',
+            'Тихий свет',
+            'Глубина',
+            'Жёлтый свет',
+            'Линия и бесконечность',
+            'Безмолвие'
+        ];
+    </script>
+
+    <!-- ===== ЛАЙТБОКС HTML ===== -->
+    <div id="lightbox" style="display: none;">
+        <span class="close" onclick="closeLightbox()">&times;</span>
+        <div class="image-wrapper">
+            <img id="lightboxImage" src="" alt="" />
+            <video id="lightboxVideo" src="images/gallery/macro/1.mp4" muted loop playsinline></video>
+            <button class="alive-btn" id="aliveBtn" onclick="toggleAlive()">
+                <i class="fa-solid fa-play"></i> Оживить фото
+            </button>
+            <span class="nav-btn nav-prev" onclick="changeImage(-1)">‹</span>
+            <span class="nav-btn nav-next" onclick="changeImage(1)">›</span>
+        </div>
+        <div class="caption" id="lightboxCaption"></div>
+        <div class="counter" id="lightboxCounter"></div>
+    </div>
+
+    <!-- ===== ЛАЙТБОКС JS ===== -->
+    <script>
+        var lightbox = document.getElementById('lightbox');
+        var lightboxImage = document.getElementById('lightboxImage');
+        var lightboxVideo = document.getElementById('lightboxVideo');
+        var lightboxCaption = document.getElementById('lightboxCaption');
+        var lightboxCounter = document.getElementById('lightboxCounter');
+        var aliveBtn = document.getElementById('aliveBtn');
+        var currentIndex = 0;
+        var currentImages = [];
+        var currentCaptions = [];
+
+        function openLightbox(index, images, captions) {
+            if (!images || !images.length) return;
+            currentImages = images;
+            currentCaptions = captions || [];
+            currentIndex = index;
+            
+            // Сброс видео и кнопки при открытии
+            lightboxVideo.pause();
+            lightboxVideo.currentTime = 0;
+            lightboxImage.classList.remove('active-media');
+            lightboxVideo.classList.remove('active-media');
+            aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
+            aliveBtn.style.display = 'none';
+
+            renderLightbox();
         }
-    });
-});
+
+        function renderLightbox() {
+            if (!currentImages.length) return;
+            lightboxImage.src = currentImages[currentIndex];
+            lightboxCaption.textContent = currentCaptions[currentIndex] || '';
+            lightboxCounter.textContent = (currentIndex + 1) + ' / ' + currentImages.length;
+            
+            // Показываем картинку, скрываем видео
+            lightboxImage.classList.add('active-media');
+            lightboxVideo.classList.remove('active-media');
+            lightboxVideo.pause();
+            
+            // Показываем кнопку только для первого фото (индекс 0)
+            if (currentIndex === 0) {
+                aliveBtn.style.display = 'inline-flex';
+            } else {
+                aliveBtn.style.display = 'none';
+            }
+
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function toggleAlive() {
+            if (lightboxImage.classList.contains('active-media')) {
+                // Переключаем на видео
+                lightboxImage.classList.remove('active-media');
+                lightboxVideo.classList.add('active-media');
+                lightboxVideo.load();
+                lightboxVideo.play();
+                aliveBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Свернуть';
+            } else {
+                // Возвращаем картинку
+                lightboxVideo.pause();
+                lightboxVideo.currentTime = 0;
+                lightboxVideo.classList.remove('active-media');
+                lightboxImage.classList.add('active-media');
+                aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
+            }
+        }
+
+        // Автоматический возврат к картинке после окончания видео
+        lightboxVideo.addEventListener('ended', function() {
+            lightboxVideo.classList.remove('active-media');
+            lightboxImage.classList.add('active-media');
+            aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
+        });
+
+        function changeImage(direction) {
+            if (!currentImages.length) return;
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = currentImages.length - 1;
+            if (currentIndex >= currentImages.length) currentIndex = 0;
+            renderLightbox();
+        }
+
+        function closeLightbox() {
+            lightbox.style.display = 'none';
+            document.body.style.overflow = '';
+            lightboxVideo.pause();
+            lightboxVideo.currentTime = 0;
+            lightboxVideo.classList.remove('active-media');
+            lightboxImage.classList.add('active-media');
+            aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
+        }
+
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (lightbox.style.display === 'none') return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') changeImage(-1);
+            if (e.key === 'ArrowRight') changeImage(1);
+        });
+    </script>
+
+</body>
+</html>
