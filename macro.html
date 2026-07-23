@@ -261,7 +261,7 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* ===== КНОПКА ОЖИВИТЬ (по умолчанию скрыта) ===== */
+        /* ===== КНОПКА ОЖИВИТЬ ===== */
         #lightbox .alive-btn {
             margin-top: 12px;
             padding: 8px 24px;
@@ -273,7 +273,7 @@
             cursor: pointer;
             transition: 0.3s;
             font-family: 'Inter', sans-serif;
-            display: none; /* ===== ИЗМЕНЕНО: скрыта по умолчанию ===== */
+            display: none;
             align-items: center;
             gap: 8px;
         }
@@ -283,7 +283,6 @@
             transform: scale(1.02);
         }
 
-        /* ===== АДАПТИВ ===== */
         @media (max-width: 900px) {
             #lightbox {
                 padding: 3vh 3vw 2vh 3vw;
@@ -486,6 +485,21 @@
             'Линия и бесконечность',
             'Безмолвие'
         ];
+        
+        // ===== НОВЫЙ МАССИВ: какие индексы имеют видео =====
+        // Индексы соответствуют macroImages: 0 = 1.webp, 1 = 6.webp, 2 = 2.webp и т.д.
+        var macroVideos = {
+            0: 'images/gallery/macro/1.mp4',
+            2: 'images/gallery/macro/3.mp4',
+            3: 'images/gallery/macro/4.mp4',
+            4: 'images/gallery/macro/6.mp4',
+            5: 'images/gallery/macro/10.mp4',
+            6: 'images/gallery/macro/11.mp4',
+            7: 'images/gallery/macro/12.mp4',
+            8: 'images/gallery/macro/13.mp4',
+            14: 'images/gallery/macro/16.mp4',
+            15: 'images/gallery/macro/22.mp4'
+        };
     </script>
 
     <!-- ===== ЛАЙТБОКС HTML ===== -->
@@ -493,7 +507,7 @@
         <span class="close" onclick="closeLightbox()">&times;</span>
         <div class="image-wrapper">
             <img id="lightboxImage" src="" alt="" />
-            <video id="lightboxVideo" src="images/gallery/macro/1.mp4" muted loop playsinline></video>
+            <video id="lightboxVideo" src="" muted loop playsinline></video>
             <button class="alive-btn" id="aliveBtn" onclick="toggleAlive()">
                 <i class="fa-solid fa-play"></i> Оживить фото
             </button>
@@ -524,11 +538,12 @@
             
             lightboxVideo.pause();
             lightboxVideo.currentTime = 0;
+            lightboxVideo.removeAttribute('src');
             lightboxImage.classList.remove('active-media');
             lightboxVideo.classList.remove('active-media');
             
-            // ===== ИЗМЕНЕНО: показываем кнопку только для 1-го фото (индекс 0) =====
-            if (currentIndex === 0) {
+            // ===== ИЗМЕНЕНО: проверяем, есть ли видео для этого индекса =====
+            if (macroVideos.hasOwnProperty(currentIndex)) {
                 aliveBtn.style.display = 'inline-flex';
                 aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
             } else {
@@ -554,11 +569,15 @@
 
         function toggleAlive() {
             if (lightboxImage.classList.contains('active-media')) {
-                lightboxImage.classList.remove('active-media');
-                lightboxVideo.classList.add('active-media');
-                lightboxVideo.load();
-                lightboxVideo.play();
-                aliveBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Свернуть';
+                // Загружаем видео, если оно есть для этого индекса
+                if (macroVideos.hasOwnProperty(currentIndex)) {
+                    lightboxVideo.src = macroVideos[currentIndex];
+                    lightboxImage.classList.remove('active-media');
+                    lightboxVideo.classList.add('active-media');
+                    lightboxVideo.load();
+                    lightboxVideo.play();
+                    aliveBtn.innerHTML = '<i class="fa-solid fa-pause"></i> Свернуть';
+                }
             } else {
                 lightboxVideo.pause();
                 lightboxVideo.currentTime = 0;
@@ -580,9 +599,14 @@
             if (currentIndex < 0) currentIndex = currentImages.length - 1;
             if (currentIndex >= currentImages.length) currentIndex = 0;
             
-            // ===== ИЗМЕНЕНО: при перелистывании скрываем/показываем кнопку =====
-            if (currentIndex === 0) {
+            lightboxVideo.pause();
+            lightboxVideo.currentTime = 0;
+            lightboxVideo.removeAttribute('src');
+            
+            // ===== ИЗМЕНЕНО: обновляем кнопку при перелистывании =====
+            if (macroVideos.hasOwnProperty(currentIndex)) {
                 aliveBtn.style.display = 'inline-flex';
+                aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
             } else {
                 aliveBtn.style.display = 'none';
             }
@@ -595,6 +619,7 @@
             document.body.style.overflow = '';
             lightboxVideo.pause();
             lightboxVideo.currentTime = 0;
+            lightboxVideo.removeAttribute('src');
             lightboxVideo.classList.remove('active-media');
             lightboxImage.classList.add('active-media');
             aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
