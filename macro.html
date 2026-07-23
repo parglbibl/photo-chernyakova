@@ -188,7 +188,7 @@
             box-shadow: 0 20px 60px rgba(0,0,0,0.6);
             width: auto;
             height: auto;
-            display: none; /* скрыты по умолчанию, JS переключает */
+            display: none;
         }
 
         #lightbox img.active-media, #lightbox video.active-media {
@@ -254,7 +254,7 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* ===== КНОПКА ОЖИВИТЬ ===== */
+        /* ===== ИСПРАВЛЕННАЯ КНОПКА ОЖИВИТЬ ===== */
         #lightbox .alive-btn {
             margin-top: 12px;
             padding: 8px 24px;
@@ -269,8 +269,9 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            opacity: 0;
-            visibility: hidden;
+            /* ===== ИЗМЕНЕНО: убрали скрытие, теперь кнопка видна всегда ===== */
+            opacity: 1;
+            visibility: visible;
         }
         #lightbox .alive-btn:hover {
             background: var(--accent);
@@ -382,7 +383,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <!-- ===== УДАЛЕН ДУБЛИРУЮЩИЙ ВЫЗОВ main.js ===== -->
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -494,7 +495,6 @@
             lightboxImage.classList.remove('active-media');
             lightboxVideo.classList.remove('active-media');
             aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
-            aliveBtn.style.display = 'none';
 
             renderLightbox();
         }
@@ -509,13 +509,6 @@
             lightboxImage.classList.add('active-media');
             lightboxVideo.classList.remove('active-media');
             lightboxVideo.pause();
-            
-            // Показываем кнопку только для первого фото (индекс 0)
-            if (currentIndex === 0) {
-                aliveBtn.style.display = 'inline-flex';
-            } else {
-                aliveBtn.style.display = 'none';
-            }
 
             lightbox.style.display = 'flex';
             document.body.style.overflow = 'hidden';
