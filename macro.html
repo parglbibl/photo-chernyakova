@@ -168,7 +168,6 @@
             flex-direction: column;
             background: rgba(0,0,0,0.92);
             backdrop-filter: blur(4px);
-            /* ===== ИЗМЕНЕНО: верхний отступ, чтобы фото не прилипало к потолку ===== */
             padding: 5vh 5vw 3vh 5vw;
             box-sizing: border-box;
         }
@@ -176,7 +175,7 @@
         #lightbox .image-wrapper {
             position: relative;
             max-width: 90vw;
-            max-height: 75vh; /* ===== ИЗМЕНЕНО: уменьшили высоту, чтобы поместились кнопки и текст ===== */
+            max-height: 75vh;
             width: 100%;
             display: flex;
             align-items: center;
@@ -262,7 +261,7 @@
             font-family: 'Inter', sans-serif;
         }
 
-        /* ===== КНОПКА ОЖИВИТЬ ===== */
+        /* ===== КНОПКА ОЖИВИТЬ (по умолчанию скрыта) ===== */
         #lightbox .alive-btn {
             margin-top: 12px;
             padding: 8px 24px;
@@ -274,11 +273,9 @@
             cursor: pointer;
             transition: 0.3s;
             font-family: 'Inter', sans-serif;
-            display: inline-flex;
+            display: none; /* ===== ИЗМЕНЕНО: скрыта по умолчанию ===== */
             align-items: center;
             gap: 8px;
-            opacity: 1;
-            visibility: visible;
         }
         #lightbox .alive-btn:hover {
             background: var(--accent);
@@ -286,7 +283,7 @@
             transform: scale(1.02);
         }
 
-        /* ===== АДАПТИВ ДЛЯ ПЛАНШЕТОВ И МОБИЛЬНЫХ ===== */
+        /* ===== АДАПТИВ ===== */
         @media (max-width: 900px) {
             #lightbox {
                 padding: 3vh 3vw 2vh 3vw;
@@ -529,7 +526,14 @@
             lightboxVideo.currentTime = 0;
             lightboxImage.classList.remove('active-media');
             lightboxVideo.classList.remove('active-media');
-            aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
+            
+            // ===== ИЗМЕНЕНО: показываем кнопку только для 1-го фото (индекс 0) =====
+            if (currentIndex === 0) {
+                aliveBtn.style.display = 'inline-flex';
+                aliveBtn.innerHTML = '<i class="fa-solid fa-play"></i> Оживить фото';
+            } else {
+                aliveBtn.style.display = 'none';
+            }
 
             renderLightbox();
         }
@@ -575,6 +579,14 @@
             currentIndex += direction;
             if (currentIndex < 0) currentIndex = currentImages.length - 1;
             if (currentIndex >= currentImages.length) currentIndex = 0;
+            
+            // ===== ИЗМЕНЕНО: при перелистывании скрываем/показываем кнопку =====
+            if (currentIndex === 0) {
+                aliveBtn.style.display = 'inline-flex';
+            } else {
+                aliveBtn.style.display = 'none';
+            }
+            
             renderLightbox();
         }
 
