@@ -1386,3 +1386,17 @@ img {
         font-size: 18px;
     }
 }
+
+/* ===== ИСПРАВЛЕНИЕ ЦВЕТА ССЫЛОК НА МОБИЛЬНЫХ (чтобы не было синего) ===== */
+@media (max-width: 900px) {
+    .section a, .hero a, .container a, .card a, .project-card a, .section-text a {
+        color: var(--muted) !important;
+        text-decoration: underline;
+        text-decoration-color: rgba(255,255,255,0.2);
+        transition: color 0.3s;
+    }
+    .section a:hover, .hero a:hover, .container a:hover, .card a:hover, .project-card a:hover, .section-text a:hover {
+        color: #FFFFFF !important;
+        text-decoration-color: #FFFFFF;
+    }
+}
