@@ -300,10 +300,16 @@
             transform: scale(1.03);
         }
 
-        /* ===== УМЕНЬШАЕМ И ЦЕНТРИРУЕМ ТОЛЬКО СЕРТИФИКАТ PHOTOSHOP ===== */
+        /* ===== УМЕНЬШАЕМ И ЦЕНТРИРУЕМ ДИПЛОМЫ ===== */
         .diploma-item-photoshop {
-            width: 300px;           /* Уменьшаем ширину контейнера */
-            justify-self: center;   /* Центрируем его по горизонтали */
+            width: 300px;           /* Для горизонтальных грамот */
+            justify-self: center;
+        }
+
+        /* ===== НОВЫЙ КЛАСС ДЛЯ ПОСЛЕДНИХ ДВУХ ГРАМОТ ===== */
+        .diploma-item-fotoprizer {
+            width: 210px;           /* Для вертикальных грамот (чтобы они не вытягивались вверх) */
+            justify-self: center;
         }
 
         @media (max-width: 900px) {
@@ -320,7 +326,10 @@
             }
             .year-header { font-size: 20px; }
             .diploma-item-photoshop {
-                width: 160px; /* На мобилках тоже уменьшаем, но чуть меньше */
+                width: 160px;
+            }
+            .diploma-item-fotoprizer {
+                width: 140px; /* Чтобы на мобилке не были огромными */
             }
         }
 
@@ -588,8 +597,8 @@
                     <div class="diploma-item" onclick="openLightbox(31, diplomaImages, diplomaCaptions)"><img src="images/diploms/gramota29.webp" alt="ФотоПризер Письмо Светотень 2026"></div>
 
                     <!-- НОВЫЕ ГРАМОТЫ (ЦЕНТРИРОВАННЫЕ И УМЕНЬШЕННЫЕ) -->
-                    <div class="diploma-item diploma-item-photoshop" onclick="openLightbox(32, diplomaImages, diplomaCaptions)"><img src="images/diploms/gramota_fotoprizer_2026_1.webp" alt="ФотоПризер Грамота участника 2026"></div>
-                    <div class="diploma-item diploma-item-photoshop" onclick="openLightbox(33, diplomaImages, diplomaCaptions)"><img src="images/diploms/gramota_fotoprizer_2026_2.webp" alt="ФотоПризер Поздравительное письмо 2026"></div>
+                    <div class="diploma-item diploma-item-fotoprizer" onclick="openLightbox(32, diplomaImages, diplomaCaptions)"><img src="images/diploms/gramota_fotoprizer_2026_1.webp" alt="ФотоПризер Грамота участника 2026"></div>
+                    <div class="diploma-item diploma-item-fotoprizer" onclick="openLightbox(33, diplomaImages, diplomaCaptions)"><img src="images/diploms/gramota_fotoprizer_2026_2.webp" alt="ФотоПризер Поздравительное письмо 2026"></div>
                 </div>
 
             </div>
