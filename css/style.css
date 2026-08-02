@@ -1410,3 +1410,15 @@ footer .stardust,
 footer p {
     text-align: center;
 }
+
+/* ===== НОВЫЙ КЛАСС ДЛЯ ПОСЛЕДНИХ ДВУХ ГРАМОТ (ФОТОПРИЗЕР) ===== */
+.diploma-item-fotoprizer {
+    width: 210px;
+    justify-self: center;
+}
+
+@media (max-width: 480px) {
+    .diploma-item-fotoprizer {
+        width: 140px;
+    }
+}
