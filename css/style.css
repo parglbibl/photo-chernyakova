@@ -1411,14 +1411,22 @@ footer p {
     text-align: center;
 }
 
-/* ===== НОВЫЙ КЛАСС ДЛЯ ПОСЛЕДНИХ ДВУХ ГРАМОТ (ФОТОПРИЗЕР) ===== */
+/* ===== ИСПРАВЛЕННЫЕ КЛАССЫ ДЛЯ ГРАМОТ ===== */
+.diploma-item-photoshop {
+    width: 300px;
+    justify-self: center;
+}
+
 .diploma-item-fotoprizer {
-    width: 210px;
+    width: 260px;
     justify-self: center;
 }
 
 @media (max-width: 480px) {
+    .diploma-item-photoshop {
+        width: 160px;
+    }
     .diploma-item-fotoprizer {
-        width: 140px;
+        width: 180px;
     }
 }
