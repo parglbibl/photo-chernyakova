@@ -409,35 +409,40 @@
     <section class="section fade-up" style="padding-top: 20px; padding-bottom: 20px;">
         <div class="container">
             <div class="section-title">Фото месяца</div>
-            <div class="section-subtitle">Каждый месяц — новая история</div>
+            <div class="section-subtitle">Каждый месяц – новая история</div>
             
             <div style="max-width: 900px; margin: 0 auto; text-align: center;">
                 
-                <!-- КРУПНОЕ ТЕКУЩЕЕ ФОТО (УМЕНЬШЕНО ДО 80%) -->
+                <!-- КРУПНОЕ ТЕКУЩЕЕ ФОТО -->
                 <div id="mainPhotoCard" style="width: 80%; margin: 0 auto; border-radius: 20px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--card-shadow); margin-bottom: 12px; transition: opacity 0.4s ease;">
-                    <img id="mainPhotoImg" src="images/gallery/macro/payk.webp" alt="Фото месяца" style="width: 100%; height: auto; display: block;">
+                    <img id="mainPhotoImg" src="images/gallery/macro/kuznechik.webp" alt="Фото месяца" style="width: 100%; height: auto; display: block;">
                 </div>
                 
                 <!-- ТЕКУЩАЯ ЦИТАТА И МЕСЯЦ -->
                 <div id="mainQuoteBlock" style="transition: opacity 0.4s ease;">
                     <p id="mainQuote" style="font-size: 20px; font-style: italic; color: var(--muted); max-width: 700px; margin: 0 auto 12px; line-height: 1.6;">
-                        «Его дом — это край листа и тень. В этом зелёном мире он не герой, не король, а просто наблюдатель. Он держит свои тонкие ноги, как струны, и слушает, как растёт трава. Мы проходим мимо, не замечая его. А он смотрит на нас. Молча. Спокойно. Вечно.»
+                        «Листья – его стены, стебли – его башни, а солнце – его свет. Он сидит на своём листе, как в крепости, и ни один враг не пройдёт незамеченным. Его лапки – стальные пружины, а взгляд – это взгляд существа, которое держит в поле зрения всё: и то, что может угрожать ему, и то, что он охраняет. Он не боится, но он осторожен – потому что знает: этот мир хрупок, и его покой легко нарушить. Он хранит этот мир, пока длится лето, – и бережёт сам себя, чтобы было кому его хранить.»
                     </p>
                     <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 25px;">
-                        <span id="mainMonth" style="color: var(--small); font-size: 15px; letter-spacing: 1px; background: rgba(34, 32, 29, 0.6); padding: 4px 16px; border-radius: 20px;">Июль 2026</span>
+                        <span id="mainMonth" style="color: var(--small); font-size: 15px; letter-spacing: 1px; background: rgba(34, 32, 29, 0.6); padding: 4px 16px; border-radius: 20px;">Август 2026</span>
                     </div>
                 </div>
 
                 <!-- ЛЕНТА АРХИВА -->
                 <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 10px;">
                     
-                    <!-- 1. ИЮЛЬ (Активный по умолчанию) -->
+                    <!-- 1. АВГУСТ (Активный по умолчанию) -->
                     <div class="archive-thumb" onclick="switchMonth(0)" style="width: 80px; height: 80px; border-radius: 12px; overflow: hidden; border: 2px solid var(--accent); cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+                        <img src="images/gallery/macro/kuznechik.webp" alt="Август" style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+
+                    <!-- 2. ИЮЛЬ (Паук) -->
+                    <div class="archive-thumb" onclick="switchMonth(1)" style="width: 80px; height: 80px; border-radius: 12px; overflow: hidden; border: 2px solid transparent; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0.7;">
                         <img src="images/gallery/macro/payk.webp" alt="Июль" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
 
-                    <!-- 2. ИЮНЬ (Старое фото) -->
-                    <div class="archive-thumb" onclick="switchMonth(1)" style="width: 80px; height: 80px; border-radius: 12px; overflow: hidden; border: 2px solid transparent; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0.7;">
+                    <!-- 3. ИЮНЬ (Капля) -->
+                    <div class="archive-thumb" onclick="switchMonth(2)" style="width: 80px; height: 80px; border-radius: 12px; overflow: hidden; border: 2px solid transparent; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); opacity: 0.7;">
                         <img src="images/gallery/macro/16.webp" alt="Июнь" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                     
@@ -766,8 +771,13 @@
     <script>
         const monthData = [
             {
+                img: 'images/gallery/macro/kuznechik.webp',
+                quote: '«Листья – его стены, стебли – его башни, а солнце – его свет. Он сидит на своём листе, как в крепости, и ни один враг не пройдёт незамеченным. Его лапки – стальные пружины, а взгляд – это взгляд существа, которое держит в поле зрения всё: и то, что может угрожать ему, и то, что он охраняет. Он не боится, но он осторожен – потому что знает: этот мир хрупок, и его покой легко нарушить. Он хранит этот мир, пока длится лето, – и бережёт сам себя, чтобы было кому его хранить.»',
+                month: 'Август 2026'
+            },
+            {
                 img: 'images/gallery/macro/payk.webp',
-                quote: '«Его дом — это край листа и тень. В этом зелёном мире он не герой, не король, а просто наблюдатель. Он держит свои тонкие ноги, как струны, и слушает, как растёт трава. Мы проходим мимо, не замечая его. А он смотрит на нас. Молча. Спокойно. Вечно.»',
+                quote: '«Его дом – это край листа и тень. В этом зелёном мире он не герой, не король, а просто наблюдатель. Он держит свои тонкие ноги, как струны, и слушает, как растёт трава. Мы проходим мимо, не замечая его. А он смотрит на нас. Молча. Спокойно. Вечно.»',
                 month: 'Июль 2026'
             },
             {
